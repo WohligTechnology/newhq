@@ -24,7 +24,7 @@ $this->db->where("id",$id);
 $query=$this->db->get("hq_team")->row();
 return $query;
 }
-public function edit($id,$name,$deptid)
+public function edit($id,$name,$teamid)
 {
 $data=array("name" => $name,"teamid" => $teamid);
 $this->db->where( "id", $id );

@@ -1,3 +1,80 @@
+<div class="row">
+    <div class="col s12">
+        <h4 class="pad-left-15">Create Test</h4>
+    </div>
+    <form class="col s12" method="post" action="<?php echo site_url('site/createtestsubmit');?>" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<?php echo set_value('name');?>">
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="units">Units</label>
+                <input type="text" id="units" name="units" value="<?php echo set_value('units');?>">
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="startdate">Startdate</label>
+<!--                <input type="date" id="startdate" name="startdate" value="<?php echo set_value('startdate');?>">-->
+                <input type="date" class="datepicker" id="startdate" name="startdate" value="<?php echo set_value('startdate');?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('schedule', $schedule, set_value('schedule')); ?>
+                <label>Schedule</label>
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('check', $check, set_value('check')); ?>
+                <label>check</label>
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('designation', $designation, set_value('designation')); ?>
+                <label>Designation</label>
+            </div>
+        </div>  
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('department', $department, set_value('department')); ?>
+                <label>Department</label>
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('branch', $branch, set_value('branch')); ?>
+                <label>Branch</label>
+            </div>
+        </div>
+           <div class="row">
+            <div class="input-field col s12 m6">
+                <?php echo form_dropdown('team', $team, set_value('team')); ?>
+                <label>Team</label>
+            </div>
+        </div>
+       
+       
+        <div class="row">
+            <div class="col s12 m6">
+                    <div class=" form-group">
+                <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
+                <a href="<?php echo site_url('site/viewtest'); ?>" class="btn btn-secondary waves-effect waves-light  red">Cancel</a>
+        </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<!--
 <div class="row" style="padding:1% 0">
 	<div class="col-md-12">
 		<div class="pull-right">
@@ -31,15 +108,6 @@
 							<input type="date" id="normal-field" class="form-control" name="startdate" value="<?php echo set_value('startdate');?>">
 						</div>
 					</div>
-					<!--
-				<div class=" form-group">
-				  <label class="col-sm-2 control-label" for="normal-field">Username</label>
-				  <div class="col-sm-4">
-					<input type="text" id="normal-field" class="form-control" name="username" value="<?php echo set_value('username');?>">
-				  </div>
-				</div>
--->
-
 				<div class=" form-group">
 						<label class="col-sm-2 control-label">Schedule</label>
 						<div class="col-sm-4">
@@ -92,3 +160,4 @@
 		</section>
 	</div>
 </div>
+-->

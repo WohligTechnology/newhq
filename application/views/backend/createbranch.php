@@ -1,3 +1,56 @@
+<div class="row">
+    <div class="col s12">
+        <h4 class="pad-left-15">Create Branch</h4>
+    </div>
+    <form class="col s12" method="post" action="<?php echo site_url('site/createbranchsubmit');?>" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<?php echo set_value('name');?>">
+            </div>
+        </div>
+         <div class="row">
+            <div class="input-field col m6 s12">
+                <?php echo form_dropdown( 'language', $language, set_value( 'language')); ?>
+                <label>Language</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="branchid">Branch Id</label>
+                <input type="text" id="branchid" name="branchid" value="<?php echo set_value('branchid');?>">
+            </div>
+        </div>
+        <div class="row">
+           <div class="col s12 m6"><textarea  name="address" placeholder="Address"><?php echo set_value('address');?></textarea>
+           </div>
+        </div>
+       
+        <div class="row">
+            <div class="col s12 m6">
+                    <div class=" form-group">
+                <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
+                <a href="<?php echo site_url('site/viewbranch'); ?>" class="btn btn-secondary waves-effect waves-light  red">Cancel</a>
+        </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <div class="row" style="padding:1% 0">
 <div class="col-md-12">
 <div class="pull-right">
@@ -49,3 +102,4 @@ Branch Details
 </section>
 </div>
 </div>
+-->

@@ -7,6 +7,8 @@ class Test_model extends CI_Model
 	
 	public function create($name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$check)
 	{
+        $startdate = new DateTime($startdate);
+        $startdate = $startdate->format('Y-m-d');
 		$data  = array(
 				'name' => $name,
 			'schedule' => $schedule,
@@ -37,6 +39,8 @@ class Test_model extends CI_Model
 	
 	public function edit($id,$name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$check,$timestamp)
 	{
+        $startdate = new DateTime($startdate);
+        $startdate = $startdate->format('Y-m-d');
 		$data  = array(
 			'name' => $name,
 			'schedule' => $schedule,

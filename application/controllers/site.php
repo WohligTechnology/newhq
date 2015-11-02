@@ -528,6 +528,7 @@ public function editbranch()
 $access=array("1","2","3");
 $this->checkaccess($access);
 $data["page"]="editbranch";
+$data[ 'language' ] =$this->user_model->getlanguagetypedropdown();
 $data["title"]="Edit branch";
 $data["before"]=$this->branch_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -2085,6 +2086,7 @@ $this->load->view("redirect",$data);
             $branch=$this->input->post('branch');
             $team=$this->input->post('team');
             $organization=$this->input->post('organization');
+        print_r($_POST);
 			if($this->test_model->create($name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$organization)==0)
 			$data['alerterror']="New test could not be created.";
 			else
@@ -2427,7 +2429,7 @@ $data["question"]=$this->question_model->getquestiondropdown();
 $data["pillar"]=$this->pillar_model->getpillardropdown();
 $data["test"]=$this->test_model->gettestdropdown();
 $data["title"]="Edit testpillarexpected";
-$data["before"]=$this->department_model->beforeedit($this->input->get("id"));
+$data["before"]=$this->testpillarexpected_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
 public function edittestpillarexpectedsubmit()
