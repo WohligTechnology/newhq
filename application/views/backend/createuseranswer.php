@@ -7,38 +7,39 @@
         <div class="row">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'user', $user, set_value( 'user')); ?>
-                <label>User</label>
+                    <label>User</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12 m6">
-                <?php echo form_dropdown( 'pillar', $pillar, set_value( 'pillar')); ?>
-                <label>Pillar</label>
+                <?php echo form_dropdown( 'pillar', $pillar, set_value( 'pillar'),'id="pillarid"'); ?>
+                    <label>Pillar</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown( 'test', $test, set_value( 'test'), 'id="testid"'); ?>
-                <label>Test</label>
+                    <label>Test</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                 <select class="option form-control" name="question">
-                    
+                <select name="question" id="question">
+                    <option value="">SELECT VALUE</option>
                 </select>
                 <label>Question</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <select class="option form-control" name="option">
-                    
+                <select name="option" id="option">
+                    <option value="">SELECT VALUE</option>
                 </select>
                 <label>Option</label>
             </div>
         </div>
+
         <div class="row">
             <div class="input-field col s12 m6">
                 <label for="order">Order</label>
@@ -61,35 +62,57 @@
 </div>
 
 <script>
+    //questions
     function populate(data, $select, value) {
-        $select.html("");
-        $select.append("<option value=''>SELECT A VALUE</option>");
+        var $forquestion = $("select[name=question]");
+        console.log(data);
+        console.log("in question");
+        $forquestion.html("");
+//        $select.append("<option value=''>SELECT A VALUE</option>");
         for (var i = 0; i < data.length; i++) {
-            $select.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
+            
+            $forquestion.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
+//            $("#select").append('<option value="4">another</option>')
+        }
+    }
+    //options
+    function populate1(data, $select, value) {
+        var $foroption = $("select[name=option]");
+        console.log(data);
+        console.log("in options");
+        $foroption.html("");
+//        $foroption.append("<option value=''>SELECT A VALUE</option>");
+        for (var i = 0; i < data.length; i++) {
+            
+            $foroption.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
+//            $("#select").append('<option value="4">another</option>')
         }
     }
 
     $(document).ready(function () {
-        var $test = $("select.test");
-        var $question = $("select.question");
-        var $option = $("select.option");
-        var $pillar = $("select.pillar");
+        var $test = $("select[name=test]");
+        var $question = $("select[name=question]");
+        var $option = $("select[name=option]");
+        var $pillar = $("select[name=pillar]");
         var new_base_url = "<?php echo site_url(); ?>";
 
         $test.change(function () {
             $.getJSON(new_base_url + '/site/getquestionbytest', {
-                test: $test.val(),
-                pillar: $pillar.val()
+                test: $("#testid").val(),
+                pillar: $("#pillarid").val()
             }, function (data) {
+//                console.log(data);
                 populate(data, $question);
             });
         });
+
 
         $question.change(function () {
             $.getJSON(new_base_url + '/site/getoptionbyquestion', {
                 question: $question.val()
             }, function (data) {
-                populate(data, $option);
+//                console.log(data);
+                populate1(data, $option);
             });
         });
 

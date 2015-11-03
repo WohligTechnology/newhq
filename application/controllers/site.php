@@ -27,7 +27,6 @@ class Site extends CI_Controller
         
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard();
         $data['weightgraph']=$pillarsdata;
-        
         if($this->session->userdata('accesslevel')==3)
         {
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
@@ -40,6 +39,12 @@ class Site extends CI_Controller
         }
         else
         {
+        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );	
@@ -2086,7 +2091,6 @@ $this->load->view("redirect",$data);
             $branch=$this->input->post('branch');
             $team=$this->input->post('team');
             $organization=$this->input->post('organization');
-        print_r($_POST);
 			if($this->test_model->create($name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$organization)==0)
 			$data['alerterror']="New test could not be created.";
 			else

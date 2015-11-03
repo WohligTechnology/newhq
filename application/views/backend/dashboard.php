@@ -6,7 +6,58 @@
 -->
 <!--<div id="container" style="height: 400px"></div>-->
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
-
+<span class="filprop"><u>Filter By :-</u></span>
+<div class="row selectproper">
+<div class="col s12 m3">
+ <?php echo form_dropdown( 'gender', $gender, set_value( 'gender')); ?>
+    <label>Gender</label>
+   </div>
+  <div class="col s12 m3">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Salary</label>
+  </div>
+  <div class="col s12 m3">
+   <?php echo form_dropdown( 'maritalstatus', $maritalstatus, set_value( 'maritalstatus')); ?>
+    <label>Marital Status</label>
+  </div>
+  <div class="col s12 m3">
+      <?php echo form_dropdown( 'branch', $branch, set_value( 'branch')); ?>
+    <label>Branch</label>
+  </div>
+  </div>
+  <div class="row selectproper">
+<div class="col s12 m3">
+   <?php echo form_dropdown( 'department', $department, set_value( 'department')); ?>
+    <label>Department</label>
+   </div>
+  <div class="col s12 m3">
+      <?php echo form_dropdown( 'designation', $designation, set_value( 'designation')); ?>
+    <label>Designation</label>
+  </div>
+  <div class="col s12 m3">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Span of Control</label>
+  </div>
+  <div class="col s12 m3">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Experience</label>
+  </div>
+  </div>
 <div id="nodata" style="display:none;">No Data Found</div>
 <div class="well" style="text-align: left;background-color: white;color:black;width:275px;">
     <span style="font-size: 20px;"><b>Charts of Recent Test :-</b></span>
