@@ -129,13 +129,13 @@
      <div class="row">
             <div class="input-field col m6 s12">
                 <label for="noofyearsinorganization">No of years in organization</label>
-                <input type="text" id="noofyearsinorganization" name="noofyearsinorganization" value="<?php echo set_value('noofyearsinorganization',$before->noofyearsinorganization);?>">
+                <input type="number" min="1" max="50" id="noofyearsinorganization" name="noofyearsinorganization" value="<?php echo set_value('noofyearsinorganization',$before->noofyearsinorganization);?>">
             </div>
         </div>
 		<div class="row">
 			<div class="input-field col m6 s12">
 				<label for="spanofcontrol">Span of control</label>
-				<input type="text" id="spanofcontrol" name="spanofcontrol" value="<?php echo set_value('spanofcontrol',$before->spanofcontrol);?>">
+				 <input type="number" min="1" max="20" id="spanofcontrol" name="spanofcontrol" value="<?php echo set_value('spanofcontrol',$before->spanofcontrol);?>">
 			</div>
 		</div>
 		<div class="row">
@@ -167,6 +167,12 @@
 					<label>Team</label>
 			</div>
 		</div>
+		<div class="row">
+            <div class="input-field col m6 s12">
+                <label for="salary">Salary</label>
+                <input type="text" min="1" max="20" id="salary" name="salary" value="<?php echo set_value('salary',$before->salary);?>">
+            </div>
+        </div>
 	
 
 		<div class=" form-group">

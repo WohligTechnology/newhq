@@ -32,7 +32,7 @@ class User_model extends CI_Model
 	}
 	
 	
-	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team)
+	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team,$salary)
 	{
 		$data  = array(
 			'name' => $name,
@@ -55,7 +55,8 @@ class User_model extends CI_Model
 			'employeeid' => $employeeid,
 			'branch' => $branch,
 			'language' => $language,
-			'team' => $team
+			'team' => $team,
+			'salary' => $salary
 		);
 		$query=$this->db->insert( 'user', $data );
 		$id=$this->db->insert_id();
@@ -99,7 +100,7 @@ class User_model extends CI_Model
 		return $query;
 	}
 	
-	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team)
+	public function edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team,$salary)
 	{
 		$data  = array(
 			'name' => $name,
@@ -123,7 +124,8 @@ class User_model extends CI_Model
 			'branch' => $branch,
 			'timestamp' => $timestamp,
 			'language' => $language,
-			'team' => $team
+			'team' => $team,
+			'salary' => $salary
 		);
 		if($password != "")
 			$data['password'] =md5($password);
@@ -263,6 +265,7 @@ class User_model extends CI_Model
 	  public function getmaritalstatustypedropdown()
 	{
 		$maritalstatus=array(
+            ""=>"Choose Marital Status",
 			"0"=>"Single",
 			"1"=>"Married", 
 			"2"=>"Separated",
@@ -276,6 +279,7 @@ class User_model extends CI_Model
 	public function getgendertypedropdown()
 	{
 		$gender=array(
+			""=>"Choose Gender",
 			"0"=>"Male",
 			"1"=>"Female" 
 		);
@@ -296,6 +300,7 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `hq_designation`  ORDER BY `id` ASC")->result();
 		$return=array(
+            ""=>"Choose Designation"
 		);
 		foreach($query as $row)
 		{
@@ -308,6 +313,7 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `hq_department`  ORDER BY `id` ASC")->result();
 		$return=array(
+            ""=>"Choose Department"
 		);
 		foreach($query as $row)
 		{
@@ -320,6 +326,7 @@ class User_model extends CI_Model
 	{
 		$query=$this->db->query("SELECT * FROM `hq_branch`  ORDER BY `id` ASC")->result();
 		$return=array(
+            ""=>"Choose Branch"
 		);
 		foreach($query as $row)
 		{

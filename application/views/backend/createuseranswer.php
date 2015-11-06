@@ -72,6 +72,7 @@
         for (var i = 0; i < data.length; i++) {
             
             $forquestion.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
+            $('select').material_select();
 //            $("#select").append('<option value="4">another</option>')
         }
     }
@@ -85,11 +86,13 @@
         for (var i = 0; i < data.length; i++) {
             
             $foroption.append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
+            $('select').material_select();
 //            $("#select").append('<option value="4">another</option>')
         }
     }
 
     $(document).ready(function () {
+        
         var $test = $("select[name=test]");
         var $question = $("select[name=question]");
         var $option = $("select[name=option]");

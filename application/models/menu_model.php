@@ -300,8 +300,84 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
         return $query;
     }
     
+    public function checkselect($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch){
+        $selectarray=array("$gender", "$maritalstatus", "$designation","$department","$spanofcontrol","$experience","$salary","$branch"); 
+        $selectarray=array_values($selectarray);
+        $abc=array();
+        
+        foreach($selectarray as $key => $value){
+            if(count($abc) <2){
+            array_push($abc,$value);
+                if(count($abc)==2){
+                    echo count($abc);
+                }
+            }
+        }
+        return count($abc);
+    }
     
-    
+    function drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch)
+    {
+        $where="";
+        if ($gender != "") {
+            $where .= " AND `user`.`gender`='$gender'";
+        }
+        if ($maritalstatus != "") {
+            $where .= " AND `user`.`maritalstatus`='$maritalstatus'";
+        }
+        if ($designation != "") {
+            $where .= " AND `user`.`designation`='$designation'";
+        }
+        if ($department != "") {
+            $where .= "AND `user`.`department`='$department'";
+        }
+        if ($spanofcontrol != "") {
+            $where .= "AND `user`.`spanofcontrol`='$spanofcontrol'";
+        }
+        if ($experience != "") {
+            $where .= "AND `user`.`noofyearsinorganization`='$experience'";
+        }
+        if ($salary != "") {
+            if($salary != 101){
+            $salary=explode('-',$salary);
+        $fromsal=intval($salary[0]."00000");
+        $tosal=intval($salary[1]."00000");
+            $where .= "AND `user`.`salary` BETWEEN '$fromsal' AND '$tosal'";
+            }
+            else{
+             $where .= "AND `user`.`salary` > 10000000";
+            }
+            
+        }
+        if ($branch != "") {
+            $where .= "AND `user`.`branch`='$branch'";
+        }
+        $where = " $where ";
+        
+        $arr = array();
+        $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,2")->result();
+        foreach($testquery as $row1)
+        {
+            $testid=$row1->id;
+            $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `order` ASC")->result();
+            foreach($query as $row)
+            {
+                $pillarid = $row->id;
+                $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
+                $testexpectedweight=$testexpectedweights->weight;
+                $testname=$testexpectedweights->testname;
+                $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
+    FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
+                WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
+                $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
+                $row->testname=$testname;
+                $row->testexpectedweight=$testexpectedweight;
+            }
+            array_push($arr,$query);
+        }
+        
+        return $arr;
+    }
     function drawpillarjsononhrdashboaard()
     {
         $arr = array();

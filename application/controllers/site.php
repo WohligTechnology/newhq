@@ -7,6 +7,7 @@ class Site extends CI_Controller
 		
 		$this->is_logged_in();
 	}
+  
 	function is_logged_in( )
 	{
 		$is_logged_in = $this->session->userdata( 'logged_in' );
@@ -20,6 +21,33 @@ class Site extends CI_Controller
 		if(!in_array($accesslevel,$access))
 			redirect( base_url() . 'index.php/site?alerterror=You do not have access to this page. ', 'refresh' );
 	}
+    public function getdatabyfiltering(){
+        $access = array("1","2","3");
+		$this->checkaccess($access);
+        $gender=$this->input->get('gender');
+        $maritalstatus=$this->input->get('maritalstatus');
+        $designation=$this->input->get('designation');
+        $department=$this->input->get('department');  
+        $spanofcontrol=$this->input->get('spanofcontrol');  
+        $experience=$this->input->get('experience');  
+        $salary=$this->input->get('salary');  
+        $branch=$this->input->get('branch'); 
+       
+        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+        
+        $data['weightgraph']=$pillarsdata;
+        print_r($data['weightgraph']);
+//        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+//        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+//		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+//		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+//		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+		$data[ 'page' ] = 'dashboard';
+		$data[ 'title' ] = 'Welcome';
+		$this->load->view( 'template', $data );	
+        
+    }
     public function index()
 	{
 		$access = array("1","2","3");
@@ -136,7 +164,7 @@ class Site extends CI_Controller
             $branch=$this->input->post('branch');
             $language=$this->input->post('language');
             $team=$this->input->post('team');
-//            $category=$this->input->post('category');
+            $salary=$this->input->post('salary');
             
              $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -173,7 +201,7 @@ class Site extends CI_Controller
                 
 			}
             
-			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team)==0)
+			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team,$salary)==0)
 			$data['alerterror']="New user could not be created.";
 			else
 			$data['alertsuccess']="User created Successfully.";
@@ -353,7 +381,7 @@ class Site extends CI_Controller
             $timestamp=$this->input->post('timestamp');
             $language=$this->input->post('language');
             $team=$this->input->post('team');
-//            $category=$this->input->get_post('category');
+            $salary=$this->input->get_post('salary');
             
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -395,9 +423,9 @@ class Site extends CI_Controller
             $image=$this->user_model->getuserimagebyid($id);
                // print_r($image);
                 $image=$image->image;
-            }
+            }                                                                   
             
-			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team)==0)
+			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team,$salary)==0)
 			$data['alerterror']="User Editing was unsuccesful";
 			else
 			$data['alertsuccess']="User edited Successfully.";
