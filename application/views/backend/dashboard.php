@@ -428,7 +428,7 @@ if(empty($weightgraph))
                             var $spanofcontrol = $("select[name=spanofcontrol]").val();
                             var $experience = $("select[name=experience]").val();
                             var new_base_url = "<?php echo site_url(); ?>";
-                            $.getJSON(new_base_url + '/site/getdatabyfiltering', {
+                            $.get(new_base_url + '/site/getdatabyfiltering', {
                                 gender: $gender,
                                 salary: $salary,
                                 maritalstatus: $maritalstatus,
