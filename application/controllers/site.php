@@ -36,7 +36,6 @@ class Site extends CI_Controller
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
         
         $data['weightgraph']=$pillarsdata;
-        print_r($data['weightgraph']);
 //        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 //        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
 //        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();

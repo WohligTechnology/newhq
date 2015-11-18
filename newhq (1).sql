@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.1.1
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2015 at 06:11 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Generation Time: Nov 18, 2015 at 06:45 AM
+-- Server version: 5.6.24
+-- PHP Version: 5.5.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `hq`
+-- Database: `newhq`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `hq_branch` (
   `name` varchar(255) NOT NULL,
   `branchid` varchar(255) NOT NULL,
   `address` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_branch`
@@ -61,7 +61,8 @@ CREATE TABLE IF NOT EXISTS `hq_branch` (
 
 INSERT INTO `hq_branch` (`id`, `language`, `name`, `branchid`, `address`) VALUES
 (1, 0, 'Mumbai', 'br1', 'Mumbai,Maharashtra'),
-(2, 0, 'Branch2', 'br2', '2,2 area,2,2,2');
+(2, 0, 'Branch2', 'br2', '2,2 area,2,2,2'),
+(3, 0, 'Vikroli1', 'V121', 'lbs road111');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,14 @@ CREATE TABLE IF NOT EXISTS `hq_content` (
   `image` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_content`
+--
+
+INSERT INTO `hq_content` (`id`, `pillar`, `image`, `timestamp`, `text`) VALUES
+(1, 4, 'download_(1)1.jpg', '2015-10-31 09:24:48', 'abcdafr');
 
 -- --------------------------------------------------------
 
@@ -87,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `hq_department` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `deptid` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_department`
@@ -95,7 +103,8 @@ CREATE TABLE IF NOT EXISTS `hq_department` (
 
 INSERT INTO `hq_department` (`id`, `name`, `deptid`) VALUES
 (1, 'IT', 'IT-12'),
-(2, 'Account', 'dept1');
+(2, 'Account', 'dept1'),
+(3, 'Marketing1', 'M12111');
 
 -- --------------------------------------------------------
 
@@ -107,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `hq_designation` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_designation`
@@ -115,7 +124,8 @@ CREATE TABLE IF NOT EXISTS `hq_designation` (
 
 INSERT INTO `hq_designation` (`id`, `name`, `language`) VALUES
 (1, 'Sr. Manager', '0'),
-(2, 'Manager', '');
+(2, 'Manager', ''),
+(3, 'It Analyst', '0');
 
 -- --------------------------------------------------------
 
@@ -133,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `hq_options` (
   `weight` varchar(255) NOT NULL,
   `optiontext` text NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_options`
@@ -236,7 +246,8 @@ INSERT INTO `hq_options` (`id`, `question`, `representation`, `actualorder`, `im
 (100, 20, 1, 0, '', '', '60', 'Sense of Fear', 'Sense of Fear'),
 (101, 20, 1, 0, '', '', '50', 'Lack of Acceptance', 'Lack of Acceptance'),
 (102, 20, 1, 0, '', '', '40', 'Each employee in one''s own zone', 'Each employee in one''s own zone'),
-(103, 20, 1, 0, '', '', '30', 'Waiting for 6:30 PM', 'Waiting for 6:30 PM');
+(103, 20, 1, 0, '', '', '30', 'Waiting for 6:30 PM', 'Waiting for 6:30 PM'),
+(104, 1, 0, 2345, 'download_(2)1.jpg', '123', '543', 'abc', 'abc123');
 
 -- --------------------------------------------------------
 
@@ -458,7 +469,14 @@ CREATE TABLE IF NOT EXISTS `hq_userpillar` (
   `user` int(11) NOT NULL,
   `pillar` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_userpillar`
+--
+
+INSERT INTO `hq_userpillar` (`id`, `user`, `pillar`, `timestamp`) VALUES
+(1, 14, 5, '2015-10-31 09:20:58');
 
 -- --------------------------------------------------------
 
@@ -669,53 +687,19 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
 --
 
 INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateandtime`, `sendstatus`) VALUES
-(16, 1, 1, 1, '2015-08-06 00:00:00', 1),
-(17, 1, 2, 1, '2015-08-06 12:00:00', 1),
-(18, 1, 3, 1, '2015-08-07 00:00:00', 1),
-(19, 1, 4, 1, '2015-08-07 12:00:00', 1),
-(20, 1, 5, 1, '2015-08-08 00:00:00', 1),
-(21, 1, 6, 1, '2015-08-08 12:00:00', 1),
-(22, 1, 7, 1, '2015-08-09 00:00:00', 0),
-(23, 1, 8, 1, '2015-08-09 12:00:00', 0),
-(24, 1, 9, 1, '2015-08-10 00:00:00', 0),
-(25, 1, 10, 1, '2015-08-10 12:00:00', 0),
-(26, 1, 11, 1, '2015-08-11 00:00:00', 0),
-(27, 1, 12, 1, '2015-08-11 12:00:00', 0),
-(28, 1, 13, 1, '2015-08-12 00:00:00', 0),
-(29, 1, 14, 1, '2015-08-12 12:00:00', 0),
-(30, 1, 15, 1, '2015-08-13 00:00:00', 0),
-(31, 1, 16, 1, '2015-08-13 12:00:00', 0),
-(32, 1, 17, 1, '2015-08-14 00:00:00', 0),
-(33, 1, 18, 1, '2015-08-14 12:00:00', 0),
-(34, 1, 19, 1, '2015-08-15 00:00:00', 0),
-(35, 1, 20, 1, '2015-08-15 12:00:00', 0),
-(36, 2, 1, 1, '2015-08-06 00:00:00', 1),
-(37, 2, 2, 1, '2015-08-07 00:00:00', 1),
-(38, 2, 3, 1, '2015-08-08 00:00:00', 1),
-(39, 2, 4, 1, '2015-08-09 00:00:00', 0),
-(40, 2, 5, 1, '2015-08-10 00:00:00', 0),
-(41, 2, 6, 1, '2015-08-11 00:00:00', 0),
-(42, 2, 7, 1, '2015-08-12 00:00:00', 0),
-(43, 2, 8, 1, '2015-08-13 00:00:00', 0),
-(44, 2, 9, 1, '2015-08-14 00:00:00', 0),
-(45, 2, 10, 1, '2015-08-15 00:00:00', 0),
-(46, 2, 11, 1, '2015-08-16 00:00:00', 0),
-(47, 2, 12, 1, '2015-08-17 00:00:00', 0),
-(48, 2, 13, 1, '2015-08-18 00:00:00', 0),
-(49, 2, 14, 1, '2015-08-19 00:00:00', 0),
-(50, 2, 15, 1, '2015-08-20 00:00:00', 0),
-(51, 2, 16, 1, '2015-08-21 00:00:00', 0),
-(52, 2, 17, 1, '2015-08-22 00:00:00', 0),
-(53, 2, 18, 1, '2015-08-23 00:00:00', 0),
-(54, 2, 19, 1, '2015-08-24 00:00:00', 0),
-(55, 2, 20, 1, '2015-08-25 00:00:00', 0);
+(1, 1, 1, 0, '0000-00-00 00:00:00', 0),
+(2, 1, 2, 0, '0000-00-00 00:00:00', 0),
+(3, 1, 3, 0, '0000-00-00 00:00:00', 0),
+(4, 2, 4, 0, '0000-00-00 00:00:00', 0),
+(5, 2, 5, 0, '0000-00-00 00:00:00', 0),
+(6, 2, 6, 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -734,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `image` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `socialid` varchar(255) NOT NULL,
-  `logintype` int(11) NOT NULL,
+  `logintype` varchar(50) NOT NULL,
   `json` text NOT NULL,
   `gender` int(11) NOT NULL,
   `age` varchar(255) NOT NULL,
@@ -747,25 +731,27 @@ CREATE TABLE IF NOT EXISTS `user` (
   `employeeid` varchar(255) NOT NULL,
   `branch` int(11) NOT NULL,
   `language` varchar(255) NOT NULL,
-  `team` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+  `team` int(11) NOT NULL,
+  `salary` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `gender`, `age`, `maritalstatus`, `designation`, `department`, `noofyearsinorganization`, `spanofcontrol`, `description`, `employeeid`, `branch`, `language`, `team`) VALUES
-(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '', '', 1, '', 0, '0', 0, 1, 1, '', '', '															', '', 1, '0', 5),
-(4, 'pratik', '0cb2b62754dfd12b6ed0161d4b447df7', 'pratik@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, 'pratik', '1', 1, '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0),
-(5, 'wohlig123', 'wohlig123', 'wohlig1@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', 0, '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0),
-(6, 'wohlig1', 'a63526467438df9566c508027d9cb06b', 'wohlig2@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', 0, '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0),
-(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'avinash@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', 0, '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1),
-(9, 'avinash', 'a208e5837519309129fa466b0c68396b', 'a@email.com', 2, '2014-12-03 11:06:19', 3, '', '', '123', 1, 'demojson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0),
-(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', 2, 'userjson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0),
-(14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', 0, '', 0, '', 0, 1, 1, '', '', '															', '', 1, '0', 5),
-(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', 0, '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1),
-(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', 0, '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1),
-(17, 'HR', '938d4fcc4d4599b6c97a97767336cb1f', 'hr@wohlig.com', 3, '2015-08-04 08:57:34', 1, '', 'hr', '12345678', 0, '', 0, '20', 0, 0, 1, '12', '2', '		hbjhb													', '65656', 0, '0', 5);
+INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `gender`, `age`, `maritalstatus`, `designation`, `department`, `noofyearsinorganization`, `spanofcontrol`, `description`, `employeeid`, `branch`, `language`, `team`, `salary`) VALUES
+(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '', '', '1', '', 0, '0', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
+(4, 'pratik', '0cb2b62754dfd12b6ed0161d4b447df7', 'pratik@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, 'pratik', '1', '1', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
+(5, 'wohlig123', 'wohlig123', 'wohlig1@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
+(6, 'wohlig1', 'a63526467438df9566c508027d9cb06b', 'wohlig2@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
+(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'avinash@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
+(9, 'avinash', 'a208e5837519309129fa466b0c68396b', 'a@email.com', 2, '2014-12-03 11:06:19', 3, '', '', '123', '1', 'demojson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
+(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
+(14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', '0', '', 0, '', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
+(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
+(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
+(17, 'HR', '938d4fcc4d4599b6c97a97767336cb1f', 'hr@wohlig.com', 3, '2015-08-04 08:57:34', 1, '', 'hr', '12345678', '0', '', 0, '20', 0, 0, 1, '12', '2', '		hbjhb													', '65656', 0, '0', 5, ''),
+(18, 'puja1', 'bb1a3428923be23e476267e097e4b342', 'puja1@email.com', 1, '0000-00-00 00:00:00', 3, 'download_(2).jpg', '0', '123451', 'Twitter', 'json11', 1, '25', 1, 2, 2, '12', 'span11', 'des111', 'emp111', 2, '0', 5, '');
 
 -- --------------------------------------------------------
 
@@ -850,8 +836,7 @@ INSERT INTO `userquestionsend` (`id`, `user`, `test`, `question`, `timestamp`) V
 -- Indexes for table `accesslevel`
 --
 ALTER TABLE `accesslevel`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `hq_branch`
@@ -980,22 +965,27 @@ ALTER TABLE `accesslevel`
 -- AUTO_INCREMENT for table `hq_branch`
 --
 ALTER TABLE `hq_branch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `hq_content`
+--
+ALTER TABLE `hq_content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hq_department`
 --
 ALTER TABLE `hq_department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hq_designation`
 --
 ALTER TABLE `hq_designation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hq_options`
 --
 ALTER TABLE `hq_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT for table `hq_pillar`
 --
@@ -1017,6 +1007,11 @@ ALTER TABLE `hq_team`
 ALTER TABLE `hq_useranswer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=101;
 --
+-- AUTO_INCREMENT for table `hq_userpillar`
+--
+ALTER TABLE `hq_userpillar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
@@ -1030,12 +1025,12 @@ ALTER TABLE `testpillarexpected`
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `userquestionsend`
 --
