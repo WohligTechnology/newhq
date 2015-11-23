@@ -7,7 +7,7 @@
 <!--<div id="container" style="height: 400px"></div>-->
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <span class="filprop"><u>Filter By :-</u></span>
-<button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="clearSelection()">Clear Selection</button>
+<button class="btn btn-primary waves-effect waves-light blue darken-4 right" onclick="clearSelection()">Clear Selection</button>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf">
