@@ -17,10 +17,8 @@
     </div>
     <div class="row selectproper">
         <div class="col s12 m3">
-            <select id="1" name="gender" onchange="checkfortwo(1);">
-                <?php  foreach($gender as $key => $value) {?>
-                    <option value=<?php echo $key; ?>>
-                        <?php echo $value; ?>
+            <select id="1" name="gender" onchange="checkfortwo(1);"><?php  foreach($gender as $key => $value) {?>
+                    <option value=<?php echo $key; ?>><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -135,8 +133,7 @@
         <div class="col s12 m3">
             <select id="3" name="maritalstatus" onchange="checkfortwo(3);">
                 <?php  foreach($maritalstatus as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -145,8 +142,7 @@
         <div class="col s12 m3">
             <select id="4" name="branch" onchange="checkfortwo(4);">
                 <?php  foreach($branch as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                             <?php }?>
             </select>
             <label>Branch</label>
@@ -156,8 +152,7 @@
         <div class="col s12 m3">
             <select id="5" name="department" onchange="checkfortwo(5);">
                 <?php  foreach($department as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -166,8 +161,7 @@
         <div class="col s12 m3">
             <select id="6" name="designation" onchange="checkfortwo(6);">
                 <?php  foreach($designation as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
