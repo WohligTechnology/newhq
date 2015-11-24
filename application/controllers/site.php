@@ -1221,6 +1221,7 @@ public function editquestion()
 $access=array("1","2","3");
 $this->checkaccess($access);
 $data["page"]="editquestion";
+$data['checkaccesslevel']=$this->session->userdata("accesslevel");
 $data["pillar"]=$this->pillar_model->getpillardropdown();
 $data["noofans"]=$this->question_model->getnoofansdropdown();
 $data["title"]="Edit question";
@@ -2703,9 +2704,99 @@ $this->load->view("redirect",$data);
         $data['redirect']="site/viewbranch";
         $this->load->view("redirect",$data);
     }
-    
-    
     //end of avinash functions
+    
+      public function viewconfig()
+{
+$access=array("1","2","3");
+$this->checkaccess($access);
+$data["page"]="viewconfig";
+        
+$data["base_url"]=site_url("site/viewconfigjson");
+$data["title"]="View config";
+$this->load->view("template",$data);
+}
+function viewconfigjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`config`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="ID";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`config`.`name`";
+$elements[1]->sort="1";
+$elements[1]->header="name";
+$elements[1]->alias="name";
+    
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `config`");
+$this->load->view("json",$data);
+}
+    public function editconfig()
+{
+$access=array("1","2","3");
+$this->checkaccess($access);
+$data["page"]="editconfig";
+$data["title"]="Edit config";
+$data["before"]=$this->config_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editconfigsubmit()
+{
+$access=array("1","2","3");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","ID","trim");
+$this->form_validation->set_rules("name","Name","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editconfig";
+$data["title"]="Edit config";
+$data["before"]=$this->config_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$name=$this->input->get_post("name");
+$androidtext=$this->input->get_post("androidtext");
+$iostext=$this->input->get_post("iostext");
+    $preimage = $this->config_model->getpemById();
+            $config['upload_path'] = './config/';
+            $config['allowed_types'] = '*';
+            $this->load->library('upload', $config);
+            $filename = 'image';
+            $image = '';
+            if ($this->upload->do_upload($filename)) {
+                $uploaddata = $this->upload->data();
+                $image = $uploaddata['file_name'];
+            } else {
+                $image = $preimage;
+                if ($this->config_model->edit($id,$name,$androidtext,$iostext,$image)==0) {
+                    $data['alerterror'] = 'New config Could Not Be Updated.';
+                } else {
+                    $data['alertsuccess'] = 'config Updated Successfully.';
+                }
+                $data['redirect'] = 'site/viewconfig';
+                $this->load->view('redirect', $data);
+            }
+}
+}
     
 }
 ?>

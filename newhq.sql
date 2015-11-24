@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2015 at 06:45 AM
+-- Generation Time: Nov 24, 2015 at 01:49 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -40,6 +40,27 @@ INSERT INTO `accesslevel` (`id`, `name`) VALUES
 (2, 'CEO'),
 (4, 'Employee'),
 (3, 'HR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `config`
+--
+
+CREATE TABLE IF NOT EXISTS `config` (
+  `id` int(11) NOT NULL,
+  `androidtext` varchar(255) NOT NULL,
+  `iostext` varchar(255) NOT NULL,
+  `pem` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `config`
+--
+
+INSERT INTO `config` (`id`, `androidtext`, `iostext`, `pem`, `name`) VALUES
+(1, 'AIzaSyAtK86s_4J4gyZM9AHpxtHXGp59UDqSifs', '1234', '', 'Push Notification');
 
 -- --------------------------------------------------------
 
@@ -294,8 +315,8 @@ CREATE TABLE IF NOT EXISTS `hq_question` (
 --
 
 INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `text`) VALUES
-(1, 1, 1, '2', '2015-07-30 08:05:10', 'You put in your best at work. We know you do. But, your life\n\nlooks like this...'),
-(2, 1, 0, '3', '2015-08-03 05:06:28', 'You have managed to get the much-awaited annual leave. You have taken your family along. You will be like…'),
+(1, 1, 1, '', '2015-11-24 10:00:59', 'You put in your best at work. We know you do. But, your life\n\nlooks like this...'),
+(2, 1, 0, '', '2015-11-24 10:01:01', 'You have managed to get the much-awaited annual leave. You have taken your family along. You will be like…'),
 (3, 1, 0, '', '2015-08-04 11:34:14', 'You just met a genie who can grant you wishes of your choice. You choose…'),
 (4, 1, 0, '', '2015-08-04 11:34:42', 'You know how important it is to exercise as well as meet deadlines. We know you can do both. So…'),
 (5, 2, 0, '', '2015-08-04 11:35:01', 'You meet a school friend after a long time and she asks you, "How''s work?". You say…'),
@@ -350,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_useranswer`
@@ -456,7 +477,8 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (97, 7, 5, 17, 86, 0, '2015-08-05 11:30:42', 2),
 (98, 7, 5, 18, 90, 0, '2015-08-05 11:32:38', 2),
 (99, 7, 5, 19, 94, 0, '2015-08-05 11:32:54', 2),
-(100, 7, 5, 20, 103, 0, '2015-08-05 11:33:09', 2);
+(100, 7, 5, 20, 103, 0, '2015-08-05 11:33:09', 2),
+(101, 1, 1, 2, 2, 0, '2015-11-24 10:58:19', 2);
 
 -- --------------------------------------------------------
 
@@ -536,7 +558,8 @@ INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `
 (11, 'Content', '', '', 'site/viewcontent', 1, 0, 1, 10, 'icon-dashboard'),
 (12, 'Team', '', '', 'site/viewteam', 1, 0, 1, 11, 'icon-dashboard'),
 (14, 'Test ', '', '', 'site/viewtest', 1, 0, 1, 13, 'icon-dashboard'),
-(15, 'Test Pillar Expected', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard');
+(15, 'Test Pillar Expected', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard'),
+(16, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 15, 'icon-dashboard');
 
 -- --------------------------------------------------------
 
@@ -562,8 +585,8 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (6, 1),
 (7, 1),
 (8, 1),
-(9, 1),
-(10, 1),
+(9, 0),
+(10, 0),
 (11, 1),
 (12, 1),
 (1, 2),
@@ -572,10 +595,9 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (4, 2),
 (5, 2),
 (6, 2),
-(7, 2),
 (8, 2),
-(9, 2),
-(10, 2),
+(9, 0),
+(10, 0),
 (11, 2),
 (12, 2),
 (1, 3),
@@ -587,12 +609,13 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (8, 3),
 (11, 3),
 (12, 3),
-(7, 3),
 (13, 1),
 (14, 1),
 (15, 1),
 (15, 2),
-(15, 3);
+(15, 3),
+(16, 1),
+(7, 3);
 
 -- --------------------------------------------------------
 
@@ -750,7 +773,7 @@ INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp
 (14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', '0', '', 0, '', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
 (15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
 (16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
-(17, 'HR', '938d4fcc4d4599b6c97a97767336cb1f', 'hr@wohlig.com', 3, '2015-08-04 08:57:34', 1, '', 'hr', '12345678', '0', '', 0, '20', 0, 0, 1, '12', '2', '		hbjhb													', '65656', 0, '0', 5, ''),
+(17, 'HR', 'a63526467438df9566c508027d9cb06b', 'hr@wohlig.com', 3, '0000-00-00 00:00:00', 1, '', '0', '12345678', '', '', 0, '20', 0, 0, 1, '12', '2', '		hbjhb													', '65656', 0, '0', 5, ''),
 (18, 'puja1', 'bb1a3428923be23e476267e097e4b342', 'puja1@email.com', 1, '0000-00-00 00:00:00', 3, 'download_(2).jpg', '0', '123451', 'Twitter', 'json11', 1, '25', 1, 2, 2, '12', 'span11', 'des111', 'emp111', 2, '0', 5, '');
 
 -- --------------------------------------------------------
@@ -837,6 +860,12 @@ INSERT INTO `userquestionsend` (`id`, `user`, `test`, `question`, `timestamp`) V
 --
 ALTER TABLE `accesslevel`
   ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hq_branch`
@@ -962,6 +991,11 @@ ALTER TABLE `userquestionsend`
 ALTER TABLE `accesslevel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `config`
+--
+ALTER TABLE `config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `hq_branch`
 --
 ALTER TABLE `hq_branch`
@@ -1005,7 +1039,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --

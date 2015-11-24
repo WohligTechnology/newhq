@@ -548,17 +548,25 @@ $this->load->view("json",$data);
          $this->load->view('json',$data);
      }
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ public function getQuestionAnswer()
+     {
+         $data['message']=$this->restapi_model->getQuestionAnswer();
+         $this->load->view('json',$data);
+     } 
+ public function getSingleQuestionAndOption()
+     {
+         $id=$this->input->get_post("id");
+         $data['message']=$this->restapi_model->getSingleQuestionAndOption($id);
+         $this->load->view('json',$data);
+     }
+ public function storeUserAnswer()
+     {
+         $user=$this->input->get_post("user");
+         $option=$this->input->get_post("option");
+         $question=$this->input->get_post("question");
+         $test=$this->input->get_post("test");
+         $data['message']=$this->restapi_model->storeUserAnswer($user,$option,$question,$test);
+         $this->load->view('json',$data);
+     }
  
 } ?>
