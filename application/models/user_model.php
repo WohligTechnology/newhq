@@ -266,11 +266,8 @@ class User_model extends CI_Model
 	{
 		$maritalstatus=array(
             ""=>"Choose Marital Status",
-			"0"=>"Single",
-			"1"=>"Married", 
-			"2"=>"Separated",
-			"3"=>"Divorced",
-			"4"=>"Widowed" 
+			"0"=>"Unmarried",
+			"1"=>"Married"
 		);
 
 		

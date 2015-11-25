@@ -21,32 +21,32 @@ class Site extends CI_Controller
 		if(!in_array($accesslevel,$access))
 			redirect( base_url() . 'index.php/site?alerterror=You do not have access to this page. ', 'refresh' );
 	}
-    public function getdatabyfiltering(){
-        $access = array("1","2","3");
-		$this->checkaccess($access);
-        $gender=$this->input->get('gender');
-        $maritalstatus=$this->input->get('maritalstatus');
-        $designation=$this->input->get('designation');
-        $department=$this->input->get('department');  
-        $spanofcontrol=$this->input->get('spanofcontrol');  
-        $experience=$this->input->get('experience');  
-        $salary=$this->input->get('salary');  
-        $branch=$this->input->get('branch'); 
-       
-        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
-        
-        $data['weightgraph']=$pillarsdata;
-//        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-//        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
-//        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
-//		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
-//		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
-//		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-		$data[ 'page' ] = 'dashboard';
-		$data[ 'title' ] = 'Welcome';
-		$this->load->view( 'template', $data );	
-        
-    }
+//    public function getdatabyfiltering(){
+//        $access = array("1","2","3");
+//		$this->checkaccess($access);
+//        $gender=$this->input->get('gender');
+//        $maritalstatus=$this->input->get('maritalstatus');
+//        $designation=$this->input->get('designation');
+//        $department=$this->input->get('department');  
+//        $spanofcontrol=$this->input->get('spanofcontrol');  
+//        $experience=$this->input->get('experience');  
+//        $salary=$this->input->get('salary');  
+//        $branch=$this->input->get('branch'); 
+//       
+//        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+//        
+//        $data['weightgraph']=$pillarsdata;
+////        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+////        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+////        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+////		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+////		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+////		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//		$data[ 'page' ] = 'dashboard';
+//		$data[ 'title' ] = 'Welcome';
+//		$this->load->view( 'template', $data );	
+//        
+//    }
     public function index()
 	{
 		$access = array("1","2","3");

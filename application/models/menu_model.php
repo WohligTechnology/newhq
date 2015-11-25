@@ -318,6 +318,52 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
     
     function drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch)
     {
+        //SPAN OF CONTROL
+        
+        if($spanofcontrol== 0-5){
+            $spanofcontrol1=0;
+            $spanofcontrol2=5;
+        }
+        else if($spanofcontrol== 6-10){
+            $spanofcontrol1=6;
+            $spanofcontrol2=10;
+        }
+        else if($spanofcontrol== 11-15){
+            $spanofcontrol1=0;
+            $spanofcontrol2=5;
+        }
+        else if($spanofcontrol== 16-20){
+            $spanofcontrol1=0;
+            $spanofcontrol2=5;
+        }
+        else if($spanofcontrol== 20-25){
+            $spanofcontrol1=0;
+            $spanofcontrol2=5;
+        }
+        else if($spanofcontrol== 25+){
+            $spanofcontrol1=25;
+            $spanofcontrol2="";
+        }
+        
+        // FOR EXPERIRENCE
+        
+        if($experience== 0-5){
+            $experience1=0;
+            $experience2=5;
+        }
+        else if($experience== 6-10){
+            $experience1=6;
+            $experience2=10;
+        }
+        else if($experience== 11-15){
+            $experience1=0;
+            $experience2=5;
+        }
+        else if($experience== 16-20){
+            $experience1=0;
+            $experience2=5;
+        }
+        
         $where="";
         if ($gender != "") {
             $where .= " AND `user`.`gender`='$gender'";
@@ -332,7 +378,14 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
             $where .= "AND `user`.`department`='$department'";
         }
         if ($spanofcontrol != "") {
-            $where .= "AND `user`.`spanofcontrol`='$spanofcontrol'";
+            if($spanofcontrol2==""){
+                 $where .= "AND `user`.`spanofcontrol` > '$spanofcontrol1'";
+            }
+            else
+            {
+                $where .= "AND `user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2'";
+            }
+            
         }
         if ($experience != "") {
             $where .= "AND `user`.`noofyearsinorganization`='$experience'";
