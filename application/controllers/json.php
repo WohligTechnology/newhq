@@ -574,5 +574,29 @@ $this->load->view("json",$data);
 	 	$data['message'] = $this->restapi_model->pingHq($user);
 	 	$this->load->view('json', $data);
  	}
+  public function sendMailToEachUser()
+   {
+       $getUserid=$this->restapi_model->getUsers();
+        foreach($getUserid as $getUserid){
+             $hashvalue=base64_encode ($getUserid->id."&hq");
+       $link="<a href='http://localhost/kbc/#/playing/$hashvalue'>Click here </a> To get questions.";
+        }
+       $this->load->library('email');
+       $this->email->from('jagruti@wohlig.com', 'HQ');
+       $this->email->to($email);
+       $this->email->subject('Test');   
+           
+       $message = "Hiii      ".$link;
+       $this->email->message($message);
+       $this->email->send();
+        $data["message"] = $this->email->print_debugger();
+//       $data["message"] = 'true';
+       $this->load->view("json", $data);
+       
+   }
+ 
+
+   
+   
  
 } ?>

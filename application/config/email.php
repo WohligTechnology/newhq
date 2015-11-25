@@ -8,5 +8,5 @@ $config['mailtype'] = 'html';
 $config['smtp_timeout'] = 5;
 $config['smtp_host'] = 'smtp.mandrillapp.com';
 $config['smtp_port'] = 587;
-$config['smtp_user'] = 'amitwohlig@gmail.com';
-$config['smtp_pass'] = 'd1h5a8YudCFqucUJLSVoSQ';
+$config['smtp_user'] = 'jay@wohlig.com';
+$config['smtp_pass'] = 'GG74zUUJNGJIPQnU0AOKsQ';

@@ -45,9 +45,74 @@ class restapi_model extends CI_Model
 	
 	public function pingHq($user)
 	{
-		//	this function will return all question not answered by $user 
-		//	get todays date
-		//	take care of department of user
+         $todaysdate=date("Y-m-d");
+        $gettest = $this->db->query("SELECT `id` FROM `test` WHERE `startdate`<'$todaysdate'")->result();
+    
+         
+        $ids="(";
+            foreach($gettest as $key=>$value){
+//            $catid=$row->id;
+                if($key==0)
+                {
+                    $ids.=$value->id;
+                }
+                else
+                {
+                    $ids.=",".$value->id;
+                }
+            }
+            $ids.=")";
+              if($ids=="()")
+        {
+           $ids="(0)";
+        }
+        
+        $gettestquestionsids = $this->db->query("SELECT `question` FROM `testquestion` WHERE `test` IN $ids")->result();
+    
+        $questionids="(";
+            foreach($gettestquestionsids as $key=>$value){
+//            $catid=$row->id;
+                if($key==0)
+                {
+                    $questionids.=$value->question;
+                }
+                else
+                {
+                    $questionids.=",".$value->question;
+                }
+            }
+            $questionids.=")";
+              if($questionids=="()")
+        {
+           $questionids="(0)";
+        }
+         $query = $this->db->query("SELECT `question` FROM `hq_useranswer` WHERE `user`='$user' AND `option` =0 AND `question` IN $questionids")->result();
+        $questionidstext="(";
+            foreach($query as $key=>$value){
+//            $catid=$row->id;
+                if($key==0)
+                {
+                    $questionidstext.=$value->question;
+                }
+                else
+                {
+                    $questionidstext.=",".$value->question;
+                }
+            }
+            $questionidstext.=")";
+              if($questionidstext=="()")
+        {
+           $questionidstext="(0)";
+        }
+         $queryquestion = $this->db->query("SELECT `id`, `pillar`, `noofans`, `order`, `timestamp`, `text` FROM `hq_question` WHERE `id` IN $questionidstext")->result();
+        return $queryquestion;
+       
+	}
+    
+    public function getUsers()
+	{
+		 $query   = $this->db->query("SELECT `id` FROM `user` WHERE `accesslevel`=4")->result();
+        return $query;
 	}
     
 }

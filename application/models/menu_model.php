@@ -340,10 +340,10 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
             $spanofcontrol1=0;
             $spanofcontrol2=5;
         }
-        else if($spanofcontrol== 25+){
-            $spanofcontrol1=25;
-            $spanofcontrol2="";
-        }
+//        else if($spanofcontrol== 25+){
+//            $spanofcontrol1=25;
+//            $spanofcontrol2="";
+//        }
         
         // FOR EXPERIRENCE
         

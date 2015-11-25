@@ -46,7 +46,8 @@ return $query;
 public function edittestquestion($id,$question)
 	{
 		$this->db->query("DELETE FROM `testquestion` WHERE `test`='$id'");
-
+    $dates=$this->testquestion_model->testdis($id,$question);
+    $i=0;
 		if(!empty($question))
 		{
 			foreach($question as $key => $pro)
@@ -54,13 +55,31 @@ public function edittestquestion($id,$question)
 				$data2  = array(
 					'test' => $id,
 					'question' => $pro,
+					'dateandtime' => $dates[$i]
 				);
 				$query=$this->db->insert( 'testquestion', $data2 );
+                $i++;
 			}
 		}
-
 		return 1;
 	}
+    
+    public function testdis($id,$question){
+    
+     $questioncount=count($question);
+        echo $questioncount;
+     $startdatequery=$this->db->query("SELECT * FROM `test` WHERE `id`='$id'")->row();
+     $startdate=$startdatequery->startdate;
+     $schedule=$startdatequery->schedule;
+       $datearray=array();
+     for($i=0;$i<$questioncount ; $i++){
+         $totaldate = date('Y-m-d', strtotime($startdate . " +".$i." days"));
+         array_push($datearray,$totaldate);
+         
+      }
+       return $datearray;
+ }
+  
 }
 
 ?>
