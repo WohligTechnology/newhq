@@ -568,5 +568,11 @@ $this->load->view("json",$data);
          $data['message']=$this->restapi_model->storeUserAnswer($user,$option,$question,$test);
          $this->load->view('json',$data);
      }
+ public function pingHq()
+ 	{
+	 	$user = $this->input->get_post("user");
+	 	$data['message'] = $this->restapi_model->pingHq($user);
+	 	$this->load->view('json', $data);
+ 	}
  
 } ?>

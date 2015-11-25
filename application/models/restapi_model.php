@@ -13,12 +13,14 @@ class restapi_model extends CI_Model
         }
         return $query;
     }
+	
     public function getSingleQuestionAndOption($id)
     {
         $query = $this->db->query("SELECT `id`, `pillar`, `noofans`, `order`, `timestamp`, `text` FROM `hq_question` WHERE `id`='$id'")->row();
         $query->options = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$query->id'")->result();
         return $query;
     }
+	
     public function storeUserAnswer($user, $option, $question, $test)
     {
         // get pillar id
@@ -40,6 +42,13 @@ class restapi_model extends CI_Model
         else
             return true;
     }
+	
+	public function pingHq($user)
+	{
+		//	this function will return all question not answered by $user 
+		//	get todays date
+		//	take care of department of user
+	}
     
 }
 ?>
