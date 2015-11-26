@@ -45,6 +45,11 @@ class restapi_model extends CI_Model
 	
 	public function pingHq($user)
 	{
+        
+        $normalfromhash=base64_decode ($user);
+       $returnvalue=explode("&",$normalfromhash);
+       $user=$returnvalue[0];
+        
          $todaysdate=date("Y-m-d");
         $gettest = $this->db->query("SELECT `id` FROM `test` WHERE `startdate`<'$todaysdate'")->result();
     
