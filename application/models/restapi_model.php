@@ -45,14 +45,12 @@ class restapi_model extends CI_Model
 	
 	public function pingHq($user)
 	{
-        
         $normalfromhash=base64_decode ($user);
        $returnvalue=explode("&",$normalfromhash);
-       $user=$returnvalue[0];
+       $userid=$returnvalue[0];
          $todaysdate=date("Y-m-d");
         $gettest = $this->db->query("SELECT `id` FROM `test` WHERE `startdate`<'$todaysdate'")->result();
-        $queryquestion['test']=$gettest->id;
-         
+    
         $ids="(";
             foreach($gettest as $key=>$value){
 //            $catid=$row->id;
@@ -70,9 +68,9 @@ class restapi_model extends CI_Model
         {
            $ids="(0)";
         }
-        
+//        echo $ids;
         $gettestquestionsids = $this->db->query("SELECT `question` FROM `testquestion` WHERE `test` IN $ids")->result();
-    
+//        print_r($gettestquestionsids);
         $questionids="(";
             foreach($gettestquestionsids as $key=>$value){
 //            $catid=$row->id;
@@ -90,7 +88,7 @@ class restapi_model extends CI_Model
         {
            $questionids="(0)";
         }
-         $query = $this->db->query("SELECT `question` FROM `hq_useranswer` WHERE `user`='$user' AND `option` =0 AND `question` IN $questionids")->result();
+         $query = $this->db->query("SELECT `question`,`test` FROM `hq_useranswer` WHERE `user`='$userid' AND `option` =0 AND `question` IN $questionids")->result();
         $questionidstext="(";
             foreach($query as $key=>$value){
 //            $catid=$row->id;
@@ -108,7 +106,9 @@ class restapi_model extends CI_Model
         {
            $questionidstext="(0)";
         }
-         $queryquestion['question'] = $this->db->query("SELECT `id`, `pillar`, `noofans`, `order`, `timestamp`, `text` FROM `hq_question` WHERE `id` IN $questionidstext")->result();
+         $queryquestion['question'] = $this->db->query("SELECT `hq_question`.`id`, `hq_question`.`pillar`, `hq_question`.`noofans`, `hq_question`.`order`, `hq_question`.`timestamp`, `hq_question`.`text`,`hq_useranswer`.`test` FROM `hq_question`
+         LEFT OUTER JOIN `hq_useranswer` ON `hq_useranswer`.`question`=`hq_question`.`id`
+         WHERE `hq_question`.`id` IN $questionidstext")->result();
         foreach($queryquestion['question'] as $getoptn){
             $options=array();
              $getoptn->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$getoptn->id'")->result();
