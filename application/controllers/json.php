@@ -570,7 +570,8 @@ $this->load->view("json",$data);
      }
  public function pingHq()
  	{
-	 	$user = $this->input->get_post("user");
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
 	 	$data['message'] = $this->restapi_model->pingHq($user);
 	 	$this->load->view('json', $data);
  	}
