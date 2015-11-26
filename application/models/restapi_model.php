@@ -51,7 +51,7 @@ class restapi_model extends CI_Model
        $user=$returnvalue[0];
          $todaysdate=date("Y-m-d");
         $gettest = $this->db->query("SELECT `id` FROM `test` WHERE `startdate`<'$todaysdate'")->result();
-    
+        $queryquestion['test']=$gettest->id;
          
         $ids="(";
             foreach($gettest as $key=>$value){
@@ -108,8 +108,8 @@ class restapi_model extends CI_Model
         {
            $questionidstext="(0)";
         }
-         $queryquestion = $this->db->query("SELECT `id`, `pillar`, `noofans`, `order`, `timestamp`, `text` FROM `hq_question` WHERE `id` IN $questionidstext")->result();
-        foreach($queryquestion as $getoptn){
+         $queryquestion['question'] = $this->db->query("SELECT `id`, `pillar`, `noofans`, `order`, `timestamp`, `text` FROM `hq_question` WHERE `id` IN $questionidstext")->result();
+        foreach($queryquestion['question'] as $getoptn){
             $options=array();
              $getoptn->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$getoptn->id'")->result();
             array_push($options, $getoptn->option);
