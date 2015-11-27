@@ -83,16 +83,16 @@ class restapi_model extends CI_Model
         }
         $query = $this->db->query("SELECT `question`,`test` FROM `hq_useranswer` WHERE `user`='$userid' AND `option` =0 AND `question` IN $questionids")->result();
         if (empty($query)) {
-          $query['allquestion']=$this->db->query("SELECT `hq_question`.`id`, `hq_question`.`pillar`, `hq_question`.`noofans`, `hq_question`.`order`, `hq_question`.`timestamp`, `hq_question`.`text`,`hq_useranswer`.`test` FROM `hq_question`
+         $queryquestion['question']=$this->db->query("SELECT `hq_question`.`id`, `hq_question`.`pillar`, `hq_question`.`noofans`, `hq_question`.`order`, `hq_question`.`timestamp`, `hq_question`.`text`,`hq_useranswer`.`test` FROM `hq_question`
                  LEFT OUTER JOIN `hq_useranswer` ON `hq_useranswer`.`question`=`hq_question`.`id`
                  WHERE `hq_question`.`id` IN $questionids GROUP BY `hq_question`.`id`")->result();
-            foreach( $query['allquestion'] as $row1){
-                   $alloptions   = array();
-                $row1->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$row1->id'")->result();
-                array_push($alloptions, $row1->option);
+            foreach( $queryquestion['question'] as $getoptn){
+                   $options   = array();
+                $getoptn->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$getoptn->id'")->result();
+                array_push($options, $getoptn->option);
                 
             }
-            return $query['allquestion'];
+            return $queryquestion;
             
         } else {
             $questionidstext = "(";
