@@ -23,13 +23,16 @@ class restapi_model extends CI_Model
     
     public function storeUserAnswer($user, $option, $question, $test)
     {
+        $normalfromhash = base64_decode($user);
+        $returnvalue    = explode("&", $normalfromhash);
+        $userid         = $returnvalue[0];
         // get pillar id
         
         $query1   = $this->db->query("SELECT `pillar` FROM `hq_question` WHERE `id`='$question'")->row();
         $pillarid = $query1->pillar;
         
         $data  = array(
-            "user" => $user,
+            "user" => $userid,
             "question" => $question,
             "option" => $option,
             "test" => $test,
