@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2015 at 01:49 PM
+-- Generation Time: Nov 27, 2015 at 08:24 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -365,13 +365,13 @@ INSERT INTO `hq_team` (`id`, `name`, `teamid`) VALUES
 CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
-  `pillar` int(11) NOT NULL,
+  `pillar` int(11) DEFAULT NULL,
   `question` int(11) NOT NULL,
   `option` int(11) NOT NULL,
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_useranswer`
@@ -399,25 +399,25 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (19, 15, 5, 18, 89, 0, '2015-08-05 04:20:42', 1),
 (20, 15, 5, 19, 94, 0, '2015-08-05 04:21:03', 1),
 (21, 15, 5, 20, 99, 0, '2015-08-05 04:21:29', 1),
-(22, 16, 1, 1, 8, 0, '2015-08-05 05:04:09', 1),
-(23, 16, 1, 2, 11, 0, '2015-08-05 05:04:24', 1),
-(24, 16, 1, 3, 16, 0, '2015-08-05 05:04:40', 1),
-(25, 16, 1, 4, 20, 0, '2015-08-05 05:04:54', 1),
-(26, 16, 2, 5, 25, 0, '2015-08-05 05:05:10', 1),
-(27, 16, 2, 6, 29, 0, '2015-08-05 05:05:22', 1),
-(28, 16, 2, 7, 33, 0, '2015-08-05 05:05:34', 1),
-(29, 16, 2, 8, 38, 0, '2015-08-05 05:05:46', 1),
-(30, 16, 3, 9, 45, 0, '2015-08-05 05:37:23', 1),
-(31, 16, 3, 11, 58, 0, '2015-08-05 05:38:28', 1),
-(32, 16, 3, 12, 64, 0, '2015-08-05 05:38:40', 1),
-(33, 16, 4, 13, 69, 0, '2015-08-05 05:39:00', 1),
-(34, 16, 4, 14, 73, 0, '2015-08-05 05:39:16', 1),
-(35, 16, 4, 15, 77, 0, '2015-08-05 05:39:28', 1),
-(36, 16, 4, 16, 80, 0, '2015-08-05 05:39:42', 1),
-(37, 16, 5, 17, 84, 0, '2015-08-05 05:40:16', 1),
-(38, 16, 5, 18, 88, 0, '2015-08-05 05:44:12', 1),
-(39, 16, 5, 19, 93, 0, '2015-08-05 05:44:25', 1),
-(40, 16, 5, 20, 101, 0, '2015-08-05 05:44:37', 1),
+(22, 16, 1, 1, 0, 0, '2015-11-27 05:59:59', 1),
+(23, 16, 1, 2, 0, 0, '2015-11-26 11:27:44', 1),
+(24, 16, 1, 3, 0, 0, '2015-11-26 11:27:47', 1),
+(25, 16, 1, 4, 0, 0, '2015-11-27 05:59:59', 1),
+(26, 16, 2, 5, 0, 0, '2015-11-27 05:59:59', 1),
+(27, 16, 2, 6, 0, 0, '2015-11-27 05:59:59', 1),
+(28, 16, 2, 7, 0, 0, '2015-11-27 05:59:59', 1),
+(29, 16, 2, 8, 0, 0, '2015-11-27 05:59:59', 1),
+(30, 16, 3, 9, 0, 0, '2015-11-27 05:59:59', 1),
+(31, 16, 3, 11, 0, 0, '2015-11-27 05:59:59', 1),
+(32, 16, 3, 12, 0, 0, '2015-11-27 05:59:59', 1),
+(33, 16, 4, 13, 0, 0, '2015-11-27 05:59:59', 1),
+(34, 16, 4, 14, 0, 0, '2015-11-27 05:59:59', 1),
+(35, 16, 4, 15, 0, 0, '2015-11-27 05:59:59', 1),
+(36, 16, 4, 16, 0, 0, '2015-11-27 05:59:59', 1),
+(37, 16, 5, 17, 0, 0, '2015-11-27 05:59:59', 1),
+(38, 16, 5, 18, 0, 0, '2015-11-27 05:59:59', 1),
+(39, 16, 5, 19, 0, 0, '2015-11-27 05:59:59', 1),
+(40, 16, 5, 20, 0, 0, '2015-11-27 05:59:59', 1),
 (41, 7, 1, 1, 8, 0, '2015-08-05 05:44:49', 1),
 (42, 7, 1, 2, 11, 0, '2015-08-05 05:44:59', 1),
 (43, 7, 1, 3, 17, 0, '2015-08-05 05:45:11', 1),
@@ -478,7 +478,10 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (98, 7, 5, 18, 90, 0, '2015-08-05 11:32:38', 2),
 (99, 7, 5, 19, 94, 0, '2015-08-05 11:32:54', 2),
 (100, 7, 5, 20, 103, 0, '2015-08-05 11:33:09', 2),
-(101, 1, 1, 2, 2, 0, '2015-11-24 10:58:19', 2);
+(101, 1, 1, 2, 0, 0, '2015-11-25 14:24:10', 2),
+(103, 0, 1, 2, 2, 0, '2015-11-27 05:57:56', 2),
+(104, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
+(105, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2);
 
 -- --------------------------------------------------------
 
@@ -658,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `test` (
   `team` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `enddate` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `test`
@@ -666,7 +669,8 @@ CREATE TABLE IF NOT EXISTS `test` (
 
 INSERT INTO `test` (`id`, `name`, `units`, `schedule`, `startdate`, `department`, `branch`, `designation`, `check`, `team`, `timestamp`, `enddate`) VALUES
 (1, 'Department test', '2', 1, '2015-08-06', 1, 1, 1, 1, 5, '2015-08-06 12:23:45', '2015-08-18'),
-(2, 'Branch test', '1', 1, '2015-08-06', 0, 1, 0, 2, 0, '2015-08-06 11:55:52', '2015-08-18');
+(2, 'Branch test', '1', 1, '2015-11-23', 0, 1, 0, 2, 0, '2015-11-25 12:41:23', '2015-08-18'),
+(5, 'test test', '', 1, '2015-11-26', 0, 0, 0, 0, 5, '2015-11-25 13:31:39', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -710,7 +714,7 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
@@ -722,7 +726,11 @@ INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateand
 (3, 1, 3, 0, '0000-00-00 00:00:00', 0),
 (4, 2, 4, 0, '0000-00-00 00:00:00', 0),
 (5, 2, 5, 0, '0000-00-00 00:00:00', 0),
-(6, 2, 6, 0, '0000-00-00 00:00:00', 0);
+(6, 2, 6, 0, '0000-00-00 00:00:00', 0),
+(14, 5, 1, 0, '2015-11-26 00:00:00', 0),
+(15, 5, 2, 0, '2015-11-27 00:00:00', 0),
+(16, 5, 3, 0, '2015-11-28 00:00:00', 0),
+(17, 5, 4, 0, '2015-11-29 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -767,7 +775,7 @@ INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp
 (4, 'pratik', '0cb2b62754dfd12b6ed0161d4b447df7', 'pratik@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, 'pratik', '1', '1', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
 (5, 'wohlig123', 'wohlig123', 'wohlig1@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
 (6, 'wohlig1', 'a63526467438df9566c508027d9cb06b', 'wohlig2@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'avinash@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
+(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'shn619@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
 (9, 'avinash', 'a208e5837519309129fa466b0c68396b', 'a@email.com', 2, '2014-12-03 11:06:19', 3, '', '', '123', '1', 'demojson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
 (13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
 (14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', '0', '', 0, '', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
@@ -1039,7 +1047,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1049,7 +1057,7 @@ ALTER TABLE `hq_userpillar`
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `testpillarexpected`
 --
@@ -1059,7 +1067,7 @@ ALTER TABLE `testpillarexpected`
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `user`
 --
