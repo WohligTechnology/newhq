@@ -53,7 +53,7 @@ class restapi_model extends CI_Model
         $userid         = $returnvalue[0];
         $todaysdate     = date("Y-m-d");
 	    
-	   $query = $this->db->query("Select `testquestion`.`id` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`
+	   $query = $this->db->query("Select `testquestion`.`id` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`
 from `testquestion`
 inner join `test` ON `testquestion`.`test` = `test`.`id`
 inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id`
