@@ -23,7 +23,9 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
-
+body{
+    background-color: #fffad9;
+}
 html {
     font-family: "Lato", sans-serif;
 }
