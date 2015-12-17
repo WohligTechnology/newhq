@@ -26,7 +26,13 @@
     </div>
     <div class="createbuttonplacement"><a class="btn-floating btn-large waves-effect waves-light blue darken-4 tooltipped" href="<?php echo site_url("site/createdepartment"); ?>"data-position="top" data-delay="50" data-tooltip="Create"><i class="material-icons">add</i></a>
     </div>
-        <a class="waves-effect waves-light btn blue darken-4"  href="<?php echo site_url('site/uploaddepartmentcsv'); ?>"><i class="icon-trash"></i>Upload CSV</a> &nbsp;
+    <div class="row">
+    <div class="col s12">
+           <a class="waves-effect waves-light btn blue darken-4 margall"  href="<?php echo site_url('site/uploaddepartmentcsv'); ?>"><i class="icon-trash"></i>Upload CSV</a> &nbsp;
+        
+        </div>
+    </div>
+     
   
   
 

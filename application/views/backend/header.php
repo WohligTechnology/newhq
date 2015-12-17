@@ -30,12 +30,12 @@
 
 <body>
 	<header>
-		<nav class="blue darken-4">
+		<nav class="browns">
 			<?php   $menus = $this->menu_model->viewmenus(); 	  ?>
 				<ul id="slide-out" class="side-nav fixed">
 					<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
-                            HQ<span style="font-weight: 400;"></span>
+                           <img src="../../assets/img/logo.png" class="padt">
 						</a>
 					</li>
 					<?php

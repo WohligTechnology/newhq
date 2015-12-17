@@ -234,6 +234,7 @@ footer {
 
 .side-nav {
     width: 240px;
+    background-color: #f7d237;
 }
 
 ul.side-nav.fixed li.logo a {
@@ -241,28 +242,44 @@ ul.side-nav.fixed li.logo a {
     height: 64px;
     font-weight: 300;
 }
-
+  .btn, .btn-large {
+  
+    background-color: #ce3a56 !important;
+      color:#f7d237;
+    }
 ul.side-nav.fixed li a {
     font-size: 13px;
     line-height: 44px;
     height: 44px;
+   
 }
-
+.side-nav li:hover, .side-nav li.active {
+    background-color: #684703;
+}
+.side-nav li:hover, .side-nav li.active {
+    background-color: rgba(104, 71, 3, 0.69);
+    color: #f7d237 !important;
+}
 .side-nav li {
     padding: 0;
 }
-
+.blue.darken-4 {
+    background-color: #684703;
+}
+.browns{
+    background-color: #684703;
+}
 .pad10 {
     margin-left: 5px;
 }
 
 .pagination li.active,
 .side-nav li.active {
-    background-color: #0D47A1;
+    background-color: #684703 ;
 }
 
 .side-nav li.active a {
-    color: #fff;
+   color: #F7D237 !important;
 }
 
 .less-pad {
@@ -330,10 +347,14 @@ ul.side-nav.fixed li a {
 }
 
 .chisorting {
-    background-color: white !important;
-    color: #0D47A1;
+    background-color: transparent !important;
+        color: #F7D237;
 }
-
+/*
+main{
+    background-color: #fffad9;
+}
+*/
 th {
     line-height: 36px;
 }
@@ -451,4 +472,15 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .cf > a {
     float: right;
+}
+.blue.darken-4 {
+    background-color: #684703 !important;
+    color: #F7D237;
+}
+.padt{
+        padding: 16px 0px;
+}
+.margall{
+    margin-left: 18px;
+    margin-top: 14px;
 }
