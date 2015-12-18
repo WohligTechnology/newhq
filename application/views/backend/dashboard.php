@@ -103,7 +103,7 @@
 <div class="col s12">
     <div id="nodata" style="display:none;">No Data Found</div>
 
-<div class="well" style="text-align: left;background-color: white;color:black;width:275px;">
+<div class="well" style="text-align: left;color:black;width:275px;">
     <span style="font-size: 20px;"><b>Charts of Recent Test :-</b></span>
 </div>
     </div>
