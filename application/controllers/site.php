@@ -2797,6 +2797,547 @@ $iostext=$this->input->get_post("iostext");
             }
 }
 }
-    
+        
+public function viewsurveyquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewsurveyquestion";
+$data["base_url"]=site_url("site/viewsurveyquestionjson");
+$data["title"]="View surveyquestion";
+$this->load->view("template",$data);
+}
+function viewsurveyquestionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_surveyquestion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_surveyquestion`.`type`";
+$elements[1]->sort="1";
+$elements[1]->header="Type";
+$elements[1]->alias="type";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_surveyquestion`.`text`";
+$elements[2]->sort="1";
+$elements[2]->header="Text";
+$elements[2]->alias="text";
+$elements[3]=new stdClass();
+$elements[3]->field="`hq_surveyquestion`.`starttime`";
+$elements[3]->sort="1";
+$elements[3]->header="Start Time";
+$elements[3]->alias="starttime";
+$elements[4]=new stdClass();
+$elements[4]->field="`hq_surveyquestion`.`endtime`";
+$elements[4]->sort="1";
+$elements[4]->header="End Time";
+$elements[4]->alias="endtime";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestion`");
+$this->load->view("json",$data);
+}
+
+public function createsurveyquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createsurveyquestion";
+$data["title"]="Create surveyquestion";
+$this->load->view("template",$data);
+}
+public function createsurveyquestionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("type","Type","trim");
+$this->form_validation->set_rules("text","Text","trim");
+$this->form_validation->set_rules("starttime","Start Time","trim");
+$this->form_validation->set_rules("endtime","End Time","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createsurveyquestion";
+$data["title"]="Create surveyquestion";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$type=$this->input->get_post("type");
+$text=$this->input->get_post("text");
+$starttime=$this->input->get_post("starttime");
+$endtime=$this->input->get_post("endtime");
+if($this->surveyquestion_model->create($type,$text,$starttime,$endtime)==0)
+$data["alerterror"]="New surveyquestion could not be created.";
+else
+$data["alertsuccess"]="surveyquestion created Successfully.";
+$data["redirect"]="site/viewsurveyquestion";
+$this->load->view("redirect",$data);
+}
+}
+public function editsurveyquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editsurveyquestion";
+$data["title"]="Edit surveyquestion";
+$data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editsurveyquestionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("type","Type","trim");
+$this->form_validation->set_rules("text","Text","trim");
+$this->form_validation->set_rules("starttime","Start Time","trim");
+$this->form_validation->set_rules("endtime","End Time","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editsurveyquestion";
+$data["title"]="Edit surveyquestion";
+$data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$type=$this->input->get_post("type");
+$text=$this->input->get_post("text");
+$starttime=$this->input->get_post("starttime");
+$endtime=$this->input->get_post("endtime");
+if($this->surveyquestion_model->edit($id,$type,$text,$starttime,$endtime)==0)
+$data["alerterror"]="New surveyquestion could not be Updated.";
+else
+$data["alertsuccess"]="surveyquestion Updated Successfully.";
+$data["redirect"]="site/viewsurveyquestion";
+$this->load->view("redirect",$data);
+}
+}
+public function deletesurveyquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->surveyquestion_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewsurveyquestion";
+$this->load->view("redirect",$data);
+}
+public function viewsurveyquestionuser()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewsurveyquestionuser";
+$data["base_url"]=site_url("site/viewsurveyquestionuserjson");
+$data["title"]="View surveyquestionuser";
+$this->load->view("template",$data);
+}
+function viewsurveyquestionuserjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_surveyquestionuser`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_surveyquestionuser`.`question`";
+$elements[1]->sort="1";
+$elements[1]->header="Question";
+$elements[1]->alias="question";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_surveyquestionuser`.`email`";
+$elements[2]->sort="1";
+$elements[2]->header="Email";
+$elements[2]->alias="email";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionuser`");
+$this->load->view("json",$data);
+}
+
+public function createsurveyquestionuser()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createsurveyquestionuser";
+$data["title"]="Create surveyquestionuser";
+$this->load->view("template",$data);
+}
+public function createsurveyquestionusersubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("email","Email","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createsurveyquestionuser";
+$data["title"]="Create surveyquestionuser";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$question=$this->input->get_post("question");
+$email=$this->input->get_post("email");
+if($this->surveyquestionuser_model->create($question,$email)==0)
+$data["alerterror"]="New surveyquestionuser could not be created.";
+else
+$data["alertsuccess"]="surveyquestionuser created Successfully.";
+$data["redirect"]="site/viewsurveyquestionuser";
+$this->load->view("redirect",$data);
+}
+}
+public function editsurveyquestionuser()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editsurveyquestionuser";
+$data["title"]="Edit surveyquestionuser";
+$data["before"]=$this->surveyquestionuser_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editsurveyquestionusersubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("email","Email","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editsurveyquestionuser";
+$data["title"]="Edit surveyquestionuser";
+$data["before"]=$this->surveyquestionuser_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$question=$this->input->get_post("question");
+$email=$this->input->get_post("email");
+if($this->surveyquestionuser_model->edit($id,$question,$email)==0)
+$data["alerterror"]="New surveyquestionuser could not be Updated.";
+else
+$data["alertsuccess"]="surveyquestionuser Updated Successfully.";
+$data["redirect"]="site/viewsurveyquestionuser";
+$this->load->view("redirect",$data);
+}
+}
+public function deletesurveyquestionuser()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->surveyquestionuser_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewsurveyquestionuser";
+$this->load->view("redirect",$data);
+}
+public function viewsurveyoption()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewsurveyoption";
+$data["base_url"]=site_url("site/viewsurveyoptionjson");
+$data["title"]="View surveyoption";
+$this->load->view("template",$data);
+}
+function viewsurveyoptionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_surveyoption`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_surveyoption`.`order`";
+$elements[1]->sort="1";
+$elements[1]->header="Order";
+$elements[1]->alias="order";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_surveyoption`.`question`";
+$elements[2]->sort="1";
+$elements[2]->header="Question";
+$elements[2]->alias="question";
+$elements[3]=new stdClass();
+$elements[3]->field="`hq_surveyoption`.`title`";
+$elements[3]->sort="1";
+$elements[3]->header="Title";
+$elements[3]->alias="title";
+$elements[4]=new stdClass();
+$elements[4]->field="`hq_surveyoption`.`image`";
+$elements[4]->sort="1";
+$elements[4]->header="Image";
+$elements[4]->alias="image";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyoption`");
+$this->load->view("json",$data);
+}
+
+public function createsurveyoption()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createsurveyoption";
+$data["title"]="Create surveyoption";
+$this->load->view("template",$data);
+}
+public function createsurveyoptionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("order","Order","trim");
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("title","Title","trim");
+$this->form_validation->set_rules("image","Image","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createsurveyoption";
+$data["title"]="Create surveyoption";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$order=$this->input->get_post("order");
+$question=$this->input->get_post("question");
+$title=$this->input->get_post("title");
+$image=$this->input->get_post("image");
+if($this->surveyoption_model->create($order,$question,$title,$image)==0)
+$data["alerterror"]="New surveyoption could not be created.";
+else
+$data["alertsuccess"]="surveyoption created Successfully.";
+$data["redirect"]="site/viewsurveyoption";
+$this->load->view("redirect",$data);
+}
+}
+public function editsurveyoption()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editsurveyoption";
+$data["title"]="Edit surveyoption";
+$data["before"]=$this->surveyoption_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editsurveyoptionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("order","Order","trim");
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("title","Title","trim");
+$this->form_validation->set_rules("image","Image","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editsurveyoption";
+$data["title"]="Edit surveyoption";
+$data["before"]=$this->surveyoption_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$order=$this->input->get_post("order");
+$question=$this->input->get_post("question");
+$title=$this->input->get_post("title");
+$image=$this->input->get_post("image");
+if($this->surveyoption_model->edit($id,$order,$question,$title,$image)==0)
+$data["alerterror"]="New surveyoption could not be Updated.";
+else
+$data["alertsuccess"]="surveyoption Updated Successfully.";
+$data["redirect"]="site/viewsurveyoption";
+$this->load->view("redirect",$data);
+}
+}
+public function deletesurveyoption()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->surveyoption_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewsurveyoption";
+$this->load->view("redirect",$data);
+}
+public function viewsurveyquestionanswer()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewsurveyquestionanswer";
+$data["base_url"]=site_url("site/viewsurveyquestionanswerjson");
+$data["title"]="View surveyquestionanswer";
+$this->load->view("template",$data);
+}
+function viewsurveyquestionanswerjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_surveyquestionanswer`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_surveyquestionanswer`.`user`";
+$elements[1]->sort="1";
+$elements[1]->header="User";
+$elements[1]->alias="user";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_surveyquestionanswer`.`question`";
+$elements[2]->sort="1";
+$elements[2]->header="Question";
+$elements[2]->alias="question";
+$elements[3]=new stdClass();
+$elements[3]->field="`hq_surveyquestionanswer`.`option`";
+$elements[3]->sort="1";
+$elements[3]->header="Option";
+$elements[3]->alias="option";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionanswer`");
+$this->load->view("json",$data);
+}
+
+public function createsurveyquestionanswer()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createsurveyquestionanswer";
+$data["title"]="Create surveyquestionanswer";
+$this->load->view("template",$data);
+}
+public function createsurveyquestionanswersubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("user","User","trim");
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("option","Option","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createsurveyquestionanswer";
+$data["title"]="Create surveyquestionanswer";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$user=$this->input->get_post("user");
+$question=$this->input->get_post("question");
+$option=$this->input->get_post("option");
+if($this->surveyquestionanswer_model->create($user,$question,$option)==0)
+$data["alerterror"]="New surveyquestionanswer could not be created.";
+else
+$data["alertsuccess"]="surveyquestionanswer created Successfully.";
+$data["redirect"]="site/viewsurveyquestionanswer";
+$this->load->view("redirect",$data);
+}
+}
+public function editsurveyquestionanswer()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editsurveyquestionanswer";
+$data["title"]="Edit surveyquestionanswer";
+$data["before"]=$this->surveyquestionanswer_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editsurveyquestionanswersubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("user","User","trim");
+$this->form_validation->set_rules("question","Question","trim");
+$this->form_validation->set_rules("option","Option","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editsurveyquestionanswer";
+$data["title"]="Edit surveyquestionanswer";
+$data["before"]=$this->surveyquestionanswer_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$user=$this->input->get_post("user");
+$question=$this->input->get_post("question");
+$option=$this->input->get_post("option");
+if($this->surveyquestionanswer_model->edit($id,$user,$question,$option)==0)
+$data["alerterror"]="New surveyquestionanswer could not be Updated.";
+else
+$data["alertsuccess"]="surveyquestionanswer Updated Successfully.";
+$data["redirect"]="site/viewsurveyquestionanswer";
+$this->load->view("redirect",$data);
+}
+}
+public function deletesurveyquestionanswer()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->surveyquestionanswer_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewsurveyquestionanswer";
+$this->load->view("redirect",$data);
+}
 }
 ?>
