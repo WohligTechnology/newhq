@@ -22,6 +22,7 @@
 </head>
 
 <body class="yellow-back">
+      <form class="col s12" method="post" action="<?php echo site_url('site/getweightage');?>" enctype="multipart/form-data">
     <div class="container">
         <div class="row">
             <div class="col s6 ">
@@ -301,14 +302,16 @@
         <div class="row">
             <div class="col s12">
                 <div class="text-center">
-
-                    <a class="waves-effect waves-light btn blue-btn" id="submit1">OK</a>
+                     <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
+<!--                    <a class="waves-effect waves-light btn blue-btn" id="submit1">OK</a>-->
                 </div>
             </div>
         </div>
     </div>
+    </form>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+<!--
     <script>
         $(document).ready(function () {
             $('#submit1').click(function () {
@@ -336,27 +339,31 @@
               var new_base_url = "<?php echo site_url(); ?>";
             
               // GET METHOD AJAX CALL
-                $.get(new_base_url + '/site/getweightage', {
-                                range: $range,
-                                range1: $range1,
-                                range2: $range2,
-                                range3: $range3,
-                                range4: $range4,
-                                range5: $range5,
-                                range6: $range6,
-                                range7: $range7,
-                                range8: $range8,
-                                range9: $range9
-                                
-                            }, function (data) {
-                                                console.log("dsajgyrh");
-                                                console.log(data);
-                                $('select').material_select();
-                              
-                            });
+//                $.get(new_base_url + '/site/getweightage', {
+//                                range: $range,
+//                                range1: $range1,
+//                                range2: $range2,
+//                                range3: $range3,
+//                                range4: $range4,
+//                                range5: $range5,
+//                                range6: $range6,
+//                                range7: $range7,
+//                                range8: $range8,
+//                                range9: $range9
+//                                
+//                            }, function (data) {
+//                                                console.log("dsajgyrh");
+//                                                console.log(data);
+//                              
+//                            });
+                $.get( new_base_url + '/site/getweightage', { range: $range, range1: $range1,range2: $range2, range3: $range3, range4: $range4, range5: $range5, range6: $range6, range7: $range7, range8: $range8, range9: $range9 } )
+  .done(function( data ) {
+    alert( "Done" );
+  });
             });
         });
     </script>
+-->
     <script src="<?php echo base_url('assets').'/';?>js/index.js"></script>
 
 </body>
