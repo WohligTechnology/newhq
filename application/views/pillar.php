@@ -9,12 +9,12 @@
     <title>Starter Template for Bootstrap 3.3.6</title>
     <link rel="shortcut icon" href="">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-  
+
     <link href="<?php echo base_url('assets').'/';?>css/materialize.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/range.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets').'/';?>css/materialize.min.css" rel="stylesheet">
-    
+
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="col s6 ">
                 <div class="padtop">
 
@@ -299,18 +299,66 @@
             </div>
         </div>
         <div class="row">
-        <div class="col s12">
-            <div class="text-center">
-            
-<a class="waves-effect waves-light btn blue-btn">OK</a>
-            </div>
+            <div class="col s12">
+                <div class="text-center">
+
+                    <a class="waves-effect waves-light btn blue-btn" id="submit1">OK</a>
+                </div>
             </div>
         </div>
     </div>
-     
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#submit1').click(function () {
+                console.log("dfgr");
+              var $range=$("#range").val();
+                console.log($range);
+              var $range1=$("#range1").val();
+                console.log($range1);
+              var $range2=$("#range2").val();
+                console.log($range2);
+              var $range3=$("#range3").val();
+                console.log($range3);
+              var $range4=$("#range4").val();
+                console.log($range4);
+              var $range5=$("#range5").val();
+                console.log($range5);
+              var $range6=$("#range6").val();
+                console.log($range6);
+              var $range7=$("#range7").val();
+                console.log($range7);
+              var $range8=$("#range8").val();
+                console.log($range8);
+              var $range9=$("#range9").val();
+                console.log($range9);
+              var new_base_url = "<?php echo site_url(); ?>";
+            
+              // GET METHOD AJAX CALL
+                $.get(new_base_url + '/site/getweightage', {
+                                range: $range,
+                                range1: $range1,
+                                range2: $range2,
+                                range3: $range3,
+                                range4: $range4,
+                                range5: $range5,
+                                range6: $range6,
+                                range7: $range7,
+                                range8: $range8,
+                                range9: $range9
+                                
+                            }, function (data) {
+                                                console.log("dsajgyrh");
+                                                console.log(data);
+                                $('select').material_select();
+                              
+                            });
+            });
+        });
+    </script>
     <script src="<?php echo base_url('assets').'/';?>js/index.js"></script>
- 
+
 </body>
 
 </html>

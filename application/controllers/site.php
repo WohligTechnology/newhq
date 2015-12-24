@@ -1065,6 +1065,20 @@ $data["redirect"]="site/viewpillar";
 $this->load->view("redirect",$data);
 }
 }
+    public function getweightage(){
+         $range=$this->input->get('range');
+         $range1=$this->input->get('range1');
+         $range2=$this->input->get('range2');
+         $range3=$this->input->get('range3');
+         $range4=$this->input->get('range4');
+         $range5=$this->input->get('range5');
+         $range6=$this->input->get('range6');
+         $range7=$this->input->get('range7');
+         $range8=$this->input->get('range8');
+         $range9=$this->input->get('range9');
+        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,range9);
+        
+    }
 public function editpillar()
 {
 $access=array("1","2","3");

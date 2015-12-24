@@ -40,6 +40,29 @@ return $query;
 {
 $query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
 return $query;
+}  
+    public function updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9)
+{
+$data=array("weight" => $range);
+$this->db->where( "id", 1 );
+$query=$this->db->update( "hq_pillar", $data );
+
+$data1=array("weight" => $range1);
+$this->db->where( "id", 2 );
+$query=$this->db->update( "hq_pillar", $data1 );
+        
+$data2=array("weight" => $range2);
+$this->db->where( "id", 3 );
+$query=$this->db->update( "hq_pillar", $data2 );
+        
+$data3=array("weight" => $range3);
+$this->db->where( "id", 4 );
+$query=$this->db->update( "hq_pillar", $data3 );
+        
+$data4=array("weight" => $range4);
+$this->db->where( "id", 5 );
+$query=$this->db->update( "hq_pillar", $data4 );
+return 1;
 }
 	public function getpillardropdown()
 	{
