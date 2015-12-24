@@ -9,12 +9,15 @@
 	<link href="<?php echo base_url('assets').'/';?>css/jquery.fancybox.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets').'/';?>css/linearfonts.css">
 	<link href="<?php echo base_url('assets').'/';?>css/style.css" rel="stylesheet">
+	<link href="<?php echo base_url('assets').'/';?>css/range.css" rel="stylesheet">
+<!--	<link href="<?php echo base_url('assets').'/';?>css/materialize.css" rel="stylesheet">-->
 	<script src="<?php echo base_url('assets').'/';?>js/jquery.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/materialize.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/chintantable.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/jquery.fancybox.pack.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
+	<script src="<?php echo base_url('assets').'/';?>js/index.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!--	 <script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>-->
 	 <script src="<?php echo base_url('assets/js/jquery.sparkline.js'); ?>" type="text/javascript"></script>

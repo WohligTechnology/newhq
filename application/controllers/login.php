@@ -19,8 +19,16 @@ class Login extends CI_Controller
 		$username=$this->input->post('username');
 		$password=$this->input->post('password');
 		$validate = $this->user_model->validate($username,$password);
-		if ( $validate ) {
-			redirect( base_url() . 'index.php/site', 'refresh' );
+		if ( $validate) {
+            $checkfirst=$this->user_model->checkfirstlogin($this->session->userdata("id"));
+            if($checkfirst==true){
+                 redirect( base_url() . 'index.php/json/viewfirstpage', 'refresh' );
+            }
+            else
+            {
+                redirect( base_url() . 'index.php/site', 'refresh' );
+            }
+			
 		} //$validate
 		else {
 			$data[ 'alerterror' ] = 'Username or Password Incorrect';

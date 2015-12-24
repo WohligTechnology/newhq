@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Site extends CI_Controller 
+class Site extends CI_Controller
 {
 	public function __construct( )
 	{
 		parent::__construct();
-		
+
 		$this->is_logged_in();
 	}
-  
+
 	function is_logged_in( )
 	{
 		$is_logged_in = $this->session->userdata( 'logged_in' );
@@ -27,14 +27,14 @@ class Site extends CI_Controller
 //        $gender=$this->input->get('gender');
 //        $maritalstatus=$this->input->get('maritalstatus');
 //        $designation=$this->input->get('designation');
-//        $department=$this->input->get('department');  
-//        $spanofcontrol=$this->input->get('spanofcontrol');  
-//        $experience=$this->input->get('experience');  
-//        $salary=$this->input->get('salary');  
-//        $branch=$this->input->get('branch'); 
-//       
+//        $department=$this->input->get('department');
+//        $spanofcontrol=$this->input->get('spanofcontrol');
+//        $experience=$this->input->get('experience');
+//        $salary=$this->input->get('salary');
+//        $branch=$this->input->get('branch');
+//
 //        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
-//        
+//
 //        $data['weightgraph']=$pillarsdata;
 ////        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 ////        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
@@ -44,14 +44,14 @@ class Site extends CI_Controller
 ////		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 //		$data[ 'page' ] = 'dashboard';
 //		$data[ 'title' ] = 'Welcome';
-//		$this->load->view( 'template', $data );	
-//        
+//		$this->load->view( 'template', $data );
+//
 //    }
     public function index()
 	{
 		$access = array("1","2","3");
 		$this->checkaccess($access);
-        
+
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard();
         $data['weightgraph']=$pillarsdata;
         if($this->session->userdata('accesslevel')==3)
@@ -62,7 +62,7 @@ class Site extends CI_Controller
 		$data[ 'team' ] =$this->user_model->getteamdropdown();
 		$data[ 'page' ] = 'hrdashboard';
 		$data[ 'title' ] = 'Welcome';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
         }
         else
         {
@@ -74,22 +74,22 @@ class Site extends CI_Controller
 		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
         }
-        
+
 	}
-    
+
     public function index2()
 	{
 		$access = array("1","2","3");
 		$this->checkaccess($access);
-        
+
 		$data[ 'page' ] = 'dashboard2';
 		$data[ 'title' ] = 'Welcome';
-		$this->load->view( 'template', $data );	
-        
+		$this->load->view( 'template', $data );
+
 	}
-    
+
 	public function createuser()
 	{
 		$access = array("1","3");
@@ -107,7 +107,7 @@ class Site extends CI_Controller
 //        $data['category']=$this->category_model->getcategorydropdown();
 		$data[ 'page' ] = 'createuser';
 		$data[ 'title' ] = 'Create User';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
 	}
 	function createusersubmit()
 	{
@@ -122,7 +122,7 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('socialid','Socialid','trim');
 		$this->form_validation->set_rules('logintype','logintype','trim');
 		$this->form_validation->set_rules('json','json','trim');
-		if($this->form_validation->run() == FALSE)	
+		if($this->form_validation->run() == FALSE)
 		{
 			$data['alerterror'] = validation_errors();
 			$data['accesslevel']=$this->user_model->getaccesslevels();
@@ -138,7 +138,7 @@ class Site extends CI_Controller
 			$data[ 'team' ] =$this->user_model->getteamdropdown();
             $data[ 'page' ] = 'createuser';
             $data[ 'title' ] = 'Create User';
-            $this->load->view( 'template', $data );	
+            $this->load->view( 'template', $data );
 		}
 		else
 		{
@@ -164,7 +164,7 @@ class Site extends CI_Controller
             $language=$this->input->post('language');
             $team=$this->input->post('team');
             $salary=$this->input->post('salary');
-            
+
              $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -174,7 +174,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -183,13 +183,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -197,9 +197,9 @@ class Site extends CI_Controller
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
 			if($this->user_model->create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team,$salary)==0)
 			$data['alerterror']="New user could not be created.";
 			else
@@ -214,71 +214,71 @@ class Site extends CI_Controller
 		$this->checkaccess($access);
 		$data['page']='viewusers';
         $data['base_url'] = site_url("site/viewusersjson");
-        
+
 		$data['title']='View Users';
 		$this->load->view('template',$data);
-	} 
+	}
     function viewusersjson()
 	{
 		$access = array("1","3","2");
 		$this->checkaccess($access);
-        
+
         $where=" 1";
         if($this->session->userdata('accesslevel')==3){
              $where=" `user`.`accesslevel`>2";
         }
-        
+
         $elements=array();
         $elements[0]=new stdClass();
         $elements[0]->field="`user`.`id`";
         $elements[0]->sort="1";
         $elements[0]->header="ID";
         $elements[0]->alias="id";
-        
-        
+
+
         $elements[1]=new stdClass();
         $elements[1]->field="`user`.`name`";
         $elements[1]->sort="1";
         $elements[1]->header="Name";
         $elements[1]->alias="name";
-        
+
         $elements[2]=new stdClass();
         $elements[2]->field="`user`.`email`";
         $elements[2]->sort="1";
         $elements[2]->header="Email";
         $elements[2]->alias="email";
-        
+
         $elements[3]=new stdClass();
         $elements[3]->field="`user`.`socialid`";
         $elements[3]->sort="1";
         $elements[3]->header="SocialId";
         $elements[3]->alias="socialid";
-        
+
         $elements[4]=new stdClass();
         $elements[4]->field="`logintype`.`name`";
         $elements[4]->sort="1";
         $elements[4]->header="Logintype";
         $elements[4]->alias="logintype";
-        
+
         $elements[5]=new stdClass();
         $elements[5]->field="`user`.`json`";
         $elements[5]->sort="1";
         $elements[5]->header="Json";
         $elements[5]->alias="json";
-       
+
         $elements[6]=new stdClass();
         $elements[6]->field="`accesslevel`.`name`";
         $elements[6]->sort="1";
         $elements[6]->header="Accesslevel";
         $elements[6]->alias="accesslevelname";
-       
+
         $elements[7]=new stdClass();
         $elements[7]->field="`statuses`.`name`";
         $elements[7]->sort="1";
         $elements[7]->header="Status";
         $elements[7]->alias="status";
-       
-        
+
+
         $search=$this->input->get_post("search");
         $pageno=$this->input->get_post("pageno");
         $orderby=$this->input->get_post("orderby");
@@ -288,19 +288,19 @@ class Site extends CI_Controller
         {
             $maxrow=20;
         }
-        
+
         if($orderby=="")
         {
             $orderby="id";
             $orderorder="ASC";
         }
-       
+
         $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `user` LEFT OUTER JOIN `logintype` ON `logintype`.`id`=`user`.`logintype` LEFT OUTER JOIN `accesslevel` ON `accesslevel`.`id`=`user`.`accesslevel` LEFT OUTER JOIN `statuses` ON `statuses`.`id`=`user`.`status`","WHERE $where");
-        
+
 		$this->load->view("json",$data);
-	} 
-    
-    
+	}
+
+
 	function edituser()
 	{
 		$access = array("1","3");
@@ -325,7 +325,7 @@ class Site extends CI_Controller
 	{
 		$access = array("1","3");
 		$this->checkaccess($access);
-		
+
 		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|min_length[6]|max_length[30]');
@@ -335,7 +335,7 @@ class Site extends CI_Controller
 		$this->form_validation->set_rules('socialid','Socialid','trim');
 		$this->form_validation->set_rules('logintype','logintype','trim');
 		$this->form_validation->set_rules('json','json','trim');
-		if($this->form_validation->run() == FALSE)	
+		if($this->form_validation->run() == FALSE)
 		{
 			$data['alerterror'] = validation_errors();
 			$data[ 'status' ] =$this->user_model->getstatusdropdown();
@@ -356,7 +356,7 @@ class Site extends CI_Controller
 		}
 		else
 		{
-            
+
             $id=$this->input->get_post('id');
             $name=$this->input->get_post('name');
             $email=$this->input->get_post('email');
@@ -381,7 +381,7 @@ class Site extends CI_Controller
             $language=$this->input->post('language');
             $team=$this->input->post('team');
             $salary=$this->input->get_post('salary');
-            
+
             $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$this->load->library('upload', $config);
@@ -391,7 +391,7 @@ class Site extends CI_Controller
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -400,13 +400,13 @@ class Site extends CI_Controller
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -414,28 +414,28 @@ class Site extends CI_Controller
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->user_model->getuserimagebyid($id);
                // print_r($image);
                 $image=$image->image;
-            }                                                                   
-            
+            }
+
 			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team,$salary)==0)
 			$data['alerterror']="User Editing was unsuccesful";
 			else
 			$data['alertsuccess']="User edited Successfully.";
-			
+
 			$data['redirect']="site/viewusers";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
-			
+
 		}
 	}
-	
+
 	function deleteuser()
 	{
 		$access = array("1","3");
@@ -458,9 +458,9 @@ class Site extends CI_Controller
         $data['other']="template=$template";
         $this->load->view("redirect",$data);
 	}
-    
-    
-    
+
+
+
     public function viewbranch()
 {
 $access=array("1","2","3");
@@ -525,7 +525,7 @@ $data[ 'language' ] =$this->user_model->getlanguagetypedropdown();
 $data["title"]="Create branch";
 $this->load->view("template",$data);
 }
-public function createbranchsubmit() 
+public function createbranchsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -658,7 +658,7 @@ $data["page"]="createdepartment";
 $data["title"]="Create department";
 $this->load->view("template",$data);
 }
-public function createdepartmentsubmit() 
+public function createdepartmentsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -728,8 +728,8 @@ $this->department_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewdepartment";
 $this->load->view("redirect",$data);
 }
-	
-//TEAM STARTS	
+
+//TEAM STARTS
 	public function viewteam()
 {
 $access=array("1","2","3");
@@ -783,7 +783,7 @@ $data["page"]="createteam";
 $data["title"]="Create team";
 $this->load->view("template",$data);
 }
-public function createteamsubmit() 
+public function createteamsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -907,7 +907,7 @@ $data["page"]="createdesignation";
 $data["title"]="Create designation";
 $this->load->view("template",$data);
 }
-public function createdesignationsubmit() 
+public function createdesignationsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -1038,7 +1038,7 @@ $data["page"]="createpillar";
 $data["title"]="Create pillar";
 $this->load->view("template",$data);
 }
-public function createpillarsubmit() 
+public function createpillarsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -1182,7 +1182,7 @@ $data["noofans"]=$this->question_model->getnoofansdropdown();
 $data["title"]="Create question";
 $this->load->view("template",$data);
 }
-public function createquestionsubmit() 
+public function createquestionsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -1277,7 +1277,7 @@ public function viewoptions()
 $access=array("1","2","3");
 $this->checkaccess($access);
 $data["page"]="viewoptions";
-	
+
 $data["base_url"]=site_url("site/viewoptionsjson");
 $data["title"]="View options";
 $this->load->view("template",$data);
@@ -1358,7 +1358,7 @@ $data["representation"]=$this->options_model->getrepresentationdropdown();
 $data["title"]="Create options";
 $this->load->view("template",$data);
 }
-public function createoptionssubmit() 
+public function createoptionssubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -1398,7 +1398,7 @@ $text=$this->input->get_post("text");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -1407,13 +1407,13 @@ $text=$this->input->get_post("text");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -1421,7 +1421,7 @@ $text=$this->input->get_post("text");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->options_model->create($question,$representation,$actualorder,$image,$order,$weight,$optiontext,$text)==0)
 $data["alerterror"]="New options could not be created.";
@@ -1485,7 +1485,7 @@ $text=$this->input->get_post("text");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -1494,13 +1494,13 @@ $text=$this->input->get_post("text");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -1508,9 +1508,9 @@ $text=$this->input->get_post("text");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->options_model->getimagebyid($id);
@@ -1611,7 +1611,7 @@ $data["test"]=$this->test_model->gettestdropdown();
 $data["title"]="Create useranswer";
 $this->load->view("template",$data);
 }
-public function createuseranswersubmit() 
+public function createuseranswersubmit()
 {
 $access=array("1","2");
 $this->checkaccess($access);
@@ -1662,8 +1662,8 @@ $data["option"]=$this->options_model->getoptionsdropdown();
 $data["test"]=$this->test_model->gettestdropdown();
 $data["title"]="Edit useranswer";
 $data["before"]=$this->useranswer_model->beforeedit($this->input->get("id"));
-    
-    
+
+
 
         $data['test'] = $this->test_model->gettestdropdown();
         $data['question'] = $this->menu_model->getquestionbytest($data['before']->test,$data['before']->pillar);
@@ -1674,8 +1674,8 @@ $data["before"]=$this->useranswer_model->beforeedit($this->input->get("id"));
 ////        print_r($data['pincode']);
 //        $data['pincode'] = $this->chintantable->todropdown($data['pincode']);
 
-    
-    
+
+
 $this->load->view("template",$data);
 }
 public function edituseranswersubmit()
@@ -1788,7 +1788,7 @@ $data["pillar"]=$this->pillar_model->getpillardropdown();
 $data["title"]="Create userpillar";
 $this->load->view("template",$data);
 }
-public function createuserpillarsubmit() 
+public function createuserpillarsubmit()
 {
 $access=array("1","2");
 $this->checkaccess($access);
@@ -1932,7 +1932,7 @@ $data["pillar"]=$this->pillar_model->getpillardropdown();
 $data["title"]="Create content";
 $this->load->view("template",$data);
 }
-public function createcontentsubmit() 
+public function createcontentsubmit()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
@@ -1963,7 +1963,7 @@ $text=$this->input->get_post("text");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -1972,13 +1972,13 @@ $text=$this->input->get_post("text");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -1986,7 +1986,7 @@ $text=$this->input->get_post("text");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
 if($this->content_model->create($pillar,$image,$text)==0)
 $data["alerterror"]="New content could not be created.";
@@ -2040,7 +2040,7 @@ $text=$this->input->get_post("text");
 			{
 				$uploaddata = $this->upload->data();
 				$image=$uploaddata['file_name'];
-                
+
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
                 $config_t['create_thumb'] = FALSE;///add this
@@ -2049,13 +2049,13 @@ $text=$this->input->get_post("text");
                 $config_r['quality']    = 100;
                 //end of configs
 
-                $this->load->library('image_lib', $config_r); 
+                $this->load->library('image_lib', $config_r);
                 $this->image_lib->initialize($config_r);
                 if(!$this->image_lib->resize())
                 {
                     echo "Failed." . $this->image_lib->display_errors();
                     //return false;
-                }  
+                }
                 else
                 {
                     //print_r($this->image_lib->dest_image);
@@ -2063,9 +2063,9 @@ $text=$this->input->get_post("text");
                     $image=$this->image_lib->dest_image;
                     //return false;
                 }
-                
+
 			}
-            
+
             if($image=="")
             {
             $image=$this->content_model->getimagebyid($id);
@@ -2088,10 +2088,10 @@ $this->content_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewcontent";
 $this->load->view("redirect",$data);
 }
-    
+
     //TEST
-    
-    
+
+
     public function createtest()
 	{
 		$access = array("1","3");
@@ -2104,7 +2104,7 @@ $this->load->view("redirect",$data);
              $data[ 'check' ] =$this->user_model->getcheckdropdown();
 		$data[ 'page' ] = 'createtest';
 		$data[ 'title' ] = 'Create Test';
-		$this->load->view( 'template', $data );	
+		$this->load->view( 'template', $data );
 	}
 	function createtestsubmit()
 	{
@@ -2125,7 +2125,7 @@ $this->load->view("redirect",$data);
 			$data['alertsuccess']="Test created Successfully.";
 			$data['redirect']="site/viewtest";
 			$this->load->view("redirect",$data);
-		
+
 	}
     function viewtest()
 	{
@@ -2133,54 +2133,54 @@ $this->load->view("redirect",$data);
 		$this->checkaccess($access);
 		$data['page']='viewtest';
         $data['base_url'] = site_url("site/viewtestjson");
-        
+
 		$data['title']='View test';
 		$this->load->view('template',$data);
-	} 
+	}
     function viewtestjson()
 	{
 		$access = array("1","3","2");
 		$this->checkaccess($access);
-       
-        
+
+
         $elements=array();
         $elements[0]=new stdClass();
         $elements[0]->field="`test`.`id`";
         $elements[0]->sort="1";
         $elements[0]->header="ID";
         $elements[0]->alias="id";
-        
-        
+
+
         $elements[1]=new stdClass();
         $elements[1]->field="`test`.`name`";
         $elements[1]->sort="1";
         $elements[1]->header="Name";
         $elements[1]->alias="name";
-        
+
         $elements[2]=new stdClass();
         $elements[2]->field="`test`.`schedule`";
         $elements[2]->sort="1";
         $elements[2]->header="Schedule";
         $elements[2]->alias="schedule";
-        
+
         $elements[3]=new stdClass();
         $elements[3]->field="`test`.`startdate`";
         $elements[3]->sort="1";
         $elements[3]->header="Startdate";
         $elements[3]->alias="startdate";
-        
+
         $elements[4]=new stdClass();
         $elements[4]->field="`test`.`timestamp`";
         $elements[4]->sort="1";
         $elements[4]->header="Timestamp";
-        $elements[4]->alias="timestamp"; 
-        
+        $elements[4]->alias="timestamp";
+
         $elements[5]=new stdClass();
         $elements[5]->field="`test`.`units`";
         $elements[5]->sort="1";
         $elements[5]->header="Units";
         $elements[5]->alias="units";
-        
+
         $search=$this->input->get_post("search");
         $pageno=$this->input->get_post("pageno");
         $orderby=$this->input->get_post("orderby");
@@ -2190,19 +2190,19 @@ $this->load->view("redirect",$data);
         {
             $maxrow=20;
         }
-        
+
         if($orderby=="")
         {
             $orderby="id";
             $orderorder="ASC";
         }
-       
+
         $data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `test`");
-        
+
 		$this->load->view("json",$data);
-	} 
-    
-    
+	}
+
+
 	function edittest()
 	{
 		$access = array("1","3");
@@ -2234,19 +2234,19 @@ $this->load->view("redirect",$data);
             $team=$this->input->post('team');
             $organization=$this->input->post('organization');
             $timestamp=$this->input->post('timestamp');
-           
+
 			if($this->test_model->edit($id,$name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$organization,$timestamp)==0)
 			$data['alerterror']="Test Editing was unsuccesful";
 			else
 			$data['alertsuccess']="Test edited Successfully.";
-		
+
 			$data['redirect']="site/viewtest";
 			//$data['other']="template=$template";
 			$this->load->view("redirect",$data);
-			
-		
+
+
 	}
-	
+
 	function deletetest()
 	{
 		$access = array("1","3");
@@ -2256,12 +2256,12 @@ $this->load->view("redirect",$data);
 		$data['redirect']="site/viewtest";
 		$this->load->view("redirect",$data);
 	}
-    
-    
-    
+
+
+
     // CREATE TEST QUESTION
-    
-    
+
+
     public function viewtestquestion()
 {
 $access=array("1","2","3");
@@ -2319,7 +2319,7 @@ $data["test"]=$this->test_model->gettestdropdown();
 $data["title"]="Create testquestion";
 $this->load->view("template",$data);
 }
-public function createtestquestionsubmit() 
+public function createtestquestionsubmit()
 {
 
 $test=$this->input->get_post("test");
@@ -2338,7 +2338,7 @@ $this->load->view("redirect",$data);
         $this->checkaccess($access);
         $testid=$this->input->get('id');
         $data["page"]="edittestquestion";
-        
+
       $data["table"]=$this->testquestion_model->getallquestion();
 //        $data["question"]=$this->question_model->getquestiondropdown();
         $data["test"]=$testid;
@@ -2369,19 +2369,19 @@ $this->testquestion_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewtestquestion";
 $this->load->view("redirect",$data);
 }
-	
-    
+
+
     // TEST PILLAR EXPECTED
-    
-    
-    
-    
+
+
+
+
     public function viewtestpillarexpected()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
 $data["page"]="viewtestpillarexpected";
-        
+
 $data["base_url"]=site_url("site/viewtestpillarexpectedjson");
 $data["title"]="View testquestion";
 $this->load->view("template",$data);
@@ -2404,7 +2404,7 @@ $elements[2]->field="`hq_pillar`.`name`";
 $elements[2]->sort="1";
 $elements[2]->header="pillar";
 $elements[2]->alias="pillar";
-    
+
 $elements[3]=new stdClass();
 $elements[3]->field="`testpillarexpected`.`expectedvalue`";
 $elements[3]->sort="1";
@@ -2438,7 +2438,7 @@ $data["test"]=$this->test_model->gettestdropdown();
 $data["title"]="Create testpillarexpected";
 $this->load->view("template",$data);
 }
-public function createtestpillarexpectedsubmit() 
+public function createtestpillarexpectedsubmit()
 {
 
 $test=$this->input->get_post("test");
@@ -2488,10 +2488,10 @@ $this->testpillarexpected_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewtestpillarexpected";
 $this->load->view("redirect",$data);
 }
-	
+
 //functions by avinash
-    
-    
+
+
     public function getquestionbytest() {
         $test=$this->input->get_post("test");
         $pillar=$this->input->get_post("pillar");
@@ -2499,15 +2499,15 @@ $this->load->view("redirect",$data);
         $data["message"] = $data1;
         $this->load->view("json", $data);
     }
-    
+
     public function getoptionbyquestion() {
         $question=$this->input->get_post("question");
         $data["message"]=$this->menu_model->getoptionbyquestion($question);
         $this->load->view("json",$data);
     }
-    
-    
-    
+
+
+
     function uploadusercsv()
 	{
 		$access = array("1");
@@ -2515,8 +2515,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploadusercsv';
 		$data[ 'title' ] = 'Upload user';
 		$this->load->view( 'template', $data );
-	} 
-    
+	}
+
     function uploadusercsvsubmit()
 	{
         $access = array("1");
@@ -2536,18 +2536,18 @@ $this->load->view("redirect",$data);
         $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->user_model->createbycsv($file);
 //        echo $id1;
-        
+
         if($id1==0)
         $data['alerterror']="New users could not be Uploaded.";
 		else
 		$data['alertsuccess']="users Uploaded Successfully.";
-        
+
         $data['redirect']="site/viewusers";
         $this->load->view("redirect",$data);
     }
-    
-    
-    
+
+
+
     function uploadteamcsv()
 	{
 		$access = array("1");
@@ -2555,8 +2555,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploadteamcsv';
 		$data[ 'title' ] = 'Upload team';
 		$this->load->view( 'template', $data );
-	} 
-    
+	}
+
     function uploadteamcsvsubmit()
 	{
         $access = array("1");
@@ -2576,17 +2576,17 @@ $this->load->view("redirect",$data);
         $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->team_model->createbycsv($file);
 //        echo $id1;
-        
+
         if($id1==0)
         $data['alerterror']="New teams could not be Uploaded.";
 		else
 		$data['alertsuccess']="teams Uploaded Successfully.";
-        
+
         $data['redirect']="site/viewteam";
         $this->load->view("redirect",$data);
     }
-    
-    
+
+
     function uploaddepartmentcsv()
 	{
 		$access = array("1");
@@ -2594,8 +2594,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploaddepartmentcsv';
 		$data[ 'title' ] = 'Upload department';
 		$this->load->view( 'template', $data );
-	} 
-    
+	}
+
     function uploaddepartmentcsvsubmit()
 	{
         $access = array("1");
@@ -2615,18 +2615,18 @@ $this->load->view("redirect",$data);
         $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->department_model->createbycsv($file);
 //        echo $id1;
-        
+
         if($id1==0)
         $data['alerterror']="New departments could not be Uploaded.";
 		else
 		$data['alertsuccess']="departments Uploaded Successfully.";
-        
+
         $data['redirect']="site/viewdepartment";
         $this->load->view("redirect",$data);
     }
-    
-    
-    
+
+
+
     function uploaddesignationcsv()
 	{
 		$access = array("1");
@@ -2634,8 +2634,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploaddesignationcsv';
 		$data[ 'title' ] = 'Upload designation';
 		$this->load->view( 'template', $data );
-	} 
-    
+	}
+
     function uploaddesignationcsvsubmit()
 	{
         $access = array("1");
@@ -2655,18 +2655,18 @@ $this->load->view("redirect",$data);
         $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->designation_model->createbycsv($file);
 //        echo $id1;
-        
+
         if($id1==0)
         $data['alerterror']="New designations could not be Uploaded.";
 		else
 		$data['alertsuccess']="designations Uploaded Successfully.";
-        
+
         $data['redirect']="site/viewdesignation";
         $this->load->view("redirect",$data);
     }
-    
-    
-    
+
+
+
     function uploadbranchcsv()
 	{
 		$access = array("1");
@@ -2674,8 +2674,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploadbranchcsv';
 		$data[ 'title' ] = 'Upload branch';
 		$this->load->view( 'template', $data );
-	} 
-    
+	}
+
     function uploadbranchcsvsubmit()
 	{
         $access = array("1");
@@ -2695,23 +2695,23 @@ $this->load->view("redirect",$data);
         $file = $this->csvreader->parse_file($fullfilepath);
         $id1=$this->branch_model->createbycsv($file);
 //        echo $id1;
-        
+
         if($id1==0)
         $data['alerterror']="New branchs could not be Uploaded.";
 		else
 		$data['alertsuccess']="branchs Uploaded Successfully.";
-        
+
         $data['redirect']="site/viewbranch";
         $this->load->view("redirect",$data);
     }
     //end of avinash functions
-    
+
       public function viewconfig()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
 $data["page"]="viewconfig";
-        
+
 $data["base_url"]=site_url("site/viewconfigjson");
 $data["title"]="View config";
 $this->load->view("template",$data);
@@ -2729,7 +2729,7 @@ $elements[1]->field="`config`.`name`";
 $elements[1]->sort="1";
 $elements[1]->header="name";
 $elements[1]->alias="name";
-    
+
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -2797,7 +2797,7 @@ $iostext=$this->input->get_post("iostext");
             }
 }
 }
-        
+
 public function viewsurveyquestion()
 {
 $access=array("1");
@@ -2858,10 +2858,11 @@ public function createsurveyquestion()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createsurveyquestion";
+$data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["title"]="Create surveyquestion";
 $this->load->view("template",$data);
 }
-public function createsurveyquestionsubmit() 
+public function createsurveyquestionsubmit()
 {
 $access=array("1");
 $this->checkaccess($access);
@@ -2873,6 +2874,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="createsurveyquestion";
+$data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["title"]="Create surveyquestion";
 $this->load->view("template",$data);
 }
@@ -2896,9 +2898,15 @@ public function editsurveyquestion()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editsurveyquestion";
+$data["page2"]="block/surveyblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
 $data["title"]="Edit surveyquestion";
+$data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
-$this->load->view("template",$data);
+$data['exp'] = explode(':', $data['before']->starttime);
+$data['exp1'] = explode(':', $data['before']->endtime);
+$this->load->view("templatewith2",$data);
 }
 public function editsurveyquestionsubmit()
 {
@@ -2913,6 +2921,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editsurveyquestion";
+$data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["title"]="Edit surveyquestion";
 $data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -2958,7 +2967,7 @@ $elements[0]->sort="1";
 $elements[0]->header="Id";
 $elements[0]->alias="id";
 $elements[1]=new stdClass();
-$elements[1]->field="`hq_surveyquestionuser`.`question`";
+$elements[1]->field="`hq_surveyquestion`.`text`";
 $elements[1]->sort="1";
 $elements[1]->header="Question";
 $elements[1]->alias="question";
@@ -2981,7 +2990,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionuser`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionuser` LEFT OUTER JOIN `hq_surveyquestion` ON `hq_surveyquestion`.`id`=`hq_surveyquestionuser`.`question`");
 $this->load->view("json",$data);
 }
 
@@ -2990,10 +2999,11 @@ public function createsurveyquestionuser()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createsurveyquestionuser";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["title"]="Create surveyquestionuser";
 $this->load->view("template",$data);
 }
-public function createsurveyquestionusersubmit() 
+public function createsurveyquestionusersubmit()
 {
 $access=array("1");
 $this->checkaccess($access);
@@ -3003,6 +3013,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="createsurveyquestionuser";
+$data["question"]=$this->surveyquestion_model->getquestiondropdown();
 $data["title"]="Create surveyquestionuser";
 $this->load->view("template",$data);
 }
@@ -3024,9 +3035,13 @@ public function editsurveyquestionuser()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editsurveyquestionuser";
+$data["page2"]="block/questionblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["title"]="Edit surveyquestionuser";
 $data["before"]=$this->surveyquestionuser_model->beforeedit($this->input->get("id"));
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 public function editsurveyquestionusersubmit()
 {
@@ -3039,6 +3054,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editsurveyquestionuser";
+$data["question"]=$this->surveyquestion_model->getquestiondropdown();
 $data["title"]="Edit surveyquestionuser";
 $data["before"]=$this->surveyquestionuser_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -3069,12 +3085,16 @@ public function viewsurveyoption()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewsurveyoption";
-$data["base_url"]=site_url("site/viewsurveyoptionjson");
+$data["page2"]="block/surveyblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
+$data["base_url"]=site_url("site/viewsurveyoptionjson?id=").$this->input->get("id");
 $data["title"]="View surveyoption";
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 function viewsurveyoptionjson()
 {
+	$id=$this->input->get("id");
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`hq_surveyoption`.`id`";
@@ -3115,7 +3135,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyoption`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyoption`","WHERE `hq_surveyoption`.`question`='$id'");
 $this->load->view("json",$data);
 }
 
@@ -3124,10 +3144,11 @@ public function createsurveyoption()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createsurveyoption";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["title"]="Create surveyoption";
 $this->load->view("template",$data);
 }
-public function createsurveyoptionsubmit() 
+public function createsurveyoptionsubmit()
 {
 $access=array("1");
 $this->checkaccess($access);
@@ -3138,6 +3159,7 @@ $this->form_validation->set_rules("image","Image","trim");
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["page"]="createsurveyoption";
 $data["title"]="Create surveyoption";
 $this->load->view("template",$data);
@@ -3148,13 +3170,13 @@ $id=$this->input->get_post("id");
 $order=$this->input->get_post("order");
 $question=$this->input->get_post("question");
 $title=$this->input->get_post("title");
-$image=$this->input->get_post("image");
+$image=$this->menu_model->uploadImage();
 if($this->surveyoption_model->create($order,$question,$title,$image)==0)
 $data["alerterror"]="New surveyoption could not be created.";
 else
 $data["alertsuccess"]="surveyoption created Successfully.";
-$data["redirect"]="site/viewsurveyoption";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewsurveyoption?id=".$question;
+$this->load->view("redirect2",$data);
 }
 }
 public function editsurveyoption()
@@ -3163,6 +3185,7 @@ $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editsurveyoption";
 $data["title"]="Edit surveyoption";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["before"]=$this->surveyoption_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
@@ -3179,6 +3202,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editsurveyoption";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["title"]="Edit surveyoption";
 $data["before"]=$this->surveyoption_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -3189,13 +3213,14 @@ $id=$this->input->get_post("id");
 $order=$this->input->get_post("order");
 $question=$this->input->get_post("question");
 $title=$this->input->get_post("title");
-$image=$this->input->get_post("image");
+// $image=$this->input->get_post("image");
+$image=$this->menu_model->uploadImage();
 if($this->surveyoption_model->edit($id,$order,$question,$title,$image)==0)
 $data["alerterror"]="New surveyoption could not be Updated.";
 else
 $data["alertsuccess"]="surveyoption Updated Successfully.";
-$data["redirect"]="site/viewsurveyoption";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewsurveyoption?id=".$question;
+$this->load->view("redirect2",$data);
 }
 }
 public function deletesurveyoption()
@@ -3211,12 +3236,16 @@ public function viewsurveyquestionanswer()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewsurveyquestionanswer";
-$data["base_url"]=site_url("site/viewsurveyquestionanswerjson");
+$data["page2"]="block/questionblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
+$data["base_url"]=site_url("site/viewsurveyquestionanswerjson?id=".$this->input->get("id"));
 $data["title"]="View surveyquestionanswer";
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 function viewsurveyquestionanswerjson()
 {
+	$id=$this->input->get("id");
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`hq_surveyquestionanswer`.`id`";
@@ -3229,12 +3258,12 @@ $elements[1]->sort="1";
 $elements[1]->header="User";
 $elements[1]->alias="user";
 $elements[2]=new stdClass();
-$elements[2]->field="`hq_surveyquestionanswer`.`question`";
+$elements[2]->field="`hq_surveyquestion`.`text`";
 $elements[2]->sort="1";
 $elements[2]->header="Question";
 $elements[2]->alias="question";
 $elements[3]=new stdClass();
-$elements[3]->field="`hq_surveyquestionanswer`.`option`";
+$elements[3]->field="`hq_surveyoption`.`title`";
 $elements[3]->sort="1";
 $elements[3]->header="Option";
 $elements[3]->alias="option";
@@ -3252,7 +3281,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionanswer`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_surveyquestionanswer` LEFT OUTER JOIN `hq_surveyquestion` ON `hq_surveyquestion`.`id`=`hq_surveyquestionanswer`.`question` LEFT OUTER JOIN `hq_surveyoption` ON `hq_surveyoption`.`id`=`hq_surveyquestionanswer`.`option`","WHERE `hq_surveyquestionanswer`.`user`='$id'");
 $this->load->view("json",$data);
 }
 
@@ -3261,10 +3290,16 @@ public function createsurveyquestionanswer()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="createsurveyquestionanswer";
+$data["page2"]="block/questionblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
+$data["user"]=$this->surveyquestionanswer_model->getemaildropdown();
+$data["option"]=$this->surveyoption_model->getsurveyoptiondropdown();
 $data["title"]="Create surveyquestionanswer";
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
-public function createsurveyquestionanswersubmit() 
+public function createsurveyquestionanswersubmit()
 {
 $access=array("1");
 $this->checkaccess($access);
@@ -3275,6 +3310,9 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="createsurveyquestionanswer";
+$data["question"]=$this->question_model->getquestiondropdown();
+$data["user"]=$this->surveyquestionanswer_model->getemaildropdown();
+$data["option"]=$this->surveyoption_model->getsurveyoptiondropdown();
 $data["title"]="Create surveyquestionanswer";
 $this->load->view("template",$data);
 }
@@ -3288,8 +3326,8 @@ if($this->surveyquestionanswer_model->create($user,$question,$option)==0)
 $data["alerterror"]="New surveyquestionanswer could not be created.";
 else
 $data["alertsuccess"]="surveyquestionanswer created Successfully.";
-$data["redirect"]="site/viewsurveyquestionanswer";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewsurveyquestionanswer?id=".$user;
+$this->load->view("redirect2",$data);
 }
 }
 public function editsurveyquestionanswer()
@@ -3297,9 +3335,15 @@ public function editsurveyquestionanswer()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editsurveyquestionanswer";
+$data["page2"]="block/questionblock";
+$data["before1"]=$this->input->get("userid");
+$data["before2"]=$this->input->get("userid");
 $data["title"]="Edit surveyquestionanswer";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
+$data["user"]=$this->surveyquestionanswer_model->getemaildropdown();
+$data["option"]=$this->surveyoption_model->getsurveyoptiondropdown();
 $data["before"]=$this->surveyquestionanswer_model->beforeedit($this->input->get("id"));
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 public function editsurveyquestionanswersubmit()
 {
@@ -3313,6 +3357,9 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editsurveyquestionanswer";
+$data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
+$data["user"]=$this->surveyquestionanswer_model->getemaildropdown();
+$data["option"]=$this->surveyoption_model->getsurveyoptiondropdown();
 $data["title"]="Edit surveyquestionanswer";
 $data["before"]=$this->surveyquestionanswer_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -3327,8 +3374,8 @@ if($this->surveyquestionanswer_model->edit($id,$user,$question,$option)==0)
 $data["alerterror"]="New surveyquestionanswer could not be Updated.";
 else
 $data["alertsuccess"]="surveyquestionanswer Updated Successfully.";
-$data["redirect"]="site/viewsurveyquestionanswer";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewsurveyquestionanswer?id=".$user;
+$this->load->view("redirect2",$data);
 }
 }
 public function deletesurveyquestionanswer()
@@ -3336,8 +3383,9 @@ public function deletesurveyquestionanswer()
 $access=array("1");
 $this->checkaccess($access);
 $this->surveyquestionanswer_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewsurveyquestionanswer";
-$this->load->view("redirect",$data);
+$user=$this->input->get("userid");
+$data["redirect"]="site/viewsurveyquestionanswer?id=".$user;
+$this->load->view("redirect2",$data);
 }
 }
 ?>

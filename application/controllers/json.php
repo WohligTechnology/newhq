@@ -597,7 +597,12 @@ $this->load->view("json",$data);
        $this->load->view("json", $data);
        
    }
- 
+ public function viewpage()
+ {
+      $data['pillardata']=$this->pillar_model->getallpillars();
+      $this->user_model->makeuserold($this->session->userdata("id"));
+      $this->load->view('pillar',$data);
+ }
 
    
    

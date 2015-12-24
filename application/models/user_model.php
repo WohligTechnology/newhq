@@ -14,7 +14,7 @@ class User_model extends CI_Model
 		$row =$this->db->query( $query );
 		if ( $row->num_rows() > 0 ) {
 			$row=$row->row();
-			$this->id       = $row->id;
+			$this->id= $row->id;
 			$this->name = $row->name;
 			$this->email = $row->email;
 			$newdata        = array(
@@ -25,11 +25,31 @@ class User_model extends CI_Model
 				'logged_in' => 'true',
 			);
 			$this->session->set_userdata( $newdata );
+            
+            
+            
+            // CHECK FIRST LOGIN
+            
+           
 			return true;
 		} //count( $row_array ) == 1
 		else
 			return false;
 	}
+    public function checkfirstlogin($id){
+        
+//        $this->db->query(" UPDATE `user` SET `isfirst`='1' WHERE `id`='$this->id'")
+        $query=$this->db->query("SELECT `isfirst` FROM `user` WHERE `id`='$id'")->row();
+        if($query->isfirst==1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    } 
+    public function makeuserold($id){
+  $this->db->query(" UPDATE `user` SET `isfirst`='1' WHERE `id`='$id'");
+    }
 	
 	
 	public function create($name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$language,$team,$salary)

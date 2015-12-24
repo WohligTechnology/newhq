@@ -35,7 +35,7 @@ if (defined('ENVIRONMENT'))
 		case 'development':
 			error_reporting(E_ALL);
 		break;
-	
+
 		case 'testing':
 		case 'production':
 			error_reporting(0);
@@ -202,6 +202,6 @@ if (defined('ENVIRONMENT'))
 require_once BASEPATH.'core/CodeIgniter.php';
 
 if ( function_exists( 'date_default_timezone_set' ) )
-date_default_timezone_set('Asia/Calcutta'); 
+date_default_timezone_set('Asia/Calcutta');
 /* End of file index.php */
 /* Location: ./index.php */

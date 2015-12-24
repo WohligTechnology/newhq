@@ -26,7 +26,7 @@ return $query;
 }
 public function edit($id,$question,$email)
 {
-if($image==""){$image=$this->surveyquestionuser->getimagebyid($id);$image=$image->image;}$data=array("question" => $question,"email" => $email);
+  $data=array("question" => $question,"email" => $email);
 $this->db->where( "id", $id );
 $query=$this->db->update( "hq_surveyquestionuser", $data );
 return 1;

@@ -26,7 +26,11 @@ return $query;
 }
 public function edit($id,$order,$question,$title,$image)
 {
-if($image==""){$image=$this->surveyoption->getimagebyid($id);$image=$image->image;}$data=array("order" => $order,"question" => $question,"title" => $title,"image" => $image);
+if($image==""){
+  $image=$this->surveyoption_model->getimagebyid($id);
+  $image=$image->image;
+}
+$data=array("order" => $order,"question" => $question,"title" => $title,"image" => $image);
 $this->db->where( "id", $id );
 $query=$this->db->update( "hq_surveyoption", $data );
 return 1;
@@ -40,6 +44,19 @@ public function getimagebyid($id)
 {
 $query=$this->db->query("SELECT `image` FROM `hq_surveyoption` WHERE `id`='$id'")->row();
 return $query;
+}
+public function getsurveyoptiondropdown()
+{
+$query=$this->db->query("SELECT * FROM `hq_surveyoption`  ORDER BY `id` ASC")->result();
+$return=array(
+"" => "Choose Option"
+);
+foreach($query as $row)
+{
+  $return[$row->id]=$row->title;
+}
+
+return $return;
 }
 }
 ?>

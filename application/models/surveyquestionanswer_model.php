@@ -25,8 +25,7 @@ $query=$this->db->get("hq_surveyquestionanswer")->row();
 return $query;
 }
 public function edit($id,$user,$question,$option)
-{
-if($image==""){$image=$this->surveyquestionanswer->getimagebyid($id);$image=$image->image;}$data=array("user" => $user,"question" => $question,"option" => $option);
+{$data=array("user" => $user,"question" => $question,"option" => $option);
 $this->db->where( "id", $id );
 $query=$this->db->update( "hq_surveyquestionanswer", $data );
 return 1;
@@ -40,6 +39,19 @@ public function getimagebyid($id)
 {
 $query=$this->db->query("SELECT `image` FROM `hq_surveyquestionanswer` WHERE `id`='$id'")->row();
 return $query;
+}
+public function getemaildropdown()
+{
+$query=$this->db->query("SELECT * FROM `hq_surveyquestionuser`  ORDER BY `id` ASC")->result();
+$return=array(
+"" => ""
+);
+foreach($query as $row)
+{
+  $return[$row->id]=$row->email;
+}
+
+return $return;
 }
 }
 ?>

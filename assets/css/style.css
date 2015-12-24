@@ -1,4 +1,30 @@
 @font-face {
+    font-family: "A Gentle Touch";
+/*    src: url("fonts/AGentleTouch.ttf");*/
+    src:  url('../fonts/AGentleTouch.ttf') format('ttf'), url('fonts/AGentleTouch.ttf') format('ttf'), url('fonts/AGentleTouch.ttf') ;
+   
+    font-style: normal;
+}
+@font-face {
+    font-family: "Alittle sunshine";
+/*    src: url("fonts/Alittlesunshine.ttf");*/
+     src:  url('../fonts/Alittlesunshine.ttf') format('ttf'), url('fonts/Alittlesunshine.ttf') format('ttf'), url('fonts/Alittlesunshine.ttf') ;
+    font-style: normal;
+}
+@font-face {
+    font-family: "New Athletic M54";
+/*    src: url("/fonts/NewAthleticM54.ttf");*/
+    src:  url('../fonts/NewAthleticM54.ttf') format('ttf'), url('fonts/NewAthleticM54.ttf') format('ttf'), url('fonts/NewAthleticM54.ttf') ;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Walkway rounded";
+/*    src: url("/fonts/Walkwayrounded.ttf");*/
+     src:  url('../fonts/Walkwayrounded.ttf') format('ttf'), url('fonts/Walkwayrounded.ttf') format('ttf'), url('fonts/Walkwayrounded.ttf') ;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
@@ -27,7 +53,7 @@ body{
     background-color: #fffad9;
 }
 html {
-    font-family: "Lato", sans-serif;
+    font-family: "Lato" "Walkway rounded", sans-serif;
 }
 
 .pad-left-30 {
@@ -485,4 +511,156 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .margall{
     margin-left: 18px;
     margin-top: 14px;
+}
+
+.yellow-back {
+    background-color: #f7d237;
+    font-family:  'Walkway rounded';
+}
+.progress-bar p {
+    margin: 0px;
+    color: #684703;
+    margin-bottom: 4px;
+}
+.input-border {
+    border: 1px solid #684703;
+    border-radius: 4px;
+    padding: 0px 18px;
+}
+.out-top {
+    margin-top: 26px;
+    border: 1px solid #684703;
+    padding: 5px 0px;
+    text-align: center;
+    border-radius: 4px;
+    color: #0784c8;
+}
+.padtop {
+    margin-top: 90px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.text-center {
+    text-align: center;
+}
+.blue-btn {
+    background: #0784c8;
+    color: #F7D237;
+}
+.btn:hover,
+.btn-large:hover {
+    background-color: #0784C8;
+}
+select {
+    display: block;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 1px solid #684703;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+.panel-heading {
+    padding: 0px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #684703;
+    border-color: #684703;
+}
+.panel-body {
+    padding: 0px 15px 0px 15px;
+}
+.displ {
+    display: inline-block;
+}
+.pull-right {
+    float: right;
+}
+.pull-right select {
+    background:  #684703;
+    color: #F7D237;
+    border: 1px solid #F7D237;
+    padding: 0px 13px 0px 1px;
+    height: 25px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+.pull-right select:focus {
+    outline: none;
+}
+.matop {
+    margin-top: 14px;
+}
+.text-p p {
+    display: flex;
+        line-height: 120%;
+}
+.text-p p span {
+    text-indent: 0px;
+    display: block;
+    padding-left: 8px;
+}
+.box-tp{
+        border: 1px solid #684703;
+    cursor: pointer;
+}
+ul.text-center.matop li {
+    margin: 4px 0px 0px 0px;
+}
+.marbotm{
+    margin-bottom: 0px;
+    border-bottom: 1px solid #684703;
+        margin-left: -15.1px !important;
+    margin-right: -15.1px !important;
+}
+.marzero{
+    margin-bottom: 0px;
+     
+}
+.p50{
+    padding-top: 50px
+}
+p.panel-title {
+    color: #F7D237;
+}
+.select-before:before {
+    position: absolute;
+    top: 169px;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid;
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    color: #F7D237;
+    content: "";
+    pointer-events: none;
+    left: 46.7%;
+}
+.selects-before:before {
+    position: absolute;
+    top: 169px;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid;
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    color: #F7D237;
+    content: "";
+    pointer-events: none;
+    right: 17.9%;
+}
+select option {
+   
+    background:  #F7D237;
+    color: #684703;
+   
+  
 }

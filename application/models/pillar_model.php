@@ -36,6 +36,11 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `hq_pillar` WHERE `id`='$id'");
 return $query;
 }
+    public function getallpillars()
+{
+$query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
+return $query;
+}
 	public function getpillardropdown()
 	{
 		$query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();

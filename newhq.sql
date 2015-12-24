@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2015 at 08:24 AM
+-- Generation Time: Dec 19, 2015 at 07:27 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -339,6 +339,74 @@ INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `tex
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hq_surveyoption`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_surveyoption` (
+  `id` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
+  `question` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_surveyoption`
+--
+
+INSERT INTO `hq_surveyoption` (`id`, `order`, `question`, `title`, `image`) VALUES
+(1, 11, 2, 'Try12', 'images.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_surveyquestion`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_surveyquestion` (
+  `id` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `starttime` time NOT NULL,
+  `endtime` time NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_surveyquestion`
+--
+
+INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`) VALUES
+(1, 0, 'dfgh', '00:00:00', '00:00:00'),
+(2, 0, 'vhewagr', '14:15:00', '11:15:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_surveyquestionanswer`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_surveyquestionanswer` (
+  `id` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `question` int(11) NOT NULL,
+  `option` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_surveyquestionuser`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_surveyquestionuser` (
+  `id` int(11) NOT NULL,
+  `question` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hq_team`
 --
 
@@ -371,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_useranswer`
@@ -481,7 +549,9 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (101, 1, 1, 2, 0, 0, '2015-11-25 14:24:10', 2),
 (103, 0, 1, 2, 2, 0, '2015-11-27 05:57:56', 2),
 (104, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
-(105, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2);
+(105, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
+(106, 15, 1, 1, 7, 1, '2015-12-12 08:54:57', 6),
+(107, 15, 1, 2, 11, 0, '2015-12-12 08:55:13', 6);
 
 -- --------------------------------------------------------
 
@@ -562,7 +632,8 @@ INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `
 (12, 'Team', '', '', 'site/viewteam', 1, 0, 1, 11, 'icon-dashboard'),
 (14, 'Test ', '', '', 'site/viewtest', 1, 0, 1, 13, 'icon-dashboard'),
 (15, 'Test Pillar Expected', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard'),
-(16, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 15, 'icon-dashboard');
+(16, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 15, 'icon-dashboard'),
+(17, 'Survey', '', '', 'site/viewsurveyquestion', 1, 0, 1, 16, 'icon-dashboard');
 
 -- --------------------------------------------------------
 
@@ -588,8 +659,8 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (6, 1),
 (7, 1),
 (8, 1),
-(9, 0),
-(10, 0),
+(9, 1),
+(10, 1),
 (11, 1),
 (12, 1),
 (1, 2),
@@ -599,8 +670,8 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (5, 2),
 (6, 2),
 (8, 2),
-(9, 0),
-(10, 0),
+(9, 1),
+(10, 1),
 (11, 2),
 (12, 2),
 (1, 3),
@@ -618,7 +689,8 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (15, 2),
 (15, 3),
 (16, 1),
-(7, 3);
+(7, 3),
+(17, 1);
 
 -- --------------------------------------------------------
 
@@ -661,7 +733,7 @@ CREATE TABLE IF NOT EXISTS `test` (
   `team` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `enddate` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `test`
@@ -670,7 +742,8 @@ CREATE TABLE IF NOT EXISTS `test` (
 INSERT INTO `test` (`id`, `name`, `units`, `schedule`, `startdate`, `department`, `branch`, `designation`, `check`, `team`, `timestamp`, `enddate`) VALUES
 (1, 'Department test', '2', 1, '2015-08-06', 1, 1, 1, 1, 5, '2015-08-06 12:23:45', '2015-08-18'),
 (2, 'Branch test', '1', 1, '2015-11-23', 0, 1, 0, 2, 0, '2015-11-25 12:41:23', '2015-08-18'),
-(5, 'test test', '', 1, '2015-11-26', 0, 0, 0, 0, 5, '2015-11-25 13:31:39', '0000-00-00');
+(5, 'test test', '', 1, '2015-11-26', 0, 0, 0, 0, 5, '2015-11-25 13:31:39', '0000-00-00'),
+(6, 'New Test', '2', 1, '2015-12-25', 1, 2, 2, 0, 5, '2015-12-12 08:51:26', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -683,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `testpillarexpected` (
   `test` int(11) NOT NULL,
   `pillar` int(11) NOT NULL,
   `expectedvalue` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testpillarexpected`
@@ -699,7 +772,8 @@ INSERT INTO `testpillarexpected` (`id`, `test`, `pillar`, `expectedvalue`) VALUE
 (7, 1, 4, 80),
 (8, 2, 4, 80),
 (9, 1, 5, 20),
-(10, 2, 5, 70);
+(10, 2, 5, 70),
+(11, 6, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -714,7 +788,7 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
@@ -730,7 +804,9 @@ INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateand
 (14, 5, 1, 0, '2015-11-26 00:00:00', 0),
 (15, 5, 2, 0, '2015-11-27 00:00:00', 0),
 (16, 5, 3, 0, '2015-11-28 00:00:00', 0),
-(17, 5, 4, 0, '2015-11-29 00:00:00', 0);
+(17, 5, 4, 0, '2015-11-29 00:00:00', 0),
+(18, 6, 1, 0, '2015-12-25 00:00:00', 0),
+(19, 6, 2, 0, '2015-12-26 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -918,6 +994,30 @@ ALTER TABLE `hq_question`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hq_surveyoption`
+--
+ALTER TABLE `hq_surveyoption`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_surveyquestion`
+--
+ALTER TABLE `hq_surveyquestion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_surveyquestionanswer`
+--
+ALTER TABLE `hq_surveyquestionanswer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_surveyquestionuser`
+--
+ALTER TABLE `hq_surveyquestionuser`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hq_team`
 --
 ALTER TABLE `hq_team`
@@ -1039,6 +1139,26 @@ ALTER TABLE `hq_pillar`
 ALTER TABLE `hq_question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
+-- AUTO_INCREMENT for table `hq_surveyoption`
+--
+ALTER TABLE `hq_surveyoption`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `hq_surveyquestion`
+--
+ALTER TABLE `hq_surveyquestion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `hq_surveyquestionanswer`
+--
+ALTER TABLE `hq_surveyquestionanswer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hq_surveyquestionuser`
+--
+ALTER TABLE `hq_surveyquestionuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `hq_team`
 --
 ALTER TABLE `hq_team`
@@ -1047,7 +1167,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=108;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1057,17 +1177,17 @@ ALTER TABLE `hq_userpillar`
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `testpillarexpected`
 --
 ALTER TABLE `testpillarexpected`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `user`
 --

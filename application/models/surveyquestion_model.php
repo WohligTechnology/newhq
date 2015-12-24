@@ -25,8 +25,7 @@ $query=$this->db->get("hq_surveyquestion")->row();
 return $query;
 }
 public function edit($id,$type,$text,$starttime,$endtime)
-{
-if($image==""){$image=$this->surveyquestion->getimagebyid($id);$image=$image->image;}$data=array("type" => $type,"text" => $text,"starttime" => $starttime,"endtime" => $endtime);
+{$data=array("type" => $type,"text" => $text,"starttime" => $starttime,"endtime" => $endtime);
 $this->db->where( "id", $id );
 $query=$this->db->update( "hq_surveyquestion", $data );
 return 1;
@@ -40,6 +39,31 @@ public function getimagebyid($id)
 {
 $query=$this->db->query("SELECT `image` FROM `hq_surveyquestion` WHERE `id`='$id'")->row();
 return $query;
+}
+public function getsurveyquestiondropdown()
+{
+$query=$this->db->query("SELECT * FROM `hq_surveyquestion`  ORDER BY `id` ASC")->result();
+$return=array(
+"" => "Choose Question"
+);
+foreach($query as $row)
+{
+  $return[$row->id]=$row->text;
+}
+
+return $return;
+}
+public function gettypedropdown()
+{
+$return=array(
+"" => "Choose Type",
+"1" => "Single",
+"2" => "Multiple",
+"3" => "Image"
+);
+
+
+return $return;
 }
 }
 ?>
