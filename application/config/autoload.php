@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('user_model','menu_model','branch_model','content_model','department_model','designation_model','options_model','pillar_model','question_model','useranswer_model','userpillar_model','team_model','test_model','testquestion_model','testpillarexpected_model','config_model','restapi_model','surveyoption_model','surveyquestion_model','surveyquestionanswer_model','surveyquestionuser_model');
+$autoload['model'] = array('user_model','menu_model','branch_model','content_model','department_model','designation_model','options_model','pillar_model','question_model','useranswer_model','userpillar_model','team_model','test_model','testquestion_model','testpillarexpected_model','config_model','restapi_model','surveyoption_model','surveyquestion_model','surveyquestionanswer_model','surveyquestionuser_model','conclusion_model','conclusionfinalsuggestion_model','conclusionquestion_model','conclusionsuggestion_model');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

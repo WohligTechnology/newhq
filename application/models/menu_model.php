@@ -781,5 +781,13 @@ public function uploadImage(){
         return $image;
 
     }
+    public function blockBackend()
+    {
+        $query=$this->db->query("UPDATE `user` SET `isblock`=1 WHERE `accesslevel` IN (1,2,3)");
+        if($query)
+            return true;
+        else
+            return false;
+    }
 }
 ?>

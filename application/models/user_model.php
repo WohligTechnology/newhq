@@ -10,7 +10,7 @@ class User_model extends CI_Model
 		$password=md5($password);
 		$query ="SELECT `user`.`id`,`user`.`name` as `name`,`email`,`user`.`accesslevel`,`accesslevel`.`name` as `access` FROM `user`
 		INNER JOIN `accesslevel` ON `user`.`accesslevel` = `accesslevel`.`id` 
-		WHERE `email` LIKE '$username' AND `password` LIKE '$password' AND `status`=1 AND `accesslevel` IN (1,2,3) ";
+		WHERE `email` LIKE '$username' AND `password` LIKE '$password' AND `status`=1 AND `accesslevel` IN (1,2,3)";
 		$row =$this->db->query( $query );
 		if ( $row->num_rows() > 0 ) {
 			$row=$row->row();
@@ -36,6 +36,7 @@ class User_model extends CI_Model
 		else
 			return false;
 	}
+
     public function checkfirstlogin($id){
         
 //        $this->db->query(" UPDATE `user` SET `isfirst`='1' WHERE `id`='$this->id'")

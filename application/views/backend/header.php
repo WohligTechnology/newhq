@@ -38,7 +38,7 @@
 				<ul id="slide-out" class="side-nav fixed">
 					<li class="sub-menu logo">
 						<a id="logo-container" href="<?php echo site_url(); ?>" class="align-center blue-text text-darken-4" style="font-size: 28px;">
-                           <img src="../../assets/img/logo.png" class="padt">
+                           <img src="<?php echo base_url("assets/img/logo.png");?>" class="padt">
 						</a>
 					</li>
 					<?php

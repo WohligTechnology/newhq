@@ -3406,5 +3406,523 @@ $user=$this->input->get("userid");
 $data["redirect"]="site/viewsurveyquestionanswer?id=".$user;
 $this->load->view("redirect2",$data);
 }
+       
+    public function viewconclusion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewconclusion";
+$data["base_url"]=site_url("site/viewconclusionjson");
+$data["title"]="View conclusion";
+$this->load->view("template",$data);
+}
+function viewconclusionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_conclusion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_conclusion`.`order`";
+$elements[1]->sort="1";
+$elements[1]->header="Order";
+$elements[1]->alias="order";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_conclusion`.`name`";
+$elements[2]->sort="1";
+$elements[2]->header="Name";
+$elements[2]->alias="name";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusion`");
+$this->load->view("json",$data);
+}
+
+public function createconclusion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createconclusion";
+$data["title"]="Create conclusion";
+$this->load->view("template",$data);
+}
+public function createconclusionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("order","Order","trim");
+$this->form_validation->set_rules("name","Name","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createconclusion";
+$data["title"]="Create conclusion";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$order=$this->input->get_post("order");
+$name=$this->input->get_post("name");
+if($this->conclusion_model->create($order,$name)==0)
+$data["alerterror"]="New conclusion could not be created.";
+else
+$data["alertsuccess"]="conclusion created Successfully.";
+$data["redirect"]="site/viewconclusion";
+$this->load->view("redirect",$data);
+}
+}
+public function editconclusion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editconclusion";
+$data["title"]="Edit conclusion";
+$data["before"]=$this->conclusion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editconclusionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("order","Order","trim");
+$this->form_validation->set_rules("name","Name","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editconclusion";
+$data["title"]="Edit conclusion";
+$data["before"]=$this->conclusion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$order=$this->input->get_post("order");
+$name=$this->input->get_post("name");
+if($this->conclusion_model->edit($id,$order,$name)==0)
+$data["alerterror"]="New conclusion could not be Updated.";
+else
+$data["alertsuccess"]="conclusion Updated Successfully.";
+$data["redirect"]="site/viewconclusion";
+$this->load->view("redirect",$data);
+}
+}
+public function deleteconclusion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->conclusion_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewconclusion";
+$this->load->view("redirect",$data);
+}
+public function viewconclusionquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewconclusionquestion";
+$data["base_url"]=site_url("site/viewconclusionquestionjson");
+$data["title"]="View conclusionquestion";
+$this->load->view("template",$data);
+}
+function viewconclusionquestionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_conclusionquestion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_conclusionquestion`.`conclusion`";
+$elements[1]->sort="1";
+$elements[1]->header="Conclusion";
+$elements[1]->alias="conclusion";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_conclusionquestion`.`question`";
+$elements[2]->sort="1";
+$elements[2]->header="Question";
+$elements[2]->alias="question";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionquestion`");
+$this->load->view("json",$data);
+}
+
+public function createconclusionquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createconclusionquestion";
+ $data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["question"]=$this->question_model->getquestiondropdown();
+$data["title"]="Create conclusionquestion";
+$this->load->view("template",$data);
+}
+public function createconclusionquestionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("question","Question","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["question"]=$this->question_model->getquestiondropdown();
+$data["page"]="createconclusionquestion";
+$data["title"]="Create conclusionquestion";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$question=$this->input->get_post("question");
+if($this->conclusionquestion_model->create($conclusion,$question)==0)
+$data["alerterror"]="New conclusionquestion could not be created.";
+else
+$data["alertsuccess"]="conclusionquestion created Successfully.";
+$data["redirect"]="site/viewconclusionquestion";
+$this->load->view("redirect",$data);
+}
+}
+public function editconclusionquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editconclusionquestion";
+$data["title"]="Edit conclusionquestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["question"]=$this->question_model->getquestiondropdown();
+$data["before"]=$this->conclusionquestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editconclusionquestionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("question","Question","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editconclusionquestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["question"]=$this->question_model->getquestiondropdown();
+$data["title"]="Edit conclusionquestion";
+$data["before"]=$this->conclusionquestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$question=$this->input->get_post("question");
+if($this->conclusionquestion_model->edit($id,$conclusion,$question)==0)
+$data["alerterror"]="New conclusionquestion could not be Updated.";
+else
+$data["alertsuccess"]="conclusionquestion Updated Successfully.";
+$data["redirect"]="site/viewconclusionquestion";
+$this->load->view("redirect",$data);
+}
+}
+public function deleteconclusionquestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->conclusionquestion_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewconclusionquestion";
+$this->load->view("redirect",$data);
+}
+public function viewconclusionsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewconclusionsuggestion";
+$data["base_url"]=site_url("site/viewconclusionsuggestionjson");
+$data["title"]="View conclusionsuggestion";
+$this->load->view("template",$data);
+}
+function viewconclusionsuggestionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_conclusionsuggestion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_conclusionsuggestion`.`conclusion`";
+$elements[1]->sort="1";
+$elements[1]->header="Conclusion";
+$elements[1]->alias="conclusion";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_conclusionsuggestion`.`suggestion`";
+$elements[2]->sort="1";
+$elements[2]->header="Suggestion";
+$elements[2]->alias="suggestion";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionsuggestion`");
+$this->load->view("json",$data);
+}
+
+public function createconclusionsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createconclusionsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["title"]="Create conclusionsuggestion";
+$this->load->view("template",$data);
+}
+public function createconclusionsuggestionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("suggestion","Suggestion","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="createconclusionsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["title"]="Create conclusionsuggestion";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$suggestion=$this->input->get_post("suggestion");
+if($this->conclusionsuggestion_model->create($conclusion,$suggestion)==0)
+$data["alerterror"]="New conclusionsuggestion could not be created.";
+else
+$data["alertsuccess"]="conclusionsuggestion created Successfully.";
+$data["redirect"]="site/viewconclusionsuggestion";
+$this->load->view("redirect",$data);
+}
+}
+public function editconclusionsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editconclusionsuggestion";
+$data["title"]="Edit conclusionsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["before"]=$this->conclusionsuggestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editconclusionsuggestionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("suggestion","Suggestion","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editconclusionsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data["title"]="Edit conclusionsuggestion";
+$data["before"]=$this->conclusionsuggestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$suggestion=$this->input->get_post("suggestion");
+if($this->conclusionsuggestion_model->edit($id,$conclusion,$suggestion)==0)
+$data["alerterror"]="New conclusionsuggestion could not be Updated.";
+else
+$data["alertsuccess"]="conclusionsuggestion Updated Successfully.";
+$data["redirect"]="site/viewconclusionsuggestion";
+$this->load->view("redirect",$data);
+}
+}
+public function deleteconclusionsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->conclusionsuggestion_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewconclusionsuggestion";
+$this->load->view("redirect",$data);
+}
+public function viewconclusionfinalsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewconclusionfinalsuggestion";
+$data["base_url"]=site_url("site/viewconclusionfinalsuggestionjson");
+$data["title"]="View conclusionfinalsuggestion";
+$this->load->view("template",$data);
+}
+function viewconclusionfinalsuggestionjson()
+{
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_conclusionfinalsuggestion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_conclusionfinalsuggestion`.`conclusion`";
+$elements[1]->sort="1";
+$elements[1]->header="Conclusion";
+$elements[1]->alias="conclusion";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_conclusionfinalsuggestion`.`conclusionsuggestion`";
+$elements[2]->sort="1";
+$elements[2]->header="Conclusion Suggestion";
+$elements[2]->alias="conclusionsuggestion";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionfinalsuggestion`");
+$this->load->view("json",$data);
+}
+
+public function createconclusionfinalsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="createconclusionfinalsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
+$data["title"]="Create conclusionfinalsuggestion";
+$this->load->view("template",$data);
+}
+public function createconclusionfinalsuggestionsubmit() 
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("conclusionsuggestion","Conclusion Suggestion","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+    $data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
+$data["page"]="createconclusionfinalsuggestion";
+$data["title"]="Create conclusionfinalsuggestion";
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
+if($this->conclusionfinalsuggestion_model->create($conclusion,$conclusionsuggestion)==0)
+$data["alerterror"]="New conclusionfinalsuggestion could not be created.";
+else
+$data["alertsuccess"]="conclusionfinalsuggestion created Successfully.";
+$data["redirect"]="site/viewconclusionfinalsuggestion";
+$this->load->view("redirect",$data);
+}
+}
+public function editconclusionfinalsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="editconclusionfinalsuggestion";
+$data["title"]="Edit conclusionfinalsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
+$data["before"]=$this->conclusionfinalsuggestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+public function editconclusionfinalsuggestionsubmit()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->form_validation->set_rules("id","Id","trim");
+$this->form_validation->set_rules("conclusion","Conclusion","trim");
+$this->form_validation->set_rules("conclusionsuggestion","Conclusion Suggestion","trim");
+if($this->form_validation->run()==FALSE)
+{
+$data["alerterror"]=validation_errors();
+$data["page"]="editconclusionfinalsuggestion";
+$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
+$data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
+$data["title"]="Edit conclusionfinalsuggestion";
+$data["before"]=$this->conclusionfinalsuggestion_model->beforeedit($this->input->get("id"));
+$this->load->view("template",$data);
+}
+else
+{
+$id=$this->input->get_post("id");
+$conclusion=$this->input->get_post("conclusion");
+$conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
+if($this->conclusionfinalsuggestion_model->edit($id,$conclusion,$conclusionsuggestion)==0)
+$data["alerterror"]="New conclusionfinalsuggestion could not be Updated.";
+else
+$data["alertsuccess"]="conclusionfinalsuggestion Updated Successfully.";
+$data["redirect"]="site/viewconclusionfinalsuggestion";
+$this->load->view("redirect",$data);
+}
+}
+public function deleteconclusionfinalsuggestion()
+{
+$access=array("1");
+$this->checkaccess($access);
+$this->conclusionfinalsuggestion_model->delete($this->input->get("id"));
+$data["redirect"]="site/viewconclusionfinalsuggestion";
+$this->load->view("redirect",$data);
+} 
+    
 }
 ?>

@@ -552,7 +552,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     background-color: #0784C8;
 }
 select {
-    display: block;
+    display: none;
 }
 .panel {
     margin-bottom: 20px;
