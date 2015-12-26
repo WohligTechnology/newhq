@@ -789,5 +789,163 @@ public function uploadImage(){
         else
             return false;
     }
+    
+      function getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch)
+    {
+        //SPAN OF CONTROL
+
+        if($spanofcontrol== 0-5){
+            $spanofcontrol1=0;
+            $spanofcontrol2=5;
+        }
+        else if($spanofcontrol== 6-10){
+            $spanofcontrol1=6;
+            $spanofcontrol2=10;
+        }
+        else if($spanofcontrol== 11-15){
+            $spanofcontrol1=11;
+            $spanofcontrol2=15;
+        }
+        else if($spanofcontrol== 16-20){
+            $spanofcontrol1=16;
+            $spanofcontrol2=20;
+        }
+        else if($spanofcontrol== 20-25){
+            $spanofcontrol1=20;
+            $spanofcontrol2=25;
+        }
+        else if($spanofcontrol== 25+){
+            $spanofcontrol1=25;
+            $spanofcontrol2=x;
+        }
+
+        // FOR EXPERIRENCE
+
+        if($experience== 0-2){
+            $experience1=0;
+            $experience2=2;
+        }
+        else if($experience== 3-5){
+            $experience1=3;
+            $experience2=5;
+        }
+        else if($experience== 6-8){
+            $experience1=6;
+            $experience2=8;
+        }
+        else if($experience== 8+){
+            $experience1=8;
+            $experience2=x;
+        }
+          
+          // FOR SALARY
+          
+             if($salary== 0-2){
+            $salary1=0;
+            $salary2=2;
+        }
+        else if($salary== 2-4){
+            $salary1=2;
+            $salary2=4;
+        } 
+          else if($salary== 5-7){
+            $salary1=5;
+            $salary2=7;
+        }
+        else if($salary== 8-10){
+            $salary1=8;
+            $salary2=10;
+        }
+        else if($salary== 11-13){
+            $salary1=11;
+            $salary2=13;
+        } 
+        else if($salary== 14-16){
+            $salary1=14;
+            $salary2=16;
+        }
+        else if($salary== 17-19){
+            $salary1=17;
+            $salary2=19;
+        }
+        else if($salary== 19){
+            $salary1=19;
+            $salary2=x;
+        }
+          
+        $where="";
+           if ($salary != "") {
+            if($salary != x){
+        $fromsal=intval($salary1."00000");
+        $tosal=intval($salary2."00000");
+            $where .= "AND `user`.`salary` BETWEEN '$fromsal' AND '$tosal'";
+            }
+            else{
+             $where .= "AND `user`.`salary` > 1900000";
+            }
+
+        }
+           if ($experience != "") {
+            if($experience2=="x"){
+                 $where .= "AND `user`.`noofyearsinorganization` > '$experience1'";
+            }
+            else
+            {
+                $where .= "AND `user`.`noofyearsinorganization` BETWEEN '$experience1' AND '$experience2'";
+            }
+
+        }
+        if ($gender != "") {
+            $where .= " AND `user`.`gender`='$gender'";
+        }
+        if ($maritalstatus != "") {
+            $where .= " AND `user`.`maritalstatus`='$maritalstatus'";
+        }
+        if ($designation != "") {
+            $where .= " AND `user`.`designation`='$designation'";
+        }
+        if ($department != "") {
+            $where .= "AND `user`.`department`='$department'";
+        }
+        if ($spanofcontrol != "") {
+            if($spanofcontrol2=="x"){
+                 $where .= "AND `user`.`spanofcontrol` > '$spanofcontrol1'";
+            }
+            else
+            {
+                $where .= "AND `user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2'";
+            }
+
+        }
+       
+        if ($branch != "") {
+            $where .= "AND `user`.`branch`='$branch'";
+        }
+        $where = " $where ";
+
+        $arr = array();
+        $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,2")->result();
+        foreach($testquery as $row1)
+        {
+            $testid=$row1->id;
+            $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `order` ASC")->result();
+            foreach($query as $row)
+            {
+                $pillarid = $row->id;
+                $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
+                $testexpectedweight=$testexpectedweights->weight;
+                $testname=$testexpectedweights->testname;
+                $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
+    FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
+                WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
+                $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
+                $row->testname=$testname;
+                $row->testexpectedweight=$testexpectedweight;
+            }
+            array_push($arr,$query);
+        }
+
+        return $arr;
+    }
 }
 ?>

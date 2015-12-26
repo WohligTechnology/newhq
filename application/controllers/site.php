@@ -3412,6 +3412,12 @@ $this->load->view("redirect2",$data);
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewconclusion";
+    $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 $data["base_url"]=site_url("site/viewconclusionjson");
 $data["title"]="View conclusion";
 $this->load->view("template",$data);
@@ -3491,9 +3497,12 @@ public function editconclusion()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="editconclusion";
+$data["page2"]="block/conclusionblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
 $data["title"]="Edit conclusion";
 $data["before"]=$this->conclusion_model->beforeedit($this->input->get("id"));
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 public function editconclusionsubmit()
 {
@@ -3536,9 +3545,12 @@ public function viewconclusionquestion()
 $access=array("1");
 $this->checkaccess($access);
 $data["page"]="viewconclusionquestion";
+$data["page2"]="block/conclusionblock";
+$data["before1"]=$this->input->get("id");
+$data["before2"]=$this->input->get("id");
 $data["base_url"]=site_url("site/viewconclusionquestionjson");
 $data["title"]="View conclusionquestion";
-$this->load->view("template",$data);
+$this->load->view("templatewith2",$data);
 }
 function viewconclusionquestionjson()
 {
@@ -3554,7 +3566,7 @@ $elements[1]->sort="1";
 $elements[1]->header="Conclusion";
 $elements[1]->alias="conclusion";
 $elements[2]=new stdClass();
-$elements[2]->field="`hq_conclusionquestion`.`question`";
+$elements[2]->field="`hq_question`.`text`";
 $elements[2]->sort="1";
 $elements[2]->header="Question";
 $elements[2]->alias="question";
@@ -3572,7 +3584,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionquestion`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionquestion` LEFT OUTER JOIN `hq_question` ON `hq_question`.`id`=`hq_conclusionquestion`.`question`");
 $this->load->view("json",$data);
 }
 
@@ -3610,8 +3622,8 @@ if($this->conclusionquestion_model->create($conclusion,$question)==0)
 $data["alerterror"]="New conclusionquestion could not be created.";
 else
 $data["alertsuccess"]="conclusionquestion created Successfully.";
-$data["redirect"]="site/viewconclusionquestion";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewconclusionquestion?id=".$conclusion;
+$this->load->view("redirect2",$data);
 }
 }
 public function editconclusionquestion()
@@ -3651,8 +3663,8 @@ if($this->conclusionquestion_model->edit($id,$conclusion,$question)==0)
 $data["alerterror"]="New conclusionquestion could not be Updated.";
 else
 $data["alertsuccess"]="conclusionquestion Updated Successfully.";
-$data["redirect"]="site/viewconclusionquestion";
-$this->load->view("redirect",$data);
+$data["redirect"]="site/viewconclusionquestion?id=".$conclusion;
+$this->load->view("redirect2",$data);
 }
 }
 public function deleteconclusionquestion()
@@ -3660,8 +3672,9 @@ public function deleteconclusionquestion()
 $access=array("1");
 $this->checkaccess($access);
 $this->conclusionquestion_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewconclusionquestion";
-$this->load->view("redirect",$data);
+$conclusionid=$this->input->get("conclusionid");
+$data["redirect"]="site/viewconclusionquestion?id=".$conclusionid;
+$this->load->view("redirect2",$data);
 }
 public function viewconclusionsuggestion()
 {
@@ -3923,6 +3936,38 @@ $this->conclusionfinalsuggestion_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewconclusionfinalsuggestion";
 $this->load->view("redirect",$data);
 } 
-    
+  public function viewinterlinkage()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewinterlinkage";
+$data["title"]="View conclusionfinalsuggestion";
+$this->load->view("template",$data);
+}  
+    public function getuserbyfilter(){
+       $access = array("1","2","3");
+		$this->checkaccess($access);
+        $gender=$this->input->get('gender');
+        $maritalstatus=$this->input->get('maritalstatus');
+        $designation=$this->input->get('designation');
+        $department=$this->input->get('department');
+        $spanofcontrol=$this->input->get('spanofcontrol');
+        $experience=$this->input->get('experience');
+        $salary=$this->input->get('salary');
+        $branch=$this->input->get('branch');
+
+        $pillarsdata=$this->menu_model->getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+
+        $data['weightgraph']=$pillarsdata;
+//        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+//        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+//		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+//		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+//		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//		$data[ 'page' ] = 'dashboard';
+//		$data[ 'title' ] = 'Welcome';
+//		$this->load->view( 'template', $data );   
+    }
 }
 ?>
