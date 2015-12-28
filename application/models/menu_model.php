@@ -453,10 +453,9 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
         }
         $where = " $where ";
 
-        $arr = array();
-        $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,2")->result();
-        foreach($testquery as $row1)
-        {
+        $arr = 0;
+        $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,1")->row();
+        $row1  = $testquery;
             $testid=$row1->id;
             $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `order` ASC")->result();
             foreach($query as $row)
@@ -472,9 +471,8 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
                 $row->testname=$testname;
                 $row->testexpectedweight=$testexpectedweight;
             }
-            array_push($arr,$query);
-        }
-
+            $arr = $query;
+      
         return $arr;
     }
     function drawpillarjsononhrdashboaard()

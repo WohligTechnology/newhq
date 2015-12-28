@@ -122,8 +122,6 @@
 </table>
 
 
-
-
 <script>
     var GlobalFunctions = {};
 

@@ -18,6 +18,7 @@
 	<script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/index.js"></script>
+	<script src="<?php echo base_url('assets').'/';?>js/lodash.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!--	 <script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>-->
 	 <script src="<?php echo base_url('assets/js/jquery.sparkline.js'); ?>" type="text/javascript"></script>
