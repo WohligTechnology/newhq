@@ -318,92 +318,138 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
 
     function drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch)
     {
-        //SPAN OF CONTROL
-
-        if($spanofcontrol== 0-5){
-            $spanofcontrol1=0;
-            $spanofcontrol2=5;
+         //SPAN OF CONTROL
+        if($spanofcontrol== '0-5'){
+            $spanofcontrol1='0';
+            $spanofcontrol2='5';
         }
-        else if($spanofcontrol== 6-10){
-            $spanofcontrol1=6;
-            $spanofcontrol2=10;
+        else if($spanofcontrol== '6-10'){
+            $spanofcontrol1='6';
+            $spanofcontrol2='10';
         }
-        else if($spanofcontrol== 11-15){
-            $spanofcontrol1=0;
-            $spanofcontrol2=5;
+        else if($spanofcontrol== '11-15'){
+            $spanofcontrol1='11';
+            $spanofcontrol2='15';
         }
-        else if($spanofcontrol== 16-20){
-            $spanofcontrol1=0;
-            $spanofcontrol2=5;
+        else if($spanofcontrol== '16-20'){
+            $spanofcontrol1='16';
+            $spanofcontrol2='20';
         }
-        else if($spanofcontrol== 20-25){
-            $spanofcontrol1=0;
-            $spanofcontrol2=5;
+        else if($spanofcontrol== '20-25'){
+            $spanofcontrol1='20';
+            $spanofcontrol2='25';
         }
-//        else if($spanofcontrol== 25+){
-//            $spanofcontrol1=25;
-//            $spanofcontrol2="";
-//        }
+        else if($spanofcontrol== '25'){
+            $spanofcontrol1='25';
+            $spanofcontrol2='';
+        }
 
         // FOR EXPERIRENCE
 
-        if($experience== 0-5){
-            $experience1=0;
-            $experience2=5;
+        if($experience== '0-2'){
+            $experience1='0';
+            $experience2='2';
         }
-        else if($experience== 6-10){
-            $experience1=6;
-            $experience2=10;
+        else if($experience== '3-5'){
+            $experience1='3';
+            $experience2='5';
         }
-        else if($experience== 11-15){
-            $experience1=0;
-            $experience2=5;
+        else if($experience== '6-8'){
+            $experience1='6';
+            $experience2='8';
         }
-        else if($experience== 16-20){
-            $experience1=0;
-            $experience2=5;
+        else if($experience== '8'){
+            $experience1='8';
+            $experience2='';
         }
-
+          
+          // FOR SALARY
+          
+             if($salary== '0-2'){
+               
+            $salary1=0;
+            $salary2=2;
+        }
+        else if($salary== '2-4'){
+           
+            $salary1=2;
+            $salary2=4;
+        } 
+          else if($salary== '5-7'){
+             
+            $salary1=5;
+            $salary2=7;
+        }
+        else if($salary== '8-10'){
+            $salary1=8;
+            $salary2=10;
+        }
+        else if($salary== '11-13'){
+            $salary1=11;
+            $salary2=13;
+        } 
+        else if($salary== 14-16){
+            $salary1=14;
+            $salary2=16;
+        }
+        else if($salary== 17-19){
+            $salary1=17;
+            $salary2=19;
+        }
+        else if($salary== 19){
+           
+            $salary1=19;
+            $salary2='';
+        }
+          
         $where="";
-        if ($gender != "") {
-            $where .= " AND `user`.`gender`='$gender'";
+           if ($salary != "") {
+            if($salary2 !='' ){
+        $fromsal=intval($salary1."00000");
+        $tosal=intval($salary2."00000");
+            $where .= "AND (`user`.`salary` BETWEEN '$fromsal' AND '$tosal') ";
+            }
+            else{
+             $where .= "AND `user`.`salary` > 1900000 ";
+            }
+
         }
-        if ($maritalstatus != "") {
-            $where .= " AND `user`.`maritalstatus`='$maritalstatus'";
-        }
-        if ($designation != "") {
-            $where .= " AND `user`.`designation`='$designation'";
-        }
-        if ($department != "") {
-            $where .= "AND `user`.`department`='$department'";
-        }
-        if ($spanofcontrol != "") {
-            if($spanofcontrol2==""){
-                 $where .= "AND `user`.`spanofcontrol` > '$spanofcontrol1'";
+           if ($experience != "") {
+            if($experience2==''){
+                 $where .= "AND `user`.`noofyearsinorganization` > $experience1 ";
             }
             else
             {
-                $where .= "AND `user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2'";
+                $where .= " AND (`user`.`noofyearsinorganization` BETWEEN '$experience1' AND '$experience2')";
             }
 
         }
-        if ($experience != "") {
-            $where .= "AND `user`.`noofyearsinorganization`='$experience'";
+        if ($gender != "") {
+            $where .= "AND  `user`.`gender`='$gender' ";
         }
-        if ($salary != "") {
-            if($salary != 101){
-            $salary=explode('-',$salary);
-        $fromsal=intval($salary[0]."00000");
-        $tosal=intval($salary[1]."00000");
-            $where .= "AND `user`.`salary` BETWEEN '$fromsal' AND '$tosal'";
+        if ($maritalstatus != "") {
+            $where .= "AND  `user`.`maritalstatus`='$maritalstatus' ";
+        }
+        if ($designation != "") {
+            $where .= "AND  `user`.`designation`='$designation' ";
+        }
+        if ($department != "") {
+            $where .= "AND `user`.`department`='$department' ";
+        }
+        if ($spanofcontrol != "") {
+            if($spanofcontrol2==''){
+                 $where .= "AND `user`.`spanofcontrol` > '$spanofcontrol1' ";
             }
-            else{
-             $where .= "AND `user`.`salary` > 10000000";
+            else
+            {
+                $where .= "AND (`user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2') ";
             }
 
         }
-        if ($branch != "") {
-            $where .= "AND `user`.`branch`='$branch'";
+      
+        if ($branch != "") 
+        {
+            $where .= "AND `user`.`branch`='$branch' ";
         }
         $where = " $where ";
 
@@ -793,70 +839,72 @@ public function uploadImage(){
       function getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch)
     {
         //SPAN OF CONTROL
-
-        if($spanofcontrol== 0-5){
-            $spanofcontrol1=0;
-            $spanofcontrol2=5;
+        if($spanofcontrol== '0-5'){
+            $spanofcontrol1='0';
+            $spanofcontrol2='5';
         }
-        else if($spanofcontrol== 6-10){
-            $spanofcontrol1=6;
-            $spanofcontrol2=10;
+        else if($spanofcontrol== '6-10'){
+            $spanofcontrol1='6';
+            $spanofcontrol2='10';
         }
-        else if($spanofcontrol== 11-15){
-            $spanofcontrol1=11;
-            $spanofcontrol2=15;
+        else if($spanofcontrol== '11-15'){
+            $spanofcontrol1='11';
+            $spanofcontrol2='15';
         }
-        else if($spanofcontrol== 16-20){
-            $spanofcontrol1=16;
-            $spanofcontrol2=20;
+        else if($spanofcontrol== '16-20'){
+            $spanofcontrol1='16';
+            $spanofcontrol2='20';
         }
-        else if($spanofcontrol== 20-25){
-            $spanofcontrol1=20;
-            $spanofcontrol2=25;
+        else if($spanofcontrol== '20-25'){
+            $spanofcontrol1='20';
+            $spanofcontrol2='25';
         }
-        else if($spanofcontrol== 25+){
-            $spanofcontrol1=25;
-            $spanofcontrol2=x;
+        else if($spanofcontrol== '25'){
+            $spanofcontrol1='25';
+            $spanofcontrol2='';
         }
 
         // FOR EXPERIRENCE
 
-        if($experience== 0-2){
-            $experience1=0;
-            $experience2=2;
+        if($experience== '0-2'){
+            $experience1='0';
+            $experience2='2';
         }
-        else if($experience== 3-5){
-            $experience1=3;
-            $experience2=5;
+        else if($experience== '3-5'){
+            $experience1='3';
+            $experience2='5';
         }
-        else if($experience== 6-8){
-            $experience1=6;
-            $experience2=8;
+        else if($experience== '6-8'){
+            $experience1='6';
+            $experience2='8';
         }
-        else if($experience== 8+){
-            $experience1=8;
-            $experience2=x;
+        else if($experience== '8'){
+            $experience1='8';
+            $experience2='';
         }
           
           // FOR SALARY
           
-             if($salary== 0-2){
+             if($salary== '0-2'){
+               
             $salary1=0;
             $salary2=2;
         }
-        else if($salary== 2-4){
+        else if($salary== '2-4'){
+           
             $salary1=2;
             $salary2=4;
         } 
-          else if($salary== 5-7){
+          else if($salary== '5-7'){
+             
             $salary1=5;
             $salary2=7;
         }
-        else if($salary== 8-10){
+        else if($salary== '8-10'){
             $salary1=8;
             $salary2=10;
         }
-        else if($salary== 11-13){
+        else if($salary== '11-13'){
             $salary1=11;
             $salary2=13;
         } 
@@ -869,83 +917,83 @@ public function uploadImage(){
             $salary2=19;
         }
         else if($salary== 19){
+           
             $salary1=19;
-            $salary2=x;
+            $salary2='';
         }
           
         $where="";
            if ($salary != "") {
-            if($salary != x){
+            if($salary2 !='' ){
         $fromsal=intval($salary1."00000");
         $tosal=intval($salary2."00000");
-            $where .= "AND `user`.`salary` BETWEEN '$fromsal' AND '$tosal'";
+            $where .= " (`user`.`salary` BETWEEN '$fromsal' AND '$tosal') AND";
             }
             else{
-             $where .= "AND `user`.`salary` > 1900000";
+             $where .= " `user`.`salary` > 1900000 AND";
             }
 
         }
            if ($experience != "") {
-            if($experience2=="x"){
-                 $where .= "AND `user`.`noofyearsinorganization` > '$experience1'";
+            if($experience2==''){
+                 $where .= " `user`.`noofyearsinorganization` > $experience1 AND";
             }
             else
             {
-                $where .= "AND `user`.`noofyearsinorganization` BETWEEN '$experience1' AND '$experience2'";
+                $where .= " (`user`.`noofyearsinorganization` BETWEEN '$experience1' AND '$experience2') AND";
             }
 
         }
         if ($gender != "") {
-            $where .= " AND `user`.`gender`='$gender'";
+            $where .= "  `user`.`gender`='$gender' AND";
         }
         if ($maritalstatus != "") {
-            $where .= " AND `user`.`maritalstatus`='$maritalstatus'";
+            $where .= "  `user`.`maritalstatus`='$maritalstatus' AND";
         }
         if ($designation != "") {
-            $where .= " AND `user`.`designation`='$designation'";
+            $where .= "  `user`.`designation`='$designation' AND";
         }
         if ($department != "") {
-            $where .= "AND `user`.`department`='$department'";
+            $where .= " `user`.`department`='$department' AND";
         }
         if ($spanofcontrol != "") {
-            if($spanofcontrol2=="x"){
-                 $where .= "AND `user`.`spanofcontrol` > '$spanofcontrol1'";
+            if($spanofcontrol2==''){
+                 $where .= " `user`.`spanofcontrol` > '$spanofcontrol1' AND";
             }
             else
             {
-                $where .= "AND `user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2'";
+                $where .= " (`user`.`spanofcontrol` BETWEEN '$spanofcontrol1' AND '$spanofcontrol2') AND";
             }
 
         }
-       
-        if ($branch != "") {
-            $where .= "AND `user`.`branch`='$branch'";
-        }
-        $where = " $where ";
-
-        $arr = array();
-        $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,2")->result();
-        foreach($testquery as $row1)
+      
+        if ($branch != "") 
         {
-            $testid=$row1->id;
-            $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `order` ASC")->result();
-            foreach($query as $row)
-            {
-                $pillarid = $row->id;
-                $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
-                $testexpectedweight=$testexpectedweights->weight;
-                $testname=$testexpectedweights->testname;
-                $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
-    FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
-                WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
-                $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
-                $row->testname=$testname;
-                $row->testexpectedweight=$testexpectedweight;
-            }
-            array_push($arr,$query);
+            $where .= " `user`.`branch`='$branch' AND";
         }
-
-        return $arr;
+        $where = " $where 1 ";
+          if($gender== '' AND $maritalstatus== '' AND $designation== '' AND $department== '' AND $spanofcontrol== '' AND $experience== '' AND $salary== '' AND $branch== '')
+          {
+              $userquery="SELECT `id` FROM `user` WHERE 1";
+          }
+          else{
+               $userquery="SELECT `id` FROM `user` WHERE $where";
+          }
+          // GET USERS
+          
+          $conclusionquery=$this->db->query("SELECT `id`, `order`, `name` FROM `hq_conclusion` WHERE 1")->result();
+          if(!empty($conclusionquery))
+          {
+            
+               foreach($conclusionquery as $conclusion)
+               {
+                $conclusion->averagepercent=$this->db->query("SELECT AVG(`hq_options`.`weight`) as `averagepercent` FROM `hq_options` LEFT OUTER JOIN `hq_useranswer` ON `hq_useranswer`.`option`=`hq_options`.`id` WHERE `hq_useranswer`.`user` IN ($userquery) AND `hq_useranswer`.`question` IN (SELECT `hq_conclusionquestion`.`question` FROM `hq_conclusionquestion` LEFT OUTER JOIN `hq_conclusion` ON `hq_conclusion`.`id`=`hq_conclusionquestion`.`conclusion` WHERE `hq_conclusion`.`id`='$conclusion->id')")->row();
+                
+               }
+          }
+          return $conclusionquery;
+        
+      
     }
 }
 ?>

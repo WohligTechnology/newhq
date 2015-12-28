@@ -609,6 +609,19 @@ $this->load->view("json",$data);
       $this->user_model->makeuserold($this->session->userdata("id"));
       $this->load->view('pillar',$data);
  }
+ public function getinterlinkage()
+ {
+        $gender=$this->input->get('gender');
+        $maritalstatus=$this->input->get('maritalstatus');
+        $designation=$this->input->get('designation');
+        $department=$this->input->get('department');
+        $spanofcontrol=$this->input->get('spanofcontrol');
+        $experience=$this->input->get('experience');
+        $salary=$this->input->get('salary');
+        $branch=$this->input->get('branch');
+        $data['message']=$this->menu_model->getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+        $this->load->view('json',$data);
+ }
 
    
    

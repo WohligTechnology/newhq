@@ -11,7 +11,7 @@
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf">
-        <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
+<!--        <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>-->
 
         <!--        <a href="#" class="blue darken-4 btn waves-effect waves-light">CLear Selection</a>-->
     </div>

@@ -21,32 +21,32 @@ class Site extends CI_Controller
 		if(!in_array($accesslevel,$access))
 			redirect( base_url() . 'index.php/site?alerterror=You do not have access to this page. ', 'refresh' );
 	}
-//    public function getdatabyfiltering(){
-//        $access = array("1","2","3");
-//		$this->checkaccess($access);
-//        $gender=$this->input->get('gender');
-//        $maritalstatus=$this->input->get('maritalstatus');
-//        $designation=$this->input->get('designation');
-//        $department=$this->input->get('department');
-//        $spanofcontrol=$this->input->get('spanofcontrol');
-//        $experience=$this->input->get('experience');
-//        $salary=$this->input->get('salary');
-//        $branch=$this->input->get('branch');
-//
-//        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
-//
-//        $data['weightgraph']=$pillarsdata;
-////        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-////        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
-////        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
-////		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
-////		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
-////		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-//		$data[ 'page' ] = 'dashboard';
-//		$data[ 'title' ] = 'Welcome';
-//		$this->load->view( 'template', $data );
-//
-//    }
+    public function getdatabyfiltering(){
+        $access = array("1","2","3");
+		$this->checkaccess($access);
+        $gender=$this->input->get('gender');
+        $maritalstatus=$this->input->get('maritalstatus');
+        $designation=$this->input->get('designation');
+        $department=$this->input->get('department');
+        $spanofcontrol=$this->input->get('spanofcontrol');
+        $experience=$this->input->get('experience');
+        $salary=$this->input->get('salary');
+        $branch=$this->input->get('branch');
+
+        $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+
+        $data['weightgraph']=$pillarsdata;
+        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+		$data[ 'page' ] = 'dashboard';
+		$data[ 'title' ] = 'Welcome';
+		$this->load->view( 'template', $data );
+
+    }
     public function index()
 	{
 		$access = array("1","2","3");
@@ -3409,53 +3409,37 @@ $this->load->view("redirect2",$data);
        
     public function viewconclusion()
 {
-$access=array("1");
-$this->checkaccess($access);
-$data["page"]="viewconclusion";
-    $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+        $access = array("1","2","3");
+		$this->checkaccess($access);
+        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
 		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
 		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
 		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-$data["base_url"]=site_url("site/viewconclusionjson");
-$data["title"]="View conclusion";
-$this->load->view("template",$data);
+		$data[ 'title' ] ="Interlinkage";
+        
+        $data['page']='viewconclusion';
+        $this->load->view('template',$data);
 }
+    
+    
 function viewconclusionjson()
-{
-$elements=array();
-$elements[0]=new stdClass();
-$elements[0]->field="`hq_conclusion`.`id`";
-$elements[0]->sort="1";
-$elements[0]->header="Id";
-$elements[0]->alias="id";
-$elements[1]=new stdClass();
-$elements[1]->field="`hq_conclusion`.`order`";
-$elements[1]->sort="1";
-$elements[1]->header="Order";
-$elements[1]->alias="order";
-$elements[2]=new stdClass();
-$elements[2]->field="`hq_conclusion`.`name`";
-$elements[2]->sort="1";
-$elements[2]->header="Name";
-$elements[2]->alias="name";
-$search=$this->input->get_post("search");
-$pageno=$this->input->get_post("pageno");
-$orderby=$this->input->get_post("orderby");
-$orderorder=$this->input->get_post("orderorder");
-$maxrow=$this->input->get_post("maxrow");
-if($maxrow=="")
-{
-$maxrow=20;
-}
-if($orderby=="")
-{
-$orderby="id";
-$orderorder="ASC";
-}
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusion`");
-$this->load->view("json",$data);
+{ 
+        
+ $access = array("1","2","3");
+		$this->checkaccess($access);
+        $gender=$this->input->get('gender');
+        $maritalstatus=$this->input->get('maritalstatus');
+        $designation=$this->input->get('designation');
+        $department=$this->input->get('department');
+        $spanofcontrol=$this->input->get('spanofcontrol');
+        $experience=$this->input->get('experience');
+        $salary=$this->input->get('salary');
+        $branch=$this->input->get('branch');
+        $interlinkage=$this->conclusion_model->getinterlinkage( $gender ,$maritalstatus, $designation ,$department, $spanofcontrol, $experience, $salary, $branch );
+        $data['message']=$interlinkage;
+        $this->load->view('json',$data);
 }
 
 public function createconclusion()
@@ -3944,21 +3928,8 @@ $data["page"]="viewinterlinkage";
 $data["title"]="View conclusionfinalsuggestion";
 $this->load->view("template",$data);
 }  
-    public function getuserbyfilter(){
-       $access = array("1","2","3");
-		$this->checkaccess($access);
-        $gender=$this->input->get('gender');
-        $maritalstatus=$this->input->get('maritalstatus');
-        $designation=$this->input->get('designation');
-        $department=$this->input->get('department');
-        $spanofcontrol=$this->input->get('spanofcontrol');
-        $experience=$this->input->get('experience');
-        $salary=$this->input->get('salary');
-        $branch=$this->input->get('branch');
-
-        $pillarsdata=$this->menu_model->getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
-
-        $data['weightgraph']=$pillarsdata;
+    public function getinterlinkage(){
+      
 //        $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 //        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
 //        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
