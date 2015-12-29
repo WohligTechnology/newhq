@@ -27,6 +27,7 @@
                 <label for="confirmpassword">Confirm Password</label>
             </div>
         </div>
+<!--
         <div class="row">
             <div class="input-field col m6 s12">
                 <label for="socialid">Social Id</label>
@@ -46,6 +47,7 @@
                 <label>Login Type</label>
             </div>
         </div>
+-->
         <div class="row">
             <div class="input-field col m6 s12 ">
                 <?php echo form_dropdown( 'status', $status, set_value( 'status'),"style='display:none'"); ?>
@@ -71,12 +73,14 @@
             </div>
         </div>
 
+<!--
         <div class="row">
             <div class="input-field col m6 s12">
                 <label for="json">Json</label>
                 <input type="text" id="json" name="json" value="<?php echo set_value('json');?>">
             </div>
         </div>
+-->
 <!--
         <div class="row">
             <div class="input-field col m6 s12">

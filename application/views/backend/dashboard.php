@@ -10,7 +10,7 @@
 
 
 </div>
-<span class="filprop"><u>Filter By :-</u></span>
+<!--<span class="filprop"><u>Filter By :-</u></span>-->
 <button class="btn btn-primary waves-effect waves-light blue darken-4 right" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
@@ -21,18 +21,14 @@
     </div>
     <div class="row selectproper">
         <div class="col s12 m3">
-            <select id="1" name="gender" onchange="GlobalFunctions.checkfortwo(1);" style="display:none">
-                <?php  foreach($gender as $key => $value) {?>
-                    <option value=<?php echo $key; ?>>
-                        <?php echo $value; ?>
+            <select id="1" name="gender" onchange="GlobalFunctions.checkfortwo(1);" style="display:none"><?php  foreach($gender as $key => $value) {?><option value=<?php echo $key; ?>><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
             <label>Gender</label>
         </div>
         <div class="col s12 m3">
-            <select id="2" name="salary" onchange="GlobalFunctions.checkfortwo(2);" style="display:none">
-                <option value="">Choose Salary</option>
+            <select id="2" name="salary" onchange="GlobalFunctions.checkfortwo(2);" style="display:none"><option value="">Choose Salary</option>
                 <option value="Below 2">Below 2L</option>
                 <option value="2-4">2L-4L</option>
                 <option value="5-7">5L-7L</option>
@@ -47,8 +43,7 @@
         <div class="col s12 m3">
             <select id="3" name="maritalstatus" onchange="GlobalFunctions.checkfortwo(3);" style="display:none">
                 <?php  foreach($maritalstatus as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -57,8 +52,7 @@
         <div class="col s12 m3">
             <select id="4" name="branch" onchange="GlobalFunctions.checkfortwo(4);" style="display:none">
                 <?php  foreach($branch as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                             <?php }?>
             </select>
             <label>Branch</label>
@@ -68,8 +62,7 @@
         <div class="col s12 m3">
             <select id="5" name="department" onchange="GlobalFunctions.checkfortwo(5);" style="display:none">
                 <?php  foreach($department as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -78,8 +71,7 @@
         <div class="col s12 m3">
             <select id="6" name="designation" onchange="GlobalFunctions.checkfortwo(6);" style="display:none">
                 <?php  foreach($designation as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -186,8 +178,6 @@
                 spanofcontrol: $spanofcontrol,
                 experience: $experience
             }, function (data) {
-                console.log(data);
-
                 pillars = _.pluck(data, "name");
                 expectedWeight = _.pluck(data, "expectedweight");
                 expectedWeight = _.map(expectedWeight, function (n) {
@@ -203,8 +193,6 @@
                     }
                     return parseInt(n);
                 });
-                console.log(expectedWeight);
-                console.log(pillAraverage);
                 $('select').material_select();
                 createGraph();
             });
@@ -229,7 +217,8 @@
         function createGraph() {
             $('.container').highcharts({
                 chart: {
-                    type: 'column'
+                    type: 'column',
+                    backgroundColor: "transparent"
                 },
                 credits: {
                     enabled: false
@@ -247,6 +236,7 @@
                         text: 'Percentage (%)'
                     }
                 },
+                colors: ['#FFB110', '#684703'],
                 tooltip: {
                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -258,7 +248,8 @@
                 plotOptions: {
                     column: {
                         pointPadding: 0.2,
-                        borderWidth: 0
+                        depth: 36,
+                        maxPointWidth: 1
                     }
                 },
                 series: [{

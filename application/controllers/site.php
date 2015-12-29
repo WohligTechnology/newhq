@@ -46,18 +46,20 @@ class Site extends CI_Controller
 
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard();
         $data['weightgraph']=$pillarsdata;
-        if($this->session->userdata('accesslevel')==3)
-        {
-        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
-        $data[ 'check' ] =$this->user_model->getcheckdropdown();
-		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-		$data[ 'team' ] =$this->user_model->getteamdropdown();
-		$data[ 'page' ] = 'hrdashboard';
-		$data[ 'title' ] = 'Welcome';
-		$this->load->view( 'template', $data );
-        }
-        else
-        {
+//        if($this->session->userdata('accesslevel')==3)
+//        {
+//         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
+//        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
+//		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+//		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+//		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+//		$data[ 'page' ] = 'dashboard';
+//		$data[ 'title' ] = 'Welcome';
+//		$this->load->view( 'template', $data );
+//        }
+//        else
+//        {
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
@@ -67,7 +69,7 @@ class Site extends CI_Controller
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );
-        }
+//        }
 
 	}
 
@@ -1018,7 +1020,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_pillar`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_pillar`","WHERE `hq_pillar`.`id`>5");
 $this->load->view("json",$data);
 }
 
@@ -1058,17 +1060,18 @@ $this->load->view("redirect",$data);
 }
 }
     public function getweightage(){
-        
+        $access=array("1","2","3");
+        $this->checkaccess($access);
          $range=$this->input->get_post('range');
-         $range1=$this->input->get_post('range1');
-         $range2=$this->input->get_post('range2');
-         $range3=$this->input->get_post('range3');
-         $range4=$this->input->get_post('range4');
-         $range5=$this->input->get_post('range5');
-         $range6=$this->input->get_post('range6');
-         $range7=$this->input->get_post('range7');
-         $range8=$this->input->get_post('range8');
-         $range9=$this->input->get_post('range9');
+         $range1=$this->input->get_post('rangeone');
+         $range2=$this->input->get_post('rangetwo');
+         $range3=$this->input->get_post('rangethree');
+         $range4=$this->input->get_post('rangefour');
+         $range5=$this->input->get_post('rangefive');
+         $range6=$this->input->get_post('rangesix');
+         $range7=$this->input->get_post('rangeseven');
+         $range8=$this->input->get_post('rangeeight');
+         $range9=$this->input->get_post('rangenine');
 //        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9);
 //        $data["redirect"]="site/index";
 //$this->load->view("redirect",$data);
@@ -1179,7 +1182,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_question` LEFT OUTER JOIN `hq_pillar` ON `hq_pillar`.`id`=`hq_question`.`pillar`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_question` LEFT OUTER JOIN `hq_pillar` ON `hq_pillar`.`id`=`hq_question`.`pillar`","WHERE `hq_question`.`id` > 20");
 $this->load->view("json",$data);
 }
 
@@ -1355,7 +1358,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_options`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_options`","WHERE `hq_options`.`question` >20");
 $this->load->view("json",$data);
 }
 
@@ -1679,8 +1682,8 @@ $data["before"]=$this->useranswer_model->beforeedit($this->input->get("id"));
         $data['test'] = $this->test_model->gettestdropdown();
         $data['question'] = $this->menu_model->getquestionbytest($data['before']->test,$data['before']->pillar);
         $data['question'] = $this->chintantable->todropdown($data['question']);
-        $data['option'] = $this->menu_model->getoptionbyquestion($data['before']->option);
-        $data['option'] = $this->chintantable->todropdown($data['option']);
+//        $data['option'] = $this->menu_model->getoptionbyquestion($data['before']->option);
+//        $data['option'] = $this->chintantable->todropdown($data['option']);
 //        $data['pincode'] = $this->pincode_model->getpincodebyarea($data['before']->locality);
 ////        print_r($data['pincode']);
 //        $data['pincode'] = $this->chintantable->todropdown($data['pincode']);
@@ -3432,6 +3435,53 @@ function viewconclusionjson()
         $interlinkage=$this->conclusion_model->getinterlinkage( $gender ,$maritalstatus, $designation ,$department, $spanofcontrol, $experience, $salary, $branch );
         $data['message']=$interlinkage;
         $this->load->view('json',$data);
+}     
+    public function viewconclusion1()
+{
+$access=array("1");
+$this->checkaccess($access);
+$data["page"]="viewconclusion1";
+$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+$data["base_url"]=site_url("site/viewconclusionjson1");
+$data["title"]="View conclusion";
+$this->load->view("template",$data);
+}
+    
+    
+function viewconclusionjson1()
+{ 
+$elements=array();
+$elements[0]=new stdClass();
+$elements[0]->field="`hq_conclusion`.`id`";
+$elements[0]->sort="1";
+$elements[0]->header="Id";
+$elements[0]->alias="id";
+$elements[1]=new stdClass();
+$elements[1]->field="`hq_conclusion`.`order`";
+$elements[1]->sort="1";
+$elements[1]->header="Order";
+$elements[1]->alias="order";
+$elements[2]=new stdClass();
+$elements[2]->field="`hq_conclusion`.`name`";
+$elements[2]->sort="1";
+$elements[2]->header="Name";
+$elements[2]->alias="name";
+$search=$this->input->get_post("search");
+$pageno=$this->input->get_post("pageno");
+$orderby=$this->input->get_post("orderby");
+$orderorder=$this->input->get_post("orderorder");
+$maxrow=$this->input->get_post("maxrow");
+if($maxrow=="")
+{
+$maxrow=20;
+}
+if($orderby=="")
+{
+$orderby="id";
+$orderorder="ASC";
+}
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusion`");
+$this->load->view("json",$data);
 }
 
 public function createconclusion()

@@ -10,7 +10,7 @@
                 <input type="text" id="name" name="name" value="<?php echo set_value('name',$before->name);?>">
             </div>
         </div> 
-           <div class="row">
+           <div class="row" style="display:none">
             <div class="input-field col s12 m6">
                 <label for="weight">Weight</label>
                 <input type="text" id="weight" name="weight" value="<?php echo set_value('weight',$before->weight);?>">

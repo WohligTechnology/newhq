@@ -457,7 +457,7 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
         $testquery=$this->db->query("SELECT * FROM `test` ORDER BY `id` DESC LIMIT 0,1")->row();
         $row1  = $testquery;
             $testid=$row1->id;
-            $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `order` ASC")->result();
+            $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `id` ASC")->result();
             foreach($query as $row)
             {
                 $pillarid = $row->id;
@@ -828,6 +828,14 @@ public function uploadImage(){
     public function blockBackend()
     {
         $query=$this->db->query("UPDATE `user` SET `isblock`=1 WHERE `accesslevel` IN (1,2,3)");
+        if($query)
+            return true;
+        else
+            return false;
+    }
+    public function unBlockCompany()
+    {
+        $query=$this->db->query("UPDATE `user` SET `isblock`=0 WHERE `accesslevel` IN (1,2,3)");
         if($query)
             return true;
         else

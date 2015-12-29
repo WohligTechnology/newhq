@@ -606,7 +606,11 @@ $this->load->view("json",$data);
  public function blockBackend()
  {
       $data['pillardata']=$this->menu_model->blockBackend();
-      $this->user_model->makeuserold($this->session->userdata("id"));
+      $this->load->view('pillar',$data);
+ } 
+ public function unBlockCompany()
+ {
+      $data['pillardata']=$this->menu_model->unBlockCompany();
       $this->load->view('pillar',$data);
  }
  public function getinterlinkage()

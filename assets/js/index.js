@@ -3,38 +3,38 @@
     $("[for=range]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range1]").on("change", function() {
-    $("[for=range1]").val(this.value +"%" );
+    $("[name=rangeone]").on("change", function() {
+    $("[for=rangeone]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range2]").on("change", function() {
-    $("[for=range2]").val(this.value +"%" );
+    $("[name=rangetwo]").on("change", function() {
+    $("[for=rangetwo]").val(this.value +"%" );
     }).trigger("change"); 
 
-    $("[name=range3]").on("change", function() {
-    $("[for=range3]").val(this.value +"%" );
+    $("[name=rangethree]").on("change", function() {
+    $("[for=rangethree]").val(this.value +"%" );
     }).trigger("change"); 
 
-    $("[name=range4]").on("change", function() {
-    $("[for=range4]").val(this.value +"%" );
+    $("[name=rangefour]").on("change", function() {
+    $("[for=rangefour]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range5]").on("change", function() {
-    $("[for=range5]").val(this.value +"%" );
+    $("[name=rangefive]").on("change", function() {
+    $("[for=rangefive]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range6]").on("change", function() {
-    $("[for=range6]").val(this.value +"%" );
+    $("[name=rangesix]").on("change", function() {
+    $("[for=rangesix]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range7]").on("change", function() {
-    $("[for=range7]").val(this.value +"%" );
+    $("[name=rangeseven]").on("change", function() {
+    $("[for=rangeseven]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range8]").on("change", function() {
-    $("[for=range8]").val(this.value +"%" );
+    $("[name=rangeeight]").on("change", function() {
+    $("[for=rangeeight]").val(this.value +"%" );
     }).trigger("change");
 
-    $("[name=range9]").on("change", function() {
-    $("[for=range9]").val(this.value +"%" );
+    $("[name=rangenine]").on("change", function() {
+    $("[for=rangenine]").val(this.value +"%" );
     }).trigger("change");

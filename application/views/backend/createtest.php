@@ -12,7 +12,7 @@
         </div>
            <div class="row">
             <div class="input-field col s12 m6">
-                <label for="units">Units</label>
+                <label for="units">No of Question to send</label>
                 <input type="text" id="units" name="units" value="<?php echo set_value('units');?>">
             </div>
         </div>

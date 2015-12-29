@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2015 at 07:27 AM
+-- Generation Time: Dec 29, 2015 at 12:13 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `accesslevel` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accesslevel`
@@ -39,7 +39,8 @@ INSERT INTO `accesslevel` (`id`, `name`) VALUES
 (1, 'admin'),
 (2, 'CEO'),
 (4, 'Employee'),
-(3, 'HR');
+(3, 'HR'),
+(5, 'Master Admin');
 
 -- --------------------------------------------------------
 
@@ -84,6 +85,70 @@ INSERT INTO `hq_branch` (`id`, `language`, `name`, `branchid`, `address`) VALUES
 (1, 0, 'Mumbai', 'br1', 'Mumbai,Maharashtra'),
 (2, 0, 'Branch2', 'br2', '2,2 area,2,2,2'),
 (3, 0, 'Vikroli1', 'V121', 'lbs road111');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_conclusion`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_conclusion` (
+  `id` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_conclusion`
+--
+
+INSERT INTO `hq_conclusion` (`id`, `order`, `name`) VALUES
+(2, 1, 'first conclusions'),
+(3, 2, 'Second Conclusion');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_conclusionfinalsuggestion`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_conclusionfinalsuggestion` (
+  `id` int(11) NOT NULL,
+  `conclusion` int(11) NOT NULL,
+  `conclusionsuggestion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_conclusionquestion`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_conclusionquestion` (
+  `id` int(11) NOT NULL,
+  `conclusion` int(11) NOT NULL,
+  `question` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_conclusionquestion`
+--
+
+INSERT INTO `hq_conclusionquestion` (`id`, `conclusion`, `question`) VALUES
+(1, 2, 1),
+(2, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hq_conclusionsuggestion`
+--
+
+CREATE TABLE IF NOT EXISTS `hq_conclusionsuggestion` (
+  `id` int(11) NOT NULL,
+  `conclusion` int(11) NOT NULL,
+  `suggestion` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -164,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `hq_options` (
   `weight` varchar(255) NOT NULL,
   `optiontext` text NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_options`
@@ -268,7 +333,13 @@ INSERT INTO `hq_options` (`id`, `question`, `representation`, `actualorder`, `im
 (101, 20, 1, 0, '', '', '50', 'Lack of Acceptance', 'Lack of Acceptance'),
 (102, 20, 1, 0, '', '', '40', 'Each employee in one''s own zone', 'Each employee in one''s own zone'),
 (103, 20, 1, 0, '', '', '30', 'Waiting for 6:30 PM', 'Waiting for 6:30 PM'),
-(104, 1, 0, 2345, 'download_(2)1.jpg', '123', '543', 'abc', 'abc123');
+(104, 1, 0, 2345, 'download_(2)1.jpg', '123', '543', 'abc', 'abc123'),
+(105, 21, 1, 0, '', '', '50', 'dummy option 1', 'dummy option 1'),
+(106, 22, 1, 0, '', '', '70', 'dummy option 2', 'dummy option 2'),
+(107, 23, 1, 0, '', '', '80', 'dummy option 3', 'dummy option 3'),
+(108, 24, 1, 0, '', '', '55', 'dummy option 4', 'dummy option 4'),
+(109, 25, 0, 0, '', '', '85', 'dummy option 5', 'dummy option 5'),
+(110, 22, 1, 0, '', '', '75', 'Dummy option 2', 'Dummy option 2');
 
 -- --------------------------------------------------------
 
@@ -282,18 +353,23 @@ CREATE TABLE IF NOT EXISTS `hq_pillar` (
   `weight` varchar(255) NOT NULL,
   `order` varchar(255) NOT NULL,
   `expectedweight` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_pillar`
 --
 
 INSERT INTO `hq_pillar` (`id`, `name`, `weight`, `order`, `expectedweight`) VALUES
-(1, 'Work Life Blend', '100', '1', '80'),
-(2, 'Employee Engagement', '100', '2', '85'),
-(3, 'Driving Force', '100', '3', ''),
-(4, 'Health of an Individual', '100', '4', ''),
-(5, 'Interpersonal Relationships at Work', '100', '5', '');
+(1, 'Work Life Blend', '50', '1', '80'),
+(2, 'Employee Engagement', '50', '2', '85'),
+(3, 'Driving Force', '50', '3', '75'),
+(4, 'Health of an Individual', '50', '4', '60'),
+(5, 'Interpersonal Relationships at Work', '50', '5', '45'),
+(6, 'Pillar 6', '50', '6', '50'),
+(7, 'Pillar 7', '50', '7', '90'),
+(8, 'Pillar 8', '50', '8', '85'),
+(9, 'Pillar 9', '50', '9', '65'),
+(10, 'Pillar 10', '50', '10', '70');
 
 -- --------------------------------------------------------
 
@@ -308,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `hq_question` (
   `order` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_question`
@@ -334,7 +410,12 @@ INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `tex
 (17, 5, 0, '', '2015-08-04 11:38:10', 'When you are in a team meeting where tasks are being allocated, you think…'),
 (18, 5, 0, '', '2015-08-04 11:38:16', 'You are stuck in the lift with your boss. What next?'),
 (19, 5, 0, '', '2015-08-04 11:38:24', 'You are making a guest list for your birthday party. You think to yourself…'),
-(20, 5, 0, '', '2015-08-04 11:38:39', 'When I am at work, it is like…');
+(20, 5, 0, '', '2015-08-04 11:38:39', 'When I am at work, it is like…'),
+(21, 6, 0, '6', '2015-12-29 05:48:12', 'Dummy 1'),
+(22, 7, 0, '7', '2015-12-29 05:48:26', 'Dummy 2'),
+(23, 8, 0, '8', '2015-12-29 05:48:42', 'Dummy 3'),
+(24, 9, 0, '9', '2015-12-29 05:49:16', 'Dummy 4'),
+(25, 10, 0, '10', '2015-12-29 05:50:29', 'Dummy 5');
 
 -- --------------------------------------------------------
 
@@ -355,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `hq_surveyoption` (
 --
 
 INSERT INTO `hq_surveyoption` (`id`, `order`, `question`, `title`, `image`) VALUES
-(1, 11, 2, 'Try12', 'images.jpeg');
+(1, 1, 1, 'first option', '_322.jpg');
 
 -- --------------------------------------------------------
 
@@ -369,15 +450,14 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestion` (
   `text` varchar(255) NOT NULL,
   `starttime` time NOT NULL,
   `endtime` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestion`
 --
 
 INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`) VALUES
-(1, 0, 'dfgh', '00:00:00', '00:00:00'),
-(2, 0, 'vhewagr', '14:15:00', '11:15:00');
+(1, 1, 'first que', '02:03:00', '06:05:00');
 
 -- --------------------------------------------------------
 
@@ -390,7 +470,14 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestionanswer` (
   `user` int(11) NOT NULL,
   `question` int(11) NOT NULL,
   `option` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_surveyquestionanswer`
+--
+
+INSERT INTO `hq_surveyquestionanswer` (`id`, `user`, `question`, `option`) VALUES
+(1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -402,7 +489,14 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestionuser` (
   `id` int(11) NOT NULL,
   `question` int(11) NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_surveyquestionuser`
+--
+
+INSERT INTO `hq_surveyquestionuser` (`id`, `question`, `email`) VALUES
+(1, 1, 'pooja@wohlig.com');
 
 -- --------------------------------------------------------
 
@@ -439,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_useranswer`
@@ -551,7 +645,20 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (104, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
 (105, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
 (106, 15, 1, 1, 7, 1, '2015-12-12 08:54:57', 6),
-(107, 15, 1, 2, 11, 0, '2015-12-12 08:55:13', 6);
+(107, 15, 1, 2, 11, 0, '2015-12-12 08:55:13', 6),
+(108, 15, 2, 5, 25, 0, '2015-12-29 05:31:44', 6),
+(109, 15, 2, 6, 29, 0, '2015-12-29 05:31:55', 6),
+(110, 15, 3, 1, 10, 0, '2015-12-29 05:33:19', 6),
+(111, 15, 3, 10, 50, 0, '2015-12-29 05:33:36', 6),
+(112, 15, 4, 13, 68, 0, '2015-12-29 05:33:56', 6),
+(113, 15, 4, 14, 74, 0, '2015-12-29 05:34:08', 6),
+(114, 15, 5, 17, 85, 0, '2015-12-29 05:34:22', 6),
+(115, 15, 5, 18, 90, 0, '2015-12-29 05:34:40', 6),
+(116, 15, 6, 21, 105, 0, '2015-12-29 05:57:52', 6),
+(117, 15, 7, 22, 106, 0, '2015-12-29 05:58:02', 6),
+(118, 15, 8, 23, 107, 0, '2015-12-29 06:00:54', 6),
+(119, 15, 9, 24, 108, 0, '2015-12-29 06:01:13', 6),
+(120, 15, 10, 25, 109, 0, '2015-12-29 06:01:33', 6);
 
 -- --------------------------------------------------------
 
@@ -618,22 +725,24 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `parent`, `isactive`, `order`, `icon`) VALUES
-(1, 'Users', '', '', 'site/viewusers', 1, 0, 1, 1, 'icon-user'),
+(1, 'Profile', '', '', 'site/viewusers', 1, 0, 1, 1, 'icon-user'),
 (2, 'Branch', '', '', 'site/viewbranch', 1, 0, 1, 2, 'icon-dashboard'),
 (3, 'Department', '', '', 'site/viewdepartment', 1, 0, 1, 3, 'icon-dashboard'),
 (4, 'Dashboard', '', '', 'site/index', 1, 0, 1, 0, 'icon-dashboard'),
 (5, 'Designation', '', '', 'site/viewdesignation', 1, 0, 1, 4, 'icon-dashboard'),
-(6, 'Pillar', '', '', 'site/viewpillar', 1, 0, 1, 5, 'icon-dashboard'),
-(7, 'Questions', '', '', 'site/viewquestion', 1, 0, 1, 6, 'icon-dashboard'),
-(8, 'Options', '', '', 'site/viewoptions', 1, 0, 1, 7, 'icon-dashboard'),
+(6, 'Pillar', '', '', 'site/viewpillar', 1, 0, 1, 6, 'icon-dashboard'),
+(7, 'Questions', '', '', 'site/viewquestion', 1, 0, 1, 7, 'icon-dashboard'),
+(8, 'Options', '', '', 'site/viewoptions', 1, 0, 1, 8, 'icon-dashboard'),
 (9, 'User Answers', '', '', 'site/viewuseranswer', 1, 0, 1, 8, 'icon-dashboard'),
 (10, 'User Pillar', '', '', 'site/viewuserpillar', 1, 0, 1, 9, 'icon-dashboard'),
 (11, 'Content', '', '', 'site/viewcontent', 1, 0, 1, 10, 'icon-dashboard'),
-(12, 'Team', '', '', 'site/viewteam', 1, 0, 1, 11, 'icon-dashboard'),
+(12, 'Team', '', '', 'site/viewteam', 1, 0, 1, 5, 'icon-dashboard'),
 (14, 'Test ', '', '', 'site/viewtest', 1, 0, 1, 13, 'icon-dashboard'),
-(15, 'Test Pillar Expected', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard'),
+(15, 'Pillar Expected Value', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard'),
 (16, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 15, 'icon-dashboard'),
-(17, 'Survey', '', '', 'site/viewsurveyquestion', 1, 0, 1, 16, 'icon-dashboard');
+(17, 'Survey', '', '', 'site/viewsurveyquestion', 1, 0, 1, 16, 'icon-dashboard'),
+(18, 'Survey Users', '', '', 'site/viewsurveyquestionuser', 1, 0, 1, 17, 'icon-dashboard'),
+(19, 'Conclusion', '', '', 'site/viewconclusion1', 1, 0, 1, 18, 'icon-dashboard');
 
 -- --------------------------------------------------------
 
@@ -659,9 +768,9 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (6, 1),
 (7, 1),
 (8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
+(15, 0),
+(15, 0),
+(15, 0),
 (12, 1),
 (1, 2),
 (2, 2),
@@ -670,9 +779,9 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (5, 2),
 (6, 2),
 (8, 2),
-(9, 1),
-(10, 1),
-(11, 2),
+(15, 0),
+(15, 0),
+(15, 0),
 (12, 2),
 (1, 3),
 (2, 3),
@@ -681,16 +790,18 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (5, 3),
 (6, 3),
 (8, 3),
-(11, 3),
+(15, 0),
 (12, 3),
 (13, 1),
 (14, 1),
-(15, 1),
-(15, 2),
-(15, 3),
-(16, 1),
+(15, 0),
+(15, 0),
+(15, 0),
+(15, 0),
 (7, 3),
-(17, 1);
+(17, 1),
+(18, 1),
+(19, 5);
 
 -- --------------------------------------------------------
 
@@ -740,9 +851,6 @@ CREATE TABLE IF NOT EXISTS `test` (
 --
 
 INSERT INTO `test` (`id`, `name`, `units`, `schedule`, `startdate`, `department`, `branch`, `designation`, `check`, `team`, `timestamp`, `enddate`) VALUES
-(1, 'Department test', '2', 1, '2015-08-06', 1, 1, 1, 1, 5, '2015-08-06 12:23:45', '2015-08-18'),
-(2, 'Branch test', '1', 1, '2015-11-23', 0, 1, 0, 2, 0, '2015-11-25 12:41:23', '2015-08-18'),
-(5, 'test test', '', 1, '2015-11-26', 0, 0, 0, 0, 5, '2015-11-25 13:31:39', '0000-00-00'),
 (6, 'New Test', '2', 1, '2015-12-25', 1, 2, 2, 0, 5, '2015-12-12 08:51:26', '0000-00-00');
 
 -- --------------------------------------------------------
@@ -756,7 +864,7 @@ CREATE TABLE IF NOT EXISTS `testpillarexpected` (
   `test` int(11) NOT NULL,
   `pillar` int(11) NOT NULL,
   `expectedvalue` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testpillarexpected`
@@ -773,7 +881,16 @@ INSERT INTO `testpillarexpected` (`id`, `test`, `pillar`, `expectedvalue`) VALUE
 (8, 2, 4, 80),
 (9, 1, 5, 20),
 (10, 2, 5, 70),
-(11, 6, 1, 50);
+(11, 6, 1, 50),
+(12, 6, 2, 50),
+(13, 6, 3, 70),
+(14, 6, 4, 65),
+(15, 6, 5, 80),
+(20, 6, 6, 45),
+(21, 6, 7, 75),
+(22, 6, 8, 60),
+(23, 6, 9, 60),
+(24, 6, 10, 50);
 
 -- --------------------------------------------------------
 
@@ -788,7 +905,7 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
@@ -805,8 +922,21 @@ INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateand
 (15, 5, 2, 0, '2015-11-27 00:00:00', 0),
 (16, 5, 3, 0, '2015-11-28 00:00:00', 0),
 (17, 5, 4, 0, '2015-11-29 00:00:00', 0),
-(18, 6, 1, 0, '2015-12-25 00:00:00', 0),
-(19, 6, 2, 0, '2015-12-26 00:00:00', 0);
+(30, 6, 1, 0, '2015-12-25 00:00:00', 0),
+(31, 6, 2, 0, '2015-12-26 00:00:00', 0),
+(32, 6, 5, 0, '2015-12-27 00:00:00', 0),
+(33, 6, 6, 0, '2015-12-28 00:00:00', 0),
+(34, 6, 9, 0, '2015-12-29 00:00:00', 0),
+(35, 6, 10, 0, '2015-12-30 00:00:00', 0),
+(36, 6, 13, 0, '2015-12-31 00:00:00', 0),
+(37, 6, 14, 0, '2016-01-01 00:00:00', 0),
+(38, 6, 17, 0, '2016-01-02 00:00:00', 0),
+(39, 6, 18, 0, '2016-01-03 00:00:00', 0),
+(40, 6, 21, 0, '2016-01-04 00:00:00', 0),
+(41, 6, 22, 0, '2016-01-05 00:00:00', 0),
+(42, 6, 23, 0, '2016-01-06 00:00:00', 0),
+(43, 6, 24, 0, '2016-01-07 00:00:00', 0),
+(44, 6, 25, 0, '2016-01-08 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -839,26 +969,28 @@ CREATE TABLE IF NOT EXISTS `user` (
   `branch` int(11) NOT NULL,
   `language` varchar(255) NOT NULL,
   `team` int(11) NOT NULL,
-  `salary` varchar(50) NOT NULL
+  `salary` varchar(50) NOT NULL,
+  `isfirst` varchar(255) NOT NULL,
+  `isblock` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `gender`, `age`, `maritalstatus`, `designation`, `department`, `noofyearsinorganization`, `spanofcontrol`, `description`, `employeeid`, `branch`, `language`, `team`, `salary`) VALUES
-(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '', '', '1', '', 0, '0', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
-(4, 'pratik', '0cb2b62754dfd12b6ed0161d4b447df7', 'pratik@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, 'pratik', '1', '1', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(5, 'wohlig123', 'wohlig123', 'wohlig1@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(6, 'wohlig1', 'a63526467438df9566c508027d9cb06b', 'wohlig2@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'shn619@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
-(9, 'avinash', 'a208e5837519309129fa466b0c68396b', 'a@email.com', 2, '2014-12-03 11:06:19', 3, '', '', '123', '1', 'demojson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '', '', '', 0, '', 0, ''),
-(14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', '0', '', 0, '', 0, 1, 1, '', '', '															', '', 1, '0', 5, ''),
-(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
-(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '', '', '', 1, '1', 1, ''),
-(17, 'HR', 'a63526467438df9566c508027d9cb06b', 'hr@wohlig.com', 3, '0000-00-00 00:00:00', 1, '', '0', '12345678', '', '', 0, '20', 0, 0, 1, '12', '2', '		hbjhb													', '65656', 0, '0', 5, ''),
-(18, 'puja1', 'bb1a3428923be23e476267e097e4b342', 'puja1@email.com', 1, '0000-00-00 00:00:00', 3, 'download_(2).jpg', '0', '123451', 'Twitter', 'json11', 1, '25', 1, 2, 2, '12', 'span11', 'des111', 'emp111', 2, '0', 5, '');
+INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `gender`, `age`, `maritalstatus`, `designation`, `department`, `noofyearsinorganization`, `spanofcontrol`, `description`, `employeeid`, `branch`, `language`, `team`, `salary`, `isfirst`, `isblock`) VALUES
+(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '', '', '1', '', 0, '0', 0, 1, 1, '', '7', '															', '', 1, '0', 5, '', '1', 0),
+(4, 'pratik', '0cb2b62754dfd12b6ed0161d4b447df7', 'pratik@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, 'pratik', '1', '1', '', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0),
+(5, 'wohlig123', 'wohlig123', 'wohlig1@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0),
+(6, 'wohlig1', 'a63526467438df9566c508027d9cb06b', 'wohlig2@wohlig.com', 1, '2014-05-12 06:52:44', 1, NULL, '', '', '0', '', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0),
+(7, 'Avinash', 'a63526467438df9566c508027d9cb06b', 'shn619@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '7', '', '', 1, '1', 1, '', '', 0),
+(9, 'avinash', 'a208e5837519309129fa466b0c68396b', 'a@email.com', 2, '2014-12-03 11:06:19', 3, '', '', '123', '1', 'demojson', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0),
+(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0),
+(14, 'xdcvghbn', 'e99a18c428cb38d5f260853678922e03', 'dcvgb@rftgh.ghhb', 1, '2015-07-30 11:47:58', 1, '', '', '', '0', '', 0, '', 0, 1, 1, '', '7', '															', '', 1, '0', 5, '', '', 0),
+(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 1, '', 0, 1, 1, '10', '4', '', '', 1, '1', 1, '600000', '', 0),
+(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '7', '', '', 1, '1', 1, '', '', 0),
+(17, 'HR', 'a63526467438df9566c508027d9cb06b', 'hr@wohlig.com', 3, '0000-00-00 00:00:00', 1, '', '0', '12345678', '', '', 0, '20', 0, 0, 1, '12', '7', '		hbjhb													', '65656', 0, '0', 5, '', '1', 0),
+(18, 'puja1', 'bb1a3428923be23e476267e097e4b342', 'puja1@email.com', 1, '0000-00-00 00:00:00', 3, 'download_(2).jpg', '0', '123451', 'Twitter', 'json11', 1, '25', 1, 2, 2, '12', '7', 'des111', 'emp111', 2, '0', 5, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -955,6 +1087,30 @@ ALTER TABLE `config`
 -- Indexes for table `hq_branch`
 --
 ALTER TABLE `hq_branch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_conclusion`
+--
+ALTER TABLE `hq_conclusion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_conclusionfinalsuggestion`
+--
+ALTER TABLE `hq_conclusionfinalsuggestion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_conclusionquestion`
+--
+ALTER TABLE `hq_conclusionquestion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hq_conclusionsuggestion`
+--
+ALTER TABLE `hq_conclusionsuggestion`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1097,7 +1253,7 @@ ALTER TABLE `userquestionsend`
 -- AUTO_INCREMENT for table `accesslevel`
 --
 ALTER TABLE `accesslevel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `config`
 --
@@ -1108,6 +1264,26 @@ ALTER TABLE `config`
 --
 ALTER TABLE `hq_branch`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `hq_conclusion`
+--
+ALTER TABLE `hq_conclusion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `hq_conclusionfinalsuggestion`
+--
+ALTER TABLE `hq_conclusionfinalsuggestion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hq_conclusionquestion`
+--
+ALTER TABLE `hq_conclusionquestion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `hq_conclusionsuggestion`
+--
+ALTER TABLE `hq_conclusionsuggestion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hq_content`
 --
@@ -1127,17 +1303,17 @@ ALTER TABLE `hq_designation`
 -- AUTO_INCREMENT for table `hq_options`
 --
 ALTER TABLE `hq_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
 --
 -- AUTO_INCREMENT for table `hq_pillar`
 --
 ALTER TABLE `hq_pillar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `hq_question`
 --
 ALTER TABLE `hq_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `hq_surveyoption`
 --
@@ -1147,17 +1323,17 @@ ALTER TABLE `hq_surveyoption`
 -- AUTO_INCREMENT for table `hq_surveyquestion`
 --
 ALTER TABLE `hq_surveyquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestionanswer`
 --
 ALTER TABLE `hq_surveyquestionanswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestionuser`
 --
 ALTER TABLE `hq_surveyquestionuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hq_team`
 --
@@ -1167,7 +1343,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1182,12 +1358,12 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `testpillarexpected`
 --
 ALTER TABLE `testpillarexpected`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `user`
 --

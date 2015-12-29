@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Starter Template for Bootstrap 3.3.6</title>
+    <title>Weightages</title>
     <link rel="shortcut icon" href="">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 
@@ -28,7 +28,7 @@
             <div class="col s6 ">
                 <div class="padtop">
 
-                    <h5 class="padleft">Master Admin Weightages</h5>
+                    <h5 class="padleft"> Weightages</h5>
                     <div class="row">
 
                         <div class="all-range">
@@ -38,13 +38,13 @@
                                     <div class="progress-bar">
                                         <p>Work Life Blend</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
                                                     <input type="range" name="range" id="range" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -64,19 +64,17 @@
                                     <div class="progress-bar">
                                         <p>Driving Force</p>
 
-                                        <form action="#">
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range1" id="range1" min="0" max="100" />
+                                                    <input type="range" name="rangeone" id="rangeone" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range1" class="output"></output>
+                                    <output for="rangeone" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -90,19 +88,19 @@
                                     <div class="progress-bar">
                                         <p>Interpersonal Relationships at Work</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range2" id="range2" min="0" max="100" />
+                                                    <input type="range" name="rangetwo" id="rangetwo" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range2" class="output"></output>
+                                    <output for="rangetwo" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -116,19 +114,19 @@
                                     <div class="progress-bar">
                                         <p>Sens of Ownership</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range3" id="range3" min="0" max="100" />
+                                                    <input type="range" name="rangethree" id="rangethree" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                     
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range3" class="output"></output>
+                                    <output for="rangethree" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -142,10 +140,10 @@
                                     <div class="progress-bar">
                                         <p>Job Security</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range4" id="range4" min="0" max="100" />
+                                                    <input type="range" name="rangefour" id="rangefour" min="0" max="100" />
                                                 </p>
                                             </div>
                                         </form>
@@ -154,7 +152,7 @@
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range4" class="output"></output>
+                                    <output for="rangefour" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +163,7 @@
             <div class="col s6 ">
                 <div class="padtop">
 
-                    <h5 class="padleft">HR Admin Weightages</h5>
+                    <h5 class="padleft"></h5>
                     <div class="row">
 
                         <div class="all-range">
@@ -173,21 +171,21 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Work Life Blend</p>
+                                        <p>Pillar 6</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range5" id="range5" min="0" max="100" />
+                                                    <input type="range" name="rangefive" id="rangefive" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                      
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range5" class="output"></output>
+                                    <output for="rangefive" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -199,21 +197,21 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Driving Force</p>
+                                        <p>Pillar 7</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range6" id="range6" min="0" max="100" />
+                                                    <input type="range" name="rangesix" id="rangesix" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range6" class="output"></output>
+                                    <output for="rangesix" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -225,21 +223,21 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Interpersonal Relationships at Work</p>
+                                        <p>Pillar 8</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range7" id="range7" min="0" max="100" />
+                                                    <input type="range" name="rangeseven" id="rangeseven" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range7" class="output"></output>
+                                    <output for="rangeseven" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -251,21 +249,21 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Sens of Ownership</p>
+                                        <p>Pillar 9</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range8" id="range8" min="0" max="100" />
+                                                    <input type="range" name="rangeeight" id="rangeeight" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range8" class="output"></output>
+                                    <output for="rangeeight" class="output"></output>
                                 </div>
                             </div>
                         </div>
@@ -277,21 +275,21 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Job Security</p>
+                                        <p>Pillar 10</p>
 
-                                        <form action="#">
+                                
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range9" id="range9" min="0" max="100" />
+                                                    <input type="range" name="rangenine" id="rangenine" min="0" max="100" />
                                                 </p>
                                             </div>
-                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="col s2">
                                 <div class="progress-bar out-top">
-                                    <output for="range9" class="output"></output>
+                                    <output for="rangenine" class="output"></output>
                                 </div>
                             </div>
                         </div>

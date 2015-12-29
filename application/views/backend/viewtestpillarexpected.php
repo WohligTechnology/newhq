@@ -7,7 +7,7 @@
                     <thead>
                         <tr>
                             <th data-field="id">ID</th>
-                            <th data-field="test">Test</th>
+<!--                            <th data-field="test">Test</th>-->
                             <th data-field="pillar">Pillar</th>
                             <th data-field="expectedvalue">Expected Value</th>
                             <th data-field="action">Action</th>
@@ -29,7 +29,7 @@
 <script>
     function drawtable(resultrow) {
         
-        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.test + "</td><td>" + resultrow.pillar + "</td><td>" + resultrow.expectedvalue + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 z-depth-0 less-pad' href='<?php echo site_url('site/edittestpillarexpected?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red pad10 z-depth-0 less-pad' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletetestpillarexpected?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.pillar + "</td><td>" + resultrow.expectedvalue + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 z-depth-0 less-pad' href='<?php echo site_url('site/edittestpillarexpected?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red pad10 z-depth-0 less-pad' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletetestpillarexpected?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery('<?php echo $base_url;?>');
 </script>

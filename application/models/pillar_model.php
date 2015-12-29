@@ -62,6 +62,26 @@ $query=$this->db->update( "hq_pillar", $data3 );
 $data4=array("weight" => $range4);
 $this->db->where( "id", 5 );
 $query=$this->db->update( "hq_pillar", $data4 );
+        
+$data5=array("weight" => $range5);
+$this->db->where( "id", 6 );
+$query=$this->db->update( "hq_pillar", $data5 );
+        
+$data6=array("weight" => $range6);
+$this->db->where( "id", 7 );
+$query=$this->db->update( "hq_pillar", $data6 );
+        
+$data7=array("weight" => $range7);
+$this->db->where( "id", 8 );
+$query=$this->db->update( "hq_pillar", $data7 );
+        
+$data8=array("weight" => $range8);
+$this->db->where( "id", 9 );
+$query=$this->db->update( "hq_pillar", $data8 );
+        
+$data9=array("weight" => $range9);
+$this->db->where( "id", 10 );
+$query=$this->db->update( "hq_pillar", $data9 );
 return 1;
 }
 	public function getpillardropdown()
