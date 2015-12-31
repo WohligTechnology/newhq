@@ -629,10 +629,10 @@ $this->load->view("json",$data);
        $message = "Hiii      ".$link;
        $this->email->message($message);
        $this->email->send();
-            return 1;
+            
         }
     
-       
+       return 1;
    }
 
    
