@@ -62,7 +62,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Driving Force</p>
+                                        <p>Employee Engagement</p>
 
                                             <div class="input-border">
                                                 <p class="range-field">
@@ -86,7 +86,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Interpersonal Relationships at Work</p>
+                                        <p>Driving Force</p>
 
                                 
                                             <div class="input-border">
@@ -112,7 +112,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Sens of Ownership</p>
+                                        <p>Health of an Individual</p>
 
                                 
                                             <div class="input-border">
@@ -138,7 +138,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Job Security</p>
+                                        <p>Interpersonal Relationships at Work</p>
 
                                 
                                             <div class="input-border">
@@ -171,7 +171,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Pillar 6</p>
+                                        <p>Rewards and Recognition</p>
 
                                 
                                             <div class="input-border">
@@ -197,7 +197,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Pillar 7</p>
+                                        <p>Sense of Ownership</p>
 
                                 
                                             <div class="input-border">
@@ -223,7 +223,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Pillar 8</p>
+                                        <p>Work Environment</p>
 
                                 
                                             <div class="input-border">
@@ -249,7 +249,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Pillar 9</p>
+                                        <p>Job Security</p>
 
                                 
                                             <div class="input-border">
@@ -275,7 +275,7 @@
                                 <div class="left-side">
 
                                     <div class="progress-bar">
-                                        <p>Pillar 10</p>
+                                        <p>Alignment</p>
 
                                 
                                             <div class="input-border">

@@ -585,7 +585,7 @@ $this->load->view("json",$data);
        $link="<a href='http://localhost/kbc/#/playing/$hashvalue'>Click here </a> To get questions.";
         }
        $this->load->library('email');
-       $this->email->from('jagruti@wohlig.com', 'HQ');
+       $this->email->from('vigwohlig@gmail.com', 'HQ');
        $this->email->to($email);
        $this->email->subject('Test');   
            
