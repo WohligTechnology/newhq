@@ -139,7 +139,7 @@ HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `tes
     
     public function getUsers()
     {
-        $query = $this->db->query("SELECT `id` FROM `user` WHERE `accesslevel`=4")->result();
+        $query = $this->db->query("SELECT `id`,`email` FROM `user` WHERE `accesslevel`=4")->result();
         return $query;
     }
     

@@ -607,6 +607,33 @@ $this->load->view("json",$data);
         $data['message']=$this->menu_model->getinterlinkage($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
         $this->load->view('json',$data);
  }
+   public function sendMailToEachUser()
+   {
+       $getUserid=$this->restapi_model->getUsers();
+       print_r($getUserid);
+       echo "      ";
+        foreach($getUserid as $getUserid){
+            $email=$getUserid->email;
+            echo $email;
+            echo "      ";
+             $hashvalue=base64_encode ($getUserid->id."&hq");
+            echo $hashvalue;
+       $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+             echo "      ";
+            echo $link;
+               $this->load->library('email');
+       $this->email->from('vigwohlig@gmail.com', 'HQ');
+       $this->email->to($email);
+       $this->email->subject('Test');   
+           
+       $message = "Hiii      ".$link;
+       $this->email->message($message);
+       $this->email->send();
+            return 1;
+        }
+    
+       
+   }
 
    
    

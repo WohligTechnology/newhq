@@ -3517,7 +3517,7 @@ if($this->conclusion_model->create($order,$name)==0)
 $data["alerterror"]="New conclusion could not be created.";
 else
 $data["alertsuccess"]="conclusion created Successfully.";
-$data["redirect"]="site/viewconclusion";
+$data["redirect"]="site/viewconclusion1";
 $this->load->view("redirect",$data);
 }
 }
@@ -3557,7 +3557,7 @@ if($this->conclusion_model->edit($id,$order,$name)==0)
 $data["alerterror"]="New conclusion could not be Updated.";
 else
 $data["alertsuccess"]="conclusion Updated Successfully.";
-$data["redirect"]="site/viewconclusion";
+$data["redirect"]="site/viewconclusion1";
 $this->load->view("redirect",$data);
 }
 }
@@ -3566,7 +3566,7 @@ public function deleteconclusion()
 $access=array("1","5");
 $this->checkaccess($access);
 $this->conclusion_model->delete($this->input->get("id"));
-$data["redirect"]="site/viewconclusion";
+$data["redirect"]="site/viewconclusion1";
 $this->load->view("redirect",$data);
 }
 public function viewconclusionquestion()
@@ -3577,12 +3577,13 @@ $data["page"]="viewconclusionquestion";
 $data["page2"]="block/conclusionblock";
 $data["before1"]=$this->input->get("id");
 $data["before2"]=$this->input->get("id");
-$data["base_url"]=site_url("site/viewconclusionquestionjson");
+$data["base_url"]=site_url("site/viewconclusionquestionjson?id=".$this->input->get("id"));
 $data["title"]="View conclusionquestion";
 $this->load->view("templatewith2",$data);
 }
 function viewconclusionquestionjson()
 {
+$id=$this->input->get("id");
 $elements=array();
 $elements[0]=new stdClass();
 $elements[0]->field="`hq_conclusionquestion`.`id`";
@@ -3613,7 +3614,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionquestion` LEFT OUTER JOIN `hq_question` ON `hq_question`.`id`=`hq_conclusionquestion`.`question`");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_conclusionquestion` LEFT OUTER JOIN `hq_question` ON `hq_question`.`id`=`hq_conclusionquestion`.`question`","WHERE `hq_conclusionquestion`.`conclusion`='$id'");
 $this->load->view("json",$data);
 }
 
@@ -3623,7 +3624,7 @@ $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="createconclusionquestion";
  $data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data["question"]=$this->question_model->getquestiondropdown();
+$data["question"]=$this->conclusionquestion_model->getquestionfromtestdropdown();
 $data["title"]="Create conclusionquestion";
 $this->load->view("template",$data);
 }
@@ -3637,7 +3638,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data["question"]=$this->question_model->getquestiondropdown();
+$data["question"]=$this->conclusionquestion_model->getquestionfromtestdropdown();
 $data["page"]="createconclusionquestion";
 $data["title"]="Create conclusionquestion";
 $this->load->view("template",$data);
@@ -3662,7 +3663,7 @@ $this->checkaccess($access);
 $data["page"]="editconclusionquestion";
 $data["title"]="Edit conclusionquestion";
 $data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data["question"]=$this->question_model->getquestiondropdown();
+$data["question"]=$this->conclusionquestion_model->getquestionfromtestdropdown();
 $data["before"]=$this->conclusionquestion_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
@@ -3678,7 +3679,7 @@ if($this->form_validation->run()==FALSE)
 $data["alerterror"]=validation_errors();
 $data["page"]="editconclusionquestion";
 $data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data["question"]=$this->question_model->getquestiondropdown();
+$data["question"]=$this->conclusionquestion_model->getquestionfromtestdropdown();
 $data["title"]="Edit conclusionquestion";
 $data["before"]=$this->conclusionquestion_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);

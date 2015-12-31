@@ -40,5 +40,17 @@ public function getimagebyid($id)
 $query=$this->db->query("SELECT `image` FROM `hq_conclusionquestion` WHERE `id`='$id'")->row();
 return $query;
 }
+    public function getquestionfromtestdropdown()
+{
+$query=$this->db->query("SELECT * FROM `hq_question` INNER JOIN `hq_useranswer` ON `hq_useranswer`.`question`=`hq_question`.`id`")->result();
+$return=array(
+		);
+		foreach($query as $row)
+		{
+			$return[$row->id]=$row->text;
+		}
+		
+		return $return;
+}
 }
 ?>
