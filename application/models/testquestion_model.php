@@ -14,25 +14,23 @@ return  0;
 else
 return  $id;
 }
-         public function sendMailToEachUser()
+          public function sendMailToEachUser()
    {
        $getUserid=$this->restapi_model->getUsers();
         foreach($getUserid as $getUserid){
+            $email=$getUserid->email;
              $hashvalue=base64_encode ($getUserid->id."&hq");
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
-        }
-       $this->load->library('email');
+               $this->load->library('email');
        $this->email->from('vigwohlig@gmail.com', 'HQ');
        $this->email->to($email);
        $this->email->subject('Test');   
-           
-       $message = "Hiii      ".$link;
        $this->email->message($message);
        $this->email->send();
-        $data["message"] = $this->email->print_debugger();
-//       $data["message"] = 'true';
-       $this->load->view("json", $data);
-       
+            
+        }
+    
+       return 1;
    }
 public function beforeedit($id)
 {
