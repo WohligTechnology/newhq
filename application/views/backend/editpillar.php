@@ -23,7 +23,12 @@
             </div>
         </div> 
       
-       
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="expectedweight">Expected Weight</label>
+                <input type="text" id="expectedweight" name="expectedweight" value="<?php echo set_value('expectedweight',$before->expectedweight);?>">
+            </div>
+        </div> 
        
         <div class="row">
             <div class="col s12 m6">

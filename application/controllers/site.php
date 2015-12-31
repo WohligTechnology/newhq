@@ -1051,7 +1051,8 @@ else
 $name=$this->input->get_post("name");
 $weight=$this->input->get_post("weight");
 $order=$this->input->get_post("order");
-if($this->pillar_model->create($name,$weight,$order)==0)
+$expectedweight=$this->input->get_post("expectedweight");
+if($this->pillar_model->create($name,$weight,$order,$expectedweight)==0)
 $data["alerterror"]="New pillar could not be created.";
 else
 $data["alertsuccess"]="pillar created Successfully.";
@@ -1110,7 +1111,8 @@ $id=$this->input->get_post("id");
 $name=$this->input->get_post("name");
 $weight=$this->input->get_post("weight");
 $order=$this->input->get_post("order");
-if($this->pillar_model->edit($id,$name,$weight,$order)==0)
+    $expectedweight=$this->input->get_post("expectedweight");
+if($this->pillar_model->edit($id,$name,$weight,$order,$expectedweight)==0)
 $data["alerterror"]="New pillar could not be Updated.";
 else
 $data["alertsuccess"]="pillar Updated Successfully.";

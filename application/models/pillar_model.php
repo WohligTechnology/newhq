@@ -3,9 +3,9 @@ if ( !defined( "BASEPATH" ) )
 exit( "No direct script access allowed" );
 class pillar_model extends CI_Model
 {
-public function create($name,$weight,$order)
+public function create($name,$weight,$order,$expectedweight)
 {
-$data=array("name" => $name,"weight" => $weight,"order" => $order);
+$data=array("name" => $name,"weight" => $weight,"order" => $order,"expectedweight" => $expectedweight);
 $query=$this->db->insert( "hq_pillar", $data );
 $id=$this->db->insert_id();
 if(!$query)
@@ -24,9 +24,9 @@ $this->db->where("id",$id);
 $query=$this->db->get("hq_pillar")->row();
 return $query;
 }
-public function edit($id,$name,$weight,$order)
+public function edit($id,$name,$weight,$order,$expectedweight)
 {
-$data=array("name" => $name,"weight" => $weight,"order" => $order);
+$data=array("name" => $name,"weight" => $weight,"order" => $order,"expectedweight" => $expectedweight);
 $this->db->where( "id", $id );
 $query=$this->db->update( "hq_pillar", $data );
 return 1;
