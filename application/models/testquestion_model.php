@@ -8,11 +8,32 @@ public function create($test,$question)
 $data=array("test" => $test,"question" => $question);
 $query=$this->db->insert( "testquestion", $data );
 $id=$this->db->insert_id();
+$this->testquestion_model->sendMailToEachUser();
 if(!$query)
 return  0;
 else
 return  $id;
 }
+         public function sendMailToEachUser()
+   {
+       $getUserid=$this->restapi_model->getUsers();
+        foreach($getUserid as $getUserid){
+             $hashvalue=base64_encode ($getUserid->id."&hq");
+       $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+        }
+       $this->load->library('email');
+       $this->email->from('vigwohlig@gmail.com', 'HQ');
+       $this->email->to($email);
+       $this->email->subject('Test');   
+           
+       $message = "Hiii      ".$link;
+       $this->email->message($message);
+       $this->email->send();
+        $data["message"] = $this->email->print_debugger();
+//       $data["message"] = 'true';
+       $this->load->view("json", $data);
+       
+   }
 public function beforeedit($id)
 {
 $selectedquestion=$this->db->query("SELECT `id`,`question`,`test` FROM `testquestion` WHERE `test`='$id'")->result();

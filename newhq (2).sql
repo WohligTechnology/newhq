@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2015 at 08:38 AM
+-- Generation Time: Dec 31, 2015 at 07:13 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -229,117 +229,193 @@ CREATE TABLE IF NOT EXISTS `hq_options` (
   `weight` varchar(255) NOT NULL,
   `optiontext` text NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_options`
 --
 
 INSERT INTO `hq_options` (`id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text`) VALUES
-(7, 1, 1, 0, '', '', '20', '1: I try to take the same bus back home everyday', '1: I try to take the same bus back home everyday'),
-(8, 1, 1, 0, '', '', '50', '2: I secretly have a bunk bed in office', '2: I secretly have a bunk bed in office'),
-(9, 1, 1, 0, '', '', '70', '3: I see the sun set everyday', '3: I see the sun set everyday'),
-(10, 1, 1, 0, '', '', '100', '4: I wasn''t able to attend the last family function', '4: I wasn''t able to attend the last family function'),
-(11, 2, 1, 0, '', '', '100', '4 pictures as mentioned in the Pictorial Representation column.', '4 pictures as mentioned in the Pictorial Representation column.'),
-(12, 3, 1, 0, '', '', '20', 'Getting recognized', 'Getting recognized'),
-(13, 3, 1, 0, '', '', '30', 'Money', 'Money'),
-(14, 3, 1, 0, '', '', '50', 'Happy Workplace', 'Happy Workplace'),
-(15, 3, 1, 0, '', '', '70', 'Time with family and friends', 'Time with family and friends'),
-(16, 3, 1, 0, '', '', '80', 'Success', 'Success'),
-(17, 3, 1, 0, '', '', '90', 'Independence', 'Independence'),
-(18, 3, 1, 0, '', '', '25', 'Support', 'Support'),
-(19, 3, 1, 0, '', '', '100', 'Community Service', 'Community Service'),
-(20, 4, 1, 0, '', '', '50', '1: It''s simple. I do both!', '1: It''s simple. I do both!'),
-(21, 4, 1, 0, '', '', '20', '2: I can''t help thinking about work while exercising', '2: I can''t help thinking about work while exercising'),
-(22, 4, 1, 0, '', '', '100', '3: I am out of practice when it comes to exercising', '3: I am out of practice when it comes to exercising'),
-(23, 4, 1, 0, '', '', '70', '4:  I focus on exercising while I am at it', '4:  I focus on exercising while I am at it'),
-(24, 5, 1, 0, '', '', '100', '1: Some things need to change', '1: Some things need to change'),
-(25, 5, 1, 0, '', '', '50', '2: We all have good days and bad days', '2: We all have good days and bad days'),
-(26, 5, 1, 0, '', '', '20', '3: Let''s not even talk about work', '3: Let''s not even talk about work'),
-(27, 5, 1, 0, '', '', '70', '4: It''s going really well!', '4: It''s going really well!'),
-(28, 6, 1, 0, '', '', '40', '1: Not really an issue because I can always reach out to someone.', '1: Not really an issue because I can always reach out to someone.'),
-(29, 6, 1, 0, '', '', '20', '2:  I don''t know what to do.', '2:  I don''t know what to do.'),
-(30, 6, 1, 0, '', '', '100', '3:  I''m not stressed. I get to learn something new.', '3:  I''m not stressed. I get to learn something new.'),
-(31, 6, 1, 0, '', '', '60', '4:  I''m not sure of who I can go to for help.', '4:  I''m not sure of who I can go to for help.'),
-(32, 7, 1, 0, '', '', '90', '1: Not a bad idea.', '1: Not a bad idea.'),
-(33, 7, 1, 0, '', '', '50', '2:  I''m not sure if you should apply  right now.', '2:  I''m not sure if you should apply  right now.'),
-(34, 7, 1, 0, '', '', '80', '3: Are you sure you want to apply in my company? `', '3: Are you sure you want to apply in my company?'),
-(35, 7, 1, 0, '', '', '100', '4: Sure! You should definitely apply. Send in your CV.', '4: Sure! You should definitely apply. Send in your CV.'),
-(36, 8, 1, 0, '', '', '100', '1: Okay. I don''t have much to say about this.', '1: Okay. I don''t have much to say about this.'),
-(37, 8, 1, 0, '', '', '20', '2: Yes, I know! Wow, that''s such good news!', '2: Yes, I know! Wow, that''s such good news!'),
-(38, 8, 1, 0, '', '', '60', '3: What is my organization getting an award for?', '3: What is my organization getting an award for?'),
-(39, 8, 1, 0, '', '', '80', '4:  That''s nice, I guess.', '4:  That''s nice, I guess.'),
-(40, 9, 1, 0, '', '', '20', 'Freedom', 'Freedom'),
-(41, 9, 1, 0, '', '', '30', 'Integrity', 'Integrity'),
-(42, 9, 1, 0, '', '', '40', 'Team Work', 'Team Work'),
-(43, 9, 1, 0, '', '', '50', 'Relationships', 'Relationships'),
-(44, 9, 1, 0, '', '', '60', 'Job Security', 'Job Security'),
-(45, 9, 1, 0, '', '', '70', 'Recognition', 'Recognition'),
-(46, 9, 1, 0, '', '', '80', 'Social Responsibility', 'Social Responsibility'),
-(47, 9, 1, 0, '', '', '100', 'Personal Growth', 'Personal Growth'),
-(48, 10, 1, 0, '', '', '30', 'Respect  from others', 'Respect  from others'),
-(49, 10, 1, 0, '', '', '40', 'Appreciation', 'Appreciation'),
-(50, 10, 1, 0, '', '', '50', 'Financial Stability', 'Financial Stability'),
-(51, 10, 1, 0, '', '', '60', 'Social Network (Friends and Family)', 'Social Network (Friends and Family)'),
-(52, 10, 1, 0, '', '', '70', 'Helping the Society', 'Helping the Society'),
-(53, 10, 1, 0, '', '', '80', 'Pursuing Hobbies', 'Pursuing Hobbies'),
-(54, 10, 1, 0, '', '', '90', 'Work', 'Work'),
-(55, 10, 1, 0, '', '', '100', 'Good Health', 'Good Health'),
-(56, 11, 1, 0, '', '', '30', '1: It''s a little hard to get out of bed.', '1: It''s a little hard to get out of bed.'),
-(57, 11, 1, 0, '', '', '50', '2: I need to check my mail first thing in the morning.', '2: I need to check my mail first thing in the morning.'),
-(58, 11, 1, 0, '', '', '70', '3: I can''t wait to have my morning cup of tea and start the day!', '3: I can''t wait to have my morning cup of tea and start the day!'),
-(59, 11, 1, 0, '', '', '100', '4: Can I go back in time to have the weekend again?', '4: Can I go back in time to have the weekend again?'),
-(60, 12, 1, 0, '', '', '100', 'Afford the luxuries', 'Afford the luxuries'),
-(61, 12, 1, 0, '', '', '90', 'The Team', 'The Team'),
-(62, 12, 1, 0, '', '', '80', 'It matters to me', 'It matters to me'),
-(63, 12, 1, 0, '', '', '70', 'Meet my deadlines/targets', 'Meet my deadlines/targets'),
-(64, 12, 1, 0, '', '', '60', 'Societal Acceptance', 'Societal Acceptance'),
-(65, 12, 1, 0, '', '', '50', 'Salary', 'Salary'),
-(66, 12, 1, 0, '', '', '40', 'Stability in Life', 'Stability in Life'),
-(67, 12, 1, 0, '', '', '30', 'Learn Something New', 'Learn Something New'),
-(68, 13, 1, 0, '', '', '30', '1: I have the time. What exercise should I be doing?', '1: I have the time. What exercise should I be doing?'),
-(69, 13, 1, 0, '', '', '100', '2: I exercise when I can. It depends on work.', '2: I exercise when I can. It depends on work.'),
-(70, 13, 1, 0, '', '', '70', '3:  I have an exercise routine that I follow.', '3:  I have an exercise routine that I follow.'),
-(71, 13, 1, 0, '', '', '50', '4: Exercise? I wish I had the time.', '4: Exercise? I wish I had the time.'),
-(72, 14, 1, 0, '', '', '50', '1: "I don''t know what to do."', '1: "I don''t know what to do."'),
-(73, 14, 1, 0, '', '', '40', '2: "This happens at work. I know how to deal with this."', '2: "This happens at work. I know how to deal with this."'),
-(74, 14, 1, 0, '', '', '70', '3: "I will talk to the Counsellor. That helps."', '3: "I will talk to the Counsellor. That helps."'),
-(75, 14, 1, 0, '', '', '100', '4: "I need help. Who should I talk to?"', '4: "I need help. Who should I talk to?"'),
-(76, 15, 1, 0, '', '', '40', '1: Let me make that call. I''ll start once that is done.', '1: Let me make that call. I''ll start once that is done.'),
-(77, 15, 1, 0, '', '', '30', '2: I need to finish this today. Let''s do this!', '2: I need to finish this today. Let''s do this!'),
-(78, 15, 1, 0, '', '', '100', '3: It''s due in the evening. Plenty of time left.', '3: It''s due in the evening. Plenty of time left.'),
-(79, 15, 1, 0, '', '', '70', '4: I can work on this while sending out those mails.', '4: I can work on this while sending out those mails.'),
-(80, 16, 1, 0, '', '', '10', '1: I follow a routine when I eat at work.', '1: I follow a routine when I eat at work.'),
-(81, 16, 1, 0, '', '', '40', '2: I eat a bit of both.', '2: I eat a bit of both.'),
-(82, 16, 1, 0, '', '', '70', '3: It''s faster and easier to have junk food at work.', '3: It''s faster and easier to have junk food at work.'),
-(83, 16, 1, 0, '', '', '100', '4: Eating in office? I wish I had the time!', '4: Eating in office? I wish I had the time!'),
-(84, 17, 1, 0, '', '', '40', '1: I am not sure of what to do. I can ask someone to tell me again.', '1: I am not sure of what to do. I can ask someone to tell me again.'),
-(85, 17, 1, 0, '', '', '60', '2:  Please don''t pick me for this one.', '2:  Please don''t pick me for this one.'),
-(86, 17, 1, 0, '', '', '80', '3:  I know what to do. Not a problem.', '3:  I know what to do. Not a problem.'),
-(87, 17, 1, 0, '', '', '100', '4: I don''t know what needs to be done. Who should I be asking?', '4: I don''t know what needs to be done. Who should I be asking?'),
-(88, 18, 1, 0, '', '', '100', '1: It''s a little awkward. What am I supposed to say?', '1: It''s a little awkward. What am I supposed to say?'),
-(89, 18, 1, 0, '', '', '60', '2: I would prefer to look at my phone.', '2: I would prefer to look at my phone.'),
-(90, 18, 1, 0, '', '', '40', '3: Why does the lift get stuck at a time like this? I don''t know what to do.', '3: Why does the lift get stuck at a time like this? I don''t know what to do.'),
-(91, 18, 1, 0, '', '', '20', '4: No problem! I get a chance to catch up with my boss.', '4: No problem! I get a chance to catch up with my boss.'),
-(92, 19, 1, 0, '', '', '30', '1: Some colleagues might want to be there.', '1: Some colleagues might want to be there.'),
-(93, 19, 1, 0, '', '', '50', '2: Colleagues for my party? Not so sure.', '2: Colleagues for my party? Not so sure.'),
-(94, 19, 1, 0, '', '', '60', '3: There are so many colleagues who would love to be there', '3: There are so many colleagues who would love to be there'),
-(95, 19, 1, 0, '', '', '100', '4: I am not sure of who I can call.', '4: I am not sure of who I can call.'),
-(96, 20, 1, 0, '', '', '100', 'Part of a Bigger Family', 'Part of a Bigger Family'),
-(97, 20, 1, 0, '', '', '90', 'Fun', 'Fun'),
-(98, 20, 1, 0, '', '', '80', 'Room full of strangers', 'Room full of strangers'),
-(99, 20, 1, 0, '', '', '70', 'Neutral', 'Neutral'),
-(100, 20, 1, 0, '', '', '60', 'Sense of Fear', 'Sense of Fear'),
-(101, 20, 1, 0, '', '', '50', 'Lack of Acceptance', 'Lack of Acceptance'),
-(102, 20, 1, 0, '', '', '40', 'Each employee in one''s own zone', 'Each employee in one''s own zone'),
-(103, 20, 1, 0, '', '', '30', 'Waiting for 6:30 PM', 'Waiting for 6:30 PM'),
-(104, 1, 0, 2345, 'download_(2)1.jpg', '123', '543', 'abc', 'abc123'),
-(105, 21, 1, 0, '', '', '50', 'dummy option 1', 'dummy option 1'),
-(106, 22, 1, 0, '', '', '70', 'dummy option 2', 'dummy option 2'),
-(107, 23, 1, 0, '', '', '80', 'dummy option 3', 'dummy option 3'),
-(108, 24, 1, 0, '', '', '55', 'dummy option 4', 'dummy option 4'),
-(109, 25, 0, 0, '', '', '85', 'dummy option 5', 'dummy option 5'),
-(110, 22, 1, 0, '', '', '75', 'Dummy option 2', 'Dummy option 2');
+(1, 1, 1, 0, '', '', '12.5', 'Getting recognized', 'Getting recognized'),
+(3, 1, 1, 0, '', '', '12.5', 'Enough money', 'Enough money'),
+(4, 1, 1, 0, '', '', '12.5', 'A happy workplace', 'A happy workplace'),
+(5, 1, 1, 0, '', '', '12.5', 'Time with family & friends', 'Time with family & friends'),
+(6, 1, 1, 0, '', '', '12.5', 'Success', 'Success'),
+(7, 1, 1, 0, '', '', '12.5', 'Independence', 'Independence'),
+(8, 1, 1, 0, '', '', '12.5', 'Support', 'Support'),
+(9, 1, 1, 0, '', '', '12.5', 'Community Service', 'Community Service'),
+(10, 2, 1, 0, '', '', '40', 'I take the same bus back home everyday', 'I take the same bus back home everyday'),
+(11, 2, 1, 0, '', '', '10', 'I secretly have a bunk bed in office', 'I secretly have a bunk bed in office'),
+(12, 2, 1, 0, '', '', '20', 'I wasn''t able to attend the last family function', 'I wasn''t able to attend the last family function'),
+(13, 2, 1, 0, '', '', '30', 'I manage to see the sun set almost everyday', 'I manage to see the sun set almost everyday'),
+(14, 3, 1, 0, '', '', '40', 'I only spend time with my family.', 'I only spend time with my family.'),
+(15, 3, 1, 0, '', '', '30', 'I manage to have fun but get some work done.', 'I manage to have fun but get some work done.'),
+(16, 3, 1, 0, '', '', '20', 'I do end up working when I am on a vacation.', 'I do end up working when I am on a vacation.'),
+(17, 3, 1, 0, '', '', '10', 'What vacation? There is so much work to do.', 'What vacation? There is so much work to do.'),
+(18, 4, 1, 0, '', '', '40', 'One thing at a time it is!', 'One thing at a time it is!'),
+(19, 4, 1, 0, '', '', '30', 'It''s simple. I manage both!', 'It''s simple. I manage both!'),
+(20, 4, 1, 0, '', '', '20', 'I am ''sooo out of practice''', 'I am ''sooo out of practice'''),
+(21, 4, 1, 0, '', '', '10', 'I can''t help thinking about work (Work in thought bubble)', 'I can''t help thinking about work (Work in thought bubble)'),
+(22, 5, 1, 0, '', '', '40', 'It''s going really well!', 'It''s going really well!'),
+(23, 5, 1, 0, '', '', '30', 'We all have good days and bad days.', 'We all have good days and bad days.'),
+(24, 5, 1, 0, '', '', '20', 'Some things need to change.', 'Some things need to change.'),
+(25, 5, 1, 0, '', '', '10', 'Let''s not even talk about work.', 'Let''s not even talk about work.'),
+(26, 6, 1, 0, '', '', '40', 'I''m not stressed. I get to learn something new.', 'I''m not stressed. I get to learn something new.'),
+(27, 6, 1, 0, '', '', '30', 'Not really an issue because I can always reach out to someone.', 'Not really an issue because I can always reach out to someone.'),
+(28, 6, 1, 0, '', '', '20', 'I''m not sure of who I can go to for help.', 'I''m not sure of who I can go to for help.'),
+(29, 6, 1, 0, '', '', '10', 'I don''t know what to do.', 'I don''t know what to do.'),
+(30, 7, 1, 0, '', '', '40', 'Sure! You should definitely apply. Send in your CV.', 'Sure! You should definitely apply. Send in your CV.'),
+(31, 7, 1, 0, '', '', '30', 'Not a bad idea.', 'Not a bad idea.'),
+(32, 1, 1, 0, '', '', '20', 'Are you sure you want to apply in my company?', 'Are you sure you want to apply in my company?'),
+(33, 7, 1, 0, '', '', '10', 'I''m not sure if you should apply right now.', 'I''m not sure if you should apply right now.'),
+(34, 8, 1, 0, '', '', '40', 'Yes, I know! Wow, that''s such good news!', 'Yes, I know! Wow, that''s such good news!'),
+(35, 8, 1, 0, '', '', '30', 'That''s nice, I guess.', 'That''s nice, I guess.'),
+(36, 8, 1, 0, '', '', '20', 'Okay. I don''t have much to say about this.', 'Okay. I don''t have much to say about this.'),
+(37, 8, 1, 0, '', '', '10', 'Why would someone reward us?', 'Why would someone reward us?'),
+(38, 9, 1, 0, '', '', '12.5', 'Freedom', 'Freedom'),
+(39, 9, 1, 0, '', '', '12.5', 'Integrity', 'Integrity'),
+(40, 9, 1, 0, '', '', '12.5', 'Team Work', 'Team Work'),
+(41, 9, 1, 0, '', '', '12.5', 'Relationships', 'Relationships'),
+(42, 9, 1, 0, '', '', '12.5', 'Job Security', 'Job Security'),
+(43, 9, 1, 0, '', '', '12.5', 'Recognition', 'Recognition'),
+(44, 9, 1, 0, '', '', '12.5', 'Social responsibility', 'Social responsibility'),
+(45, 9, 1, 0, '', '', '12.5', 'Personal growth', 'Personal growth'),
+(46, 10, 1, 0, '', '', '12.5', 'Respect from others', 'Respect from others'),
+(47, 10, 1, 0, '', '', '12.5', 'Appreciation', 'Appreciation'),
+(48, 10, 1, 0, '', '', '12.5', 'Financial stability (Remove the rupee sign)', 'Financial stability (Remove the rupee sign)'),
+(49, 10, 1, 0, '', '', '12.5', 'Social network (Friends and Family)', 'Social network (Friends and Family)'),
+(50, 10, 1, 0, '', '', '12.5', 'Helping the society', 'Helping the society'),
+(51, 10, 1, 0, '', '', '12.5', 'Pursuing hobbies', 'Pursuing hobbies'),
+(52, 10, 1, 0, '', '', '12.5', 'Work', 'Work'),
+(53, 10, 1, 0, '', '', '12.5', 'Good health', 'Good health'),
+(54, 11, 1, 0, '', '', '40', 'I can''t wait to have my morning cup of tea and start the day!', 'I can''t wait to have my morning cup of tea and start the day!'),
+(55, 11, 1, 0, '', '', '30', 'I need to check my mail first thing in the morning.', 'I need to check my mail first thing in the morning.'),
+(56, 11, 1, 0, '', '', '20', 'It''s a little hard to get out of bed.', 'It''s a little hard to get out of bed.'),
+(57, 11, 1, 0, '', '', '10', 'Can I go back in time to have the weekend again?', 'Can I go back in time to have the weekend again?'),
+(58, 13, 1, 0, '', '', '40', 'I have an exercise routine that I follow.', 'I have an exercise routine that I follow.'),
+(59, 13, 1, 0, '', '', '30', 'I exercise when I can. It depends on work.', 'I exercise when I can. It depends on work.'),
+(60, 13, 1, 0, '', '', '20', 'I have the time. What exercise should I be doing?', 'I have the time. What exercise should I be doing?'),
+(61, 13, 1, 0, '', '', '10', 'Exercise? I wish I had the time.', 'Exercise? I wish I had the time.'),
+(62, 14, 1, 0, '', '', '10', '"I don''t know what to do."', '"I don''t know what to do."'),
+(63, 14, 1, 0, '', '', '40', '"This happens at work. I know how to deal with this."', '"This happens at work. I know how to deal with this."'),
+(64, 14, 1, 0, '', '', '30', '"I will talk to the Counsellor. That helps."', '"I will talk to the Counsellor. That helps."'),
+(65, 14, 1, 0, '', '', '20', '"I need help. Who should I talk to?"', '"I need help. Who should I talk to?"'),
+(66, 15, 1, 0, '', '', '30', 'Let me finish what I''m doing. I''ll start once that is done.', 'Let me finish what I''m doing. I''ll start once that is done.'),
+(67, 15, 1, 0, '', '', '40', 'I need to finish this today. Let''s do this!', 'I need to finish this today. Let''s do this!'),
+(68, 15, 1, 0, '', '', '10', 'It''s due in the evening. Plenty of time left.', 'It''s due in the evening. Plenty of time left.'),
+(69, 15, 1, 0, '', '', '20', 'I can work on this while sending out those mails.', 'I can work on this while sending out those mails.'),
+(70, 16, 1, 0, '', '', '40', 'I follow a routine when I eat.', 'I follow a routine when I eat.'),
+(71, 16, 1, 0, '', '', '30', 'I eat whatever is available, even if its junk.', 'I eat whatever is available, even if its junk.'),
+(72, 16, 1, 0, '', '', '20', 'It''s faster and easier to have junk food.', 'It''s faster and easier to have junk food.'),
+(73, 16, 1, 0, '', '', '10', 'Eating in office? I wish I had the time!', 'Eating in office? I wish I had the time!'),
+(74, 12, 1, 0, '', '', '20', 'It matters to me', 'It matters to me'),
+(75, 12, 1, 0, '', '', '20', 'I get to learn something new', 'I get to learn something new'),
+(76, 12, 1, 0, '', '', '15', 'I like stability in life', 'I like stability in life'),
+(77, 12, 1, 0, '', '', '15', 'I love my team', 'I love my team'),
+(78, 12, 1, 0, '', '', '10', 'Money matters', 'Money matters'),
+(79, 12, 1, 0, '', '', '10', 'How else will people know me?', 'How else will people know me?'),
+(80, 12, 1, 0, '', '', '5', 'I have deadlines & targets', 'I have deadlines & targets'),
+(81, 12, 1, 0, '', '', '5', 'Why work?', 'Why work?'),
+(82, 17, 1, 0, '', '', '30', 'I am not sure of what to do. I can ask someone to tell me again though.', 'I am not sure of what to do. I can ask someone to tell me again though.'),
+(83, 17, 0, 0, '', '', '10', 'Please don''t pick me for this one.', 'Please don''t pick me for this one.'),
+(84, 17, 1, 0, '', '', '40', 'I know what to do. Not a problem.', 'I know what to do. Not a problem.'),
+(85, 17, 1, 0, '', '', '20', 'I don''t know what needs to be done. Who should I be asking?', 'I don''t know what needs to be done. Who should I be asking?'),
+(86, 18, 1, 0, '', '', '30', 'It''s a little awkward. What am I supposed to say?', 'It''s a little awkward. What am I supposed to say?'),
+(87, 18, 1, 0, '', '', '10', 'I would prefer to look at my phone.', 'I would prefer to look at my phone.'),
+(88, 18, 1, 0, '', '', '20', 'Why does the lift get stuck at a time like this? I don''t know what to do.', 'Why does the lift get stuck at a time like this? I don''t know what to do.'),
+(89, 18, 1, 0, '', '', '40', 'No problem! I get a chance to catch up with my boss.', 'No problem! I get a chance to catch up with my boss.'),
+(90, 19, 1, 0, '', '', '30', 'Some colleagues might want to be there.', 'Some colleagues might want to be there.'),
+(91, 19, 1, 0, '', '', '20', 'Colleagues for my party? Not so sure.', 'Colleagues for my party? Not so sure.'),
+(92, 19, 1, 0, '', '', '40', 'There are so many colleagues who would love to be there!', 'There are so many colleagues who would love to be there!'),
+(93, 19, 1, 0, '', '', '10', 'I am not sure of who I can call.', 'I am not sure of who I can call.'),
+(94, 20, 1, 0, '', '', '40', 'I''m part of a bigger family, Work is Fun', 'I''m part of a bigger family, Work is Fun'),
+(95, 20, 1, 0, '', '', '30', 'Normal, You are in a room full of strangers', 'Normal, You are in a room full of strangers'),
+(96, 20, 1, 0, '', '', '20', 'Like something wrong might happen, Alone', 'Like something wrong might happen, Alone'),
+(97, 20, 1, 0, '', '', '10', 'Like you don''t belong, Like you are waiting for 6:30 PM', 'Like you don''t belong, Like you are waiting for 6:30 PM'),
+(98, 21, 1, 0, '', '', '30', '"My colleagues were happy for me. Surprised my Boss didn''t say anything."', '"My colleagues were happy for me. Surprised my Boss didn''t say anything."'),
+(99, 21, 1, 0, '', '', '10', '"No one realized when I finished working on it."', '"No one realized when I finished working on it."'),
+(100, 21, 1, 0, '', '', '20', '"My colleagues were aware but didn''t really talk about it. Not such a big deal I guess."', '"My colleagues were aware but didn''t really talk about it. Not such a big deal I guess."'),
+(101, 21, 1, 0, '', '', '40', '"Everyone at work said I did a really good job!"', '"Everyone at work said I did a really good job!"'),
+(102, 22, 1, 0, '', '', '30', 'My rewards are at par with what the market offers', 'My rewards are at par with what the market offers'),
+(103, 22, 1, 0, '', '', '10', 'I''ve been rewarded much lesser than what the market offers', 'I''ve been rewarded much lesser than what the market offers'),
+(104, 22, 1, 0, '', '', '40', 'Wow! I''m a super achiever!', 'Wow! I''m a super achiever!'),
+(105, 22, 1, 0, '', '', '20', 'Not bad. Could have been better.', 'Not bad. Could have been better.'),
+(106, 23, 1, 0, '', '', '20', '"I don''t know too much about it. Who should I be asking?"', '"I don''t know too much about it. Who should I be asking?"'),
+(107, 23, 1, 0, '', '', '40', '"This happens often. I know all about it."', '"This happens often. I know all about it."'),
+(108, 23, 1, 0, '', '', '30', '"I know about this in brief. I got a mail this morning."', '"I know about this in brief. I got a mail this morning."'),
+(109, 23, 1, 0, '', '', '10', '"Appraisal Time? What''s it about?"', '"Appraisal Time? What''s it about?"'),
+(110, 24, 1, 0, '', '', '10', 'There are so many choices. It''s confusing.', 'There are so many choices. It''s confusing.'),
+(111, 24, 1, 0, '', '', '30', 'Am headed in the right direction.', 'Am headed in the right direction.'),
+(112, 24, 1, 0, '', '', '40', 'I''m doing what works for me!', 'I''m doing what works for me!'),
+(113, 24, 1, 0, '', '', '20', 'I am not sure if I am headed in the right direction.', 'I am not sure if I am headed in the right direction.'),
+(114, 25, 1, 0, '', '', '20', '"I don''t really know anything about it."', '"I don''t really know anything about it."'),
+(115, 25, 1, 0, '', '', '10', '"How does my life change?"', '"How does my life change?"'),
+(116, 25, 1, 0, '', '', '40', '"Yes, I know all about it. I know what needs to be done next too."', '"Yes, I know all about it. I know what needs to be done next too."'),
+(117, 25, 1, 0, '', '', '30', '"I know about what happened in the Meeting briefly."', '"I know about what happened in the Meeting briefly."'),
+(118, 26, 1, 0, '', '', '40', 'I have the rough notes with me. Let me make it again quickly.', 'I have the rough notes with me. Let me make it again quickly.'),
+(119, 26, 1, 0, '', '', '10', 'How could I delete that file? What was I thinking?', 'How could I delete that file? What was I thinking?'),
+(120, 26, 1, 0, '', '', '30', 'Let''s try and restart work.', 'Let''s try and restart work.'),
+(121, 26, 1, 0, '', '', '20', 'The presentation is in a few hours. What do I do?', 'The presentation is in a few hours. What do I do?'),
+(122, 27, 1, 0, '', '', '20', 'My team tells me about what needs to be done next and how to go about it.', 'My team tells me about what needs to be done next and how to go about it.'),
+(123, 27, 1, 0, '', '', '40', 'I complete what has to be done on my own. Not a problem.', 'I complete what has to be done on my own. Not a problem.'),
+(124, 27, 1, 0, '', '', '10', 'My team does everything for me.', 'My team does everything for me.'),
+(125, 27, 1, 0, '', '', '30', 'I handle parts of the project with a colleague.', 'I handle parts of the project with a colleague.'),
+(126, 28, 1, 0, '', '', '40', 'Let''s have a look at our weekly updates to see how we have done.', 'Let''s have a look at our weekly updates to see how we have done.'),
+(127, 28, 1, 0, '', '', '30', 'Let me give you a brief summary for the month.', 'Let me give you a brief summary for the month.'),
+(128, 28, 1, 0, '', '', '20', 'This has not been one of our best months.', 'This has not been one of our best months.'),
+(129, 28, 1, 0, '', '', '10', 'There isn''t much to say about the month.', 'There isn''t much to say about the month.'),
+(130, 29, 1, 0, '', '', '30', '"They might ask us about it."', '"They might ask us about it."'),
+(131, 29, 1, 0, '', '', '40', '"Did you send in your feedback about how the policy can be changed? It helps!"', '"Did you send in your feedback about how the policy can be changed? It helps!"'),
+(132, 29, 1, 0, '', '', '10', '"We''ll know about the leave policy once it is changed."', '"We''ll know about the leave policy once it is changed."'),
+(133, 29, 1, 0, '', '', '20', '"I was asked about it. Do you think it matters?"', '"I was asked about it. Do you think it matters?"'),
+(134, 30, 1, 0, '', '', '30', '"I could give you a brief outline."', '"I could give you a brief outline."'),
+(135, 30, 1, 0, '', '', '20', '"You might want to ask someone else about that."', '"You might want to ask someone else about that."'),
+(136, 30, 1, 0, '', '', '10', '"Let''s not get into that right now."', '"Let''s not get into that right now."'),
+(137, 30, 1, 0, '', '', '40', '"Let me send you the mail with the information right away."', '"Let me send you the mail with the information right away."'),
+(138, 31, 1, 0, '', '', '12.5', 'My Chair', 'My Chair'),
+(139, 31, 1, 0, '', '', '12.5', 'Our cafeteria', 'Our cafeteria'),
+(140, 31, 1, 0, '', '', '12.5', 'Lighting', 'Lighting'),
+(141, 31, 1, 0, '', '', '12.5', 'Ventilation', 'Ventilation'),
+(142, 31, 1, 0, '', '', '12.5', 'Commute to work', 'Commute to work'),
+(143, 31, 1, 0, '', '', '12.5', 'Clean washrooms', 'Clean washrooms'),
+(144, 31, 1, 0, '', '', '12.5', 'Technology at work', 'Technology at work'),
+(145, 31, 1, 0, '', '', '12.5', 'Safety', 'Safety'),
+(146, 32, 1, 0, '', '', '20', 'So who exactly will be coming?', 'So who exactly will be coming?'),
+(147, 32, 1, 0, '', '', '10', 'I wonder why they will be coming.', 'I wonder why they will be coming.'),
+(148, 32, 1, 0, '', '', '30', 'This might be a chance to talk to some of them.', 'This might be a chance to talk to some of them.'),
+(149, 32, 1, 0, '', '', '40', 'We have had meet-ups with them before. This should be fun.', 'We have had meet-ups with them before. This should be fun.'),
+(150, 33, 1, 0, '', '', '30', 'Not sure if I have felt this way before.', 'Not sure if I have felt this way before.'),
+(151, 33, 1, 0, '', '', '10', 'I know exactly how that feels.', 'I know exactly how that feels.'),
+(152, 33, 1, 0, '', '', '20', 'I feel that way sometimes.', 'I feel that way sometimes.'),
+(153, 33, 1, 0, '', '', '40', 'What should I be saying? I don''t know how that feels.', 'What should I be saying? I don''t know how that feels.'),
+(154, 34, 1, 0, '', '', '10', 'I''ll wait till my Boss is back. Work can wait.', 'I''ll wait till my Boss is back. Work can wait.'),
+(155, 34, 1, 0, '', '', '20', 'I am not sure of what to do. Who can I talk to?', 'I am not sure of what to do. Who can I talk to?'),
+(156, 34, 1, 0, '', '', '30', 'I know what to do. If I need help, I can always ask someone.', 'I know what to do. If I need help, I can always ask someone.'),
+(157, 34, 1, 0, '', '', '40', 'I can run the show.', 'I can run the show.'),
+(158, 35, 1, 0, '', '', '10', '"Should I be doing the same?"', '"Should I be doing the same?"'),
+(159, 35, 1, 0, '', '', '20', '"Is the break needed?"', '"Is the break needed?"'),
+(160, 35, 1, 0, '', '', '40', '"Makes sense. It will be helpful."', '"Makes sense. It will be helpful."'),
+(161, 35, 1, 0, '', '', '30', '"Might work!"', '"Might work!"'),
+(162, 36, 1, 0, '', '', '20', '"Are you prepared for the meeting?"', '"Are you prepared for the meeting?"'),
+(163, 36, 1, 0, '', '', '10', '"I might take someone else."', '"I might take someone else."'),
+(164, 36, 1, 0, '', '', '40', '"I know this meeting will go well!"', '"I know this meeting will go well!"'),
+(165, 36, 1, 0, '', '', '30', '"All the best. Let''s do well."', '"All the best. Let''s do well."'),
+(166, 37, 1, 0, '', '', '10', '"You want to talk about work at a party?"', '"You want to talk about work at a party?"'),
+(167, 37, 1, 0, '', '', '30', '"Yes, I read about it too. I don''t think it''s true."', '"Yes, I read about it too. I don''t think it''s true."'),
+(168, 37, 1, 0, '', '', '20', '"I don''t know too much about this."', '"I don''t know too much about this."'),
+(169, 37, 1, 0, '', '', '40', '"I am sure it''s not true. Let me tell you why."', '"I am sure it''s not true. Let me tell you why."'),
+(170, 38, 1, 0, '', '', '40', 'There is so much I can talk to them about!', 'There is so much I can talk to them about!'),
+(171, 38, 1, 0, '', '', '10', 'Why do they ask so many questions?', 'Why do they ask so many questions?'),
+(172, 38, 1, 0, '', '', '20', 'There isn''t much to tell them.', 'There isn''t much to tell them.'),
+(173, 38, 1, 0, '', '', '30', 'I don''t mind telling them about work.', 'I don''t mind telling them about work.'),
+(174, 39, 1, 0, '', '', '20', 'Someone will respond', 'Someone will respond'),
+(175, 39, 1, 0, '', '', '10', 'Laugh along', 'Laugh along'),
+(176, 39, 1, 0, '', '', '40', 'Share your viewpoint', 'Share your viewpoint'),
+(177, 39, 1, 0, '', '', '30', 'Tell my company about it', 'Tell my company about it'),
+(178, 40, 1, 0, '', '', '20', 'Doing the course might help. Not too sure.', 'Doing the course might help. Not too sure.'),
+(179, 40, 1, 0, '', '', '40', 'I have been wanting to do this course. This is great!', 'I have been wanting to do this course. This is great!'),
+(180, 40, 1, 0, '', '', '10', 'There is a lot to do at work already. Will doing this course help?', 'There is a lot to do at work already. Will doing this course help?'),
+(181, 40, 1, 0, '', '', '30', 'I should be able to manage that with work.', 'I should be able to manage that with work.');
 
 -- --------------------------------------------------------
 
@@ -360,16 +436,16 @@ CREATE TABLE IF NOT EXISTS `hq_pillar` (
 --
 
 INSERT INTO `hq_pillar` (`id`, `name`, `weight`, `order`, `expectedweight`) VALUES
-(1, 'Work Life Blend', '50', '1', '80'),
-(2, 'Employee Engagement', '50', '2', '85'),
-(3, 'Driving Force', '50', '3', '75'),
-(4, 'Health of an Individual', '50', '4', '60'),
-(5, 'Interpersonal Relationships at Work', '50', '5', '45'),
-(6, 'Pillar 6', '50', '6', '50'),
-(7, 'Pillar 7', '50', '7', '90'),
-(8, 'Pillar 8', '50', '8', '85'),
-(9, 'Pillar 9', '50', '9', '65'),
-(10, 'Pillar 10', '50', '10', '70');
+(1, 'Work-Life Blend', '60', '1', ''),
+(2, 'Employee Engagement', '20', '2', ''),
+(3, 'Driving Force', '40', '3', ''),
+(4, 'Health of an Individual', '60', '4', ''),
+(5, 'Interpersonal Relationships at Work', '70', '5', ''),
+(6, 'Rewards and Recognition', '90', '6', ''),
+(7, 'Sense of Ownership', '70', '7', ''),
+(8, 'Work Environment', '60', '8', ''),
+(9, 'Job Security', '40', '9', ''),
+(10, 'Alignment', '30', '10', '');
 
 -- --------------------------------------------------------
 
@@ -384,38 +460,53 @@ CREATE TABLE IF NOT EXISTS `hq_question` (
   `order` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_question`
 --
 
 INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `text`) VALUES
-(1, 1, 1, '', '2015-11-24 10:00:59', 'You put in your best at work. We know you do. But, your life\n\nlooks like this...'),
-(2, 1, 0, '', '2015-11-24 10:01:01', 'You have managed to get the much-awaited annual leave. You have taken your family along. You will be like…'),
-(3, 1, 0, '', '2015-08-04 11:34:14', 'You just met a genie who can grant you wishes of your choice. You choose…'),
-(4, 1, 0, '', '2015-08-04 11:34:42', 'You know how important it is to exercise as well as meet deadlines. We know you can do both. So…'),
-(5, 2, 0, '', '2015-08-04 11:35:01', 'You meet a school friend after a long time and she asks you, "How''s work?". You say…'),
-(6, 2, 0, '', '2015-08-04 11:35:28', 'You are in the middle of a project and things aren''t going your way.  What next?'),
-(7, 2, 0, '', '2015-08-04 11:35:56', 'Your junior in college approaches you for a job in your company and you say…'),
-(8, 2, 0, '', '2015-08-04 11:36:11', 'Congratulations! Your organization just won an award.'),
-(9, 3, 0, '', '2015-08-04 11:36:27', 'The values and/or beliefs that drive you in life are :'),
-(10, 3, 0, '', '2015-08-04 11:36:36', 'What will make you sing ''Because I''m happy..''?\n\nIn case audio option of the song (Because I''m happy) unavailable,\nWhat will make you want to say, "This makes me happy!"?'),
-(11, 3, 0, '', '2015-08-04 11:36:48', 'Yes, the weekend is over and Monday morning is back.'),
-(12, 3, 0, '', '2015-08-04 11:37:02', 'You come to work because.'),
-(13, 4, 0, '', '2015-08-04 11:37:21', 'To exercise or not to exercise…that is the question.'),
-(14, 4, 0, '', '2015-08-04 11:37:30', 'When work gets stressful, you say…'),
-(15, 4, 0, '', '2015-08-04 11:37:39', 'You need to submit that report by today evening and you think…'),
-(16, 4, 0, '', '2015-08-04 11:37:52', 'Your food habits at work looks like this…'),
-(17, 5, 0, '', '2015-08-04 11:38:10', 'When you are in a team meeting where tasks are being allocated, you think…'),
-(18, 5, 0, '', '2015-08-04 11:38:16', 'You are stuck in the lift with your boss. What next?'),
-(19, 5, 0, '', '2015-08-04 11:38:24', 'You are making a guest list for your birthday party. You think to yourself…'),
-(20, 5, 0, '', '2015-08-04 11:38:39', 'When I am at work, it is like…'),
-(21, 6, 0, '6', '2015-12-29 05:48:12', 'Dummy 1'),
-(22, 7, 0, '7', '2015-12-29 05:48:26', 'Dummy 2'),
-(23, 8, 0, '8', '2015-12-29 05:48:42', 'Dummy 3'),
-(24, 9, 0, '9', '2015-12-29 05:49:16', 'Dummy 4'),
-(25, 10, 0, '10', '2015-12-29 05:50:29', 'Dummy 5');
+(1, 1, 1, '', '2015-12-30 08:31:42', 'You just met a genie who grants you four wishes. You choose:'),
+(2, 1, 1, '', '2015-12-30 08:41:41', 'You put in your best at work. We know you do. So, your life looks something like this:'),
+(3, 1, 1, '', '2015-12-30 09:07:36', 'You have managed to get that much-awaited annual leave with family. Your vacation goes something like this:'),
+(4, 1, 1, '', '2015-12-30 09:12:53', 'Your health is as important as the next deadline.'),
+(5, 2, 1, '', '2015-12-30 09:19:55', 'You meet a school friend after a long time and he asks you, "How''s work?" You say:'),
+(6, 2, 1, '', '2015-12-30 09:21:21', 'You are in the middle of a project and things aren''t going your way.  What next?'),
+(7, 2, 1, '', '2015-12-30 09:22:15', 'Your friend approaches you for a job in your company. You are most likely to say this:'),
+(8, 2, 1, '', '2015-12-30 09:22:46', 'Congratulations! Your organization just won an award.'),
+(9, 3, 1, '', '2015-12-30 09:51:05', 'Some of the things that you value in life are :'),
+(10, 3, 1, '', '2015-12-30 09:51:47', 'You find yourself smiling because you are blessed with:'),
+(11, 3, 1, '', '2015-12-30 09:52:27', 'Yes, the weekend is over and Monday morning is back.'),
+(12, 3, 1, '', '2015-12-30 09:53:08', 'You work because:'),
+(13, 4, 1, '', '2015-12-30 10:41:49', 'To exercise or not to exercise…that is the question.'),
+(14, 4, 1, '', '2015-12-30 10:42:21', 'Say one day, there is just too much work. You are likely to think:'),
+(15, 4, 1, '', '2015-12-30 10:42:59', 'It''s the start of the day and you need to submit a report. You think:'),
+(16, 4, 1, '', '2015-12-30 10:43:39', 'Your food habits at work look like this:'),
+(17, 5, 1, '', '2015-12-30 11:17:28', 'You are in a team meeting where tasks are being allocated. You think:'),
+(18, 5, 1, '', '2015-12-30 11:18:00', 'You are stuck in the lift with your boss. Which of these is most likely to happen?'),
+(19, 5, 1, '', '2015-12-30 11:18:37', 'You are making a guest list for your birthday party. You think to yourself: (Our names)'),
+(20, 5, 1, '', '2015-12-30 11:19:12', 'When you are at work, you feel:'),
+(21, 6, 1, '', '2015-12-30 11:47:14', 'When you tell your best friend about a project you just completed at work, you say:'),
+(22, 6, 1, '', '2015-12-30 11:47:42', 'You are talking to your family about the rewards you get at work and then you realize:'),
+(23, 6, 1, '', '2015-12-30 11:48:10', 'When it''s time for appraisals in office, you think:'),
+(24, 6, 1, '', '2015-12-30 11:48:55', 'One year from now, you see your life looking like this:'),
+(25, 7, 1, '', '2015-12-30 12:12:31', 'Your colleague tells you about the recent Board Meeting and you say:'),
+(26, 7, 1, '', '2015-12-30 12:13:01', 'You accidentally delete a presentation that needs to be made this afternoon. You think:'),
+(27, 7, 1, '', '2015-12-30 12:13:43', 'Your team member is unwell and you take over the project. What next?'),
+(28, 7, 1, '', '2015-12-30 12:14:19', 'Your boss is most likely to say this during your monthly review (Remove the stick):'),
+(29, 8, 1, '', '2015-12-30 12:37:54', 'You''ve heard that your company is deciding to  change its leave policy. You tell your colleague this:'),
+(30, 8, 1, '', '2015-12-30 12:38:53', 'An intern walks up to you and asks you about some policies at work. You say this:'),
+(31, 8, 1, '', '2015-12-30 12:39:30', 'Here''s what is awesome about the place I work!'),
+(32, 8, 1, '', '2015-12-30 12:40:06', 'You are part of a gathering with the leadership team. You think:'),
+(33, 9, 1, '', '2015-12-30 12:42:22', 'Over dinner, your cousin tells you he almost thought he would lose his job yesterday. You think:'),
+(34, 9, 1, '', '2015-12-30 12:42:52', 'You have reached office and your boss calls saying he had to take leave urgently. You think:'),
+(35, 9, 1, '', '2015-12-30 12:43:22', 'Your colleague tells you he is taking a break to study & be eligible for a promotion. You think:'),
+(36, 9, 1, '', '2015-12-30 12:43:47', 'You are getting ready to leave office and meet an important client with your boss. You are most likely to hear this:'),
+(37, 10, 1, '', '2015-12-30 12:44:24', 'At a party, your friend asks you about something negative she has read in the papers about your company. You say:'),
+(38, 10, 1, '', '2015-12-30 12:44:51', 'When your relatives ask you about your work, you feel:'),
+(39, 10, 1, '', '2015-12-30 12:45:25', 'You come across a social media post that makes fun of the company you work for. You look at it and think:'),
+(40, 10, 1, '', '2015-12-30 12:46:39', 'Your Boss tells you about an online course to consider and you think:');
 
 -- --------------------------------------------------------
 
@@ -533,132 +624,7 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `hq_useranswer`
---
-
-INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `order`, `timestamp`, `test`) VALUES
-(1, 15, 1, 1, 7, 0, '2015-08-04 13:05:48', 1),
-(2, 15, 1, 2, 11, 0, '2015-08-04 13:06:17', 1),
-(3, 15, 1, 3, 15, 0, '2015-08-04 13:06:47', 1),
-(4, 15, 1, 4, 21, 0, '2015-08-04 13:07:38', 1),
-(5, 15, 2, 5, 25, 0, '2015-08-04 13:08:38', 1),
-(6, 15, 2, 6, 0, 0, '2015-08-04 13:08:54', 1),
-(7, 15, 2, 7, 33, 0, '2015-08-04 13:09:42', 1),
-(8, 15, 2, 8, 37, 0, '2015-08-04 13:11:00', 1),
-(9, 15, 3, 9, 43, 0, '2015-08-04 13:11:52', 1),
-(10, 15, 3, 10, 52, 0, '2015-08-04 13:12:41', 1),
-(11, 15, 3, 11, 56, 0, '2015-08-04 13:15:24', 1),
-(12, 15, 3, 12, 64, 0, '2015-08-04 13:16:30', 1),
-(13, 15, 4, 13, 70, 0, '2015-08-04 13:16:58', 1),
-(14, 15, 4, 14, 74, 0, '2015-08-04 13:17:11', 1),
-(15, 15, 4, 15, 76, 0, '2015-08-04 13:17:46', 1),
-(16, 15, 4, 17, 84, 0, '2015-08-04 13:18:06', 1),
-(17, 15, 4, 18, 90, 0, '2015-08-04 13:19:03', 1),
-(18, 15, 5, 17, 84, 0, '2015-08-05 04:20:22', 1),
-(19, 15, 5, 18, 89, 0, '2015-08-05 04:20:42', 1),
-(20, 15, 5, 19, 94, 0, '2015-08-05 04:21:03', 1),
-(21, 15, 5, 20, 99, 0, '2015-08-05 04:21:29', 1),
-(22, 16, 1, 1, 0, 0, '2015-11-27 05:59:59', 1),
-(23, 16, 1, 2, 0, 0, '2015-11-26 11:27:44', 1),
-(24, 16, 1, 3, 0, 0, '2015-11-26 11:27:47', 1),
-(25, 16, 1, 4, 0, 0, '2015-11-27 05:59:59', 1),
-(26, 16, 2, 5, 0, 0, '2015-11-27 05:59:59', 1),
-(27, 16, 2, 6, 0, 0, '2015-11-27 05:59:59', 1),
-(28, 16, 2, 7, 0, 0, '2015-11-27 05:59:59', 1),
-(29, 16, 2, 8, 0, 0, '2015-11-27 05:59:59', 1),
-(30, 16, 3, 9, 0, 0, '2015-11-27 05:59:59', 1),
-(31, 16, 3, 11, 0, 0, '2015-11-27 05:59:59', 1),
-(32, 16, 3, 12, 0, 0, '2015-11-27 05:59:59', 1),
-(33, 16, 4, 13, 0, 0, '2015-11-27 05:59:59', 1),
-(34, 16, 4, 14, 0, 0, '2015-11-27 05:59:59', 1),
-(35, 16, 4, 15, 0, 0, '2015-11-27 05:59:59', 1),
-(36, 16, 4, 16, 0, 0, '2015-11-27 05:59:59', 1),
-(37, 16, 5, 17, 0, 0, '2015-11-27 05:59:59', 1),
-(38, 16, 5, 18, 0, 0, '2015-11-27 05:59:59', 1),
-(39, 16, 5, 19, 0, 0, '2015-11-27 05:59:59', 1),
-(40, 16, 5, 20, 0, 0, '2015-11-27 05:59:59', 1),
-(41, 7, 1, 1, 8, 0, '2015-08-05 05:44:49', 1),
-(42, 7, 1, 2, 11, 0, '2015-08-05 05:44:59', 1),
-(43, 7, 1, 3, 17, 0, '2015-08-05 05:45:11', 1),
-(44, 7, 1, 4, 21, 0, '2015-08-05 05:45:23', 1),
-(45, 7, 2, 5, 25, 0, '2015-08-05 05:45:44', 1),
-(46, 7, 2, 6, 30, 0, '2015-08-05 05:45:55', 1),
-(47, 7, 2, 7, 33, 0, '2015-08-05 05:46:07', 1),
-(48, 7, 2, 8, 37, 0, '2015-08-05 05:46:31', 1),
-(49, 7, 3, 9, 45, 0, '2015-08-05 05:46:47', 1),
-(50, 7, 3, 10, 52, 0, '2015-08-05 05:47:01', 1),
-(51, 7, 3, 11, 57, 0, '2015-08-05 05:47:17', 1),
-(52, 7, 3, 12, 64, 0, '2015-08-05 05:47:28', 1),
-(53, 7, 4, 13, 70, 0, '2015-08-05 05:47:38', 1),
-(54, 7, 4, 14, 72, 0, '2015-08-05 05:47:51', 1),
-(55, 7, 4, 15, 76, 0, '2015-08-05 05:48:16', 1),
-(56, 7, 4, 16, 81, 0, '2015-08-05 05:59:18', 1),
-(57, 7, 5, 17, 85, 0, '2015-08-05 05:59:31', 1),
-(58, 7, 5, 18, 89, 0, '2015-08-05 05:59:43', 1),
-(59, 7, 5, 19, 94, 0, '2015-08-05 05:59:56', 1),
-(60, 7, 5, 20, 101, 0, '2015-08-05 06:00:09', 1),
-(61, 15, 1, 1, 8, 0, '2015-08-05 11:00:06', 2),
-(62, 15, 1, 2, 11, 0, '2015-08-05 11:00:33', 2),
-(63, 15, 1, 3, 18, 0, '2015-08-05 11:01:01', 2),
-(64, 15, 1, 4, 21, 0, '2015-08-05 11:01:17', 2),
-(65, 15, 2, 5, 24, 0, '2015-08-05 11:01:52', 2),
-(66, 15, 2, 6, 30, 0, '2015-08-05 11:02:11', 2),
-(67, 15, 2, 7, 33, 0, '2015-08-05 11:02:30', 2),
-(68, 15, 2, 8, 36, 0, '2015-08-05 11:02:53', 2),
-(69, 15, 3, 9, 44, 0, '2015-08-05 11:03:13', 2),
-(70, 15, 3, 10, 52, 0, '2015-08-05 11:03:30', 2),
-(71, 15, 3, 11, 57, 0, '2015-08-05 11:03:45', 2),
-(72, 15, 3, 12, 65, 0, '2015-08-05 11:04:07', 2),
-(73, 15, 4, 13, 68, 0, '2015-08-05 11:04:41', 2),
-(74, 15, 4, 14, 73, 0, '2015-08-05 11:05:10', 2),
-(75, 15, 4, 15, 77, 0, '2015-08-05 11:05:25', 2),
-(76, 15, 4, 16, 81, 0, '2015-08-05 11:05:39', 2),
-(77, 15, 5, 17, 85, 0, '2015-08-05 11:06:00', 2),
-(78, 15, 5, 18, 89, 0, '2015-08-05 11:06:14', 2),
-(79, 15, 5, 19, 93, 0, '2015-08-05 11:06:29', 2),
-(80, 15, 5, 20, 103, 0, '2015-08-05 11:06:44', 2),
-(81, 7, 1, 1, 10, 0, '2015-08-05 11:10:15', 2),
-(82, 7, 1, 2, 11, 0, '2015-08-05 11:11:07', 2),
-(83, 7, 1, 3, 16, 0, '2015-08-05 11:11:47', 2),
-(84, 7, 1, 4, 21, 0, '2015-08-05 11:21:30', 2),
-(85, 7, 2, 5, 27, 0, '2015-08-05 11:22:12', 2),
-(86, 7, 2, 6, 29, 0, '2015-08-05 11:22:28', 2),
-(87, 7, 2, 7, 34, 0, '2015-08-05 11:22:43', 2),
-(88, 7, 2, 8, 37, 0, '2015-08-05 11:22:58', 2),
-(89, 7, 3, 9, 44, 0, '2015-08-05 11:23:21', 2),
-(90, 7, 3, 10, 54, 0, '2015-08-05 11:23:44', 2),
-(91, 7, 3, 11, 57, 0, '2015-08-05 11:24:19', 2),
-(92, 7, 3, 12, 67, 0, '2015-08-05 11:24:34', 2),
-(93, 7, 4, 13, 69, 0, '2015-08-05 11:24:50', 2),
-(94, 7, 4, 14, 73, 0, '2015-08-05 11:28:12', 2),
-(95, 7, 4, 15, 77, 0, '2015-08-05 11:28:27', 2),
-(96, 7, 4, 16, 81, 0, '2015-08-05 11:29:18', 2),
-(97, 7, 5, 17, 86, 0, '2015-08-05 11:30:42', 2),
-(98, 7, 5, 18, 90, 0, '2015-08-05 11:32:38', 2),
-(99, 7, 5, 19, 94, 0, '2015-08-05 11:32:54', 2),
-(100, 7, 5, 20, 103, 0, '2015-08-05 11:33:09', 2),
-(101, 1, 1, 2, 0, 0, '2015-11-25 14:24:10', 2),
-(103, 0, 1, 2, 2, 0, '2015-11-27 05:57:56', 2),
-(104, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
-(105, 16, 1, 2, 0, 0, '2015-11-27 05:59:59', 2),
-(106, 15, 1, 1, 7, 1, '2015-12-12 08:54:57', 6),
-(107, 15, 1, 2, 11, 0, '2015-12-12 08:55:13', 6),
-(108, 15, 2, 5, 25, 0, '2015-12-29 05:31:44', 6),
-(109, 15, 2, 6, 29, 0, '2015-12-29 05:31:55', 6),
-(110, 15, 3, 1, 10, 0, '2015-12-29 05:33:19', 6),
-(111, 15, 3, 10, 50, 0, '2015-12-29 05:33:36', 6),
-(112, 15, 4, 13, 68, 0, '2015-12-29 05:33:56', 6),
-(113, 15, 4, 14, 74, 0, '2015-12-29 05:34:08', 6),
-(114, 15, 5, 17, 85, 0, '2015-12-29 05:34:22', 6),
-(115, 15, 5, 18, 90, 0, '2015-12-29 05:34:40', 6),
-(116, 15, 6, 21, 105, 0, '2015-12-29 05:57:52', 6),
-(117, 15, 7, 22, 106, 0, '2015-12-29 05:58:02', 6),
-(118, 15, 8, 23, 107, 0, '2015-12-29 06:00:54', 6),
-(119, 15, 9, 24, 108, 0, '2015-12-29 06:01:13', 6),
-(120, 15, 10, 25, 109, 0, '2015-12-29 06:01:33', 6);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -801,6 +767,17 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (7, 3),
 (17, 1),
 (18, 1),
+(1, 5),
+(2, 5),
+(3, 5),
+(4, 5),
+(5, 5),
+(6, 5),
+(7, 5),
+(8, 5),
+(12, 5),
+(17, 5),
+(18, 5),
 (19, 5);
 
 -- --------------------------------------------------------
@@ -844,14 +821,7 @@ CREATE TABLE IF NOT EXISTS `test` (
   `team` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `enddate` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `test`
---
-
-INSERT INTO `test` (`id`, `name`, `units`, `schedule`, `startdate`, `department`, `branch`, `designation`, `check`, `team`, `timestamp`, `enddate`) VALUES
-(6, 'New Test', '2', 1, '2015-12-25', 1, 2, 2, 0, 5, '2015-12-12 08:51:26', '0000-00-00');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -864,33 +834,7 @@ CREATE TABLE IF NOT EXISTS `testpillarexpected` (
   `test` int(11) NOT NULL,
   `pillar` int(11) NOT NULL,
   `expectedvalue` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `testpillarexpected`
---
-
-INSERT INTO `testpillarexpected` (`id`, `test`, `pillar`, `expectedvalue`) VALUES
-(1, 1, 1, 70),
-(2, 1, 2, 99),
-(3, 2, 1, 20),
-(4, 2, 2, 60),
-(5, 1, 3, 50),
-(6, 2, 3, 60),
-(7, 1, 4, 80),
-(8, 2, 4, 80),
-(9, 1, 5, 20),
-(10, 2, 5, 70),
-(11, 6, 1, 50),
-(12, 6, 2, 50),
-(13, 6, 3, 70),
-(14, 6, 4, 65),
-(15, 6, 5, 80),
-(20, 6, 6, 45),
-(21, 6, 7, 75),
-(22, 6, 8, 60),
-(23, 6, 9, 60),
-(24, 6, 10, 50);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -905,38 +849,7 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `testquestion`
---
-
-INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateandtime`, `sendstatus`) VALUES
-(1, 1, 1, 0, '0000-00-00 00:00:00', 0),
-(2, 1, 2, 0, '0000-00-00 00:00:00', 0),
-(3, 1, 3, 0, '0000-00-00 00:00:00', 0),
-(4, 2, 4, 0, '0000-00-00 00:00:00', 0),
-(5, 2, 5, 0, '0000-00-00 00:00:00', 0),
-(6, 2, 6, 0, '0000-00-00 00:00:00', 0),
-(14, 5, 1, 0, '2015-11-26 00:00:00', 0),
-(15, 5, 2, 0, '2015-11-27 00:00:00', 0),
-(16, 5, 3, 0, '2015-11-28 00:00:00', 0),
-(17, 5, 4, 0, '2015-11-29 00:00:00', 0),
-(30, 6, 1, 0, '2015-12-25 00:00:00', 0),
-(31, 6, 2, 0, '2015-12-26 00:00:00', 0),
-(32, 6, 5, 0, '2015-12-27 00:00:00', 0),
-(33, 6, 6, 0, '2015-12-28 00:00:00', 0),
-(34, 6, 9, 0, '2015-12-29 00:00:00', 0),
-(35, 6, 10, 0, '2015-12-30 00:00:00', 0),
-(36, 6, 13, 0, '2015-12-31 00:00:00', 0),
-(37, 6, 14, 0, '2016-01-01 00:00:00', 0),
-(38, 6, 17, 0, '2016-01-02 00:00:00', 0),
-(39, 6, 18, 0, '2016-01-03 00:00:00', 0),
-(40, 6, 21, 0, '2016-01-04 00:00:00', 0),
-(41, 6, 22, 0, '2016-01-05 00:00:00', 0),
-(42, 6, 23, 0, '2016-01-06 00:00:00', 0),
-(43, 6, 24, 0, '2016-01-07 00:00:00', 0),
-(44, 6, 25, 0, '2016-01-08 00:00:00', 0);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1216,7 @@ ALTER TABLE `hq_designation`
 -- AUTO_INCREMENT for table `hq_options`
 --
 ALTER TABLE `hq_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT for table `hq_pillar`
 --
@@ -1313,7 +1226,7 @@ ALTER TABLE `hq_pillar`
 -- AUTO_INCREMENT for table `hq_question`
 --
 ALTER TABLE `hq_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `hq_surveyoption`
 --
@@ -1343,7 +1256,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1353,17 +1266,17 @@ ALTER TABLE `hq_userpillar`
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `testpillarexpected`
 --
 ALTER TABLE `testpillarexpected`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --

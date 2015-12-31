@@ -2346,6 +2346,7 @@ $data["redirect"]="site/viewtestquestion";
 $this->load->view("redirect",$data);
 
 }
+    
     public function edittestquestion()
     {
         $access=array("1","2","3","5");
