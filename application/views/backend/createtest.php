@@ -35,6 +35,7 @@
                 <label>check</label>
             </div>
         </div>
+<!--
            <div class="row">
             <div class="input-field col s12 m6">
                 <?php echo form_dropdown('designation', $designation, set_value('designation')); ?>
@@ -59,6 +60,7 @@
                 <label>Team</label>
             </div>
         </div>
+-->
        
        
         <div class="row">
