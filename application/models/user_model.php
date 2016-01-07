@@ -676,7 +676,7 @@ class User_model extends CI_Model
             $email=$row['email'];
             $username=$row['username'];
             $gender=$row['gender'];
-            $age=$row['age'];
+            $dob=$row['dob'];
             $maritalstatus=$row['maritalstatus'];
             $designation=$row['designation'];
             $department=$row['department'];
@@ -688,19 +688,19 @@ class User_model extends CI_Model
             $language=$row['language'];
             
             
-            if(strtolower($maritalstatus)=='single')
+            if(strtolower($maritalstatus)=='Unmarried')
             {
                 $maritalstatus=1;
             }
-            else
+            else if(strtolower($maritalstatus)=='Married')
             {
                 $maritalstatus=2;
             }
-            if(strtolower($gender)=='male')
+            if(strtolower($gender)=='M')
             {
                 $gender=1;
             }
-            else
+            else if(strtolower($gender)=='F')
             {
                 $gender=2;
             }

@@ -38,7 +38,7 @@
                 <option value="17-19">17L-19L</option>
                 <option value="19+">19L+</option>
             </select>
-            <label>Salary</label>
+            <label>Annual Salary</label>
         </div>
         <div class="col s12 m3">
             <select id="3" name="maritalstatus" onchange="GlobalFunctions.checkfortwo(3);" style="display:none">

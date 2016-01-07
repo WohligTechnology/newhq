@@ -107,10 +107,10 @@ class Site extends CI_Controller
 	{
 		$access = array("1","3","5");
 		$this->checkaccess($access);
-		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
-		$this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]');
-		$this->form_validation->set_rules('password','Password','trim|required|min_length[6]|max_length[30]');
-		$this->form_validation->set_rules('confirmpassword','Confirm Password','trim|required|matches[password]');
+		$this->form_validation->set_rules('name','Name','trim|max_length[30]');
+		$this->form_validation->set_rules('email','Email','trim|valid_email|is_unique[user.email]');
+		$this->form_validation->set_rules('password','Password','trim|min_length[6]|max_length[30]');
+		$this->form_validation->set_rules('confirmpassword','Confirm Password','trim|matches[password]');
 		$this->form_validation->set_rules('accessslevel','Accessslevel','trim');
 		$this->form_validation->set_rules('status','status','trim|');
 		$this->form_validation->set_rules('socialid','Socialid','trim');
@@ -997,10 +997,10 @@ $elements[1]->sort="1";
 $elements[1]->header="Name";
 $elements[1]->alias="name";
 $elements[2]=new stdClass();
-$elements[2]->field="`hq_pillar`.`weight`";
+$elements[2]->field="`hq_pillar`.`expectedweight`";
 $elements[2]->sort="1";
-$elements[2]->header="Weight";
-$elements[2]->alias="weight";
+$elements[2]->header="Expected Weight";
+$elements[2]->alias="expectedweight";
 $elements[3]=new stdClass();
 $elements[3]->field="`hq_pillar`.`order`";
 $elements[3]->sort="1";
@@ -1073,9 +1073,6 @@ $this->load->view("redirect",$data);
          $range7=$this->input->get_post('rangeseven');
          $range8=$this->input->get_post('rangeeight');
          $range9=$this->input->get_post('rangenine');
-//        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9);
-//        $data["redirect"]="site/index";
-//$this->load->view("redirect",$data);
         $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9);
 $data["redirect"]="site/index";
 $this->load->view("redirect",$data);
@@ -2536,7 +2533,7 @@ $this->load->view("redirect",$data);
 
     function uploadusercsvsubmit()
 	{
-        $access = array("1");
+         $access = array("1");
 		$this->checkaccess($access);
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = '*';
@@ -2549,22 +2546,25 @@ $this->load->view("redirect",$data);
             $file=$uploaddata['file_name'];
             $filepath=$uploaddata['file_path'];
         }
+        else
+        {      
+            $error = array('error' => $this->upload->display_errors());
+			print_r($error);
+        }
         $fullfilepath=$filepath."".$file;
         $file = $this->csvreader->parse_file($fullfilepath);
+        print_r($file);
         $id1=$this->user_model->createbycsv($file);
 //        echo $id1;
-
+        
         if($id1==0)
-        $data['alerterror']="New users could not be Uploaded.";
+        $data['alerterror']="New user could not be Uploaded.";
 		else
-		$data['alertsuccess']="users Uploaded Successfully.";
-
-        $data['redirect']="site/viewusers";
-        $this->load->view("redirect",$data);
+		$data['alertsuccess']="user Uploaded Successfully.";
+        
+//        $data['redirect']="site/viewusers";
+//        $this->load->view("redirect",$data);
     }
-
-
-
     function uploadteamcsv()
 	{
 		$access = array("1");
