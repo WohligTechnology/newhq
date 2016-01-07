@@ -2553,7 +2553,6 @@ $this->load->view("redirect",$data);
         }
         $fullfilepath=$filepath."".$file;
         $file = $this->csvreader->parse_file($fullfilepath);
-        print_r($file);
         $id1=$this->user_model->createbycsv($file);
 //        echo $id1;
         
@@ -2562,8 +2561,8 @@ $this->load->view("redirect",$data);
 		else
 		$data['alertsuccess']="user Uploaded Successfully.";
         
-//        $data['redirect']="site/viewusers";
-//        $this->load->view("redirect",$data);
+        $data['redirect']="site/viewusers";
+        $this->load->view("redirect",$data);
     }
     function uploadteamcsv()
 	{

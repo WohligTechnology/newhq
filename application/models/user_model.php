@@ -686,7 +686,12 @@ class User_model extends CI_Model
             $branch=$row['branch'];
             $team=$row['team'];
             $language=$row['language'];
+
+            $from = new DateTime($dob);
+            $to   = new DateTime('today');
+            $calculatedage=$from->diff($to)->y;
             
+            $age=$calculatedage;
             
             if(strtolower($maritalstatus)=='Unmarried')
             {
