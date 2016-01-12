@@ -3988,7 +3988,7 @@ $this->load->view("template",$data);
     }
     public function createlogo()
 {
-$access=array("1","5");
+$access=array("1","5","3");
 $this->checkaccess($access);
 $data["page"]="createlogo";
 $data["image"]=$this->menu_model->getimagebyid();
@@ -3998,7 +3998,7 @@ $this->load->view("template",$data);
 }
     public function createlogosubmit()
 {
-        $access=array("1","5");
+        $access=array("1","5","3");
 $this->checkaccess($access);
  $config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
