@@ -1,11 +1,12 @@
 <!--
+
 <script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-3d.js"></script>
--->
-<!--<div id="container" style="height: 400px"></div>-->
+<div id="container" style="height: 400px"></div>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+-->
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <div>
@@ -120,9 +121,23 @@
     var expectedWeight = [];
     var pillAraverage = [];
     var GlobalFunctions = {};
-
+    var pillaraveragevalues = [];
     $(document).ready(function () {
 
+          var new_base_url = "<?php echo site_url(); ?>";
+           $.getJSON(new_base_url + '/site/getpillarforpie', {}, function (data) {
+                            _.each(data, function (n) {
+                                console.log(n);
+                                var hold = {};
+                                console.log(n);
+                                hold.name = n.name;
+                                hold.y = parseInt(n.pillaraveragevalues);
+                                pillaraveragevalues.push(hold);
+                                $('select').material_select();
+                                createPie();
+                            });
+                            console.log(pillaraveragevalues);
+                        });
 
         GlobalFunctions.checkfortwo = function (val) {
             var count = 0;
@@ -147,7 +162,7 @@
             }
             getTable();
         }
-
+        
         function clearTable() {
 
 
@@ -221,6 +236,7 @@
 
         function createGraph() {
             $('.container').highcharts({
+               
                 chart: {
                     type: 'column',
                     backgroundColor: "transparent"
@@ -272,59 +288,65 @@
     });
 </script>
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-<script>
-$(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Browser market shares January, 2015 to May, 2015'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+
+  <script>
+                    function createPie() {
+                        $('#container').highcharts({
+                               credits:{
+                                enabled:false
+                            },
+                            chart: {
+                                plotBackgroundColor: null,
+                                plotBorderWidth: null,
+                                plotShadow: false,
+                                type: 'pie'
+                            },
+                            title: {
+                                text: 'Pillar Average'
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                        style: {
+                                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                        }
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'Average',
+                                colorByPoint: true,
+                                data: pillaraveragevalues
+                        }]
+                        });
+                     
+                        
                     }
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Microsoft Internet Explorer',
-                y: 56.33
-            }, {
-                name: 'Chrome',
-                y: 24.03,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Firefox',
-                y: 10.38
-            }, {
-                name: 'Safari',
-                y: 4.77
-            }, {
-                name: 'Opera',
-                y: 0.91
-            }, {
-                name: 'Proprietary or Undetectable',
-                y: 0.2
-            }]
-        }]
-    });
-});
-</script>
+                // the button action
+                $('#button').click(function () {
+                    var chart = $('#container').highcharts(),
+                        selectedPoints = chart.getSelectedPoints();
+
+                    if (chart.lbl) {
+                        chart.lbl.destroy();
+                    }
+                    chart.lbl = chart.renderer.label('You selected ' + selectedPoints.length + ' points', 10, 10)
+                        .attr({
+                            padding: 10,
+                            r: 5,
+                            fill: Highcharts.getOptions().colors[1],
+                            zIndex: 5
+                        })
+                        .css({
+                            color: 'white'
+                        })
+                        .add();
+                });
+        </script>

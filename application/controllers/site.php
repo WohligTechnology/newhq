@@ -21,6 +21,11 @@ class Site extends CI_Controller
 		if(!in_array($accesslevel,$access))
 			redirect( base_url() . 'index.php/site?alerterror=You do not have access to this page. ', 'refresh' );
 	}
+     public function getpillarforpie(){
+         $data['message']=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
+         $this->load->view("json",$data);
+        
+    } 
     public function getdatabyfiltering(){
         $access = array("1","2","3","5");
 		$this->checkaccess($access);
