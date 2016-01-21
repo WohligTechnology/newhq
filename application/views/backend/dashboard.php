@@ -1,26 +1,7 @@
-<!--
-
-<script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/highcharts-3d.js"></script>
-<div id="container" style="height: 400px"></div>
-<script src="https://code.highcharts.com/highcharts.js"></script>
--->
-<!--<script src="https://code.highcharts.com/modules/exporting.js"></script>-->
-
-<div>
-
-
-</div>
-<!--<span class="filprop"><u>Filter By :-</u></span>-->
 <button class="btn btn-primary waves-effect waves-light blue darken-4 right" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf">
-        <!--        <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>-->
-
-        <!--        <a href="#" class="blue darken-4 btn waves-effect waves-light">CLear Selection</a>-->
     </div>
     <div class="row selectproper">
         <div class="col s12 m3">
@@ -122,21 +103,19 @@
     var pillAraverage = [];
     var GlobalFunctions = {};
     var pillaraveragevalues = [];
+    var weight = [];
     $(document).ready(function () {
 
           var new_base_url = "<?php echo site_url(); ?>";
            $.getJSON(new_base_url + '/site/getpillarforpie', {}, function (data) {
                             _.each(data, function (n) {
-                                console.log(n);
                                 var hold = {};
-                                console.log(n);
                                 hold.name = n.name;
                                 hold.y = parseInt(n.pillaraveragevalues);
                                 pillaraveragevalues.push(hold);
                                 $('select').material_select();
                                 createPie();
                             });
-                            console.log(pillaraveragevalues);
                         });
 
         GlobalFunctions.checkfortwo = function (val) {
@@ -195,6 +174,7 @@
                 spanofcontrol: $spanofcontrol,
                 experience: $experience
             }, function (data) {
+                console.log(data);
                 pillars = _.pluck(data, "name");
                 pillars.push("Overall");
                 expectedWeight = _.pluck(data, "expectedweight");
@@ -212,8 +192,18 @@
                     }
                     return parseInt(n);
                 });
+                console.log(pillAraverage);
                 pillAraverage.push(_.sum(pillAraverage)/(pillars.length-1));
-                $('select').material_select();
+             
+                weight = _.pluck(data, "weight");
+                weight = _.map(weight, function (n) {
+                    if (n == "") {
+                        n = 0;
+                    }
+                    return parseInt(n);
+                });
+                console.log(weight);
+                   $('select').material_select();
                 createGraph();
             });
 
@@ -257,7 +247,8 @@
                         text: 'Percentage (%)'
                     }
                 },
-                colors: ['#FFB110', '#684703'],
+                colors: ['#FFB110', '#684703','#ce3a56'],
+//                colors: ['#684703', '#FFB110','#684703'],
                 tooltip: {
                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -270,7 +261,7 @@
                     column: {
                         pointPadding: 0.2,
                         depth: 36,
-                        maxPointWidth: 1
+                        maxPointWidth: 10
                     }
                 },
                 series: [{
@@ -280,6 +271,10 @@
         }, {
                     name: 'Average',
                     data: pillAraverage
+
+        }, {
+                    name: 'Weight',
+                    data: weight
 
         }]
             });

@@ -57,12 +57,16 @@ public function gettypedropdown()
 {
 $return=array(
 "" => "Choose Type",
-"1" => "Single",
-"2" => "Multiple",
-"3" => "Image"
+"1" => "Text",
+"2" => "Paragraph text",
+"3" => "Multiple choice",
+"4" => "Checkboxes",
+"5" => "Choose From a list",
+"6" => "Scale",
+"7" => "Grid",
+"8" => "Date",
+"9" => "Time"
 );
-
-
 return $return;
 }
 }

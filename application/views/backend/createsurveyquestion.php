@@ -5,7 +5,7 @@
 <form class='col s12' method='post' action='<?php echo site_url("site/createsurveyquestionsubmit");?>' enctype= 'multipart/form-data'>
   <div class="row">
               <div class="input-field col s12 m8">
-                  <?php echo form_dropdown('type', $type, set_value('type')); ?>
+                  <?php echo form_dropdown('type', $type, set_value('type'),"id=textid"); ?>
                       <label>Type</label>
               </div>
           </div>
@@ -68,6 +68,11 @@
 </div>
 <script>
     $(document).ready(function () {
+        var textid='';
+          $('#textid').change(function(){
+              textid = $( "#textid" ).val();
+              console.log(textid);
+            });
         function changestarttime() {
             $("#starttime").val($(".combodate select.hour1").val() + ":" + $(".combodate select.minute1").val());
 
