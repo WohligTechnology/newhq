@@ -4,6 +4,9 @@
 </div>
 <form class='col s12' method='post' action='<?php echo site_url("site/createsurveyoptionsubmit");?>' enctype= 'multipart/form-data'>
 <div class="row">
+<input type="hidden" id="type" name="type" value='<?php echo set_value('type',$checktype);?>'>
+</div>
+<div class="row">
 <div class="input-field col s6">
 <label for="Order">Order</label>
 <input type="text" id="Order" name="order" value='<?php echo set_value('order');?>'>
@@ -40,3 +43,23 @@
 </div>
 </form>
 </div>
+<script>
+    $(document).ready(function() {
+        var textid = '';
+        $('.text').hide();
+        $('.para').hide();
+        $('#textid').change(function() {
+            textid = $("#textid").val();
+            console.log(textid);
+            if (textid == 1) {
+                $('.text').show();
+                //                  $("div.toggle1, div.toggle3, div.toggle4, div.toggle5").hide();
+            }
+            if (textid == 2) {
+                $('.para').show();
+            }
+        });
+
+    });
+
+</script>

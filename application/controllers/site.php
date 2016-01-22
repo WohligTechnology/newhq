@@ -2907,7 +2907,8 @@ $type=$this->input->get_post("type");
 $text=$this->input->get_post("text");
 $starttime=$this->input->get_post("starttime");
 $endtime=$this->input->get_post("endtime");
-if($this->surveyquestion_model->create($type,$text,$starttime,$endtime)==0)
+$content=$this->input->get_post("content");
+if($this->surveyquestion_model->create($type,$text,$starttime,$endtime,$content)==0)
 $data["alerterror"]="New surveyquestion could not be created.";
 else
 $data["alertsuccess"]="surveyquestion created Successfully.";
@@ -2955,7 +2956,8 @@ $type=$this->input->get_post("type");
 $text=$this->input->get_post("text");
 $starttime=$this->input->get_post("starttime");
 $endtime=$this->input->get_post("endtime");
-if($this->surveyquestion_model->edit($id,$type,$text,$starttime,$endtime)==0)
+$content=$this->input->get_post("content");
+if($this->surveyquestion_model->edit($id,$type,$text,$starttime,$endtime,$content)==0)
 $data["alerterror"]="New surveyquestion could not be Updated.";
 else
 $data["alertsuccess"]="surveyquestion Updated Successfully.";
@@ -3167,6 +3169,7 @@ $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="createsurveyoption";
 $data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
+$data['checktype']=$this->surveyoption_model->checktype($this->input->get('id'));
 $data["title"]="Create surveyoption";
 $this->load->view("template",$data);
 }
