@@ -49,7 +49,7 @@ $return=array(
 );
 foreach($query as $row)
 {
-  $return[$row->id]=$row->text;
+  $return[$row->id]=$row->content;
 }
 
 return $return;
@@ -62,11 +62,7 @@ $return=array(
 "2" => "Paragraph text",
 "3" => "Multiple choice",
 "4" => "Checkboxes",
-"5" => "Choose From a list",
-"6" => "Scale",
-"7" => "Grid",
-"8" => "Date",
-"9" => "Time"
+"5" => "Choose Image"
 );
 return $return;
 }

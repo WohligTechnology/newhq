@@ -24,6 +24,7 @@
 <input type="text" id="Title" name="title" value='<?php echo set_value('title',$before->title);?>'>
 </div>
 </div>
+<!--
 <div class="row">
             <div class="file-field input-field col s12 m6">
 
@@ -39,10 +40,11 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate image1" type="text" placeholder="Upload one or more files" value="<?php echo set_value('image', $before->image);?>">
                 </div>
-<!--                <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>-->
+                <div class="md4"><a class="waves-effect waves-light btn red clearimg input-field ">Clear Image</a></div>
             </div>
 
         </div>
+-->
 <div class="row">
 <div class="col s6">
 <button type="submit" class="btn btn-primary waves-effect waves-light  blue darken-4">Save</button>
@@ -51,3 +53,30 @@
 </div>
 </form>
 </div>
+<!--
+<script>
+    $(document).ready(function() {
+        textid = $("#textid").val();
+        $(".para, .check, .mult, .img,.text").hide();
+        console.log(textid);
+        if (textid == 1) {
+            $('.text').show();
+            //                  $("div.toggle1, div.toggle3, div.toggle4, div.toggle5").hide();
+        }
+        else if (textid == 2) {
+            $('.para').show();
+        }
+        else if (textid == 3) {
+            $('.mult').show();
+        } 
+        else if (textid == 4) {
+            $('.check').show();
+        } 
+        else if (textid == 5) {
+            $('.img').show();
+        } 
+
+    });
+
+</script>
+-->
