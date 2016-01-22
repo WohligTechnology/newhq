@@ -4,7 +4,7 @@
 </div>
 <form class='col s12' method='post' action='<?php echo site_url("site/createsurveyoptionsubmit");?>' enctype= 'multipart/form-data'>
 <div class="row">
-<input type="hidden" id="type" name="type" value='<?php echo set_value('type',$checktype);?>'>
+<input type="hidden" id="typeid" name="type" value='<?php echo set_value('type',$checktype);?>'>
 </div>
 <div class="row">
 <div class="input-field col s6">
@@ -12,6 +12,7 @@
 <input type="text" id="Order" name="order" value='<?php echo set_value('order');?>'>
 </div>
 </div>
+<!--<?php echo $checktype;?>-->
 <div class="row">
             <div class="input-field col s12 m8">
                 <?php echo form_dropdown('question', $question, set_value('question',$this->input->get("id"))); ?>
