@@ -1697,6 +1697,15 @@ $data["before"]=$this->useranswer_model->beforeedit($this->input->get("id"));
 
 $this->load->view("template",$data);
 }
+    public function viewconclude()
+{
+    $id=$this->input->get("id");
+    $data["conclusion"]=$this->conclusion_model->getConclusionQuestionOption($id);
+    $data[ 'title' ] ="Interlinkage Part";
+    $data['page']='viewconclude';
+    $this->load->view('template',$data);
+
+}
 public function edituseranswersubmit()
 {
 $access=array("1","2");

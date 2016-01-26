@@ -1057,6 +1057,41 @@ public function uploadImage(){
         return $image;
      
     }
+    public function getinterlinkageoptions()
+    {
+       $query=$this->db->query("SELECT `option1`,`table1`.`id1`,`option2`,`table1`.`id2`,IFNULL(`count`,0) as `count`
+FROM
+(
+    
+    SELECT `option1`.`optiontext` as `option1`,`option1`.`id` as `id1`,`option2`.`optiontext` as `option2`,`option2`.`id` as `id2` FROM `hq_options` as `option1` , `hq_options` as `option2` WHERE `option1`.`question`='1' AND `option2`.`question`='9'
+
+) as `table1`
+
+LEFT OUTER JOIN
+
+(
+SELECT `option1`.`optiontext` as `option1text`,`option1`.`id` as `id1` ,`option2`.`optiontext` as `option2text`,`option2`.`id` as `id2`,COUNT(`user`) as `count`
+FROM 
+(SELECT MAX(`option1id`) as `option1id`,MAX(`option2id`) as `option2id`,`user`,COUNT(`question1`) as `count` FROM (SELECT `option1`.`optiontext` as `option1`,`option1`.`id` as `option1id`,0 as `option2`,0 as `option2id`,`hq_useranswer`.`user`,1 as `question1` FROM  `hq_useranswer` LEFT OUTER JOIN `hq_options` as `option1`  ON `option1`.`id` = `hq_useranswer`.`option`
+
+WHERE `option1`.`question`='1'
+
+UNION 
+
+SELECT 0 as `option1`,0 as `option1id`,`option2`.`optiontext` as `option2`,`option2`.`id` as `option2id`,`hq_useranswer`.`user`,1 as `question1` FROM  `hq_useranswer` LEFT OUTER JOIN `hq_options` as `option2`  ON `option2`.`id` = `hq_useranswer`.`option`
+
+WHERE `option2`.`question`='9'
+
+) as `tab1` GROUP BY `user` ) 
+
+as `tab2` 
+INNER JOIN `hq_options` as `option1` ON `option1`.`id` = `option1id`
+INNER JOIN `hq_options` as `option2` ON `option2`.`id` = `option2id`
+WHERE `count` >= 2
+GROUP BY `option1id`,`option2id`) as `table2` ON `table1`.`id1`=`table2`.`id1` AND `table1`.`id2`=`table2`.`id2`")->result();
+        return $query;
+     
+    }
     public function createimage($image)
     {
         $query=$this->db->query("UPDATE `logo` SET `image`='$image' WHERE `id`=1");
