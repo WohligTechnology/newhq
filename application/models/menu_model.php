@@ -1057,9 +1057,9 @@ public function uploadImage(){
         return $image;
      
     }
-    public function getinterlinkageoptions()
+    public function getinterlinkageoptions($question1,$question2)
     {
-       $query=$this->db->query("SELECT `option1`,`table1`.`id1`,`option2`,`table1`.`id2`,IFNULL(`count`,0) as `count`
+       $query=$this->db->query("SELECT `option1`,`table1`.`id1`,`option2`,`table1`.`id2`,IFNULL(`count`,0) as `countuser`
 FROM
 (
     
@@ -1074,13 +1074,13 @@ SELECT `option1`.`optiontext` as `option1text`,`option1`.`id` as `id1` ,`option2
 FROM 
 (SELECT MAX(`option1id`) as `option1id`,MAX(`option2id`) as `option2id`,`user`,COUNT(`question1`) as `count` FROM (SELECT `option1`.`optiontext` as `option1`,`option1`.`id` as `option1id`,0 as `option2`,0 as `option2id`,`hq_useranswer`.`user`,1 as `question1` FROM  `hq_useranswer` LEFT OUTER JOIN `hq_options` as `option1`  ON `option1`.`id` = `hq_useranswer`.`option`
 
-WHERE `option1`.`question`='1'
+WHERE `option1`.`question`='$question1'
 
 UNION 
 
 SELECT 0 as `option1`,0 as `option1id`,`option2`.`optiontext` as `option2`,`option2`.`id` as `option2id`,`hq_useranswer`.`user`,1 as `question1` FROM  `hq_useranswer` LEFT OUTER JOIN `hq_options` as `option2`  ON `option2`.`id` = `hq_useranswer`.`option`
 
-WHERE `option2`.`question`='9'
+WHERE `option2`.`question`='$question2'
 
 ) as `tab1` GROUP BY `user` ) 
 

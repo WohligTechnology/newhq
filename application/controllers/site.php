@@ -1701,6 +1701,7 @@ $this->load->view("template",$data);
 {
     $id=$this->input->get("id");
     $data["conclusion"]=$this->conclusion_model->getConclusionQuestionOption($id);
+        $data["optiondata"]=$this->menu_model->getinterlinkageoptions($data["conclusion"][0]->id,$data["conclusion"][1]->id);
     $data[ 'title' ] ="Interlinkage Part";
     $data['page']='viewconclude';
     $this->load->view('template',$data);

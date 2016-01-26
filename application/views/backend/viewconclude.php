@@ -83,17 +83,19 @@
                     </thead>
                     <tbody>
 <!--                        for each for option-->
+                       <?php foreach($optiondata as $getoption){?>
                         <tr>
                             <td>
-                            abc
+                            <?php echo $getoption->option1?>
                             </td>
                             <td>
-                               xyz
+                               <?php echo $getoption->option2?>
                             </td>
                             <td>
-                            83
+                           <?php echo $getoption->countuser?>
                             </td>
                         </tr>
+                           <?php }?>
                         <!--                        for each for option ends-->
                     </tbody>
                 </table>
