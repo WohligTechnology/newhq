@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2016 at 06:54 AM
+-- Generation Time: Jan 30, 2016 at 07:37 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -533,16 +533,16 @@ CREATE TABLE IF NOT EXISTS `hq_pillar` (
 --
 
 INSERT INTO `hq_pillar` (`id`, `name`, `weight`, `order`, `expectedweight`) VALUES
-(1, 'Work-Life Blend', '', '1', '26'),
-(2, 'Employee Engagement', '', '2', '57'),
-(3, 'Driving Force', '', '3', '29'),
-(4, 'Health of an Individual', '', '4', '74'),
-(5, 'Interpersonal Relationships at Work', '', '5', '16'),
-(6, 'Rewards and Recognition', '', '6', '27'),
-(7, 'Sense of Ownership', '', '7', '62'),
-(8, 'Work Environment', '', '8', '32'),
-(9, 'Job Security', '', '9', '59'),
-(10, 'Alignment', '', '10', '72');
+(1, 'Work-Life Blend', '40', '1', '21'),
+(2, 'Employee Engagement', '60', '2', '50'),
+(3, 'Driving Force', '40', '3', '50'),
+(4, 'Health of an Individual', '80', '4', '50'),
+(5, 'Interpersonal Relationships at Work', '30', '5', '50'),
+(6, 'Rewards and Recognition', '50', '6', '50'),
+(7, 'Sense of Ownership', '70', '7', '50'),
+(8, 'Work Environment', '45', '8', '50'),
+(9, 'Job Security', '65', '9', '50'),
+(10, 'Alignment', '80', '10', '50');
 
 -- --------------------------------------------------------
 
@@ -617,14 +617,7 @@ CREATE TABLE IF NOT EXISTS `hq_surveyoption` (
   `question` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `hq_surveyoption`
---
-
-INSERT INTO `hq_surveyoption` (`id`, `order`, `question`, `title`, `image`) VALUES
-(1, 1, 1, 'first option', '_322.jpg');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -637,15 +630,17 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestion` (
   `type` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
   `starttime` time NOT NULL,
-  `endtime` time NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `endtime` time NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestion`
 --
 
-INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`) VALUES
-(1, 1, 'first que', '02:03:00', '06:05:00');
+INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`, `content`) VALUES
+(1, 1, '0', '03:02:00', '02:06:00', 'demo text'),
+(2, 2, '0', '01:02:00', '02:04:00', 'Demo Second');
 
 -- --------------------------------------------------------
 
@@ -722,7 +717,22 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_useranswer`
+--
+
+INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `order`, `timestamp`, `test`) VALUES
+(1, 15, 1, 1, 4, 1, '2016-01-21 08:59:47', 1),
+(2, 15, 2, 5, 23, 2, '2016-01-21 09:00:10', 1),
+(3, 15, 3, 9, 40, 3, '2016-01-21 09:00:28', 1),
+(4, 15, 4, 13, 60, 4, '2016-01-21 09:00:43', 1),
+(5, 15, 5, 17, 84, 5, '2016-01-21 09:01:13', 1),
+(6, 15, 6, 21, 99, 6, '2016-01-21 09:01:37', 1),
+(7, 15, 7, 25, 116, 7, '2016-01-21 09:02:17', 1),
+(8, 15, 9, 33, 151, 9, '2016-01-21 09:02:56', 1),
+(9, 15, 10, 37, 167, 10, '2016-01-21 09:03:20', 1);
 
 -- --------------------------------------------------------
 
@@ -964,23 +974,23 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
 --
 
 INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateandtime`, `sendstatus`) VALUES
-(21, 1, 1, 0, '2016-01-02 00:00:00', 0),
-(22, 1, 5, 0, '2016-01-03 00:00:00', 0),
-(23, 1, 9, 0, '2016-01-04 00:00:00', 0),
-(24, 1, 13, 0, '2016-01-05 00:00:00', 0),
-(25, 1, 17, 0, '2016-01-06 00:00:00', 0),
-(26, 1, 21, 0, '2016-01-07 00:00:00', 0),
-(27, 1, 25, 0, '2016-01-08 00:00:00', 0),
-(28, 1, 29, 0, '2016-01-09 00:00:00', 0),
-(29, 1, 33, 0, '2016-01-10 00:00:00', 0),
-(30, 1, 37, 0, '2016-01-11 00:00:00', 0);
+(31, 1, 1, 0, '2016-01-02 00:00:00', 0),
+(32, 1, 5, 0, '2016-01-03 00:00:00', 0),
+(33, 1, 9, 0, '2016-01-04 00:00:00', 0),
+(34, 1, 13, 0, '2016-01-05 00:00:00', 0),
+(35, 1, 17, 0, '2016-01-06 00:00:00', 0),
+(36, 1, 21, 0, '2016-01-07 00:00:00', 0),
+(37, 1, 25, 0, '2016-01-08 00:00:00', 0),
+(38, 1, 29, 0, '2016-01-09 00:00:00', 0),
+(39, 1, 33, 0, '2016-01-10 00:00:00', 0),
+(40, 1, 37, 0, '2016-01-11 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -1409,12 +1419,12 @@ ALTER TABLE `hq_question`
 -- AUTO_INCREMENT for table `hq_surveyoption`
 --
 ALTER TABLE `hq_surveyoption`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestion`
 --
 ALTER TABLE `hq_surveyquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestionanswer`
 --
@@ -1434,7 +1444,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1454,7 +1464,7 @@ ALTER TABLE `testpillarexpected`
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `user`
 --
