@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2016 at 07:37 AM
+-- Generation Time: Feb 02, 2016 at 07:41 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -556,54 +556,55 @@ CREATE TABLE IF NOT EXISTS `hq_question` (
   `noofans` int(11) NOT NULL,
   `order` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `text` text NOT NULL
+  `text` text NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_question`
 --
 
-INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `text`) VALUES
-(1, 1, 1, '', '2015-12-30 08:31:42', 'You just met a genie who grants you four wishes. You choose:'),
-(2, 1, 1, '', '2015-12-30 08:41:41', 'You put in your best at work. We know you do. So, your life looks something like this:'),
-(3, 1, 1, '', '2015-12-30 09:07:36', 'You have managed to get that much-awaited annual leave with family. Your vacation goes something like this:'),
-(4, 1, 1, '', '2015-12-30 09:12:53', 'Your health is as important as the next deadline.'),
-(5, 2, 1, '', '2015-12-30 09:19:55', 'You meet a school friend after a long time and he asks you, "How''s work?" You say:'),
-(6, 2, 1, '', '2015-12-30 09:21:21', 'You are in the middle of a project and things aren''t going your way.  What next?'),
-(7, 2, 1, '', '2015-12-30 09:22:15', 'Your friend approaches you for a job in your company. You are most likely to say this:'),
-(8, 2, 1, '', '2015-12-30 09:22:46', 'Congratulations! Your organization just won an award.'),
-(9, 3, 1, '', '2015-12-30 09:51:05', 'Some of the things that you value in life are :'),
-(10, 3, 1, '', '2015-12-30 09:51:47', 'You find yourself smiling because you are blessed with:'),
-(11, 3, 1, '', '2015-12-30 09:52:27', 'Yes, the weekend is over and Monday morning is back.'),
-(12, 3, 1, '', '2015-12-30 09:53:08', 'You work because:'),
-(13, 4, 1, '', '2015-12-30 10:41:49', 'To exercise or not to exercise…that is the question.'),
-(14, 4, 1, '', '2015-12-30 10:42:21', 'Say one day, there is just too much work. You are likely to think:'),
-(15, 4, 1, '', '2015-12-30 10:42:59', 'It''s the start of the day and you need to submit a report. You think:'),
-(16, 4, 1, '', '2015-12-30 10:43:39', 'Your food habits at work look like this:'),
-(17, 5, 1, '', '2015-12-30 11:17:28', 'You are in a team meeting where tasks are being allocated. You think:'),
-(18, 5, 1, '', '2015-12-30 11:18:00', 'You are stuck in the lift with your boss. Which of these is most likely to happen?'),
-(19, 5, 1, '', '2015-12-30 11:18:37', 'You are making a guest list for your birthday party. You think to yourself: (Our names)'),
-(20, 5, 1, '', '2015-12-30 11:19:12', 'When you are at work, you feel:'),
-(21, 6, 1, '', '2015-12-30 11:47:14', 'When you tell your best friend about a project you just completed at work, you say:'),
-(22, 6, 1, '', '2015-12-30 11:47:42', 'You are talking to your family about the rewards you get at work and then you realize:'),
-(23, 6, 1, '', '2015-12-30 11:48:10', 'When it''s time for appraisals in office, you think:'),
-(24, 6, 1, '', '2015-12-30 11:48:55', 'One year from now, you see your life looking like this:'),
-(25, 7, 1, '', '2015-12-30 12:12:31', 'Your colleague tells you about the recent Board Meeting and you say:'),
-(26, 7, 1, '', '2015-12-30 12:13:01', 'You accidentally delete a presentation that needs to be made this afternoon. You think:'),
-(27, 7, 1, '', '2015-12-30 12:13:43', 'Your team member is unwell and you take over the project. What next?'),
-(28, 7, 1, '', '2015-12-30 12:14:19', 'Your boss is most likely to say this during your monthly review (Remove the stick):'),
-(29, 8, 1, '', '2015-12-30 12:37:54', 'You''ve heard that your company is deciding to  change its leave policy. You tell your colleague this:'),
-(30, 8, 1, '', '2015-12-30 12:38:53', 'An intern walks up to you and asks you about some policies at work. You say this:'),
-(31, 8, 1, '', '2015-12-30 12:39:30', 'Here''s what is awesome about the place I work!'),
-(32, 8, 1, '', '2015-12-30 12:40:06', 'You are part of a gathering with the leadership team. You think:'),
-(33, 9, 1, '', '2015-12-30 12:42:22', 'Over dinner, your cousin tells you he almost thought he would lose his job yesterday. You think:'),
-(34, 9, 1, '', '2015-12-30 12:42:52', 'You have reached office and your boss calls saying he had to take leave urgently. You think:'),
-(35, 9, 1, '', '2015-12-30 12:43:22', 'Your colleague tells you he is taking a break to study & be eligible for a promotion. You think:'),
-(36, 9, 1, '', '2015-12-30 12:43:47', 'You are getting ready to leave office and meet an important client with your boss. You are most likely to hear this:'),
-(37, 10, 1, '', '2015-12-30 12:44:24', 'At a party, your friend asks you about something negative she has read in the papers about your company. You say:'),
-(38, 10, 1, '', '2015-12-30 12:44:51', 'When your relatives ask you about your work, you feel:'),
-(39, 10, 1, '', '2015-12-30 12:45:25', 'You come across a social media post that makes fun of the company you work for. You look at it and think:'),
-(40, 10, 1, '', '2015-12-30 12:46:39', 'Your Boss tells you about an online course to consider and you think:');
+INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `text`, `type`) VALUES
+(1, 1, 1, '', '2015-12-30 08:31:42', 'You just met a genie who grants you four wishes. You choose:', ''),
+(2, 1, 1, '', '2015-12-30 08:41:41', 'You put in your best at work. We know you do. So, your life looks something like this:', ''),
+(3, 1, 1, '', '2015-12-30 09:07:36', 'You have managed to get that much-awaited annual leave with family. Your vacation goes something like this:', ''),
+(4, 1, 1, '', '2015-12-30 09:12:53', 'Your health is as important as the next deadline.', ''),
+(5, 2, 1, '', '2015-12-30 09:19:55', 'You meet a school friend after a long time and he asks you, "How''s work?" You say:', ''),
+(6, 2, 1, '', '2015-12-30 09:21:21', 'You are in the middle of a project and things aren''t going your way.  What next?', ''),
+(7, 2, 1, '', '2015-12-30 09:22:15', 'Your friend approaches you for a job in your company. You are most likely to say this:', ''),
+(8, 2, 1, '', '2015-12-30 09:22:46', 'Congratulations! Your organization just won an award.', ''),
+(9, 3, 1, '', '2015-12-30 09:51:05', 'Some of the things that you value in life are :', ''),
+(10, 3, 1, '', '2015-12-30 09:51:47', 'You find yourself smiling because you are blessed with:', ''),
+(11, 3, 1, '', '2015-12-30 09:52:27', 'Yes, the weekend is over and Monday morning is back.', ''),
+(12, 3, 1, '', '2015-12-30 09:53:08', 'You work because:', ''),
+(13, 4, 1, '', '2015-12-30 10:41:49', 'To exercise or not to exercise…that is the question.', ''),
+(14, 4, 1, '', '2015-12-30 10:42:21', 'Say one day, there is just too much work. You are likely to think:', ''),
+(15, 4, 1, '', '2015-12-30 10:42:59', 'It''s the start of the day and you need to submit a report. You think:', ''),
+(16, 4, 1, '', '2015-12-30 10:43:39', 'Your food habits at work look like this:', ''),
+(17, 5, 1, '', '2015-12-30 11:17:28', 'You are in a team meeting where tasks are being allocated. You think:', ''),
+(18, 5, 1, '', '2015-12-30 11:18:00', 'You are stuck in the lift with your boss. Which of these is most likely to happen?', ''),
+(19, 5, 1, '', '2015-12-30 11:18:37', 'You are making a guest list for your birthday party. You think to yourself: (Our names)', ''),
+(20, 5, 1, '', '2015-12-30 11:19:12', 'When you are at work, you feel:', ''),
+(21, 6, 1, '', '2015-12-30 11:47:14', 'When you tell your best friend about a project you just completed at work, you say:', ''),
+(22, 6, 1, '', '2015-12-30 11:47:42', 'You are talking to your family about the rewards you get at work and then you realize:', ''),
+(23, 6, 1, '', '2015-12-30 11:48:10', 'When it''s time for appraisals in office, you think:', ''),
+(24, 6, 1, '', '2015-12-30 11:48:55', 'One year from now, you see your life looking like this:', ''),
+(25, 7, 1, '', '2015-12-30 12:12:31', 'Your colleague tells you about the recent Board Meeting and you say:', ''),
+(26, 7, 1, '', '2015-12-30 12:13:01', 'You accidentally delete a presentation that needs to be made this afternoon. You think:', ''),
+(27, 7, 1, '', '2015-12-30 12:13:43', 'Your team member is unwell and you take over the project. What next?', ''),
+(28, 7, 1, '', '2015-12-30 12:14:19', 'Your boss is most likely to say this during your monthly review (Remove the stick):', ''),
+(29, 8, 1, '', '2015-12-30 12:37:54', 'You''ve heard that your company is deciding to  change its leave policy. You tell your colleague this:', ''),
+(30, 8, 1, '', '2015-12-30 12:38:53', 'An intern walks up to you and asks you about some policies at work. You say this:', ''),
+(31, 8, 1, '', '2015-12-30 12:39:30', 'Here''s what is awesome about the place I work!', ''),
+(32, 8, 1, '', '2015-12-30 12:40:06', 'You are part of a gathering with the leadership team. You think:', ''),
+(33, 9, 1, '', '2015-12-30 12:42:22', 'Over dinner, your cousin tells you he almost thought he would lose his job yesterday. You think:', ''),
+(34, 9, 1, '', '2015-12-30 12:42:52', 'You have reached office and your boss calls saying he had to take leave urgently. You think:', ''),
+(35, 9, 1, '', '2015-12-30 12:43:22', 'Your colleague tells you he is taking a break to study & be eligible for a promotion. You think:', ''),
+(36, 9, 1, '', '2015-12-30 12:43:47', 'You are getting ready to leave office and meet an important client with your boss. You are most likely to hear this:', ''),
+(37, 10, 1, '', '2015-12-30 12:44:24', 'At a party, your friend asks you about something negative she has read in the papers about your company. You say:', ''),
+(38, 10, 1, '', '2015-12-30 12:44:51', 'When your relatives ask you about your work, you feel:', ''),
+(39, 10, 1, '', '2015-12-30 12:45:25', 'You come across a social media post that makes fun of the company you work for. You look at it and think:', ''),
+(40, 10, 1, '', '2015-12-30 12:46:39', 'Your Boss tells you about an online course to consider and you think:', '');
 
 -- --------------------------------------------------------
 
@@ -617,7 +618,17 @@ CREATE TABLE IF NOT EXISTS `hq_surveyoption` (
   `question` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_surveyoption`
+--
+
+INSERT INTO `hq_surveyoption` (`id`, `order`, `question`, `title`, `image`) VALUES
+(1, 1, 2, 'first option', ''),
+(2, 1, 1, 'bgfv', ''),
+(3, 2, 1, '0', ''),
+(4, 5, 1, '0', '1stscreeshot.png');
 
 -- --------------------------------------------------------
 
@@ -639,7 +650,7 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestion` (
 --
 
 INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`, `content`) VALUES
-(1, 1, '0', '03:02:00', '02:06:00', 'demo text'),
+(1, 5, '0', '00:00:00', '00:00:00', 'demo text'),
 (2, 2, '0', '01:02:00', '02:04:00', 'Demo Second');
 
 -- --------------------------------------------------------
@@ -671,15 +682,16 @@ INSERT INTO `hq_surveyquestionanswer` (`id`, `user`, `question`, `option`) VALUE
 CREATE TABLE IF NOT EXISTS `hq_surveyquestionuser` (
   `id` int(11) NOT NULL,
   `question` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestionuser`
 --
 
-INSERT INTO `hq_surveyquestionuser` (`id`, `question`, `email`) VALUES
-(1, 1, 'pooja@wohlig.com');
+INSERT INTO `hq_surveyquestionuser` (`id`, `question`, `email`, `status`) VALUES
+(1, 1, 'pooja.wohlig@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -915,10 +927,7 @@ CREATE TABLE IF NOT EXISTS `statuses` (
 
 INSERT INTO `statuses` (`id`, `name`) VALUES
 (1, 'Active'),
-(2, 'inactive'),
-(3, 'Waiting'),
-(4, 'Active Waiting'),
-(5, 'Blocked');
+(2, 'inactive');
 
 -- --------------------------------------------------------
 
@@ -1419,7 +1428,7 @@ ALTER TABLE `hq_question`
 -- AUTO_INCREMENT for table `hq_surveyoption`
 --
 ALTER TABLE `hq_surveyoption`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestion`
 --
