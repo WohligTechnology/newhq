@@ -577,6 +577,14 @@ $this->load->view("json",$data);
 	 	$data['message'] = $this->restapi_model->pingHq($user);
 	 	$this->load->view('json', $data);
  	}
+ public function pingHqForSurvey()
+ 	{
+     
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
+	 	$data['message'] = $this->restapi_model->pingHqForSurvey($user);
+	 	$this->load->view('json', $data);
+ 	}
  
  public function viewfirstpage()
  {
@@ -621,6 +629,30 @@ $this->load->view("json",$data);
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
              echo "      ";
             echo $link;
+               $this->load->library('email');
+       $this->email->from('vigwohlig@gmail.com', 'HQ');
+       $this->email->to($email);
+       $this->email->subject('Test');   
+           
+       $message = "Hiii      ".$link;
+       $this->email->message($message);
+       $this->email->send();
+            
+        }
+    
+       return 1;
+   }
+ public function sendsurveyquestion()
+   {
+       $gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`,`hq_surveyquestionuser`.`id`, `hq_surveyquestionuser`.`question`, `hq_surveyquestionuser`.`email`, `hq_surveyquestionuser`.`status` FROM `hq_surveyquestionuser` LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email` WHERE `hq_surveyquestionuser`.`status`=1
+")->result();
+       
+        foreach($gettotalemails as $gettotalemail){
+            $email=$gettotalemail->email;
+            $userid=$gettotalemail->userid;
+             $hashvalue=base64_encode ($userid."&hq");
+       $link="<a href='http://wohlig.co.in/hqfront/#/survey/$hashvalue'>Click here </a> To get questions.";
+           
                $this->load->library('email');
        $this->email->from('vigwohlig@gmail.com', 'HQ');
        $this->email->to($email);

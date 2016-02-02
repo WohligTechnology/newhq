@@ -3001,7 +3001,7 @@ $elements[0]->sort="1";
 $elements[0]->header="Id";
 $elements[0]->alias="id";
 $elements[1]=new stdClass();
-$elements[1]->field="`hq_surveyquestion`.`text`";
+$elements[1]->field="`hq_surveyquestion`.`content`";
 $elements[1]->sort="1";
 $elements[1]->header="Question";
 $elements[1]->alias="question";
@@ -3010,6 +3010,12 @@ $elements[2]->field="`hq_surveyquestionuser`.`email`";
 $elements[2]->sort="1";
 $elements[2]->header="Email";
 $elements[2]->alias="email";
+    
+$elements[3]=new stdClass();
+$elements[3]->field="`hq_surveyquestionuser`.`status`";
+$elements[3]->sort="1";
+$elements[3]->header="status";
+$elements[3]->alias="status";
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -3056,7 +3062,8 @@ else
 $id=$this->input->get_post("id");
 $question=$this->input->get_post("question");
 $email=$this->input->get_post("email");
-if($this->surveyquestionuser_model->create($question,$email)==0)
+$status=$this->input->get_post("status");
+if($this->surveyquestionuser_model->create($question,$email,$status)==0)
 $data["alerterror"]="New surveyquestionuser could not be created.";
 else
 $data["alertsuccess"]="surveyquestionuser created Successfully.";
@@ -3098,7 +3105,8 @@ else
 $id=$this->input->get_post("id");
 $question=$this->input->get_post("question");
 $email=$this->input->get_post("email");
-if($this->surveyquestionuser_model->edit($id,$question,$email)==0)
+$status=$this->input->get_post("status");
+if($this->surveyquestionuser_model->edit($id,$question,$email,$status)==0)
 $data["alerterror"]="New surveyquestionuser could not be Updated.";
 else
 $data["alertsuccess"]="surveyquestionuser Updated Successfully.";
@@ -3220,6 +3228,7 @@ $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="editsurveyoption";
 $data["title"]="Edit surveyoption";
+$data['checktype']=$this->surveyoption_model->checktype($this->input->get('questionid'));
 $data["question"]=$this->surveyquestion_model->getsurveyquestiondropdown();
 $data["before"]=$this->surveyoption_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
@@ -4060,5 +4069,21 @@ $data["alertsuccess"]="logo Updated Successfully.";
 $data["redirect"]="site/createlogo";
 $this->load->view("redirect",$data);
 }
+       public function disableCompany()
+	{
+        $id=$this->input->get("id");
+		$result=$this->surveyquestionuser_model->disableCompany($id);
+        $data["message"] = $result;
+        $this->load->view("json", $data);
+        
+	} 
+    public function enableCompany()
+	{
+        $id=$this->input->get("id");
+		$result=$this->surveyquestionuser_model->enableCompany($id);
+        $data["message"] = $result;
+        $this->load->view("json", $data);
+        
+	}
 }
 ?>

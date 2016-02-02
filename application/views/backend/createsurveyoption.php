@@ -3,11 +3,9 @@
         <h4 class="pad-left-15 capitalize">Create surveyoption</h4>
     </div>
     <form class='col s12' method='post' action='<?php echo site_url("site/createsurveyoptionsubmit");?>' enctype='multipart/form-data'>
-<!--
         <div class="row">
             <input type="hidden" id="textid" name="type" value='<?php echo set_value(' type ',$checktype);?>'>
         </div>
--->
         <div class="row">
             <div class="input-field col s12 m8">
                 <?php echo form_dropdown('question', $question, set_value('question',$this->input->get("id"))); ?>
@@ -30,6 +28,7 @@
             </div>
 -->
             <!-- PARAGRAPH-->
+<!--
             <div class="row">
                 <div class="col s12 m6">
                     <textarea name="title" placeholder="Enter text ...">
@@ -37,6 +36,7 @@
                     </textarea>
                 </div>
             </div>
+-->
             <!--           //CHECKBOX-->
 <!--
             <div class="row check">
@@ -56,8 +56,8 @@
             </div>
 -->
 <!--            IMAGE-->
-<!--
-            <div class="row img">
+         <?php   if($checktype==5){ ?>
+              <div class="row">
                 <div class="file-field input-field col s12 m6">
                     <div class="btn blue darken-4">
                         <span>Image</span>
@@ -68,11 +68,20 @@
                     </div>
                 </div>
             </div>
--->
+          <?php } else { ?>
+              <div class="row">
+                <div class="col s12 m6">
+                    <textarea name="title" placeholder="Enter text ...">
+                        <?php echo set_value('title');?>
+                    </textarea>
+                </div>
+            </div>
+          <?php }?>
+       
             <div class="row">
                 <div class="col s12 m6">
                     <button type="submit" class="btn btn-primary waves-effect waves-light blue darken-4">Save</button>
-                    <a href="<?php echo site_url(" site/viewsurveyoption?id=").$this->input->get(" id "); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
+                    <a href="<?php echo site_url("site/viewsurveyoption?id=").$this->input->get("id"); ?>" class="btn btn-secondary waves-effect waves-light red">Cancel</a>
                 </div>
             </div>
     </form>
