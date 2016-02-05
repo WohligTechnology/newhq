@@ -91,6 +91,9 @@
       margin-left: 30px;
       max-width: 100%;
     }
+    @media (max-width:480px) {
+
+    }
   </style>
 
   <!--[if IE]>
