@@ -34,7 +34,7 @@
 	<script>
         var admin_url="<?php echo base_url();?>";
     </script>
-    
+
 <!--
 <script language=JavaScript>
 var message="Function Disabled!";
