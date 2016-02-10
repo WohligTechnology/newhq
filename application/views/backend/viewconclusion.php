@@ -1,4 +1,4 @@
-<div class="lightcolor">
+<div class="">
   <!--
   <script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>
 
@@ -7,8 +7,10 @@
   -->
   <!--<div id="container" style="height: 400px"></div>-->
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
-  <span class="filprop"><u>Filters</u></span>
-  <button class="btn btn-primary waves-effect waves-light blue darken-4 right" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
+  <div class="text-center">
+    <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
+  </div>
+  <span class="filprop">Filters</span>
   <form method="post" action="<?php echo site_url('site/getuserbyfilter');?>">
 
       <div class="cf">

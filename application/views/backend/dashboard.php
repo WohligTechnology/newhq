@@ -89,14 +89,14 @@
     <div class="col s12">
         <div id="nodata" style="display:none;">No Data Found</div>
 
-        <div class="well" style="text-align: left;color:black;width:275px;">
+        <div class="well">
             <span style="font-size: 20px;"><b>Charts of Recent Test :-</b></span>
         </div>
     </div>
 </div>
 
 <div class="container"></div>
-
+<div class="lightcolor"></div>
 <script>
     var pillars = [];
     var expectedWeight = [];
@@ -141,7 +141,7 @@
             }
             getTable();
         }
-        
+
         function clearTable() {
 
 
@@ -194,7 +194,7 @@
                 });
                 console.log(pillAraverage);
                 pillAraverage.push(_.sum(pillAraverage)/(pillars.length-1));
-             
+
                 weight = _.pluck(data, "weight");
                 weight = _.map(weight, function (n) {
                     if (n == "") {
@@ -226,7 +226,7 @@
 
         function createGraph() {
             $('.container').highcharts({
-               
+
                 chart: {
                     type: 'column',
                     backgroundColor: "transparent"
@@ -321,8 +321,8 @@
                                 data: pillaraveragevalues
                         }]
                         });
-                     
-                        
+
+
                     }
                 // the button action
                 $('#button').click(function () {

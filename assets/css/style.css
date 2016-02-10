@@ -214,7 +214,7 @@ h6 {
 }
 
 .loader {
-    background-color: white;
+    background-color: #00ceb0;
     position: fixed;
     top: 0;
     left: 0;
@@ -274,6 +274,7 @@ ul.side-nav.fixed li.logo a {
 }
 ul.side-nav.fixed li.logo img {
   width: 80%;
+  height: auto;
 }
   .btn, .btn-large {
 
@@ -423,8 +424,11 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #0D47A1;
-    box-shadow: 0 1px 0 0 #0D47A1;
+    border-bottom: 1px solid #fffbec;
+    box-shadow: 0 1px 0 0 #fffbec;
+}
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    border-bottom: 1px solid #fffbec;
 }
 
 ::-webkit-scrollbar {
@@ -696,6 +700,62 @@ table.highlight>tbody>tr:hover {
 }
 .lightcolor {
     background-color: #00ceb0;
-    padding: 15px;
-    margin: 20px;
+    padding: 10px 15px;
+    margin: 0 20px;
+}
+li.sub-menu.logo:hover {
+    background-color: inherit;
+}
+nav {
+    color: #FFFBEC;
+    background-color: transparent;
+    box-shadow: none;
+    height: auto;
+}
+.side-nav {
+  box-shadow: none;
+}
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+nav .img-responsive {
+  padding: 30px 30px 0;
+  vertical-align: bottom;
+}
+.btn-clear {
+    height: 36px;
+    line-height: 36px;
+    color: #FFFBEC;
+}
+.btn-clear i {
+  vertical-align: middle;
+}
+.btn {
+    box-shadow: none;
+    border-radius: 5px;
+    padding: 0 15px;
+    text-transform: none;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 14px;
+    color: #00AC93;
+}
+td+td, th+th {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+td, th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 6px 5px;
+}
+
+thead {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+.spinner-layer.spinner-blue-only {
+    border-color: #FFFBEC;
+}
+.input-field label {
+    color: #fffbec;
 }
