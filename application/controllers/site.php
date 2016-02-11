@@ -983,12 +983,74 @@ public function viewpillar()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
-$data["page"]="viewpillar";
+$data["page"]="pillarsecond";
 $data["checkpackage"]=$this->menu_model->checkpackage();
-$data["base_url"]=site_url("site/viewpillarjson");
+$data['before']=$this->pillar_model->getpillarweightforedit();
+$data['showavg']=$this->pillar_model->showavg();
+$data['lastpillardetail']=$this->pillar_model->lastpillardetail();
+//  echo $data['showavg'];
 $data["title"]="View pillar";
 $this->load->view("template",$data);
+//    $this->load->view("pillarsecond",$data);
 }
+    public function viewpillarquestion()
+{
+$access=array("1","2","3");
+$this->checkaccess($access);
+$data["page"]="question";
+$data['lastpillardetail']=$this->pillar_model->lastpillardetail();
+$data['getelevenpillarquestion']=$this->pillar_model->getelevenpillarquestion();
+$data['getelevenpillaroption']=$this->pillar_model->getelevenpillaroption();
+$data["title"]="New pillar question";
+$this->load->view("template",$data);
+}
+    public function getpillarquestion()
+    {
+         $access=array("1","2","3","5");
+         $this->checkaccess($access);
+         $questionone=$this->input->get_post('questionone');
+         $questiontwo=$this->input->get_post('questiontwo');
+         $questionthree=$this->input->get_post('questionthree');
+         $questionfour=$this->input->get_post('questionfour');
+         $optionone=$this->input->get_post('optionone');
+         $optiontwo=$this->input->get_post('optiontwo');
+         $optionthree=$this->input->get_post('optionthree');
+         $optionfour=$this->input->get_post('optionfour');
+         $optionfive=$this->input->get_post('optionfive');
+         $optionsix=$this->input->get_post('optionsix');
+         $optionseven=$this->input->get_post('optionseven');
+         $optioneight=$this->input->get_post('optioneight');
+         $optionnine=$this->input->get_post('optionnine');
+         $optionten=$this->input->get_post('optionten');
+         $optioneleven=$this->input->get_post('optioneleven');
+         $optiontwelve=$this->input->get_post('optiontwelve');
+         $optionthirteen=$this->input->get_post('optionthirteen');
+         $optionfourteen=$this->input->get_post('optionfourteen');
+         $optionfifteen=$this->input->get_post('optionfifteen');
+         $optionsixteen=$this->input->get_post('optionsixteen');
+         $this->pillar_model->getpillarquestion($questionone,$questiontwo,$questionthree,$questionfour,$optionone,$optiontwo,$optionthree,$optionfour,$optionfive,$optionsix,$optionseven,$optioneight,$optionnine,$optionten,$optioneleven,$optiontwelve,$optionthirteen,$optionfourteen,$optionfifteen,$optionsixteen);
+         $data["redirect"]="site/viewpillarquestion";
+         $this->load->view("redirect",$data);    
+    }
+    public function getweightageviewpillar()
+    {
+         $access=array("1","2","3","5");
+         $this->checkaccess($access);
+         $range=$this->input->get_post('range');
+         $range1=$this->input->get_post('rangeone');
+         $range2=$this->input->get_post('rangetwo');
+         $range3=$this->input->get_post('rangethree');
+         $range4=$this->input->get_post('rangefour');
+         $range5=$this->input->get_post('rangefive');
+         $range6=$this->input->get_post('rangesix');
+         $range7=$this->input->get_post('rangeseven');
+         $range8=$this->input->get_post('rangeeight');
+         $range9=$this->input->get_post('rangenine');
+         $range11=$this->input->get_post('rangeeleven');
+         $this->pillar_model->updateweightageviewpillar($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11);
+         $data["redirect"]="site/viewpillar";
+         $this->load->view("redirect",$data);    
+    }
 function viewpillarjson()
 {
 $elements=array();
@@ -1131,7 +1193,8 @@ $this->pillar_model->delete($this->input->get("id"));
 $data["redirect"]="site/viewpillar";
 $this->load->view("redirect",$data);
 }
-public function viewquestion()
+
+    public function viewquestion()
 {
 $access=array("1","2","3","5");
 $this->checkaccess($access);
@@ -4083,6 +4146,11 @@ $this->load->view("redirect",$data);
 		$result=$this->surveyquestionuser_model->enableCompany($id);
         $data["message"] = $result;
         $this->load->view("json", $data);
+        
+	}
+    public function newpillar()
+	{
+        $this->load->view("pillarsecond");
         
 	}
 }

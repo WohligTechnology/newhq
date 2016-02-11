@@ -17,7 +17,7 @@
 	<script src="<?php echo base_url('assets').'/';?>js/jquery.fancybox.pack.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>tinymce/tinymce.min.js"></script>
 	<script src="<?php echo base_url('assets').'/';?>js/formInit.js"></script>
-	<script src="<?php echo base_url('assets').'/';?>js/index.js"></script>
+	
 	<script src="<?php echo base_url('assets').'/';?>js/lodash.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!--	 <script src="<?php echo base_url('assets/js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></script>-->
@@ -27,6 +27,8 @@
     <script src="<?php echo base_url('assets/js/highchartsbyavi.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/highcharts-3dbyavi.js'); ?>"></script>
 -->
+
+       <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<!--Let browser know website is optimized for mobile-->

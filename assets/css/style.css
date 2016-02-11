@@ -20,7 +20,7 @@
 @font-face {
     font-family: "Walkway rounded";
 /*    src: url("/fonts/Walkwayrounded.ttf");*/
-     src:  url('../fonts/Walkwayrounded.ttf') format('ttf'), url('fonts/Walkwayrounded.ttf') format('ttf'), url('fonts/Walkwayrounded.ttf') ;
+     src:  url('../fonts/Walkwayrounded.ttf') format('ttf'), url('../fonts/Walkwayrounded.ttf') format('ttf'), url('../fonts/Walkwayrounded.ttf') ;
     font-style: normal;
 }
 
@@ -758,4 +758,78 @@ thead {
 }
 .input-field label {
     color: #fffbec;
+}
+
+
+/*//new css*/
+
+.blue-btn.custm-btn p {
+    text-align: center;
+    line-height: 14%;
+}
+
+.blue-btn.custm-btn {
+    padding: 1px 0px;
+    border-radius: 4px;
+}
+.cstm-padding{
+        height: 46px !important;
+
+    padding: 5px 2rem !important;
+}
+.display-inline{
+    display: inline-block;
+}
+.left-s{
+        display: inline-block;
+    float: right;
+}
+.displ-inline{
+    display: inline-block;
+    padding: 0px 10px;
+    font-size: 11px;
+}
+.pt7{
+        padding-top: 7px;
+}
+.mt100{
+    margin-top: 100px;
+}
+.cat-names input[type="text"] {
+    background: #e0bd28;
+    border-radius: 4px;
+    border-bottom: 0px;
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+}
+.cat-names input[type="text"]:focus {
+
+    border-bottom: 0px;
+
+}
+.c-span{
+  display: block;
+padding-top: 13px;
+font-size: 16px;
+}
+.box-left {
+    border: 1px solid #684703;
+    border-radius: 4px;
+    padding: 30px 0px 15px 16px;
+}
+.btn-right{
+  text-align: right;
+}
+.btn-ch{
+  background: transparent;
+border: 1px solid;
+
+}
+.pl52{
+  padding-right: 52px;
+}
+button:focus {
+    outline: none;
+    background-color: transparent;
+    color:  #684703;
 }
