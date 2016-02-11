@@ -75,12 +75,12 @@ HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `tes
 	    
 	   $getemail = $this->db->query("SELECT `email` FROM `user` WHERE `id`='$userid'")->row();
         $email=$getemail->email;
-        $query = $this->db->query("SELECT `hq_surveyquestionuser`.`question` as `questionid`,`hq_surveyquestion`.`content` as `text` FROM `hq_surveyquestionuser` INNER JOIN `hq_surveyquestion` ON `hq_surveyquestion`.`id`=`hq_surveyquestionuser`.`question` WHERE `hq_surveyquestionuser`.`email`='$email' AND `hq_surveyquestionuser`.`status`=1")->result();
+        $query = $this->db->query("SELECT `hq_surveyquestionuser`.`question` as `questionid`,`hq_surveyquestion`.`content` as `text`,`hq_surveyquestion`.`type` FROM `hq_surveyquestionuser` INNER JOIN `hq_surveyquestion` ON `hq_surveyquestion`.`id`=`hq_surveyquestionuser`.`question` WHERE `hq_surveyquestionuser`.`email`='$email' AND `hq_surveyquestionuser`.`status`=1")->result();
                 foreach ($query as $questions) 
                 {
-                $questions->option = $this->db->query("SELECT `id`, `order`, `question`, `title`, `image` FROM `hq_surveyoption` WHERE `question`='$questions->question'")->result();
+                $questions->option = $this->db->query("SELECT `id`, `order`, `question`, `title`, `image` FROM `hq_surveyoption` WHERE `question`='$questions->questionid'")->result();
                 
-            }
+                }
 	   
 
 	    return $query;

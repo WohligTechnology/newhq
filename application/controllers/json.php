@@ -622,10 +622,7 @@ $this->load->view("json",$data);
        echo "      ";
         foreach($getUserid as $getUserid){
             $email=$getUserid->email;
-            echo $email;
-            echo "      ";
              $hashvalue=base64_encode ($getUserid->id."&hq");
-            echo $hashvalue;
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
@@ -648,11 +645,12 @@ $this->load->view("json",$data);
         foreach($gettotalemails as $gettotalemail){
             $email=$gettotalemail->email;
             $userid=$gettotalemail->userid;
+            echo $email;
              $hashvalue=base64_encode ($userid."&hq");
        $link="<a href='http://wohlig.co.in/hqfront/#/survey/$hashvalue'>Click here </a> To get questions.";
-           
-               $this->load->library('email');
-       $this->email->from('vigwohlig@gmail.com', 'HQ');
+           echo $link;
+              $this->load->library('email');
+       $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
        $this->email->subject('Test');   
            
