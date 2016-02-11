@@ -627,10 +627,8 @@ $this->load->view("json",$data);
              $hashvalue=base64_encode ($getUserid->id."&hq");
             echo $hashvalue;
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
-             echo "      ";
-            echo $link;
                $this->load->library('email');
-       $this->email->from('vigwohlig@gmail.com', 'HQ');
+       $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
        $this->email->subject('Test');   
            
