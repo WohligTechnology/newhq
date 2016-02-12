@@ -5,10 +5,10 @@
 </div>
 <div class="row">
     <form class='col s12' method='post' action='<?php echo site_url("site/editconclusionsuggestionsubmit");?>' enctype='multipart/form-data'>
-        <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
         <div class=" row" style="display:none">
             <div class=" input-field col s12 m6">
-                <?php echo form_dropdown("conclusion",$conclusion,set_value('conclusion',$this->input->get('id')));?>
+<!--                <?php echo form_dropdown("conclusion",$conclusion,set_value('conclusion',$this->input->get('id')));?>-->
+                  <input type="hidden" id="conclusion" name="conclusion" value="<?php echo set_value('conclusion',$this->input->get('id'));?>">
                     <label for="Conclusion">Conclusion</label>
             </div>
         </div>
