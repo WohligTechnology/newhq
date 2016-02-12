@@ -33,12 +33,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -47,12 +49,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -61,12 +65,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -75,12 +81,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -118,12 +126,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -132,12 +142,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -146,12 +158,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -160,12 +174,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -203,12 +219,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -217,12 +235,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -231,12 +251,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -245,12 +267,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -288,12 +312,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -302,12 +328,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -316,12 +344,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -330,12 +360,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -374,12 +406,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -388,12 +422,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -402,12 +438,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -416,12 +454,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -460,12 +500,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -474,12 +516,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -488,12 +532,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -502,12 +548,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -546,12 +594,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -560,12 +610,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -574,12 +626,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -588,12 +642,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -632,12 +688,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -646,12 +704,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -660,12 +720,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -674,12 +736,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -718,12 +782,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -732,12 +798,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -746,12 +814,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -760,12 +830,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -803,12 +875,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -817,12 +891,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marbotm">
                                     <div class="col s9">
@@ -831,12 +907,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                                 <div class="row marzero">
                                     <div class="col s9">
@@ -845,12 +923,14 @@
                                         </div>
 
                                     </div>
+<!--
                                     <div class="col s3">
                                         <ul class="text-center matop">
                                             <li>15, jan 2015</li>
                                             <li class="box-tp">Customize</li>
                                         </ul>
                                     </div>
+-->
                                 </div>
                             </div>
                         </div>
@@ -948,6 +1028,7 @@
                     </div>
                 </div>
                 <?php }?>
+                <a href="<?php echo site_url('site/sendMailToEachUser'); ?>" class="btn btn-secondary waves-effect waves-light  red">Send</a>
             </div>
         </div>
     </div>

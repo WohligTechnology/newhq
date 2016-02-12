@@ -4168,5 +4168,28 @@ $data["title"]="View pillar";
 $this->load->view("template",$data);
         
 	}
+     public function sendMailToEachUser()
+   {
+       $getUserid=$this->restapi_model->getUsers();
+       print_r($getUserid);
+       echo "      ";
+        foreach($getUserid as $getUserid){
+            $email=$getUserid->email;
+             $hashvalue=base64_encode ($getUserid->id."&hq");
+       $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+               $this->load->library('email');
+       $this->email->from('master@willnevergrowup.in', 'HQ');
+       $this->email->to($email);
+       $this->email->subject('Test');   
+           
+       $message = "Hiii      ".$link;
+       $this->email->message($message);
+       $this->email->send();
+            
+        }
+    $data["redirect"]="site/getSchedule";
+         $this->load->view("redirect",$data);
+      
+   }
 }
 ?>
