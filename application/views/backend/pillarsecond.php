@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col s6 ">
                 <div class="">
-
                     <div class="row">
                         <div class="all-range">
                             <div class="col s10">
@@ -27,7 +26,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="all-range">
                             <div class="col s10">
                                 <div class="left-side">
@@ -51,7 +49,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="all-range">
                             <div class="col s10">
                                 <div class="left-side">
@@ -329,27 +326,17 @@
 </div>
 
 <div class="row">
-    <div class="col s4">
-        <!--                <a class="blue-btn">Customize The <br> Pillar weights</a>-->
-
-        <span class="blue-btn custm-btn">
-            Customize The Pillar weights
-        </span>
-
+    <div class="col s4 text-center">
+        <a class="blue-btn custm-btn">Customize The Pillar weights</a>
     </div>
     <div class="col s4 text-center">
-
-            <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
+      <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
     </div>
-     <?php if ($checkpackage == 4) {
-?>
-    <div class="col s4">
-      <a class="blue-btn custm-btn" href="<?php echo site_url('site/viewpillarquestion');?>">
-          Go to Question
-      </a>
+     <?php if ($checkpackage == 4) { ?>
+    <div class="col s4 text-center">
+      <a class="blue-btn custm-btn" href="<?php echo site_url('site/viewpillarquestion');?>">Go to Question</a>
     </div>
-<?php
-}?>
+<?php } ?>
 </div>
 
 </form>
