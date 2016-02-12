@@ -1769,6 +1769,7 @@ $this->load->view("template",$data);
 {
     $id=$this->input->get("id");
     $data["conclusion"]=$this->conclusion_model->getConclusionQuestionOption($id);
+        $data["before"]=$this->conclusionsuggestion_model->beforeedit($this->input->get("id"));
         $data["optiondata"]=$this->menu_model->getinterlinkageoptions($data["conclusion"][0]->id,$data["conclusion"][1]->id);
     $data[ 'title' ] ="Interlinkage Part";
     $data['page']='viewconclude';
@@ -3896,30 +3897,16 @@ public function editconclusionsuggestionsubmit()
 {
 $access=array("1","5");
 $this->checkaccess($access);
-$this->form_validation->set_rules("id","Id","trim");
-$this->form_validation->set_rules("conclusion","Conclusion","trim");
-$this->form_validation->set_rules("suggestion","Suggestion","trim");
-if($this->form_validation->run()==FALSE)
-{
-$data["alerterror"]=validation_errors();
-$data["page"]="editconclusionsuggestion";
-$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data["title"]="Edit conclusionsuggestion";
-$data["before"]=$this->conclusionsuggestion_model->beforeedit($this->input->get("id"));
-$this->load->view("template",$data);
-}
-else
-{
-$id=$this->input->get_post("id");
 $conclusion=$this->input->get_post("conclusion");
 $suggestion=$this->input->get_post("suggestion");
-if($this->conclusionsuggestion_model->edit($id,$conclusion,$suggestion)==0)
+    print_r($_POST);
+if($this->conclusionsuggestion_model->edit($conclusion,$suggestion)==0)
 $data["alerterror"]="New conclusionsuggestion could not be Updated.";
 else
 $data["alertsuccess"]="conclusionsuggestion Updated Successfully.";
-$data["redirect"]="site/viewconclusionsuggestion";
-$this->load->view("redirect",$data);
-}
+//$data["redirect"]="site/viewconclude?id=".$conclusion;
+//$this->load->view("redirect2",$data);
+
 }
 public function deleteconclusionsuggestion()
 {
