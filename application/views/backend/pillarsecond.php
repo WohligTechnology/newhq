@@ -326,9 +326,6 @@
 </div>
 
 <div class="row">
-    <!-- <div class="col s4 text-center">
-        <a class="blue-btn custm-btn">Customize The Pillar weights</a>
-    </div> -->
     <div class="col s6 text-center">
       <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
     </div>
