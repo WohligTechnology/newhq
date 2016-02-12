@@ -34,7 +34,7 @@
     }
     generatejquery('<?php echo $base_url;?>');
 </script>
-   
+
 
 <!--
    <div class="row" style="padding:1% 0">

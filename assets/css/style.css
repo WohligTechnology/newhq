@@ -373,16 +373,16 @@ ul.side-nav.fixed li a {
 
 .panel-body ul#nav-mobile li a {
     padding: 10px 15px;
-    color: #0D47A1;
-    background-color: white;
-    border: 1px solid #0D47A1;
+    color: #00AC93;
+    background-color: #FFFBEC;
+    border: 1px solid #00AC93;
     width: 100%;
     margin-bottom: 10px;
 }
 
 .panel-body ul#nav-mobile li a.active {
-    color: white;
-    background-color: #0D47A1;
+    color: #FFFBEC;
+    background-color: #00AC93;
 }
 
 .chisorting {
@@ -577,6 +577,7 @@ select {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
+
 .panel-heading {
     padding: 0px 15px;
     border-bottom: 1px solid transparent;
@@ -702,6 +703,7 @@ table.highlight>tbody>tr:hover {
     background-color: #00ceb0;
     padding: 10px 15px;
     margin: 0 20px;
+    position: relative;
 }
 li.sub-menu.logo:hover {
     background-color: inherit;
@@ -769,8 +771,12 @@ thead {
 }
 
 .blue-btn.custm-btn {
-    padding: 1px 0px;
-    border-radius: 4px;
+  padding: 0px 15px;
+  border-radius: 4px;
+  min-height: 36px;
+  line-height: 36px;
+  display: inline-block;
+  cursor: pointer;
 }
 .cstm-padding{
         height: 46px !important;
@@ -832,4 +838,7 @@ button:focus {
     outline: none;
     background-color: transparent;
     color:  #684703;
+}
+.p15 {
+  padding-top: 15px;
 }

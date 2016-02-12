@@ -1,28 +1,24 @@
 
-    <div class="container">
-        <div class="padtop">
+    <div class="">
+        <div class="">
+          <h5 class="padleft">Schedule the question</h5>
+
             <div class="row">
                <!--               First pillar-->
                 <div class="col s6 ">
-                    <div class="">
-
-                        <h5 class="padleft">Schedule the question</h5>
-
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[0]->name?></p>
                                 </div>
-                                <div class="pull-right matop select-before displ">
+                                <div class="pull-right select-before displ">
                                     <select>
-
                                         <option value="1">Weekly</option>
                                         <option value="2">Biweekly</option>
                                         <option value="3">Fortnight</option>
                                         <option value="3">Mothly</option>
                                     </select>
                                 </div>
-
                             </div>
 
                             <div class="panel-body">
@@ -92,21 +88,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </div>
 
 <!--               SEcond pillar-->
-               
+
                 <div class="col s6 ">
-                    <div class="p50">
+                    <div class="">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[1]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -187,19 +183,21 @@
                         </div>
 
                     </div>
-                </div> 
-                   
-<!--                    //third pillar-->
+                </div>
+              </div>
+
+<!--                    third pillar-->
+<div class="row">
                       <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[2]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -280,19 +278,19 @@
                         </div>
 
                     </div>
-                </div>  
-                   
+                </div>
+
 <!--                      fourth pillar-->
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[3]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -374,19 +372,20 @@
 
                     </div>
                 </div>
-                      
-                      
+</div>
+
                       <!--                      fifth pillar-->
+                      <div class="row">
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[4]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -467,20 +466,19 @@
                         </div>
 
                     </div>
-                </div>   
-                     
-                         
+                </div>
+
                       <!--                      Sixth pillar-->
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[5]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -561,20 +559,22 @@
                         </div>
 
                     </div>
-                </div>  
-                      
-                         
+                </div>
+              </div>
+
+
                                <!--                      Seventh pillar-->
+                               <div class="row">
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[6]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -655,20 +655,20 @@
                         </div>
 
                     </div>
-                </div>    
-                      
-                            
+                </div>
+
+
                                         <!--                      Eight pillar-->
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[7]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -749,20 +749,21 @@
                         </div>
 
                     </div>
-                </div>          
-                      
-                                
+                </div>
+</div>
+
                                                     <!--                      Nine pillar-->
+<div class="row">
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[8]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -844,18 +845,18 @@
 
                     </div>
                 </div>
-                
+
                                                        <!--                      Ten pillar-->
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[9]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -936,20 +937,21 @@
                         </div>
 
                     </div>
-                </div>    
-                      
+                </div>
+                </div>
+
                           <?php if($checkpackage==4){?>
                                   <!--                      Eleven pillar-->
                        <div class="col s6 ">
-                    <div class="p50">
+                    <div class="p15">
 
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="pull-left  displ">
                                     <p class="panel-title"><?php echo $pillar[10]->name?></p>
                                 </div>
-                                <div class="pull-right matop  selects-before displ">
-                                 
+                                <div class="pull-right selects-before displ">
+
                                     <select>
 
                                         <option value="1">Weekly</option>
@@ -1029,6 +1031,5 @@
                 </div>
                 <?php }?>
                 <a href="<?php echo site_url('site/sendMailToEachUser'); ?>" class="btn btn-secondary waves-effect waves-light  red">Send</a>
-            </div>
         </div>
     </div>

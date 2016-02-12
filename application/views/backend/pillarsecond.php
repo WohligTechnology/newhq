@@ -1,10 +1,9 @@
-<form class="col s12" method="post" action="<?php echo site_url('site/getweightageviewpillar');?>" enctype="multipart/form-data">
-    <div class="container">
+<form method="post" action="<?php echo site_url('site/getweightageviewpillar');?>" enctype="multipart/form-data">
+  <h5 class="padleft"> Weightages</h5>
         <div class="row">
             <div class="col s6 ">
-                <div class="padtop">
+                <div class="">
 
-                    <h5 class="padleft"> Weightages</h5>
                     <div class="row">
                         <div class="all-range">
                             <div class="col s10">
@@ -129,7 +128,8 @@
 </div>
 </div>
 </div>
-<?php if($checkpackage==4){?>
+<?php if ($checkpackage == 4) {
+    ?>
 <div class="row">
     <div class="all-range">
         <div class="col s10">
@@ -163,7 +163,8 @@
         </div>
     </div>
 </div>
-<?php }?>
+<?php
+}?>
 <div class="row">
     <div class="all-range">
         <div class="col s2">
@@ -189,7 +190,7 @@
 </div>
 
 <div class="col s6 ">
-    <div class="padtop">
+    <div class="">
 
         <h5 class="padleft"></h5>
         <div class="row">
@@ -323,36 +324,34 @@
             </div>
         </div>
     </div>
-    <div class="mt100">
-        <div class="col s4">
-            <!--                <a class="blue-btn">Customize The <br> Pillar weights</a>-->
 
-            <div class="blue-btn custm-btn">
-                <p>Customize The</p>
-                <p>Pillar weights</p>
-            </div>
+</div>
+</div>
 
-        </div>
-        <div class="col s4 text-center">
-            <div class="">
-                <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
-            </div>
-        </div>
-         <?php if($checkpackage==4){?>
-          <a href="<?php echo site_url('site/viewpillarquestion');?>">
-        <div class="col s4">
-            <div class="blue-btn custm-btn">
-                <p>Go to </p>
-                <p>Question</p>
-            </div>
-        </div>
-        </a>
-<?php }?>
+<div class="row">
+    <div class="col s4">
+        <!--                <a class="blue-btn">Customize The <br> Pillar weights</a>-->
+
+        <span class="blue-btn custm-btn">
+            Customize The Pillar weights
+        </span>
+
     </div>
-</div>
+    <div class="col s4 text-center">
+
+            <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
+    </div>
+     <?php if ($checkpackage == 4) {
+?>
+    <div class="col s4">
+      <a class="blue-btn custm-btn" href="<?php echo site_url('site/viewpillarquestion');?>">
+          Go to Question
+      </a>
+    </div>
+<?php
+}?>
 </div>
 
-</div>
 </form>
 <script>
     $(document).ready(function() {
@@ -398,7 +397,7 @@
 
         $("[name=rangeavg]").on("change", function() {
             $("[for=rangeavg]").val(this.value + "%");
-        }).trigger("change"); 
+        }).trigger("change");
         $("[name=rangeeleven]").on("change", function() {
             $("[for=rangeeleven]").val(this.value + "%");
         }).trigger("change");
