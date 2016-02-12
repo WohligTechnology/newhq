@@ -326,14 +326,14 @@
 </div>
 
 <div class="row">
-    <div class="col s4 text-center">
+    <!-- <div class="col s4 text-center">
         <a class="blue-btn custm-btn">Customize The Pillar weights</a>
-    </div>
-    <div class="col s4 text-center">
+    </div> -->
+    <div class="col s6 text-center">
       <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
     </div>
      <?php if ($checkpackage == 4) { ?>
-    <div class="col s4 text-center">
+    <div class="col s6 text-center">
       <a class="blue-btn custm-btn" href="<?php echo site_url('site/viewpillarquestion');?>">Go to Question</a>
     </div>
 <?php } ?>
