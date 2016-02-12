@@ -4182,7 +4182,12 @@ $this->load->view("template",$data);
        $this->email->to($email);
        $this->email->subject('Test');   
            
-       $message = "Hiii      ".$link;
+//       $message = "Hiii      ".$link;
+       $message = "<html>
+        <p>Hello!</p><br>
+      <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
+<p>For any queries/support, contact the HR Team on ___________________</p><br>
+      </html>";
        $this->email->message($message);
        $this->email->send();
             
