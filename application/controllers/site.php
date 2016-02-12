@@ -3899,12 +3899,13 @@ $access=array("1","5");
 $this->checkaccess($access);
 $conclusion=$this->input->get_post("conclusion");
 $suggestion=$this->input->get_post("suggestion");
+    print_r($_POST);
 if($this->conclusionsuggestion_model->edit($conclusion,$suggestion)==0)
 $data["alerterror"]="New conclusionsuggestion could not be Updated.";
 else
 $data["alertsuccess"]="conclusionsuggestion Updated Successfully.";
-$data["redirect"]="site/viewconclude?id=".$conclusion;
-$this->load->view("redirect2",$data);
+//$data["redirect"]="site/viewconclude?id=".$conclusion;
+//$this->load->view("redirect2",$data);
 
 }
 public function deleteconclusionsuggestion()
@@ -4157,8 +4158,6 @@ $this->load->view("template",$data);
      public function sendMailToEachUser()
    {
        $getUserid=$this->restapi_model->getUsers();
-       print_r($getUserid);
-       echo "      ";
         foreach($getUserid as $getUserid){
             $email=$getUserid->email;
              $hashvalue=base64_encode ($getUserid->id."&hq");
@@ -4176,7 +4175,6 @@ $this->load->view("template",$data);
       </html>";
        $this->email->message($message);
        $this->email->send();
-            
         }
     $data["redirect"]="site/getSchedule";
          $this->load->view("redirect",$data);
