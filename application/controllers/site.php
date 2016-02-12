@@ -4153,9 +4153,19 @@ $this->load->view("redirect",$data);
         $this->load->view("json", $data);
         
 	}
-    public function newpillar()
+    public function getSchedule()
 	{
-        $this->load->view("pillarsecond");
+     $access=array("1","2","3");
+$this->checkaccess($access);
+$data["page"]="questionschedule";
+$data["checkpackage"]=$this->menu_model->checkpackage();
+$data['pillar']=$this->pillar_model->getpillarweightforedit();
+$data['question']=$this->question_model->getallquestion();
+$data[ 'schedule' ] =$this->user_model->getscheduledropdown();
+//$data['lastpillardetail']=$this->pillar_model->lastpillardetail();
+//  echo $data['showavg'];
+$data["title"]="View pillar";
+$this->load->view("template",$data);
         
 	}
 }
