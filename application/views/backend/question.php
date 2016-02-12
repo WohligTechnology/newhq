@@ -83,6 +83,7 @@
 
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col s12">
                 <div class="btn-right pl52">
@@ -90,6 +91,7 @@
                 </div>
               </div>
             </div>
+-->
           </div>
         </div>
         <div class="col s6">
@@ -159,6 +161,7 @@
 
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col s12">
                 <div class="btn-right pl52">
@@ -166,6 +169,7 @@
                 </div>
               </div>
             </div>
+-->
           </div>
         </div>
       </div>
@@ -237,6 +241,7 @@
 
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col s12">
                 <div class="btn-right pl52">
@@ -244,6 +249,7 @@
                 </div>
               </div>
             </div>
+-->
           </div>
         </div>
         <div class="col s6">
@@ -313,6 +319,7 @@
 
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col s12">
                 <div class="btn-right pl52">
@@ -320,6 +327,7 @@
                 </div>
               </div>
             </div>
+-->
           </div>
         </div>
       </div>

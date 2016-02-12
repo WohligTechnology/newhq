@@ -73,6 +73,10 @@ class Site extends CI_Controller
 		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
+        $data["checkpackage"]=$this->menu_model->checkpackage();
+        $data['before']=$this->pillar_model->getpillarweightforedit();
+        $data['showavg']=$this->pillar_model->showavg();
+        $data['lastpillardetail']=$this->pillar_model->lastpillardetail();
 		$this->load->view( 'template', $data );
 //        }
 
@@ -1141,7 +1145,8 @@ $this->load->view("redirect",$data);
          $range7=$this->input->get_post('rangeseven');
          $range8=$this->input->get_post('rangeeight');
          $range9=$this->input->get_post('rangenine');
-        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9);
+         $range11=$this->input->get_post('rangeeleven');
+        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11);
 $data["redirect"]="site/index";
 $this->load->view("redirect",$data);
     }

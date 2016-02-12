@@ -294,6 +294,39 @@
                             </div>
                         </div>
                     </div>
+                    <?php if($checkpackage==4){?>
+<div class="row">
+    <div class="all-range">
+        <div class="col s10">
+            <div class="left-side">
+
+                <div class="progress-bar">
+
+
+                    <p class="display-inline">
+                        <?php echo $lastpillardetail->name;?>
+                    </p>
+                    <div class="left-s">
+                        <div class="box-tp displ-inline">
+                            <a href='<?php echo site_url('site/editpillar?id=11');?>'>Edit</a>
+                        </div>
+                    </div>
+                        <div class="input-border">
+                            <p class="range-field">
+                                <input type="range" name="rangeeleven" id="rangeeleven" min="0" max="100" value="<?php echo $before[10]->weight;?>"/>
+                            </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s2">
+            <div class="progress-bar out-top">
+                <output for="rangeeleven" class="output"></output>
+            </div>
+        </div>
+    </div>
+</div>
+<?php }?>
                 </div>
             </div>
         </div>

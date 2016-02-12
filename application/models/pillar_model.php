@@ -199,7 +199,7 @@ return $query;
 $query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
 return $query;
 }  
-    public function updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9)
+    public function updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11)
 {
 $data=array("expectedweight" => $range);
 $this->db->where( "id", 1 );
@@ -240,6 +240,10 @@ $query=$this->db->update( "hq_pillar", $data8 );
 $data9=array("expectedweight" => $range9);
 $this->db->where( "id", 10 );
 $query=$this->db->update( "hq_pillar", $data9 );
+        
+$data10=array("expectedweight" => $range11);
+$this->db->where( "id", 11 );
+$query=$this->db->update( "hq_pillar", $data10 );
 return 1;
 } 
     

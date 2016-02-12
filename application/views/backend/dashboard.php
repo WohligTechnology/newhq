@@ -345,3 +345,76 @@
                         .add();
                 });
         </script>
+        
+        
+        
+<!--        // INDIVIDUAL PILLAR GRAPH-->
+        <div id="container4" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <script>
+        $(function () {
+    $('#container4').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Individual pillar weight'
+        },
+      <?php if($checkpackage==4){?>
+        xAxis: {
+            categories: ['Work-Life Blend', 'Employee Engagement', 'Driving Force', 'Health of an Individual', 'Interpersonal Relationships at Work','Rewards and Recognition','Sense of Ownership','Work Environment','Job Security','Alignment','New Title'],
+            title: {
+                text: null
+            }
+        },
+        <?php }?>
+        xAxis: {
+            categories: ['Work-Life Blend', 'Employee Engagement', 'Driving Force', 'Health of an Individual', 'Interpersonal Relationships at Work','Rewards and Recognition','Sense of Ownership','Work Environment','Job Security','Alignment'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Population (millions)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' millions'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Year 1800',
+            data: [107, 31]
+        }, {
+            name: 'Year 2000',
+            data: [133, 156]
+        }]
+    });
+});
+            </script>
+

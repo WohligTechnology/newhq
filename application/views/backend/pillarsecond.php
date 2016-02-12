@@ -129,6 +129,7 @@
 </div>
 </div>
 </div>
+<?php if($checkpackage==4){?>
 <div class="row">
     <div class="all-range">
         <div class="col s10">
@@ -162,6 +163,7 @@
         </div>
     </div>
 </div>
+<?php }?>
 <div class="row">
     <div class="all-range">
         <div class="col s2">
@@ -336,6 +338,7 @@
                 <button type="submit" class="waves-effect waves-light btn blue-btn">OK</button>
             </div>
         </div>
+         <?php if($checkpackage==4){?>
           <a href="<?php echo site_url('site/viewpillarquestion');?>">
         <div class="col s4">
             <div class="blue-btn custm-btn">
@@ -344,7 +347,7 @@
             </div>
         </div>
         </a>
-
+<?php }?>
     </div>
 </div>
 </div>

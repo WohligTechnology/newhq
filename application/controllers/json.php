@@ -589,6 +589,9 @@ $this->load->view("json",$data);
  public function viewfirstpage()
  {
       $data['pillardata']=$this->pillar_model->getallpillars();
+      $data["checkpackage"]=$this->menu_model->checkpackage();
+     $data['lastpillardetail']=$this->pillar_model->lastpillardetail();
+     $data['before']=$this->pillar_model->getpillarweightforedit();
       $this->user_model->makeuserold($this->session->userdata("id"));
       $this->load->view('pillar',$data);
  }
