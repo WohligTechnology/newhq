@@ -3899,13 +3899,12 @@ $access=array("1","5");
 $this->checkaccess($access);
 $conclusion=$this->input->get_post("conclusion");
 $suggestion=$this->input->get_post("suggestion");
-    print_r($_POST);
 if($this->conclusionsuggestion_model->edit($conclusion,$suggestion)==0)
 $data["alerterror"]="New conclusionsuggestion could not be Updated.";
 else
 $data["alertsuccess"]="conclusionsuggestion Updated Successfully.";
-//$data["redirect"]="site/viewconclude?id=".$conclusion;
-//$this->load->view("redirect2",$data);
+$data["redirect"]="site/viewconclude?id=".$conclusion;
+$this->load->view("redirect2",$data);
 
 }
 public function deleteconclusionsuggestion()
