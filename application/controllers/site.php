@@ -1146,9 +1146,16 @@ $this->load->view("redirect",$data);
          $range8=$this->input->get_post('rangeeight');
          $range9=$this->input->get_post('rangenine');
          $range11=$this->input->get_post('rangeeleven');
-        $this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11);
-$data["redirect"]="site/index";
-$this->load->view("redirect",$data);
+        $value=$this->pillar_model->updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11);
+        if($value==1){
+            $data["redirect"]="site/index";
+            $this->load->view("redirect",$data);
+        }
+        else if($value==0){
+            $this->user_model->makeusernew($this->session->userdata("id"));
+            redirect( base_url() . 'index.php/json/viewfirstpage?id=2', 'refresh' );
+        }
+        
     }
 public function editpillar()
 {

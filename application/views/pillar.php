@@ -24,10 +24,16 @@
 <body class="yellow-back">
       <form class="col s12" method="post" action="<?php echo site_url('site/getweightage');?>" enctype="multipart/form-data">
     <div class="container">
+       
         <div class="row">
             <div class="col s6 ">
+               <?php if($id==1){?>
+                <span><b>Note : Sum Of Weights Should Be Less Than 100.</b></span>
+                <?php } else {?>
+                <span><b>Sum Of Weights Should Be Less Than 100.</b></span>
+                <?php }?>
                 <div class="padtop">
-
+ 
                     <h5 class="padleft"> Weightages</h5>
                     <div class="row">
 

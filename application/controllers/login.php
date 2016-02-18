@@ -22,7 +22,7 @@ class Login extends CI_Controller
 		if ( $validate) {
             $checkfirst=$this->user_model->checkfirstlogin($this->session->userdata("id"));
             if($checkfirst==true){
-                 redirect( base_url() . 'index.php/json/viewfirstpage', 'refresh' );
+                 redirect( base_url() . 'index.php/json/viewfirstpage?id=1', 'refresh' );
             }
             else
             {
