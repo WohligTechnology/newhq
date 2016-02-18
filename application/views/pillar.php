@@ -28,9 +28,9 @@
         <div class="row">
             <div class="col s6 ">
                <?php if($id==1){?>
-                <span><b>Note : Sum Of Weights Should Be Less Than 100.</b></span>
+                <span><b>Note : Sum Of Weights Should Be 100.</b></span>
                 <?php } else {?>
-                <span><b>Sum Of Weights Should Be Less Than 100.</b></span>
+                <span><b>Sum Of Weights Should Be 100.</b></span>
                 <?php }?>
                 <div class="padtop">
  

@@ -11,6 +11,6 @@
   </div>
 </div>
   <div class="begin">
-    <a class="waves-effect waves-light btn blue darken-4 margall" href=""><i class="icon-trash"></i>Begin</a>
+    <a class="waves-effect waves-light btn blue darken-4 margall" href="<?php echo site_url("json/viewfirstpage?id=1"); ?>"><i class="icon-trash"></i>Begin</a>
   </div>
 </div>

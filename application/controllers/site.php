@@ -48,23 +48,20 @@ class Site extends CI_Controller
 	{
 		$access = array("1","2","3","5");
 		$this->checkaccess($access);
-
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard();
-        $data['weightgraph']=$pillarsdata;
-//        if($this->session->userdata('accesslevel')==3)
-//        {
-//         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-//        $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
-//        $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
-//		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
-//		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
-//		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-//		$data[ 'page' ] = 'dashboard';
-//		$data[ 'title' ] = 'Welcome';
-//		$this->load->view( 'template', $data );
-//        }
-//        else
-//        {
+        $totalsum=0;
+        $totalexpected=0;
+        foreach($pillarsdata as $row)
+        {
+            for($i=0;$i<count($row);$i++)
+            {
+                $totalsum=$totalsum+($row[$i]->expectedweight *$row[$i]->pillaraveragevalues)/100;
+                $totalexpected=$totalexpected+($row[$i]->expectedweight);
+               
+            }
+        }
+        $data['totalsum']=$totalsum;
+        $data['totalexpected']=$totalexpected;
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
