@@ -32,7 +32,14 @@ class Login extends CI_Controller
 			
 		} //$validate
 		else {
-			$data[ 'alerterror' ] = 'Username or Password Incorrect';
+            $checkifblockquery=$this->db->query("SELECT `isblock` FROM `user`")->row();
+            $checkifblock=$checkifblockquery->isblock;
+            if($checkifblock==0){
+                $data['alerterror']="Your Username OR Password is Invalid!!";
+            }
+			else if($checkifblock==1){
+                $data['alerterror']="Oops your Package is Expired!!";
+            }
 			//$data[ 'page' ]  = 'login';
 			//$data[ 'title' ]      = 'Login Page';
 			$this->load->view( 'login' , $data );
