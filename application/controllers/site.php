@@ -56,12 +56,12 @@ class Site extends CI_Controller
             for($i=0;$i<count($row);$i++)
             {
                 $totalsum=$totalsum+($row[$i]->expectedweight *$row[$i]->pillaraveragevalues)/100;
-                $totalexpected=$totalexpected+($row[$i]->expectedweight);
+                $totalexpected=$totalexpected+($row[$i]->weight * $row[$i]->pillaraveragevalues)/100;
                
             }
         }
-        $data['totalsum']=$totalsum;
-        $data['totalexpected']=$totalexpected;
+        $data['totalsum']=number_format((float)$totalsum, 2, '.', ''); 
+        $data['totalexpected']=number_format((float)$totalexpected, 2, '.', '');
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
@@ -4187,6 +4187,11 @@ $this->load->view("template",$data);
 		 $data["page"]="welcome";
 		 $data["title"]="Welcome to HQ";
 		 $this->load->view("template",$data);
+	 }
+    public function getPillarWeight(){
+		 $weights=$this->pillar_model->getallpillars();
+        $data["message"] = $weights;
+		$this->load->view( 'json', $data );
 	 }
 }
 ?>

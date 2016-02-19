@@ -351,18 +351,17 @@ $(function () {
         credits: {
             enabled: false
         },
-        series: [{
+        series: [ {
             name: 'Average',
-            data: [<?php echo $totalsum;?>]
-        }, {
-            name: 'Expected',
             data: [<?php echo $totalexpected;?>]
+        },{
+            name: 'HQ Expected',
+            data: [<?php echo $totalsum;?>]
         }]
     });
 });
 </script>
 
-<!--
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 <script>
@@ -375,7 +374,8 @@ $(function () {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                 backgroundColor: "transparent"
             },
             title: {
                 text: 'Pillar Average'
@@ -437,4 +437,3 @@ $(function () {
     });
 
 </script>
--->
