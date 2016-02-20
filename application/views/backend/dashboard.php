@@ -7,8 +7,7 @@
         <div class="col s12 m3">
             <select id="1" name="gender" onchange="GlobalFunctions.checkfortwo(1);" style="display:none">
                 <?php  foreach($gender as $key => $value) {?>
-                    <option value=<?php echo $key; ?>>
-                        <?php echo $value; ?>
+                    <option value=<?php echo $key; ?>><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -31,8 +30,7 @@
         <div class="col s12 m3">
             <select id="3" name="maritalstatus" onchange="GlobalFunctions.checkfortwo(3);" style="display:none">
                 <?php  foreach($maritalstatus as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -41,8 +39,7 @@
         <div class="col s12 m3">
             <select id="4" name="branch" onchange="GlobalFunctions.checkfortwo(4);" style="display:none">
                 <?php  foreach($branch as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                             <?php }?>
             </select>
             <label>Branch</label>
@@ -52,8 +49,7 @@
         <div class="col s12 m3">
             <select id="5" name="department" onchange="GlobalFunctions.checkfortwo(5);" style="display:none">
                 <?php  foreach($department as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -62,8 +58,7 @@
         <div class="col s12 m3">
             <select id="6" name="designation" onchange="GlobalFunctions.checkfortwo(6);" style="display:none">
                 <?php  foreach($designation as $key => $value) {?>
-                    <option value="<?php echo $key; ?>">
-                        <?php echo $value; ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
@@ -107,6 +102,8 @@
 <div class="lightcolor"></div>
 <script>
     var pillars = [];
+    var totalsum = [];
+    var totalexpected = [];
     var expectedWeight = [];
     var pillAraverage = [];
     var GlobalFunctions = {};
@@ -183,6 +180,18 @@
                 experience: $experience
             }, function(data) {
                 console.log(data);
+//                console.log(data[0].expectedweight);
+                var totalsum=0;
+                var totalexpected=0;
+                for(var i=0;i< data.length ; i++){
+                   totalsum= totalsum + (data[i].pillaraveragevalues * data[i].expectedweight)/100;
+                    totalexpected =totalexpected + (data[i].pillaraveragevalues * data[i].weight)/100;
+                }
+              
+                totalsum=Math.floor(totalsum);
+                totalexpected=Math.floor(totalexpected);
+                  console.log(totalsum);
+                console.log(totalexpected);
                 pillars = _.pluck(data, "name");
                 pillars.push("Overall");
                 expectedWeight = _.pluck(data, "expectedweight");
@@ -210,11 +219,11 @@
                     }
                     return parseInt(n);
                 });
-                console.log(weight);
+//                console.log(weight);
                 $('select').material_select();
                 createGraph();
                 createPie();
-                overAll();
+                overAll(totalexpected,totalsum);
             });
 
 
@@ -296,15 +305,10 @@
 //                }]
             });
         }
-
-    });
-
-</script>
-<div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-<script>
-    
-function overAll () {
-    $('#container3').highcharts({
+        
+        
+        function overAll (totalexpected,totalsum) {
+        $('#container3').highcharts({
         chart: {
             type: 'bar',
             backgroundColor: "transparent"
@@ -355,19 +359,27 @@ function overAll () {
         },
         series: [ {
             name: 'Average',
-            data: [<?php echo $totalexpected;?>]
+            data: [totalexpected]
         },{
             name: 'HQ Expected',
-            data: [<?php echo $totalsum;?>]
+            data: [totalsum]
         }]
     });
 }
+        
+        
+
+    });
+
 </script>
+<div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 <script>
     function createPie() {
+        console.log(pillAraverage);
         $('#container').highcharts({
             credits: {
                 enabled: false
@@ -412,7 +424,16 @@ function overAll () {
             series: [{
                 name: 'Average',
                 colorByPoint: true,
-                data: pillAraverage
+                data: [
+                    {
+                     name:"Android",
+                        y:10
+                    },
+                    {
+                      name:"windows",
+                        y:20
+                    }
+                ]
             }]
         });
 
