@@ -93,7 +93,7 @@
         <div id="nodata" style="display:none;">No Data Found</div>
 
         <div class="well">
-            <span style="font-size: 20px;"><b>Charts of Recent Test :-</b></span>
+            <span style="font-size: 20px;"><b>Results Of The Last Test :-</b></span>
         </div>
     </div>
 </div>
@@ -102,6 +102,7 @@
 <div class="lightcolor"></div>
 <script>
     var pillars = [];
+    var arr = [];
     var totalsum = [];
     var totalexpected = [];
     var expectedWeight = [];
@@ -180,7 +181,19 @@
                 experience: $experience
             }, function(data) {
                 console.log(data);
-//                console.log(data[0].expectedweight);
+//                var arr=[];
+                _.each(data,function(n){
+                    var obj={};
+                    obj.name=n.name;
+                    obj.y=parseFloat(n.pillaraveragevalues);
+                    arr.push(obj);
+                })
+                getname=_.mapValues(data, 'name');
+                getavgvalue=_.mapValues(data, 'pillaraveragevalues');
+//                mappedvalue=_.mapValues(users, 'age');
+                console.log(arr);
+//                console.log(getavgvalue);
+//                console.log(mappedvalue);
                 var totalsum=0;
                 var totalexpected=0;
                 for(var i=0;i< data.length ; i++){
@@ -190,8 +203,8 @@
               
                 totalsum=Math.floor(totalsum);
                 totalexpected=Math.floor(totalexpected);
-                  console.log(totalsum);
-                console.log(totalexpected);
+//                  console.log(totalsum);
+//                console.log(totalexpected);
                 pillars = _.pluck(data, "name");
                 pillars.push("Overall");
                 expectedWeight = _.pluck(data, "expectedweight");
@@ -209,7 +222,7 @@
                     }
                     return parseInt(n);
                 });
-                console.log(pillAraverage);
+//                console.log(pillAraverage);
                 pillAraverage.push(_.sum(pillAraverage) / (pillars.length - 1));
 
                 weight = _.pluck(data, "weight");
@@ -305,7 +318,58 @@
 //                }]
             });
         }
-        
+           function createPie() {
+//        console.log(arr);
+        $('#container').highcharts({
+            credits: {
+                enabled: false
+            },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                 backgroundColor: "transparent"
+            },
+            title: {
+                text: 'Pillar Average'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -500,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            series: [{
+                name: 'Average',
+                colorByPoint: true,
+                data: arr
+            }]
+        });
+
+
+    }
         
         function overAll (totalexpected,totalsum) {
         $('#container3').highcharts({
@@ -378,67 +442,7 @@
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 <script>
-    function createPie() {
-        console.log(pillAraverage);
-        $('#container').highcharts({
-            credits: {
-                enabled: false
-            },
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie',
-                 backgroundColor: "transparent"
-            },
-            title: {
-                text: 'Pillar Average'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        style: {
-                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                        }
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -500,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-                shadow: true
-            },
-            series: [{
-                name: 'Average',
-                colorByPoint: true,
-                data: [
-                    {
-                     name:"Android",
-                        y:10
-                    },
-                    {
-                      name:"windows",
-                        y:20
-                    }
-                ]
-            }]
-        });
-
-
-    }
+ 
     $('#button').click(function() {
         var chart = $('#container').highcharts(),
             selectedPoints = chart.getSelectedPoints();
