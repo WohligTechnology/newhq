@@ -114,17 +114,17 @@
     var weight = [];
     $(document).ready(function() {
 
-        var new_base_url = "<?php echo site_url(); ?>";
-        $.getJSON(new_base_url + '/site/getpillarforpie', {}, function(data) {
-            _.each(data, function(n) {
-                var hold = {};
-                hold.name = n.name;
-                hold.y = parseInt(n.pillaraveragevalues);
-                pillaraveragevalues.push(hold);
-                $('select').material_select();
-                createPie();
-            });
-        });
+//        var new_base_url = "<?php echo site_url(); ?>";
+//        $.getJSON(new_base_url + '/site/getpillarforpie', {}, function(data) {
+//            _.each(data, function(n) {
+//                var hold = {};
+//                hold.name = n.name;
+//                hold.y = parseInt(n.pillaraveragevalues);
+//                pillaraveragevalues.push(hold);
+//                $('select').material_select();
+//                createPie();
+//            });
+//        });
 
         GlobalFunctions.checkfortwo = function(val) {
             var count = 0;
@@ -213,6 +213,8 @@
                 console.log(weight);
                 $('select').material_select();
                 createGraph();
+                createPie();
+                overAll();
             });
 
 
@@ -301,7 +303,7 @@
 <div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 <script>
     
-$(function () {
+function overAll () {
     $('#container3').highcharts({
         chart: {
             type: 'bar',
@@ -359,7 +361,7 @@ $(function () {
             data: [<?php echo $totalsum;?>]
         }]
     });
-});
+}
 </script>
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
@@ -410,7 +412,7 @@ $(function () {
             series: [{
                 name: 'Average',
                 colorByPoint: true,
-                data: pillaraveragevalues
+                data: pillAraverage
             }]
         });
 
