@@ -1,5 +1,5 @@
 <form method="post" action="<?php echo site_url('site/getweightageviewpillar');?>" enctype="multipart/form-data">
-    <h5 class="padleft"> Weightages</h5>
+    <h5 class="padleft">Assigned Weightages</h5>
     <div class="padleft padding-bottom">Sum of Weightage Should be equal to 100</div>
     <div class="row">
         <div class="col s12 m6 ">

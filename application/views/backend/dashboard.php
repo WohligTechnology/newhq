@@ -301,24 +301,35 @@
                         maxPointWidth: 100
                     }
                 },
-                series: [ {
+              
+                 <?php if($checkpackage==3 || $checkpackage==4) {?>
+                
+                 <?php } else {?>
+                  series: [ {
                     name: 'Average',
                     data: pillAraverage
 
-                }, ]
-//                series: [{
-//                    name: 'Expected',
-//                    data: expectedWeight
-//
-//                }, {
-//                    name: 'Average',
-//                    data: pillAraverage
-//
-//                }, {
-//                    name: 'Weight',
-//                    data: weight
-//
-//                }]
+                },
+                           {
+                   name: 'Expected',
+                    data: expectedWeight
+
+                }
+                          ]
+                 <?php } ?>
+                series: [{
+                    name: 'Expected',
+                    data: expectedWeight
+
+                }, {
+                    name: 'Average',
+                    data: pillAraverage
+
+                }, {
+                    name: 'Weight',
+                    data: weight
+
+                }]
             });
         }
            function createPie() {
