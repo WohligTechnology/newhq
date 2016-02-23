@@ -263,42 +263,37 @@ main,
 footer {
     padding-left: 240px;
 }
-
 .side-nav {
     width: 240px;
     background-color: #ffd61e;
 }
-
 ul.side-nav.fixed li.logo a {
     line-height: 100%;
     height: auto;
-
 }
 ul.side-nav.fixed li.logo img {
   width: 80%;
   height: auto;
 }
-  .btn, .btn-large {
-
-    background-color: #ce3a56 !important;
-      color:#ffd61e;
-    }
+.btn, .btn-large {
+  background-color: #ce3a56 !important;
+  color:#ffd61e;
+}
 ul.side-nav.fixed li a {
   line-height: 100%;
   height: auto;
-  color: #fffbec;
+  color: #3b2417;
   padding: 6px 25px;
   font-size: 16px;
-
 }
 .side-nav li:hover, .side-nav li.active {
-    background-color: #fffbec;
+    background-color: #3b2417;
 }
 .side-nav li:hover a, .side-nav li.active a {
   color:#ffd61e !important;
 }
 .side-nav li:hover, .side-nav li.active {
-    background-color: #fffbec;
+    background-color: #3b2417;
     color: #ffd61e !important;
 }
 .side-nav li {
@@ -313,10 +308,11 @@ ul.side-nav.fixed li a {
 .pad10 {
     margin-left: 5px;
 }
-
-.pagination li.active,
+.pagination li.active {
+  background-color: #fffbec;
+}
 .side-nav li.active {
-    background-color: #fffbec;
+    background-color: #3b2417;
 }
 
 .side-nav li.active a {
