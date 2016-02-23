@@ -35,6 +35,7 @@
             </div>
         </div>
 -->
+<!--
         <div class="row">
             <div class="input-field col s6" style="margin-top: -18px;">
                 <label for="Start Time">Start Time</label>
@@ -65,6 +66,7 @@
                       <label>Minute</label></span>
             </div>
         </div>
+-->
 
         <div class="row" style="display:none">
             <div class="input-field col s6">
