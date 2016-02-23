@@ -5,7 +5,8 @@
     <form class='col s12' method='post' action='<?php echo site_url("site/createsurveyquestionsubmit");?>' enctype='multipart/form-data'>
         <div class="row">
             <div class="col s12 m6">
-                <textarea name="content" placeholder="Enter Content ..."><?php echo set_value('content');?></textarea>
+               <label for="content">Content</label>
+                <textarea name="content" class="materialize-textarea" placeholder="Enter Content ..."><?php echo set_value('content');?></textarea>
             </div>
         </div>
         <div class="row">
