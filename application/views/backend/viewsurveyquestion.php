@@ -12,10 +12,12 @@
                         <thead>
                             <tr>
                                 <th data-field="id">Id</th>
-                                <!-- <th data-field="type">Type</th> -->
+                                 <th data-field="content">Content</th> 
                                 <th data-field="type">Type</th>
+<!--
                                 <th data-field="starttime">Start Time</th>
                                 <th data-field="endtime">End Time</th>
+-->
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +42,7 @@
         } else if (resultrow.type == 5) {
             resultrow.type = "Choose Image";
         }
-        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.type + "</td><td>" + resultrow.starttime + "</td><td>" + resultrow.endtime + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 z-depth-0 less-pad' href='<?php echo site_url('site/editsurveyquestion?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red pad10 z-depth-0 less-pad' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletesurveyquestion?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
+        return "<tr><td>" + resultrow.id + "</td><td>" + resultrow.content + "</td><td>" + resultrow.type + "</td><td><a class='btn btn-primary btn-xs waves-effect waves-light blue darken-4 z-depth-0 less-pad' href='<?php echo site_url('site/editsurveyquestion?id=');?>" + resultrow.id + "'><i class='material-icons'>mode_edit</i></a><a class='btn btn-danger btn-xs waves-effect waves-light red pad10 z-depth-0 less-pad' onclick=\"return confirm('Are you sure you want to delete?');\" href='<?php echo site_url('site/deletesurveyquestion?id='); ?>" + resultrow.id + "'><i class='material-icons propericon'>delete</i></a></td></tr>";
     }
     generatejquery("<?php echo $base_url;?>");
 
