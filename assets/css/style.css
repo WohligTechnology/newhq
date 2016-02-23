@@ -375,9 +375,10 @@ ul.side-nav.fixed li a {
     background-color: #FFFBEC;
     border: 1px solid #F9F3DC;
     width: 100%;
-    margin-bottom: 10px;
 }
-
+.panel-body ul#nav-mobile li + li {
+  margin-top: 10px;
+}
 .panel-body ul#nav-mobile li a.active {
     color: #FFFBEC;
     background-color: #00AC93;
