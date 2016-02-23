@@ -62,7 +62,7 @@ html {
     padding-left: 30px;
 }
 .padding-bottom {
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
 }
 .right {
     text-align: right;
@@ -377,7 +377,7 @@ ul.side-nav.fixed li a {
     padding: 10px 15px;
     color: #00AC93;
     background-color: #FFFBEC;
-    border: 1px solid #00AC93;
+    border: 1px solid #F9F3DC;
     width: 100%;
     margin-bottom: 10px;
 }
