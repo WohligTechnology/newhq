@@ -45,7 +45,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="range" id="range" min="0" max="100" value="<?php echo $pillardata[0]->weight;?>"/>
+                                                   <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="range" readonly="true" id="range" min="0" max="100" value="<?php echo $pillardata[0]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="range" id="range" min="0" max="100" value="<?php echo $pillardata[0]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
 
@@ -70,7 +74,11 @@
 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangeone" id="rangeone" min="0" max="100" value="<?php echo $pillardata[1]->weight;?>" />
+                                 <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangeone" readonly="true" id="rangeone" min="0" max="100" value="<?php echo $pillardata[1]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangeone" id="rangeone" min="0" max="100" value="<?php echo $pillardata[1]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                     </div>
@@ -95,7 +103,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangetwo" id="rangetwo" min="0" max="100" value="<?php echo $pillardata[2]->weight;?>" />
+                             <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangetwo" readonly="true" id="rangetwo" min="0" max="100" value="<?php echo $pillardata[2]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangetwo" id="rangetwo" min="0" max="100" value="<?php echo $pillardata[2]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                        
@@ -121,7 +133,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangethree" id="rangethree" min="0" value="<?php echo $pillardata[3]->weight;?>" max="100" />
+                                         <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangethree" readonly="true" id="rangethree" min="0" max="100" value="<?php echo $pillardata[3]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangethree" id="rangethree" min="0" max="100" value="<?php echo $pillardata[3]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                      
@@ -147,7 +163,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangefour" id="rangefour" min="0" max="100" value="<?php echo $pillardata[4]->weight;?>" />
+                                <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangefour" readonly="true" id="rangefour" min="0" max="100" value="<?php echo $pillardata[4]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangefour" id="rangefour" min="0" max="100" value="<?php echo $pillardata[4]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                         </form>
@@ -180,7 +200,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangefive" id="rangefive" min="0" value="<?php echo $pillardata[5]->weight;?>" max="100" />
+                             <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangefive" readonly="true" id="rangefive" min="0" max="100" value="<?php echo $pillardata[5]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangefive" id="rangefive" min="0" max="100" value="<?php echo $pillardata[5]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                       
@@ -206,7 +230,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangesix" id="rangesix" min="0" value="<?php echo $pillardata[6]->weight;?>" max="100" />
+                             <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangesix" readonly="true" id="rangesix" min="0" max="100" value="<?php echo $pillardata[6]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangesix" id="rangesix" min="0" max="100" value="<?php echo $pillardata[6]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                        
@@ -232,7 +260,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangeseven" id="rangeseven" value="<?php echo $pillardata[7]->weight;?>" min="0" max="100" />
+                                      <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangeseven" readonly="true" id="rangeseven" min="0" max="100" value="<?php echo $pillardata[7]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangeseven" id="rangeseven" min="0" max="100" value="<?php echo $pillardata[7]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                        
@@ -258,7 +290,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangeeight" id="rangeeight" value="<?php echo $pillardata[8]->weight;?>" min="0" max="100" />
+                                        <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangeeight" readonly="true" id="rangeeight" min="0" max="100" value="<?php echo $pillardata[8]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangeeight" id="rangeeight" min="0" max="100" value="<?php echo $pillardata[8]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                        
@@ -284,7 +320,11 @@
                                 
                                             <div class="input-border">
                                                 <p class="range-field">
-                                                    <input type="range" name="rangenine" id="rangenine" value="<?php echo $pillardata[9]->weight;?>" min="0" max="100" />
+                                      <?php if($checkpackage==1 || $checkpackage==2) {?>
+                                                    <input type="range" name="rangenine" readonly="true" id="rangenine" min="0" max="100" value="<?php echo $pillardata[9]->weight;?>"/>
+                                                    <?php } else {?>
+                                                          <input type="range" name="rangenine" id="rangenine" min="0" max="100" value="<?php echo $pillardata[9]->weight;?>"/>        
+                                                    <?php }?>
                                                 </p>
                                             </div>
                                        
@@ -310,11 +350,13 @@
                     <p class="display-inline">
                         <?php echo $lastpillardetail->name;?>
                     </p>
+<!--
                     <div class="left-s">
                         <div class="box-tp displ-inline">
                             <a href='<?php echo site_url('site/editpillar?id=11');?>'>Edit</a>
                         </div>
                     </div>
+-->
                         <div class="input-border">
                             <p class="range-field">
                                 <input type="range" name="rangeeleven" id="rangeeleven" min="0" max="100" value="<?php echo $before[10]->weight;?>"/>

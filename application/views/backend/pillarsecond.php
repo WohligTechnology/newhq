@@ -141,7 +141,7 @@
                                         </p>
                                         <div class="left-s">
                                             <div class="box-tp displ-inline">
-                                                <a href='<?php echo site_url(' site/editpillar?id=11 ');?>'>Edit</a>
+                                                <a href='<?php echo site_url('site/editpillar?id=11 ');?>'>Edit</a>
                                             </div>
                                         </div>
                                         <div class="input-border">

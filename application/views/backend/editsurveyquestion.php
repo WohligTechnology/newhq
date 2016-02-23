@@ -8,9 +8,18 @@
 <input type="hidden" id="normal-field" class="form-control" name="id" value="<?php echo set_value('id',$before->id);?>" style="display:none;">
 <div class="row">
            <div class="col s12 m6">
-               <textarea name="content" placeholder="Enter text ..."><?php echo set_value('content',$before->content);?></textarea>
+               <textarea name="content" class="materialize-textarea" placeholder="Enter text ..."><?php echo set_value('content',$before->content);?></textarea>
            </div>
         </div>
+        
+<!--
+      <div class="row">
+        <div class="col s12 m6">
+          <textarea id="content" class="materialize-textarea"><?php echo set_value('content',$before->content);?></textarea>
+          <label for="content">Content</label>
+        </div>
+      </div>
+-->
         
 <div class=" row">
 <div class=" input-field col s12 m6">
