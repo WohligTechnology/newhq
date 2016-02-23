@@ -48,6 +48,7 @@ class Site extends CI_Controller
     public function index()
 	{
 		$access = array("1","2","3","5");
+        $data['empcount']=$this->user_model->getEmployeeCount();
 		$this->checkaccess($access);
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard();
         $totalsum=0;

@@ -1,4 +1,5 @@
 <button class="btn btn-primary waves-effect waves-light blue darken-4 right" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
+<span>Total Employee Count :- <?php echo $empcount;?></span>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf">
