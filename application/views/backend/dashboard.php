@@ -1,7 +1,7 @@
 <div class="text-center padding-bottom">
   <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 </div>
-<span>Total Employee Count: <?php echo $empcount;?></span>
+<span>Total Employee Count <?php echo $empcount;?></span>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf"></div>
@@ -96,7 +96,7 @@
         <div id="nodata" style="display:none;">No Data Found</div>
 
         <div class="well">
-            <span style="font-size: 20px;"><b>Results Of The Last Test :-</b></span>
+            <span style="font-size: 20px;"><b>Results Of The Last Test </b></span>
         </div>
     </div>
 </div>
@@ -303,7 +303,19 @@
                 },
               
                  <?php if($checkpackage==3 || $checkpackage==4) {?>
-                
+                     series: [{
+                    name: 'Expected',
+                    data: expectedWeight
+
+                }, {
+                    name: 'Average',
+                    data: pillAraverage
+
+                }, {
+                    name: 'Weight',
+                    data: weight
+
+                }]
                  <?php } else {?>
                   series: [ {
                     name: 'Average',
@@ -317,19 +329,7 @@
                 }
                           ]
                  <?php } ?>
-                series: [{
-                    name: 'Expected',
-                    data: expectedWeight
-
-                }, {
-                    name: 'Average',
-                    data: pillAraverage
-
-                }, {
-                    name: 'Weight',
-                    data: weight
-
-                }]
+               
             });
         }
            function createPie() {

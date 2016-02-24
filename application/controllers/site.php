@@ -430,9 +430,9 @@ class Site extends CI_Controller
             }
 
 			if($this->user_model->edit($id,$name,$email,$password,$accesslevel,$status,$socialid,$logintype,$image,$json,$username,$gender,$age,$maritalstatus,$designation,$department,$noofyearsinorganization,$spanofcontrol,$description,$employeeid,$branch,$timestamp,$language,$team,$salary)==0)
-			$data['alerterror']="User Editing was unsuccesful";
+			$data['alerterror']="User editing was unsuccesful";
 			else
-			$data['alertsuccess']="User edited Successfully.";
+			$data['alertsuccess']="User edited successfully.";
 
 			$data['redirect']="site/viewusers";
 			//$data['other']="template=$template";
@@ -555,7 +555,7 @@ $address=$this->input->get_post("address");
 if($this->branch_model->create($language,$name,$branchid,$address)==0)
 $data["alerterror"]="New branch could not be created.";
 else
-$data["alertsuccess"]="branch created Successfully.";
+$data["alertsuccess"]="Branch created Successfully.";
 $data["redirect"]="site/viewbranch";
 $this->load->view("redirect",$data);
 }
@@ -595,9 +595,9 @@ $name=$this->input->get_post("name");
 $branchid=$this->input->get_post("branchid");
 $address=$this->input->get_post("address");
 if($this->branch_model->edit($id,$language,$name,$branchid,$address)==0)
-$data["alerterror"]="New branch could not be Updated.";
+$data["alerterror"]="New branch could not be updated.";
 else
-$data["alertsuccess"]="branch Updated Successfully.";
+$data["alertsuccess"]="Branch Updated Successfully.";
 $data["redirect"]="site/viewbranch";
 $this->load->view("redirect",$data);
 }
@@ -683,7 +683,7 @@ $deptid=$this->input->get_post("deptid");
 if($this->department_model->create($name,$deptid)==0)
 $data["alerterror"]="New department could not be created.";
 else
-$data["alertsuccess"]="department created Successfully.";
+$data["alertsuccess"]="Department created Successfully.";
 $data["redirect"]="site/viewdepartment";
 $this->load->view("redirect",$data);
 }
@@ -720,7 +720,7 @@ $deptid=$this->input->get_post("deptid");
 if($this->department_model->edit($id,$name,$deptid)==0)
 $data["alerterror"]="New department could not be Updated.";
 else
-$data["alertsuccess"]="department Updated Successfully.";
+$data["alertsuccess"]="Department Updated Successfully.";
 $data["redirect"]="site/viewdepartment";
 $this->load->view("redirect",$data);
 }
@@ -808,7 +808,7 @@ $teamid=$this->input->get_post("teamid");
 if($this->team_model->create($name,$teamid)==0)
 $data["alerterror"]="New team could not be created.";
 else
-$data["alertsuccess"]="team created Successfully.";
+$data["alertsuccess"]="Team created Successfully.";
 $data["redirect"]="site/viewteam";
 $this->load->view("redirect",$data);
 }
@@ -845,7 +845,7 @@ $teamid=$this->input->get_post("teamid");
 if($this->team_model->edit($id,$name,$teamid)==0)
 $data["alerterror"]="New team could not be Updated.";
 else
-$data["alertsuccess"]="team Updated Successfully.";
+$data["alertsuccess"]="Team Updated Successfully.";
 $data["redirect"]="site/viewteam";
 $this->load->view("redirect",$data);
 }
@@ -933,7 +933,7 @@ $language=$this->input->get_post("language");
 if($this->designation_model->create($name,$language)==0)
 $data["alerterror"]="New designation could not be created.";
 else
-$data["alertsuccess"]="designation created Successfully.";
+$data["alertsuccess"]="Designation created Successfully.";
 $data["redirect"]="site/viewdesignation";
 $this->load->view("redirect",$data);
 }
@@ -972,7 +972,7 @@ $language=$this->input->get_post("language");
 if($this->designation_model->edit($id,$name,$language)==0)
 $data["alerterror"]="New designation could not be Updated.";
 else
-$data["alertsuccess"]="designation Updated Successfully.";
+$data["alertsuccess"]="Designation Updated Successfully.";
 $data["redirect"]="site/viewdesignation";
 $this->load->view("redirect",$data);
 }
@@ -2228,9 +2228,9 @@ $this->load->view("redirect",$data);
             $team=$this->input->post('team');
             $organization=$this->input->post('organization');
 			if($this->test_model->create($name,$schedule,$units,$startdate,$designation,$department,$branch,$team,$organization)==0)
-			$data['alerterror']="New test could not be created.";
+			$data['alerterror']="New Test Could Not Be Created.";
 			else
-			$data['alertsuccess']="Test created Successfully.";
+			$data['alertsuccess']="Test Created Successfully.";
 			$data['redirect']="site/viewtest";
 			$this->load->view("redirect",$data);
 
@@ -2463,9 +2463,9 @@ $this->checkaccess($access);
 $id=$this->input->get_post("id");
 $question=$this->input->get_post("question");
 if($this->testquestion_model->edittestquestion($id,$question)==0)
-$data["alerterror"]="New testquestion could not be Updated.";
+$data["alerterror"]="New test question could not be updated.";
 else
-$data["alertsuccess"]="testquestion Updated Successfully.";
+$data["alertsuccess"]="Test question Updated Successfully.";
 $data["redirect"]="site/edittestquestion?id=".$id;
 $this->load->view("redirect2",$data);
 }
@@ -2998,9 +2998,9 @@ $starttime=$this->input->get_post("starttime");
 $endtime=$this->input->get_post("endtime");
 $content=$this->input->get_post("content");
 if($this->surveyquestion_model->create($type,$text,$starttime,$endtime,$content)==0)
-$data["alerterror"]="New surveyquestion could not be created.";
+$data["alerterror"]="New Survey question could not be created.";
 else
-$data["alertsuccess"]="surveyquestion created Successfully.";
+$data["alertsuccess"]="Survey question created Successfully.";
 $data["redirect"]="site/viewsurveyquestion";
 $this->load->view("redirect",$data);
 }
@@ -3047,9 +3047,9 @@ $starttime=$this->input->get_post("starttime");
 $endtime=$this->input->get_post("endtime");
 $content=$this->input->get_post("content");
 if($this->surveyquestion_model->edit($id,$type,$text,$starttime,$endtime,$content)==0)
-$data["alerterror"]="New surveyquestion could not be Updated.";
+$data["alerterror"]="New survey question could not be Updated.";
 else
-$data["alertsuccess"]="surveyquestion Updated Successfully.";
+$data["alertsuccess"]="survey question Updated Successfully.";
 $data["redirect"]="site/viewsurveyquestion";
 $this->load->view("redirect",$data);
 }
@@ -4195,6 +4195,39 @@ $this->load->view("template",$data);
 	 }
     public function getPillarWeight(){
 		 $weights=$this->pillar_model->getallpillars();
+        $data["message"] = $weights;
+		$this->load->view( 'json', $data );
+	 }
+    public function viewchangeexpected(){
+        $access=array("1","5");
+        $this->checkaccess($access);
+        $data['before']$this->pillar_model->getallpillarsbypackage();
+        $data["page"]="viewchangeexpected";
+        $data["title"]="View Expected Weightages";
+        $this->load->view("template",$data);
+	 }
+    public function editchangeexpected(){
+        $access=array("1","5");
+        $this->checkaccess($access);
+        $expected1=$this->input->get_post("expected1");
+        $expected2=$this->input->get_post("expected2");
+        $expected3=$this->input->get_post("expected3");
+        $expected4=$this->input->get_post("expected4");
+        $expected5=$this->input->get_post("expected5");
+        $expected6=$this->input->get_post("expected6");
+        $expected7=$this->input->get_post("expected7");
+        $expected8=$this->input->get_post("expected8");
+        $expected9=$this->input->get_post("expected9");
+        $expected10=$this->input->get_post("expected10");
+        if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10)==0)
+        $data["alerterror"]="New conclusionfinalsuggestion could not be Updated.";
+        else
+        $data["alertsuccess"]="conclusionfinalsuggestion Updated Successfully.";
+        $data["redirect"]="site/viewconclusionfinalsuggestion";
+        $this->load->view("redirect",$data);
+	 }
+    public function getallpillarsbypackage(){
+		$data['']$this->pillar_model->getallpillarsbypackage();
         $data["message"] = $weights;
 		$this->load->view( 'json', $data );
 	 }

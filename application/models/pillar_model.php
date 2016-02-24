@@ -198,6 +198,16 @@ return $query;
 {
 $query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
 return $query;
+}
+    public function getallpillarsbypackage()
+{
+$query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
+return $query;
+} 
+    public function editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10)
+{
+$query=$this->db->query("SELECT * FROM `hq_pillar`  ORDER BY `id` ASC")->result();
+return $query;
 }  
     public function updateweightage($range,$range1,$range2,$range3,$range4,$range5,$range6,$range7,$range8,$range9,$range11)
 {
