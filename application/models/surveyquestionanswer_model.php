@@ -53,5 +53,26 @@ foreach($query as $row)
 
 return $return;
 }
+    public function exportsurveyresultcsv($surveyid)
+    {
+        	$this->load->dbutil();
+		$query=$this->db->query("");
+
+       $content= $this->dbutil->csv_from_result($query);
+        //$data = 'Some file data';
+$timestamp=new DateTime();
+        $timestamp=$timestamp->format('Y-m-d_H.i.s');
+//        file_put_contents("gs://magicmirroruploads/products_$timestamp.csv", $content);
+//		redirect("http://magicmirror.in/servepublic?name=products_$timestamp.csv", 'refresh');
+        if ( ! write_file("./uploads/suggestion_$companyname.csv", $content))
+        {
+             echo 'Unable to write the file';
+        }
+        else
+        {
+            redirect(base_url("uploads/suggestion_$companyname.csv"), 'refresh');
+             echo 'File written!';
+        }
+    }
 }
 ?>

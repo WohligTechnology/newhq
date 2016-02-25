@@ -3160,13 +3160,13 @@ public function editsurveyquestionuser()
 $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="editsurveyquestionuser";
-$data["page2"]="block/questionblock";
+//$data["page2"]="block/questionblock";
 $data["before1"]=$this->input->get("id");
 $data["before2"]=$this->input->get("id");
 $data["question"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["title"]="Edit surveyquestionuser";
 $data["before"]=$this->surveyquestionuser_model->beforeedit($this->input->get("id"));
-$this->load->view("templatewith2",$data);
+$this->load->view("template",$data);
 }
 public function editsurveyquestionusersubmit()
 {
@@ -4283,5 +4283,14 @@ $this->load->view("template",$data);
         $data['redirect']="site/viewconclusion";
         $this->load->view("redirect",$data);
 	 }
+    public function exportsurveyresultcsv(){
+		$access = array("1");
+		$this->checkaccess($access);
+        $surveyid=$this->input->get('id');
+		$this->surveyquestionanswer_model->exportsurveyresultcsv($surveyid);
+        $data['redirect']="site/viewconclusion";
+        $this->load->view("redirect",$data);
+	 }
+    
 }
 ?>
