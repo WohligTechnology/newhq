@@ -276,8 +276,8 @@ ul.side-nav.fixed li.logo img {
   height: auto;
 }
 .btn, .btn-large {
-  background-color: #ce3a56 !important;
-  color:#ffd61e;
+  background-color: #FFD61E !important;
+  color: #00AC93;
 }
 ul.side-nav.fixed li a {
   line-height: 100%;
@@ -386,7 +386,7 @@ ul.side-nav.fixed li a {
 
 .chisorting {
     background-color: transparent !important;
-        color: #ffd61e;
+    color: #FFD61E;
 }
 /*
 main{
@@ -516,7 +516,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     float: right;
 }
 .blue.darken-4 {
-    background-color: #ffd61e !important;
+    background-color: #FFD61E !important;
     color: #00AC93;
 }
 .padt{
@@ -533,7 +533,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 }
 .progress-bar p {
     margin: 0px;
-    color: #684703;
+    color: #FFFBED;
     margin-bottom: 4px;
 }
 .input-border {
@@ -735,7 +735,7 @@ nav .img-responsive {
 .btn {
     box-shadow: none;
     border-radius: 5px;
-    padding: 0 15px;
+    padding: 0 10px;
     text-transform: none;
 }
 .dropdown-content li>a, .dropdown-content li>span {
@@ -924,4 +924,16 @@ button:focus {
 .highcharts-tooltip text {
   color: #3b2417 !important;
     fill: #3b2417 !important;
+}
+.lightcolor ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fffbed;
+}
+.lightcolor ::-moz-placeholder { /* Firefox 19+ */
+  color: #fffbed;
+}
+.lightcolor :-ms-input-placeholder { /* IE 10+ */
+  color: #fffbed;
+}
+.lightcolor :-moz-placeholder { /* Firefox 18- */
+  color: #fffbed;
 }
