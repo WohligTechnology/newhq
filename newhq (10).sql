@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2016 at 07:41 AM
+-- Generation Time: Feb 25, 2016 at 12:35 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -29,18 +29,15 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `accesslevel` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accesslevel`
 --
 
 INSERT INTO `accesslevel` (`id`, `name`) VALUES
-(1, 'admin'),
-(2, 'CEO'),
 (4, 'Employee'),
-(3, 'HR'),
-(5, 'Master Admin');
+(1, 'HR');
 
 -- --------------------------------------------------------
 
@@ -143,9 +140,17 @@ INSERT INTO `hq_conclusion` (`id`, `order`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `hq_conclusionfinalsuggestion` (
   `id` int(11) NOT NULL,
-  `conclusion` int(11) NOT NULL,
+  `conclusion` varchar(255) NOT NULL,
   `conclusionsuggestion` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_conclusionfinalsuggestion`
+--
+
+INSERT INTO `hq_conclusionfinalsuggestion` (`id`, `conclusion`, `conclusionsuggestion`) VALUES
+(1, 'First Survey 1', 0),
+(2, 'Survey 2', 0);
 
 -- --------------------------------------------------------
 
@@ -226,10 +231,42 @@ INSERT INTO `hq_conclusionquestion` (`id`, `conclusion`, `question`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `hq_conclusionsuggestion` (
-  `id` int(11) NOT NULL,
   `conclusion` int(11) NOT NULL,
   `suggestion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hq_conclusionsuggestion`
+--
+
+INSERT INTO `hq_conclusionsuggestion` (`conclusion`, `suggestion`) VALUES
+(1, 'test 5635435'),
+(2, 'test 3'),
+(3, ''),
+(4, ''),
+(5, ''),
+(6, ''),
+(7, ''),
+(8, ''),
+(9, ''),
+(10, ''),
+(11, ''),
+(12, ''),
+(13, ''),
+(14, ''),
+(15, ''),
+(16, ''),
+(17, ''),
+(18, ''),
+(19, ''),
+(20, ''),
+(21, ''),
+(22, ''),
+(23, ''),
+(24, ''),
+(25, ''),
+(26, ''),
+(27, '');
 
 -- --------------------------------------------------------
 
@@ -322,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `hq_options` (
   `weight` varchar(255) NOT NULL,
   `optiontext` text NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_options`
@@ -512,7 +549,23 @@ INSERT INTO `hq_options` (`id`, `question`, `representation`, `actualorder`, `im
 (182, 20, 1, 0, '64.png', '', '20', 'Work is fun!', 'Work is fun!'),
 (183, 20, 1, 0, '420.png', '', '15', 'You are in a room full of strangers', 'You are in a room full of strangers'),
 (184, 20, 1, 0, '53.png', '', '10', 'Alone', 'Alone'),
-(185, 20, 1, 0, '73.png', '', '5', 'Like you are waiting for 6:30 PM', 'Like you are waiting for 6:30 PM');
+(185, 20, 1, 0, '73.png', '', '5', 'Like you are waiting for 6:30 PM', 'Like you are waiting for 6:30 PM'),
+(186, 41, 0, 0, '', '', '', 'Option 01', 'Option 01'),
+(187, 41, 0, 0, '', '', '', 'option 02', 'option 02'),
+(188, 41, 0, 0, '', '', '', 'option 03', 'option 03'),
+(189, 41, 0, 0, '', '', '', 'option 04', 'option 04'),
+(190, 42, 0, 0, '', '', '', 'option 5', 'option 5'),
+(191, 42, 0, 0, '', '', '', 'option 6', 'option 6'),
+(192, 42, 0, 0, '', '', '', 'option 7', 'option 7'),
+(193, 42, 0, 0, '', '', '', 'option 8', 'option 8'),
+(194, 43, 0, 0, '', '', '', 'option 9', 'option 9'),
+(195, 43, 0, 0, '', '', '', 'option 10', 'option 10'),
+(196, 43, 0, 0, '', '', '', 'option 11', 'option 11'),
+(197, 43, 0, 0, '', '', '', 'option 12', 'option 12'),
+(198, 44, 0, 0, '', '', '', 'option 13', 'option 13'),
+(199, 44, 0, 0, '', '', '', 'option 14', 'option 14'),
+(200, 44, 0, 0, '', '', '', 'option 15', 'option 15'),
+(201, 44, 0, 0, '', '', '', 'option 16', 'option 16');
 
 -- --------------------------------------------------------
 
@@ -526,23 +579,24 @@ CREATE TABLE IF NOT EXISTS `hq_pillar` (
   `weight` varchar(255) NOT NULL,
   `order` varchar(255) NOT NULL,
   `expectedweight` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_pillar`
 --
 
 INSERT INTO `hq_pillar` (`id`, `name`, `weight`, `order`, `expectedweight`) VALUES
-(1, 'Work-Life Blend', '40', '1', '21'),
-(2, 'Employee Engagement', '60', '2', '50'),
-(3, 'Driving Force', '40', '3', '50'),
-(4, 'Health of an Individual', '80', '4', '50'),
-(5, 'Interpersonal Relationships at Work', '30', '5', '50'),
-(6, 'Rewards and Recognition', '50', '6', '50'),
-(7, 'Sense of Ownership', '70', '7', '50'),
-(8, 'Work Environment', '45', '8', '50'),
-(9, 'Job Security', '65', '9', '50'),
-(10, 'Alignment', '80', '10', '50');
+(1, 'Work-Life Blend', '11', '1', '10'),
+(2, 'Employee Engagement', '9', '2', '20'),
+(3, 'Driving Force', '14', '3', '30'),
+(4, 'Health of an Individual', '9', '4', '0'),
+(5, 'Interpersonal Relationships at Work', '9', '5', '0'),
+(6, 'Rewards and Recognition', '9', '6', '0'),
+(7, 'Sense of Ownership', '9', '7', '0'),
+(8, 'Work Environment', '11', '8', '0'),
+(9, 'Job Security', '9', '9', '0'),
+(10, 'Alignment', '9', '10', '0'),
+(11, 'New Title 2', '0', '0', '40');
 
 -- --------------------------------------------------------
 
@@ -558,7 +612,7 @@ CREATE TABLE IF NOT EXISTS `hq_question` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `text` text NOT NULL,
   `type` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_question`
@@ -604,7 +658,11 @@ INSERT INTO `hq_question` (`id`, `pillar`, `noofans`, `order`, `timestamp`, `tex
 (37, 10, 1, '', '2015-12-30 12:44:24', 'At a party, your friend asks you about something negative she has read in the papers about your company. You say:', ''),
 (38, 10, 1, '', '2015-12-30 12:44:51', 'When your relatives ask you about your work, you feel:', ''),
 (39, 10, 1, '', '2015-12-30 12:45:25', 'You come across a social media post that makes fun of the company you work for. You look at it and think:', ''),
-(40, 10, 1, '', '2015-12-30 12:46:39', 'Your Boss tells you about an online course to consider and you think:', '');
+(40, 10, 1, '', '2015-12-30 12:46:39', 'Your Boss tells you about an online course to consider and you think:', ''),
+(41, 11, 1, '', '2016-02-23 07:30:13', 'Question 01', ''),
+(42, 11, 0, '', '2016-02-23 07:30:13', 'Question 02', ''),
+(43, 11, 0, '', '2016-02-23 05:54:21', 'Question 3', ''),
+(44, 11, 0, '', '2016-02-23 05:54:21', 'Question 4', '');
 
 -- --------------------------------------------------------
 
@@ -626,8 +684,8 @@ CREATE TABLE IF NOT EXISTS `hq_surveyoption` (
 
 INSERT INTO `hq_surveyoption` (`id`, `order`, `question`, `title`, `image`) VALUES
 (1, 1, 2, 'first option', ''),
-(2, 1, 1, 'bgfv', ''),
-(3, 2, 1, '0', ''),
+(2, 1, 1, '0', 'joke_1x.png'),
+(3, 2, 1, '0', '1stscreeshot1.png'),
 (4, 5, 1, '0', '1stscreeshot.png');
 
 -- --------------------------------------------------------
@@ -643,15 +701,16 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestion` (
   `starttime` time NOT NULL,
   `endtime` time NOT NULL,
   `content` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestion`
 --
 
 INSERT INTO `hq_surveyquestion` (`id`, `type`, `text`, `starttime`, `endtime`, `content`) VALUES
-(1, 5, '0', '00:00:00', '00:00:00', 'demo text'),
-(2, 2, '0', '01:02:00', '02:04:00', 'Demo Second');
+(1, 3, '1', '00:00:00', '00:00:00', 'demo text'),
+(2, 2, '1', '00:00:00', '00:00:00', 'Demo Second'),
+(3, 2, '1', '00:00:00', '00:00:00', 'How was your day today?');
 
 -- --------------------------------------------------------
 
@@ -663,15 +722,16 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestionanswer` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `question` int(11) NOT NULL,
-  `option` int(11) NOT NULL
+  `option` int(11) NOT NULL,
+  `survey` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestionanswer`
 --
 
-INSERT INTO `hq_surveyquestionanswer` (`id`, `user`, `question`, `option`) VALUES
-(1, 1, 1, 1);
+INSERT INTO `hq_surveyquestionanswer` (`id`, `user`, `question`, `option`, `survey`) VALUES
+(1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -684,14 +744,18 @@ CREATE TABLE IF NOT EXISTS `hq_surveyquestionuser` (
   `question` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_surveyquestionuser`
 --
 
 INSERT INTO `hq_surveyquestionuser` (`id`, `question`, `email`, `status`) VALUES
-(1, 1, 'pooja.wohlig@gmail.com', 1);
+(1, 1, 'pooja.wohlig@gmail.com', 0),
+(2, 2, 'pooja@wohlig.com', 0),
+(3, 2, 'pooja1@wohlig.com', 0),
+(5, 1, 'poojathakare55@gmail.com', 0),
+(6, 1, 'jagruti@wohlig.com', 0);
 
 -- --------------------------------------------------------
 
@@ -729,7 +793,7 @@ CREATE TABLE IF NOT EXISTS `hq_useranswer` (
   `order` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `test` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hq_useranswer`
@@ -744,7 +808,114 @@ INSERT INTO `hq_useranswer` (`id`, `user`, `pillar`, `question`, `option`, `orde
 (6, 15, 6, 21, 99, 6, '2016-01-21 09:01:37', 1),
 (7, 15, 7, 25, 116, 7, '2016-01-21 09:02:17', 1),
 (8, 15, 9, 33, 151, 9, '2016-01-21 09:02:56', 1),
-(9, 15, 10, 37, 167, 10, '2016-01-21 09:03:20', 1);
+(9, 15, 10, 37, 167, 10, '2016-01-21 09:03:20', 1),
+(10, 7, 1, 1, 6, 0, '2016-02-05 12:49:13', 1),
+(11, 18, 1, 1, 1, 0, '2016-02-05 12:50:02', 1),
+(12, 7, 2, 5, 22, 0, '2016-02-05 12:50:07', 1),
+(13, 18, 2, 5, 23, 0, '2016-02-05 12:50:22', 1),
+(14, 18, 2, 5, 23, 0, '2016-02-05 12:50:22', 1),
+(15, 7, 3, 9, 38, 0, '2016-02-05 12:50:29', 1),
+(16, 18, 4, 13, 61, 0, '2016-02-05 12:50:32', 1),
+(17, 18, 4, 13, 61, 0, '2016-02-05 12:50:32', 1),
+(18, 18, 4, 13, 61, 0, '2016-02-05 12:50:32', 1),
+(19, 7, 4, 13, 58, 0, '2016-02-05 12:50:45', 1),
+(20, 7, 5, 17, 84, 0, '2016-02-05 12:51:04', 1),
+(21, 7, 6, 21, 101, 0, '2016-02-05 12:51:21', 1),
+(22, 7, 7, 25, 116, 0, '2016-02-05 12:51:40', 1),
+(23, 18, 3, 9, 41, 0, '2016-02-05 12:51:45', 1),
+(24, 7, 8, 29, 131, 0, '2016-02-05 12:51:54', 1),
+(25, 7, 9, 33, 152, 0, '2016-02-05 12:51:55', 1),
+(26, 7, 10, 37, 167, 0, '2016-02-05 12:51:56', 1),
+(27, 18, 5, 17, 84, 0, '2016-02-05 12:52:03', 1),
+(28, 18, 6, 21, 98, 0, '2016-02-05 12:53:06', 1),
+(29, 18, 6, 21, 98, 0, '2016-02-05 12:53:06', 1),
+(30, 18, 6, 21, 98, 0, '2016-02-05 12:53:06', 1),
+(31, 18, 6, 21, 99, 0, '2016-02-05 12:53:06', 1),
+(32, 18, 6, 21, 99, 0, '2016-02-05 12:53:06', 1),
+(33, 18, 6, 21, 99, 0, '2016-02-05 12:53:09', 1),
+(34, 18, 7, 25, 115, 0, '2016-02-05 13:23:34', 1),
+(35, 18, 8, 29, 133, 0, '2016-02-05 13:23:36', 1),
+(36, 18, 9, 33, 153, 0, '2016-02-05 13:23:51', 1),
+(37, 18, 10, 37, 167, 0, '2016-02-05 13:23:59', 1),
+(38, 21, 1, 1, 7, 0, '2016-02-10 12:24:38', 1),
+(39, 21, 2, 5, 23, 0, '2016-02-10 12:25:02', 1),
+(40, 21, 3, 9, 41, 0, '2016-02-10 12:25:08', 1),
+(41, 21, 4, 13, 59, 0, '2016-02-10 12:25:13', 1),
+(42, 21, 5, 17, 85, 0, '2016-02-10 12:25:29', 1),
+(43, 21, 6, 21, 99, 0, '2016-02-10 12:25:34', 1),
+(44, 21, 7, 25, 115, 0, '2016-02-10 12:25:38', 1),
+(45, 19, 1, 1, 3, 0, '2016-02-11 06:09:35', 1),
+(46, 19, 2, 5, 22, 0, '2016-02-11 06:09:38', 1),
+(47, 19, 3, 9, 38, 0, '2016-02-11 06:11:48', 1),
+(48, 19, 4, 13, 58, 0, '2016-02-11 06:11:57', 1),
+(49, 19, 5, 17, 82, 0, '2016-02-11 06:11:58', 1),
+(50, 19, 6, 21, 98, 0, '2016-02-11 06:11:59', 1),
+(51, 19, 7, 25, 114, 0, '2016-02-11 06:12:00', 1),
+(52, 19, 8, 29, 130, 0, '2016-02-11 06:12:01', 1),
+(53, 19, 9, 33, 150, 0, '2016-02-11 06:12:02', 1),
+(54, 19, 10, 37, 166, 0, '2016-02-11 06:12:02', 1),
+(55, 16, 1, 1, 4, 0, '2016-02-11 06:13:25', 1),
+(56, 16, 2, 5, 23, 0, '2016-02-11 06:13:49', 1),
+(57, 16, 3, 9, 41, 0, '2016-02-11 06:14:22', 1),
+(58, 16, 4, 13, 60, 0, '2016-02-11 06:15:17', 1),
+(59, 16, 5, 17, 83, 0, '2016-02-11 06:15:45', 1),
+(60, 16, 6, 21, 98, 0, '2016-02-11 06:15:47', 1),
+(61, 20, 1, 1, 5, 0, '2016-02-11 06:15:58', 1),
+(62, 20, 1, 1, 5, 0, '2016-02-11 06:16:00', 1),
+(63, 16, 7, 25, 114, 0, '2016-02-11 06:16:03', 1),
+(64, 16, 8, 29, 130, 0, '2016-02-11 06:16:08', 1),
+(65, 16, 9, 33, 150, 0, '2016-02-11 06:16:29', 1),
+(66, 16, 10, 37, 166, 0, '2016-02-11 06:16:33', 1),
+(67, 20, 2, 5, 22, 0, '2016-02-11 06:16:34', 1),
+(68, 20, 3, 9, 38, 0, '2016-02-11 06:16:40', 1),
+(69, 20, 4, 13, 61, 0, '2016-02-11 06:16:49', 1),
+(70, 20, 5, 17, 85, 0, '2016-02-11 06:16:55', 1),
+(71, 20, 6, 21, 101, 0, '2016-02-11 06:16:59', 1),
+(72, 20, 7, 25, 117, 0, '2016-02-11 06:17:06', 1),
+(73, 20, 8, 29, 132, 0, '2016-02-11 06:17:08', 1),
+(74, 20, 9, 33, 153, 0, '2016-02-11 06:17:14', 1),
+(75, 28, 1, 1, 6, 0, '2016-02-11 07:18:01', 1),
+(76, 28, 2, 5, 22, 0, '2016-02-11 07:18:03', 1),
+(77, 28, 3, 9, 40, 0, '2016-02-11 07:18:13', 1),
+(78, 28, 4, 13, 59, 0, '2016-02-11 07:18:21', 1),
+(79, 28, 5, 17, 84, 0, '2016-02-11 07:18:24', 1),
+(80, 29, 1, 1, 1, 0, '2016-02-11 07:21:11', 1),
+(81, 40, 1, 1, 1, 0, '2016-02-11 07:21:48', 1),
+(82, 57, 1, 1, 7, 0, '2016-02-11 07:25:28', 1),
+(83, 57, 2, 5, 23, 0, '2016-02-11 07:25:35', 1),
+(84, 27, 1, 1, 1, 0, '2016-02-11 07:51:44', 1),
+(85, 27, 2, 5, 22, 0, '2016-02-11 07:51:55', 1),
+(86, 27, 3, 9, 39, 0, '2016-02-11 07:52:35', 1),
+(87, 27, 4, 13, 58, 0, '2016-02-11 07:52:41', 1),
+(88, 27, 5, 17, 82, 0, '2016-02-11 07:52:42', 1),
+(89, 27, 6, 21, 98, 0, '2016-02-11 07:52:44', 1),
+(90, 27, 7, 25, 117, 0, '2016-02-11 07:52:47', 1),
+(91, 27, 8, 29, 131, 0, '2016-02-11 07:52:52', 1),
+(92, 21, 8, 29, 133, 0, '2016-02-11 10:44:37', 1),
+(93, 21, 9, 33, 152, 0, '2016-02-11 10:45:03', 1),
+(94, 21, 10, 37, 167, 0, '2016-02-11 10:45:22', 1),
+(95, 23, 1, 1, 3, 0, '2016-02-11 11:21:04', 1),
+(96, 28, 6, 21, 101, 0, '2016-02-12 13:24:52', 1),
+(97, 44, 1, 1, 1, 0, '2016-02-12 15:04:52', 1),
+(98, 44, 2, 5, 22, 0, '2016-02-12 15:04:55', 1),
+(99, 44, 3, 9, 43, 0, '2016-02-12 15:05:01', 1),
+(100, 25, 1, 1, 32, 0, '2016-02-13 06:29:17', 1),
+(101, 25, 2, 5, 25, 0, '2016-02-13 06:29:42', 1),
+(102, 25, 3, 9, 38, 0, '2016-02-13 06:30:09', 1),
+(103, 25, 4, 13, 58, 0, '2016-02-13 06:30:15', 1),
+(104, 25, 5, 17, 82, 0, '2016-02-13 06:30:17', 1),
+(105, 25, 6, 21, 98, 0, '2016-02-13 06:30:18', 1),
+(106, 25, 7, 25, 114, 0, '2016-02-13 06:30:19', 1),
+(107, 25, 8, 29, 130, 0, '2016-02-13 06:30:20', 1),
+(108, 25, 9, 33, 150, 0, '2016-02-13 06:30:21', 1),
+(109, 25, 10, 37, 166, 0, '2016-02-13 06:30:21', 1),
+(110, 44, 4, 13, 59, 0, '2016-02-13 10:20:34', 1),
+(111, 44, 5, 17, 85, 0, '2016-02-13 10:20:40', 1),
+(112, 44, 6, 21, 101, 0, '2016-02-13 10:20:42', 1),
+(113, 44, 7, 25, 117, 0, '2016-02-13 10:20:43', 1),
+(114, 44, 8, 29, 133, 0, '2016-02-13 10:20:44', 1),
+(115, 44, 9, 33, 153, 0, '2016-02-13 10:20:45', 1),
+(116, 44, 10, 37, 169, 0, '2016-02-13 10:20:46', 1);
 
 -- --------------------------------------------------------
 
@@ -803,7 +974,7 @@ CREATE TABLE IF NOT EXISTS `logo` (
 --
 
 INSERT INTO `logo` (`image`, `id`) VALUES
-('logo.png', 1);
+('logo1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -829,7 +1000,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `parent`, `isactive`, `order`, `icon`) VALUES
-(1, 'Profile', '', '', 'site/viewusers', 1, 0, 1, 1, 'icon-user'),
+(1, 'Company Profile', '', '', 'site/viewusers', 1, 0, 1, 1, 'icon-user'),
 (2, 'Branch', '', '', 'site/viewbranch', 1, 0, 1, 2, 'icon-dashboard'),
 (3, 'Department', '', '', 'site/viewdepartment', 1, 0, 1, 3, 'icon-dashboard'),
 (4, 'Dashboard', '', '', 'site/index', 1, 0, 1, 0, 'icon-dashboard'),
@@ -841,10 +1012,10 @@ INSERT INTO `menu` (`id`, `name`, `description`, `keyword`, `url`, `linktype`, `
 (10, 'User Pillar', '', '', 'site/viewuserpillar', 1, 0, 1, 9, 'icon-dashboard'),
 (11, 'Content', '', '', 'site/viewcontent', 1, 0, 1, 10, 'icon-dashboard'),
 (12, 'Team', '', '', 'site/viewteam', 1, 0, 1, 5, 'icon-dashboard'),
-(14, 'Test ', '', '', 'site/viewtest', 1, 0, 1, 13, 'icon-dashboard'),
-(15, 'Pillar Expected Value', '', '', 'site/viewtestpillarexpected', 1, 0, 1, 14, 'icon-dashboard'),
+(14, 'Start HQ', '', '', 'site/viewtest', 1, 0, 1, 0, 'icon-dashboard'),
+(15, 'Survey', '', '', 'site/viewconclusionfinalsuggestion', 1, 0, 1, 7, 'icon-dashboard'),
 (16, 'Config', '', '', 'site/viewconfig', 1, 0, 1, 15, 'icon-dashboard'),
-(17, 'Survey', '', '', 'site/viewsurveyquestion', 1, 0, 1, 16, 'icon-dashboard'),
+(17, 'Create Surveys', '', '', 'site/viewsurveyquestion', 1, 0, 1, 16, 'icon-dashboard'),
 (18, 'Survey Users', '', '', 'site/viewsurveyquestionuser', 1, 0, 1, 17, 'icon-dashboard'),
 (19, 'Conclusion', '', '', 'site/viewconclusion1', 1, 0, 1, 18, 'icon-dashboard'),
 (20, 'Logo', '', '', 'site/createlogo', 1, 0, 1, 19, 'icon-dashboard');
@@ -872,43 +1043,13 @@ INSERT INTO `menuaccess` (`menu`, `access`) VALUES
 (5, 1),
 (6, 1),
 (7, 1),
-(8, 1),
-(15, 0),
-(15, 0),
-(15, 0),
 (12, 1),
-(1, 2),
-(2, 2),
-(3, 2),
-(4, 2),
-(5, 2),
-(6, 2),
-(8, 2),
-(15, 0),
-(15, 0),
-(15, 0),
-(12, 2),
-(1, 3),
-(2, 3),
-(3, 3),
-(4, 3),
-(5, 3),
-(6, 3),
-(8, 3),
-(15, 0),
-(12, 3),
 (13, 1),
 (14, 1),
-(15, 0),
-(15, 0),
-(15, 0),
-(15, 0),
-(7, 3),
 (17, 1),
-(18, 1),
-(19, 5),
+(18, 0),
 (20, 1),
-(20, 3);
+(15, 1);
 
 -- --------------------------------------------------------
 
@@ -983,23 +1124,25 @@ CREATE TABLE IF NOT EXISTS `testquestion` (
   `datetimestatus` int(11) NOT NULL,
   `dateandtime` datetime NOT NULL,
   `sendstatus` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testquestion`
 --
 
 INSERT INTO `testquestion` (`id`, `test`, `question`, `datetimestatus`, `dateandtime`, `sendstatus`) VALUES
-(31, 1, 1, 0, '2016-01-02 00:00:00', 0),
-(32, 1, 5, 0, '2016-01-03 00:00:00', 0),
-(33, 1, 9, 0, '2016-01-04 00:00:00', 0),
-(34, 1, 13, 0, '2016-01-05 00:00:00', 0),
-(35, 1, 17, 0, '2016-01-06 00:00:00', 0),
-(36, 1, 21, 0, '2016-01-07 00:00:00', 0),
-(37, 1, 25, 0, '2016-01-08 00:00:00', 0),
-(38, 1, 29, 0, '2016-01-09 00:00:00', 0),
-(39, 1, 33, 0, '2016-01-10 00:00:00', 0),
-(40, 1, 37, 0, '2016-01-11 00:00:00', 0);
+(41, 1, 1, 0, '2016-01-02 00:00:00', 0),
+(42, 1, 5, 0, '2016-01-03 00:00:00', 0),
+(43, 1, 9, 0, '2016-01-04 00:00:00', 0),
+(44, 1, 13, 0, '2016-01-05 00:00:00', 0),
+(45, 1, 17, 0, '2016-01-06 00:00:00', 0),
+(46, 1, 21, 0, '2016-01-07 00:00:00', 0),
+(47, 1, 25, 0, '2016-01-08 00:00:00', 0),
+(48, 1, 29, 0, '2016-01-09 00:00:00', 0),
+(49, 1, 33, 0, '2016-01-10 00:00:00', 0),
+(50, 1, 37, 0, '2016-01-11 00:00:00', 0),
+(51, 1, 39, 0, '2016-01-12 00:00:00', 0),
+(52, 1, 40, 0, '2016-01-13 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -1037,70 +1180,31 @@ CREATE TABLE IF NOT EXISTS `user` (
   `isblock` int(11) DEFAULT NULL,
   `dob` date NOT NULL,
   `package` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `password`, `email`, `accesslevel`, `timestamp`, `status`, `image`, `username`, `socialid`, `logintype`, `json`, `gender`, `age`, `maritalstatus`, `designation`, `department`, `noofyearsinorganization`, `spanofcontrol`, `description`, `employeeid`, `branch`, `language`, `team`, `salary`, `isfirst`, `isblock`, `dob`, `package`) VALUES
-(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '0', 0, 1, 1, '', '7', '															', '', 1, '0', 5, '', '1', 0, '0000-00-00', 0),
-(7, 'Sohan', 'a63526467438df9566c508027d9cb06b', 'shn619@gmail.com', 4, '0000-00-00 00:00:00', 2, NULL, '0', '0', '0', '0', 0, '', 0, 1, 1, '10', '7', '', '', 1, '0', 5, '300000', '', 0, '0000-00-00', 0),
-(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0, '0000-00-00', 0),
-(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 1, '', 0, 1, 1, '10', '4', '', '', 1, '1', 1, '600000', '', 0, '0000-00-00', 0),
-(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '7', '', '', 1, '1', 1, '', '', 0, '0000-00-00', 0),
-(17, 'HR', 'a63526467438df9566c508027d9cb06b', 'hr@wohlig.com', 3, '0000-00-00 00:00:00', 1, '', '0', '12345678', '', '', 0, '20', 0, 0, 1, '12', '7', '		hbjhb													', '65656', 0, '0', 5, '', '1', 0, '0000-00-00', 0),
-(18, 'Chintan', 'f3abbf3960a3c7683c1a14eb176d1a28', 'chintan@wohlig.com', 4, '0000-00-00 00:00:00', 1, 'b17.jpg', '0', '0', '0', '0', 0, '25', 0, 1, 1, '12', '7', 'des111', 'emp111', 2, '0', 5, '900000', '', 0, '0000-00-00', 0),
-(19, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:18', 1, NULL, '', '', '', '', 0, '23', 0, 4, 4, '10', '6', '', '1', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(20, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:18', 1, NULL, '', '', '', '', 0, '27', 0, 5, 5, '9', '5', '', '2', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(21, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:18', 1, NULL, '', '', '', '', 0, '57', 0, 6, 6, '8', '4', '', '3', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(22, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '53', 0, 7, 7, '7', '3', '', '4', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(23, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '55', 0, 8, 8, '6', '2', '', '5', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(24, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '22', 0, 9, 4, '5', '1', '', '6', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(25, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '26', 0, 4, 5, '4', '7', '', '7', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(26, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '50', 0, 5, 6, '3', '5', '', '8', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(27, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '53', 0, 6, 7, '2', '3', '', '9', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(28, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '59', 0, 7, 8, '1', '1', '', '10', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(29, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '26', 0, 8, 4, '9', '8', '', '11', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(30, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '21', 0, 9, 5, '8', '6', '', '12', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(31, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '48', 0, 4, 6, '7', '4', '', '13', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(32, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '39', 0, 5, 7, '6', '2', '', '14', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(33, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '36', 0, 6, 8, '5', '9', '', '15', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(34, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '29', 0, 7, 4, '4', '7', '', '16', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(35, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '25', 0, 8, 5, '3', '5', '', '17', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(36, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '31', 0, 9, 6, '2', '3', '', '18', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(37, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '56', 0, 4, 7, '1', '1', '', '19', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(38, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '57', 0, 5, 8, '8', '6', '', '20', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(39, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '22', 0, 6, 4, '7', '5', '', '21', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(40, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '115', 0, 7, 5, '6', '4', '', '22', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(41, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '48', 0, 8, 6, '5', '3', '', '23', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(42, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '23', 0, 9, 7, '4', '2', '', '24', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(43, '', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '27', 0, 4, 8, '3', '1', '', '25', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(44, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '57', 0, 5, 4, '2', '1', '', '26', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(45, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '53', 0, 6, 5, '1', '2', '', '27', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(46, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '55', 0, 7, 6, '7', '3', '', '28', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(47, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '23', 0, 8, 7, '6', '4', '', '29', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(48, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '26', 0, 9, 8, '5', '5', '', '30', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(49, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '50', 0, 4, 4, '4', '1', '', '31', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(50, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '53', 0, 5, 9, '3', '2', '', '32', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(51, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '59', 0, 6, 6, '2', '3', '', '33', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(52, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '26', 0, 7, 7, '1', '4', '', '34', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(53, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '21', 0, 8, 8, '6', '5', '', '35', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(54, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '48', 0, 9, 4, '5', '6', '', '36', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(55, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '39', 0, 4, 5, '4', '1', '', '37', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(56, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '36', 0, 5, 6, '3', '2', '', '38', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(57, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '29', 0, 6, 7, '2', '3', '', '39', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(58, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '25', 0, 7, 8, '1', '4', '', '40', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(59, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '56', 0, 8, 4, '5', '5', '', '41', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(60, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '23', 0, 9, 5, '4', '6', '', '42', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(61, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '28', 0, 4, 6, '3', '5', '', '43', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(62, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '43', 0, 5, 7, '2', '4', '', '44', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(63, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '21', 0, 6, 8, '1', '3', '', '45', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(64, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '26', 0, 7, 4, '10', '2', '', '46', 5, '0', 7, '', '', NULL, '0000-00-00', 0),
-(65, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '41', 0, 8, 5, '9', '1', '', '47', 6, '0', 7, '', '', NULL, '0000-00-00', 0),
-(66, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '40', 0, 9, 6, '7', '4', '', '48', 7, '0', 7, '', '', NULL, '0000-00-00', 0),
-(67, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '27', 0, 4, 7, '5', '3', '', '49', 4, '0', 7, '', '', NULL, '0000-00-00', 0),
-(68, '', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '25', 0, 5, 8, '3', '2', '', '50', 5, '0', 7, '', '', NULL, '0000-00-00', 0);
+(1, 'wohlig', 'a63526467438df9566c508027d9cb06b', 'wohlig@wohlig.com', 1, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '0', 0, 1, 1, '', '7', '															', '', 1, '0', 5, '', '1', 0, '0000-00-00', 4),
+(7, 'Sohan', 'a63526467438df9566c508027d9cb06b', 'shn619@gmail.com', 4, '0000-00-00 00:00:00', 2, NULL, '0', '0', '0', '0', 0, '', 0, 1, 1, '10', '7', '', '', 1, '0', 5, '300000', '', 0, '0000-00-00', 4),
+(13, 'aaa', 'a208e5837519309129fa466b0c68396b', 'aaa3@email.com', 3, '2014-12-04 06:55:42', 3, NULL, '', '1', '2', 'userjson', 0, '', 0, 0, 0, '', '7', '', '', 0, '', 0, '', '', 0, '0000-00-00', 4),
+(15, 'Pooja', 'a63526467438df9566c508027d9cb06b', 'pooja.wohlig@gmail.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 1, '', 0, 1, 1, '10', '4', '', '', 1, '1', 1, '600000', '', 0, '0000-00-00', 4),
+(16, 'Jagruti', 'a63526467438df9566c508027d9cb06b', 'jagruti@wohlig.com', 4, '2014-10-17 06:22:29', 1, NULL, '', '', '0', '', 0, '', 0, 1, 1, '10', '7', '', '', 1, '1', 1, '', '', 0, '0000-00-00', 4),
+(17, 'HR', 'a63526467438df9566c508027d9cb06b', 'hr@wohlig.com', 3, '0000-00-00 00:00:00', 1, '', '0', '12345678', '', '', 0, '20', 0, 0, 1, '12', '7', '		hbjhb													', '65656', 0, '0', 5, '', '1', 0, '0000-00-00', 4),
+(18, 'Chintan', 'f3abbf3960a3c7683c1a14eb176d1a28', 'chintan@wohlig.com', 4, '0000-00-00 00:00:00', 1, 'b17.jpg', '0', '0', '0', '0', 0, '25', 0, 1, 1, '12', '7', 'des111', 'emp111', 2, '0', 5, '900000', '', 0, '0000-00-00', 4),
+(19, 'Sohan', '', 'sohan@wohlig.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '23', 0, 4, 4, '10', '6', '', '1', 4, '0', 7, '', '', 0, '0000-00-00', 4),
+(20, 'Raj Shah', '', 'raj.mshah2015@gmail.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '27', 0, 5, 5, '9', '5', '', '2', 5, '0', 7, '', '', 0, '0000-00-00', 4),
+(21, 'Chaitalee', '', 'chaitaleelp10@gmail.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '57', 0, 6, 6, '8', '4', '', '3', 6, '0', 7, '', '', 0, '0000-00-00', 4),
+(22, 'Jay', '', 'jay@wohlig.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '53', 0, 7, 7, '7', '3', '', '4', 7, '0', 7, '', '', 0, '0000-00-00', 4),
+(23, 'Amit', '', 'amit.wohlig@gmail.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '55', 0, 8, 8, '6', '2', '', '5', 4, '0', 7, '', '', 0, '0000-00-00', 4),
+(24, 'Mahesh', '', 'mahesh@wohlig.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '22', 0, 9, 4, '5', '1', '', '6', 5, '0', 7, '', '', 0, '0000-00-00', 4),
+(25, 'Dhaval', '', 'dhaval@wohlig.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '26', 0, 4, 5, '4', '7', '', '7', 6, '0', 7, '', '', 0, '0000-00-00', 4),
+(26, 'Vignesh', '', 'vigwohlig@gmail.com', 4, '0000-00-00 00:00:00', 1, NULL, '0', '0', '0', '0', 0, '50', 0, 5, 6, '3', '5', '', '8', 7, '0', 7, '', '', 0, '0000-00-00', 4),
+(27, 'Gayatri', '', 'gayatri@willnevergrowup.com', 4, '2016-01-07 04:58:19', 1, NULL, '', '', '', '', 0, '53', 0, 6, 7, '2', '3', '', '9', 4, '0', 7, '', '', 0, '0000-00-00', 4),
+(67, 'Asif', '', 'asif@willnevergrowup.com', 4, '2016-01-07 04:58:20', 1, NULL, '', '', '', '', 0, '27', 0, 4, 7, '5', '3', '', '49', 4, '0', 7, '', '', 0, '0000-00-00', 4),
+(69, 'Midhet', 'd41d8cd98f00b204e9800998ecf8427e', 'midhetfatema94@gmail.com', 1, '2016-02-05 12:41:21', 1, '', '0', '0', '', '0', 0, '', 0, 0, 0, '', '', '', '', 0, '0', 5, '', '', 0, '0000-00-00', 4);
 
 -- --------------------------------------------------------
 
@@ -1215,12 +1319,6 @@ ALTER TABLE `hq_conclusionfinalsuggestion`
 -- Indexes for table `hq_conclusionquestion`
 --
 ALTER TABLE `hq_conclusionquestion`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hq_conclusionsuggestion`
---
-ALTER TABLE `hq_conclusionsuggestion`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1363,7 +1461,7 @@ ALTER TABLE `userquestionsend`
 -- AUTO_INCREMENT for table `accesslevel`
 --
 ALTER TABLE `accesslevel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `config`
 --
@@ -1383,17 +1481,12 @@ ALTER TABLE `hq_conclusion`
 -- AUTO_INCREMENT for table `hq_conclusionfinalsuggestion`
 --
 ALTER TABLE `hq_conclusionfinalsuggestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `hq_conclusionquestion`
 --
 ALTER TABLE `hq_conclusionquestion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
---
--- AUTO_INCREMENT for table `hq_conclusionsuggestion`
---
-ALTER TABLE `hq_conclusionsuggestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hq_content`
 --
@@ -1413,17 +1506,17 @@ ALTER TABLE `hq_designation`
 -- AUTO_INCREMENT for table `hq_options`
 --
 ALTER TABLE `hq_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=186;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=202;
 --
 -- AUTO_INCREMENT for table `hq_pillar`
 --
 ALTER TABLE `hq_pillar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `hq_question`
 --
 ALTER TABLE `hq_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `hq_surveyoption`
 --
@@ -1433,7 +1526,7 @@ ALTER TABLE `hq_surveyoption`
 -- AUTO_INCREMENT for table `hq_surveyquestion`
 --
 ALTER TABLE `hq_surveyquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hq_surveyquestionanswer`
 --
@@ -1443,7 +1536,7 @@ ALTER TABLE `hq_surveyquestionanswer`
 -- AUTO_INCREMENT for table `hq_surveyquestionuser`
 --
 ALTER TABLE `hq_surveyquestionuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `hq_team`
 --
@@ -1453,7 +1546,7 @@ ALTER TABLE `hq_team`
 -- AUTO_INCREMENT for table `hq_useranswer`
 --
 ALTER TABLE `hq_useranswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=117;
 --
 -- AUTO_INCREMENT for table `hq_userpillar`
 --
@@ -1473,12 +1566,12 @@ ALTER TABLE `testpillarexpected`
 -- AUTO_INCREMENT for table `testquestion`
 --
 ALTER TABLE `testquestion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `userquestionsend`
 --
