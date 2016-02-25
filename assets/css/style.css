@@ -906,3 +906,22 @@ button:focus {
 .col-padder .row .col + .col {
   margin-top: 20px;
 }
+.lightcolor text {
+  color: #fffbed !important;
+    fill: #fffbed !important;
+    text-shadow: none !important;
+}
+.highcharts-legend-item > text {
+  color: #3b2417 !important;
+    fill: #3b2417 !important;
+    text-shadow: none !important;
+}
+.graph-color .highcharts-legend-item > text {
+  color: #fffbed !important;
+    fill: #fffbed !important;
+    text-shadow: none !important;
+}
+.highcharts-tooltip text {
+  color: #3b2417 !important;
+    fill: #3b2417 !important;
+}

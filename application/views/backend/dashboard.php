@@ -1,7 +1,7 @@
 <div class="text-center padding-bottom">
   <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 </div>
-<span>Total Employee Count <?php echo $empcount;?></span>
+<span>Total Employee Count: <?php echo $empcount;?></span>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
 
     <div class="cf"></div>
@@ -264,7 +264,12 @@
 
                 chart: {
                     type: 'bar',
-                    backgroundColor: "transparent"
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    borderRadius: 0,
+                    borderWidth: 0,
+                    height: 800,
+                    className: "graph-color"
                 },
                 credits: {
                     enabled: false
@@ -282,10 +287,7 @@
                         text: 'Percentage (%)'
                     }
                 },
-                colors: ['#ffd61e', '#684703', '#ce3a56'],
-                borderRadius: 0,
-                borderWidth: 10,
-                //                colors: ['#684703', '#FFB110','#684703'],
+                colors: ['#0084C5', '#ffd61e', '#f55069'],
                 tooltip: {
                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -301,7 +303,7 @@
                         maxPointWidth: 100
                     }
                 },
-              
+
                  <?php if($checkpackage==3 || $checkpackage==4) {?>
                      series: [{
                     name: 'Expected',
@@ -329,7 +331,7 @@
                 }
                           ]
                  <?php } ?>
-               
+
             });
         }
            function createPie() {
@@ -343,7 +345,8 @@
                 plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie',
-                 backgroundColor: "transparent"
+                backgroundColor: "transparent",
+                height: 400
             },
             title: {
                 text: 'Pillar Average'
