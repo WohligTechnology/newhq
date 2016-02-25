@@ -559,33 +559,8 @@ $this->load->view("json",$data);
          $data['message']=$this->restapi_model->getSingleQuestionAndOption($id);
          $this->load->view('json',$data);
      }
- public function storeUserAnswer()
-     {
-      $data = json_decode(file_get_contents('php://input'), true);
-      $user=$data["user"];
-      $option=$data["option"];
-      $question=$data["question"];
-      $test=$data["test"];
-         $data['message']=$this->restapi_model->storeUserAnswer($user,$option,$question,$test);
-         $this->load->view('json',$data);
-     }
- public function pingHq()
- 	{
-     
-      $data = json_decode(file_get_contents('php://input'), true);
-      $user=$data["user"];
-	 	$data['message'] = $this->restapi_model->pingHq($user);
-	 	$this->load->view('json', $data);
- 	}
- public function pingHqForSurvey()
- 	{
-     
-      $data = json_decode(file_get_contents('php://input'), true);
-      $user=$data["user"];
-      $survey=$data["survey"];
-	 	$data['message'] = $this->restapi_model->pingHqForSurvey($user,$survey);
-	 	$this->load->view('json', $data);
- 	}
+
+
  
  public function viewfirstpage()
  {
@@ -647,7 +622,7 @@ $this->load->view("json",$data);
      $package=$this->input->get_post('package');
      $this->menu_model->enablemenu($package);
  }
-  public function sendsurveyquestion($surveyid)
+  public function sendsurveyquestion()
   {
         $surveyid=$this->input->get('id');
 		$gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`,`hq_surveyquestionuser`.`id`, `hq_surveyquestionuser`.`question`, `hq_surveyquestionuser`.`email`, `hq_surveyquestionuser`.`status` FROM `hq_surveyquestionuser` LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email` WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
@@ -657,7 +632,8 @@ $this->load->view("json",$data);
             $email=$gettotalemail->email;
             $userid=$gettotalemail->userid;
             $hashvalue=base64_encode ($userid."&hq");
-            $link="<a href='http://wohlig.co.in/hqfront/#/survey/.$surveyid.'/'.$hashvalue'>Click here </a> To get questions.";
+            $link="<a href='http://wohlig.co.in/hqfront/#/survey/$surveyid/$hashvalue'>Click here </a> To get questions.";
+            echo $link;
             $this->load->library('email');
             $this->email->from('master@willnevergrowup.in', 'HQ');
             $this->email->to($email);
@@ -667,6 +643,43 @@ $this->load->view("json",$data);
             $this->email->send();
 	 }
   }
+  public function pingHqForSurvey()
+ 	{
+     
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
+      $survey=$data["survey"];
+	 	$data['message'] = $this->restapi_model->pingHqForSurvey($user,$survey);
+	 	$this->load->view('json', $data);
+ 	}
+  public function pingHq()
+ 	{
+     
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
+	 	$data['message'] = $this->restapi_model->pingHq($user);
+	 	$this->load->view('json', $data);
+ 	}
+ public function storeUserAnswer()
+     {
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
+      $option=$data["option"];
+      $question=$data["question"];
+      $test=$data["test"];
+         $data['message']=$this->restapi_model->storeUserAnswer($user,$option,$question,$test);
+         $this->load->view('json',$data);
+     }
+ public function storeSurveyAnswer()
+     {
+      $data = json_decode(file_get_contents('php://input'), true);
+      $user=$data["user"];
+      $option=$data["option"];
+      $question=$data["question"];
+      $survey=$data["survey"];
+         $data['message']=$this->restapi_model->storeSurveyAnswer($user,$option,$question,$survey);
+         $this->load->view('json',$data);
+     }
  public function checkweight(){
          $range=$this->input->get_post('range');
          $range1=$this->input->get_post('rangeone');
