@@ -67,7 +67,7 @@ HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `tes
 	
 	    return $query;
     } 
-    public function pingHqForSurvey($user)
+    public function pingHqForSurvey($user,$survey)
     {
         $normalfromhash = base64_decode($user);
         $returnvalue    = explode("&", $normalfromhash);

@@ -4290,7 +4290,8 @@ $this->load->view("template",$data);
 		$this->surveyquestionanswer_model->exportsurveyresultcsv($surveyid);
         $data['redirect']="site/viewconclusion";
         $this->load->view("redirect",$data);
-	 }
+	 }   
+   
     
 }
 ?>
