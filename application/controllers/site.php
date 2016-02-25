@@ -2970,6 +2970,7 @@ $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="createsurveyquestion";
 $data["type"]=$this->surveyquestion_model->gettypedropdown();
+$data["text"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["title"]="Create surveyquestion";
 $this->load->view("template",$data);
 }
@@ -2985,6 +2986,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="createsurveyquestion";
+$data["text"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["title"]="Create surveyquestion";
 $this->load->view("template",$data);
@@ -3015,6 +3017,7 @@ $data["before1"]=$this->input->get("id");
 $data["before2"]=$this->input->get("id");
 $data["title"]="Edit surveyquestion";
 $data["type"]=$this->surveyquestion_model->gettypedropdown();
+$data["text"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
 $data['exp'] = explode(':', $data['before']->starttime);
 $data['exp1'] = explode(':', $data['before']->endtime);
@@ -3033,6 +3036,7 @@ if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
 $data["page"]="editsurveyquestion";
+$data["text"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["type"]=$this->surveyquestion_model->gettypedropdown();
 $data["title"]="Edit surveyquestion";
 $data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
@@ -3944,13 +3948,8 @@ $elements[0]->alias="id";
 $elements[1]=new stdClass();
 $elements[1]->field="`hq_conclusionfinalsuggestion`.`conclusion`";
 $elements[1]->sort="1";
-$elements[1]->header="Conclusion";
+$elements[1]->header="Survey Name";
 $elements[1]->alias="conclusion";
-$elements[2]=new stdClass();
-$elements[2]->field="`hq_conclusionfinalsuggestion`.`conclusionsuggestion`";
-$elements[2]->sort="1";
-$elements[2]->header="Conclusion Suggestion";
-$elements[2]->alias="conclusionsuggestion";
 $search=$this->input->get_post("search");
 $pageno=$this->input->get_post("pageno");
 $orderby=$this->input->get_post("orderby");
@@ -3974,8 +3973,6 @@ public function createconclusionfinalsuggestion()
 $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="createconclusionfinalsuggestion";
-$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
 $data["title"]="Create conclusionfinalsuggestion";
 $this->load->view("template",$data);
 }
@@ -3988,8 +3985,6 @@ $this->form_validation->set_rules("conclusionsuggestion","Conclusion Suggestion"
 if($this->form_validation->run()==FALSE)
 {
 $data["alerterror"]=validation_errors();
-$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-    $data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
 $data["page"]="createconclusionfinalsuggestion";
 $data["title"]="Create conclusionfinalsuggestion";
 $this->load->view("template",$data);
@@ -4000,9 +3995,9 @@ $id=$this->input->get_post("id");
 $conclusion=$this->input->get_post("conclusion");
 $conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
 if($this->conclusionfinalsuggestion_model->create($conclusion,$conclusionsuggestion)==0)
-$data["alerterror"]="New conclusionfinalsuggestion could not be created.";
+$data["alerterror"]="New survey could not be created.";
 else
-$data["alertsuccess"]="conclusionfinalsuggestion created Successfully.";
+$data["alertsuccess"]="Survey created Successfully.";
 $data["redirect"]="site/viewconclusionfinalsuggestion";
 $this->load->view("redirect",$data);
 }
@@ -4013,8 +4008,6 @@ $access=array("1","5");
 $this->checkaccess($access);
 $data["page"]="editconclusionfinalsuggestion";
 $data["title"]="Edit conclusionfinalsuggestion";
-$data[ 'conclusion' ] =$this->conclusion_model->getConclusionDropDown();
-$data[ 'conclusionsuggestion' ] =$this->conclusionsuggestion_model->getConclusionSuggestionDropDown();
 $data["before"]=$this->conclusionfinalsuggestion_model->beforeedit($this->input->get("id"));
 $this->load->view("template",$data);
 }
@@ -4041,9 +4034,9 @@ $id=$this->input->get_post("id");
 $conclusion=$this->input->get_post("conclusion");
 $conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
 if($this->conclusionfinalsuggestion_model->edit($id,$conclusion,$conclusionsuggestion)==0)
-$data["alerterror"]="New conclusionfinalsuggestion could not be Updated.";
+$data["alerterror"]="New survey could not be Updated.";
 else
-$data["alertsuccess"]="conclusionfinalsuggestion Updated Successfully.";
+$data["alertsuccess"]="Survey Updated Successfully.";
 $data["redirect"]="site/viewconclusionfinalsuggestion";
 $this->load->view("redirect",$data);
 }
@@ -4201,7 +4194,8 @@ $this->load->view("template",$data);
     public function viewchangeexpected(){
         $access=array("1","5");
         $this->checkaccess($access);
-        $data['before']$this->pillar_model->getallpillarsbypackage();
+        $data['before']=$this->pillar_model->getallpillarsbypackage();
+        $data['elevenpillar']=$this->pillar_model->getelevenpillar();
         $data["page"]="viewchangeexpected";
         $data["title"]="View Expected Weightages";
         $this->load->view("template",$data);
@@ -4219,18 +4213,67 @@ $this->load->view("template",$data);
         $expected8=$this->input->get_post("expected8");
         $expected9=$this->input->get_post("expected9");
         $expected10=$this->input->get_post("expected10");
-        if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10)==0)
-        $data["alerterror"]="New conclusionfinalsuggestion could not be Updated.";
+        $expected11=$this->input->get_post("expected11");
+        $checkpackage=$this->menu_model->checkpackage();
+        if($checkpackage !=4)
+            {
+                $sum=$expected1 + $expected2 + $expected3 + $expected4 + $expected5 + $expected6 + $expected7 + $expected8 + $expected9 + $expected10;
+                if($sum==100)
+                {
+                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)                     
+                    {     
+                        $data["alerterror"]="Expected Weightages Cannot Updated Successfully.";
+                        $data["redirect"]="site/viewchangeexpected";
+                        $this->load->view("redirect",$data);
+                    }
+                    else
+                    {
+                        $data["alertsuccess"]="Expected Weightages Updated Successfully.";
+                        $data["redirect"]="site/viewchangeexpected";
+                        $this->load->view("redirect",$data);
+                    }
+                    
+                }
+                else
+                    {
+                     $data["alerterror"]="Sum Should be equal to 100";
+                     $data["redirect"]="site/viewchangeexpected";
+                     $this->load->view("redirect",$data);
+                    }
+            }
         else
-        $data["alertsuccess"]="conclusionfinalsuggestion Updated Successfully.";
-        $data["redirect"]="site/viewconclusionfinalsuggestion";
-        $this->load->view("redirect",$data);
+            {
+                $sum=$expected1 + $expected2 + $expected3 + $expected4 + $expected5 + $expected6 + $expected7 + $expected8 + $expected9 +  $expected10 + $expected11;
+                if($sum==100)
+                {
+                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)     
+                     {    
+                        $data["alerterror"]="Expected Weightages Cannot Updated Successfully.";
+                        $data["redirect"]="site/viewchangeexpected";
+                        $this->load->view("redirect",$data);
+                      }
+                    else
+                    {
+                        $data["alertsuccess"]="Expected Weightages Updated Successfully.";
+                        $data["redirect"]="site/viewchangeexpected";
+                        $this->load->view("redirect",$data);
+                    }
+                }
+                else
+                    {
+                     $data["alerterror"]="Sum Should be equal to 100";
+                     $data["redirect"]="site/viewchangeexpected";
+                     $this->load->view("redirect",$data);
+                    }
+                
+            }
+       
 	 }
-    public function getallpillarsbypackage(){
-		$data['']$this->pillar_model->getallpillarsbypackage();
-        $data["message"] = $weights;
-		$this->load->view( 'json', $data );
-	 }
+//    public function getallpillarsbypackage(){
+//		$data['']=$this->pillar_model->getallpillarsbypackage();
+//        $data["message"] = $weights;
+//		$this->load->view( 'json', $data );
+//	 }
     public function exportsuggestioncsv(){
 		$access = array("1");
 		$this->checkaccess($access);
