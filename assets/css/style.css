@@ -375,6 +375,7 @@ ul.side-nav.fixed li a {
     background-color: #FFFBEC;
     border: 1px solid #F9F3DC;
     width: 100%;
+    border-radius: 3px;
 }
 .panel-body ul#nav-mobile li + li {
   margin-top: 10px;
@@ -571,7 +572,7 @@ select {
 .panel {
     margin-bottom: 20px;
     background-color: transparent;
-    border: 1px solid #684703;
+    border: 1px solid #00AC93;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -585,8 +586,8 @@ select {
 }
 .panel-primary>.panel-heading {
     color: #fff;
-    background-color: #684703;
-    border-color: #684703;
+    background-color: #FFD61E;
+    border-color: #FFD61E;
 }
 .panel-body {
     padding: 0px 15px 0px 15px;
@@ -630,8 +631,8 @@ ul.text-center.matop li {
 }
 .marbotm{
     margin-bottom: 0px;
-    border-bottom: 1px solid #684703;
-        margin-left: -15.1px !important;
+    border-bottom: 1px solid #FFD61E;
+    margin-left: -15.1px !important;
     margin-right: -15.1px !important;
 }
 .marzero{
@@ -642,7 +643,7 @@ ul.text-center.matop li {
     padding-top: 50px
 }
 p.panel-title {
-    color: #ffd61e;
+    color: #3b2417;
 }
 .select-before:before {
     position: absolute;
@@ -936,4 +937,16 @@ button:focus {
 }
 .lightcolor :-moz-placeholder { /* Firefox 18- */
   color: #fffbed;
+}
+.panel {
+    border-color: #FFD61E;
+}
+
+.panel-heading input.select-dropdown {
+    border-bottom: 1px solid #3b2417;
+    color: #3b2417;
+}
+
+.panel-heading .select-wrapper span.caret {
+    color: #3b2417;
 }
