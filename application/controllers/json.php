@@ -625,7 +625,15 @@ $this->load->view("json",$data);
   public function sendsurveyquestion()
   {
         $surveyid=$this->input->get('id');
-		$gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`,`hq_surveyquestionuser`.`id`, `hq_surveyquestionuser`.`question`, `hq_surveyquestionuser`.`email`, `hq_surveyquestionuser`.`status` FROM `hq_surveyquestionuser` LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email` WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
+      
+      $gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`, `hq_surveyquestionuser`.`email` FROM `hq_surveyquestionuser` 
+LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email`
+WHERE `hq_surveyquestionuser`.`question`='1'")->result();
+//      foreach($gettotalemails as $row)
+//      {
+//          $checkuseransweredsurvey=$this->db->query("SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='$row->id' AND `survey`='$surveyid'")->result();
+//      }
+      
        
         foreach($gettotalemails as $gettotalemail)
         {
@@ -725,15 +733,15 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
         }
      $arr=array_merge($query,$query1);
      
-     $mdarr=array();
-      for($i=0; $i<count($arr);$i++){
-          $temp = array();
-          
-          array_push($temp,$arr[$i]->user,$arr[$i]->content,$arr[$i]->option);
-          array_push($mdarr,$temp);
-     }
-     echo count($mdarr);
-     print_r($mdarr);
+//     $mdarr=array();
+//      for($i=0; $i<count($arr);$i++){
+//          $temp = array();
+//          
+//          array_push($temp,$arr[$i]->user,$arr[$i]->content,$arr[$i]->option);
+//          array_push($mdarr,$temp);
+//     }
+//     echo count($mdarr);
+//     print_r($mdarr);
  }
 
    
