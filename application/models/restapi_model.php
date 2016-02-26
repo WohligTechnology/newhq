@@ -92,8 +92,17 @@ HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `tes
         $returnvalue    = explode("&", $normalfromhash);
         $userid         = $returnvalue[0];
 	    
-	   $getemail = $this->db->query("SELECT `email` FROM `user` WHERE `id`='$userid'")->row();
+        // check user's survey
+        $getemail = $this->db->query("SELECT `email` FROM `user` WHERE `id`='$userid'")->row();
         $email=$getemail->email;
+        $checkusersurvey = $this->db->query("SELECT `question` FROM `hq_surveyquestionuser` WHERE `email`='$email'")->result();
+        //getsurveyid
+        
+        
+//        check user answerd all surveys
+        $checkallsurvey=$this->db->query("SELECT `survey` FROM `user` WHERE `id`='$userid'")->row();
+        
+	    
         $query = $this->db->query("SELECT * FROM `hq_surveyquestion` WHERE `text`='$survey'")->result();
                 foreach ($query as $questions) 
                 {

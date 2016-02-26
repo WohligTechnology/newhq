@@ -628,7 +628,7 @@ $this->load->view("json",$data);
       
       $gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`, `hq_surveyquestionuser`.`email` FROM `hq_surveyquestionuser` 
 LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email`
-WHERE `hq_surveyquestionuser`.`question`='1'")->result();
+WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
 //      foreach($gettotalemails as $row)
 //      {
 //          $checkuseransweredsurvey=$this->db->query("SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='$row->id' AND `survey`='$surveyid'")->result();
@@ -640,7 +640,7 @@ WHERE `hq_surveyquestionuser`.`question`='1'")->result();
             $email=$gettotalemail->email;
             $userid=$gettotalemail->userid;
             $hashvalue=base64_encode ($userid."&hq");
-            $link="<a href='http://wohlig.co.in/hqfront/#/survey/$surveyid/$hashvalue'>Click here </a> To get questions.";
+            $link="<a href='http://wohlig.co.in/hqfront/#/survey/$hashvalue'>Click here </a> To get questions.";
             echo $link;
             $this->load->library('email');
             $this->email->from('master@willnevergrowup.in', 'HQ');
