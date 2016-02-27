@@ -72,47 +72,38 @@ class restapi_model extends CI_Model
         $userid         = $returnvalue[0];
         $todaysdate     = date("Y-m-d");
 	    
-	   $query = $this->db->query("Select `testquestion`.`id` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`
+	   $query = $this->db->query("SELECT `testquestion`.`id` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`
 from `testquestion`
 inner join `test` ON `testquestion`.`test` = `test`.`id`
 inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id`
 where `test`.`startdate` < now()
-HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid')")->result();
+HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid')")->result(); 
 	   
-	    foreach ($query as $questions) {
+        if(empty($query))
+        {
+	    
+            $query = $this->db->query("SELECT * FROM `hq_surveyquestion` WHERE `survey` IN (SELECT DISTINCT(`survey`) FROM `hq_surveyquestionuser` WHERE `userid`='$userid' AND `survey` NOT IN
+(SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='$userid'))")->result();
+        
+             foreach ($query as $questions) 
+                {
+                $questions->option = $this->db->query("SELECT `id`, `order`, `question`, `title`, `image` FROM `hq_surveyoption` WHERE `question`='$questions->id'")->result();
+                }
+        }
+        else
+        {
+//            IT IS A PILLAR QUESTIONS
+            
+            foreach ($query as $questions) 
+            {
                 $questions->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$questions->question'")->result();
                 
             }
-	
+        }
+               
 	    return $query;
     } 
-    public function pingHqForSurvey($user,$survey)
-    {
-        $normalfromhash = base64_decode($user);
-        $returnvalue    = explode("&", $normalfromhash);
-        $userid         = $returnvalue[0];
-	    
-        // check user's survey
-        $getemail = $this->db->query("SELECT `email` FROM `user` WHERE `id`='$userid'")->row();
-        $email=$getemail->email;
-        $checkusersurvey = $this->db->query("SELECT `question` FROM `hq_surveyquestionuser` WHERE `email`='$email'")->result();
-        //getsurveyid
-        
-        
-//        check user answerd all surveys
-        $checkallsurvey=$this->db->query("SELECT `survey` FROM `user` WHERE `id`='$userid'")->row();
-        
-	    
-        $query = $this->db->query("SELECT * FROM `hq_surveyquestion` WHERE `text`='$survey'")->result();
-                foreach ($query as $questions) 
-                {
-                $questions->option = $this->db->query("SELECT `id`, `order`, `question`, `title`, `image` FROM `hq_surveyoption` WHERE `question`='$questions->id'")->result();
-                
-                }
-	   
 
-	    return $query;
-    }
     
     public function getUsers()
     {

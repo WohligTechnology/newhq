@@ -646,7 +646,7 @@ WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
             $this->email->from('master@willnevergrowup.in', 'HQ');
             $this->email->to($email);
             $this->email->subject('Test');   
-            $message = "Hiii      ".$link;
+            $message = "Hiii this is survey    ".$link;
             $this->email->message($message);
             $this->email->send();
 	 }
@@ -662,10 +662,10 @@ WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
  	}
   public function pingHq()
  	{
-     
       $data = json_decode(file_get_contents('php://input'), true);
       $user=$data["user"];
 	 	$data['message'] = $this->restapi_model->pingHq($user);
+    
 	 	$this->load->view('json', $data);
  	}
  public function storeUserAnswer()
@@ -742,9 +742,7 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
 //     }
 //     echo count($mdarr);
 //     print_r($mdarr);
- }
-
-   
-   
  
-} ?>
+
+ }
+ } ?>
