@@ -646,6 +646,7 @@ $this->load->view("json",$data);
             $this->email->message($message);
             $this->email->send();
 	 }
+       redirect( base_url() . 'index.php/site/viewconclusionfinalsuggestion', 'refresh' );
   }
   public function pingHqForSurvey()
  	{
