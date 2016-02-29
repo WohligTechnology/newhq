@@ -47,13 +47,13 @@ class restapi_model extends CI_Model
     }
     public function storeSurveyAnswer($answer)
     {
-        print_r($answer);
+//        print_r($answer);
         $user=$answer['user'];
         $survey=$answer['survey'];
         $questions=$answer['questions'];
         $normalfromhash = base64_decode($user);
         $userid         = $normalfromhash;
-        print_r($questions);
+//        print_r($questions);
         foreach($questions as $row)
         {
             
@@ -97,8 +97,8 @@ class restapi_model extends CI_Model
         if(empty($query))
         {
 	       
-            $query2 = "SELECT DISTINCT(`survey`) AS `survey` FROM `hq_surveyquestionuser` WHERE `userid`='15' AND `survey` NOT IN
-(SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='15') LIMIT 0,1";
+            $query2 = "SELECT DISTINCT(`survey`) AS `survey` FROM `hq_surveyquestionuser` WHERE `userid`='$userid' AND `survey` NOT IN
+(SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='$userid') LIMIT 0,1";
             $query2 = $this->db->query($query2);
             if($query2->num_rows() > 0)
             {

@@ -598,11 +598,12 @@ $this->load->view("json",$data);
    public function sendMailToEachUser()
    {
        $getUserid=$this->restapi_model->getUsers();
-       print_r($getUserid);
+//       print_r($getUserid);
         foreach($getUserid as $getUserid){
             $email=$getUserid->email;
              $hashvalue=base64_encode ($getUserid->id."&hq");
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+            echo $link;
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
@@ -623,9 +624,7 @@ $this->load->view("json",$data);
   {
         $surveyid=$this->input->get('id');
       
-      $gettotalemails=$this->db->query("SELECT `user`.`id` as `userid`, `hq_surveyquestionuser`.`email` FROM `hq_surveyquestionuser` 
-LEFT OUTER JOIN `user` ON `user`.`email`=`hq_surveyquestionuser`.`email`
-WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
+      $gettotalemails=$this->db->query("SELECT `id`, `survey`, `email`, `status`, `userid` FROM `hq_surveyquestionuser` WHERE `survey`='$surveyid'")->result();
 //      foreach($gettotalemails as $row)
 //      {
 //          $checkuseransweredsurvey=$this->db->query("SELECT `survey` FROM `hq_surveyquestionanswer` WHERE `user`='$row->id' AND `survey`='$surveyid'")->result();
@@ -637,7 +636,7 @@ WHERE `hq_surveyquestionuser`.`question`='$surveyid'")->result();
             $email=$gettotalemail->email;
             $userid=$gettotalemail->userid;
             $hashvalue=base64_encode ($userid."&hq");
-            $link="<a href='http://wohlig.co.in/hqfront/#/survey/$hashvalue'>Click here </a> To get questions.";
+            $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
             echo $link;
             $this->load->library('email');
             $this->email->from('master@willnevergrowup.in', 'HQ');
