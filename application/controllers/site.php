@@ -3021,7 +3021,15 @@ $data["survey"]=$this->conclusionfinalsuggestion_model->getSurveyNameDown();
 $data["before"]=$this->surveyquestion_model->beforeedit($this->input->get("id"));
 $data['exp'] = explode(':', $data['before']->starttime);
 $data['exp1'] = explode(':', $data['before']->endtime);
-$this->load->view("templatewith2",$data);
+$type=$data["before"]->type;
+    if($type==1 && $type==2){
+        $this->load->view("template",$data);
+    }
+    else{
+        $this->load->view("templatewith2",$data);
+    }
+
+
 }
 public function editsurveyquestionsubmit()
 {

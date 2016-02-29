@@ -61,7 +61,8 @@ $return=array(
 "1" => "Text",
 "2" => "Paragraph text",
 "3" => "Multiple choice",
-"4" => "Checkboxes"
+"4" => "Drop Down",
+"5" => "Radio Button",
 );
 return $return;
 }
