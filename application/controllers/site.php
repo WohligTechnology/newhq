@@ -41,7 +41,7 @@ class Site extends CI_Controller
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
 
         $data["message"] = $pillarsdata;
-        
+
 		$this->load->view( 'json', $data );
 
     }
@@ -59,14 +59,14 @@ class Site extends CI_Controller
             {
                 $totalsum=$totalsum+($row[$i]->expectedweight *$row[$i]->pillaraveragevalues)/100;
                 $totalexpected=$totalexpected+($row[$i]->weight * $row[$i]->pillaraveragevalues)/100;
-               
+
             }
         }
-//        $data['totalsum']=number_format((float)$totalsum, 2, '.', ''); 
+//        $data['totalsum']=number_format((float)$totalsum, 2, '.', '');
 //        $data['totalexpected']=number_format((float)$totalexpected, 2, '.', '');
-        
-        $data['totalsum']=floor($totalsum); 
-        $data['totalexpected']=floor($totalexpected); 
+
+        $data['totalsum']=floor($totalsum);
+        $data['totalexpected']=floor($totalexpected);
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
@@ -1157,7 +1157,7 @@ $this->load->view("redirect",$data);
             $this->user_model->makeusernew($this->session->userdata("id"));
             redirect( base_url() . 'index.php/json/viewfirstpage?id=2', 'refresh' );
         }
-        
+
     }
 public function editpillar()
 {
@@ -3946,6 +3946,15 @@ $data["base_url"]=site_url("site/viewconclusionfinalsuggestionjson");
 $data["title"]="View conclusionfinalsuggestion";
 $this->load->view("template",$data);
 }
+public function trialsurvey()
+{
+$access=array("1","5");
+$this->checkaccess($access);
+$data["page"]="trialsurvey";
+$data["base_url"]=site_url("site/trialsurvey");
+$data["title"]="Mini Survey";
+$this->load->view("template",$data);
+}
 function viewconclusionfinalsuggestionjson()
 {
 $elements=array();
@@ -4229,8 +4238,8 @@ $this->load->view("template",$data);
                 $sum=$expected1 + $expected2 + $expected3 + $expected4 + $expected5 + $expected6 + $expected7 + $expected8 + $expected9 + $expected10;
                 if($sum==100)
                 {
-                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)                     
-                    {     
+                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)
+                    {
                         $data["alerterror"]="Expected Weightages Cannot Updated Successfully.";
                         $data["redirect"]="site/viewchangeexpected";
                         $this->load->view("redirect",$data);
@@ -4241,7 +4250,7 @@ $this->load->view("template",$data);
                         $data["redirect"]="site/viewchangeexpected";
                         $this->load->view("redirect",$data);
                     }
-                    
+
                 }
                 else
                     {
@@ -4255,8 +4264,8 @@ $this->load->view("template",$data);
                 $sum=$expected1 + $expected2 + $expected3 + $expected4 + $expected5 + $expected6 + $expected7 + $expected8 + $expected9 +  $expected10 + $expected11;
                 if($sum==100)
                 {
-                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)     
-                     {    
+                     if($this->pillar_model->editchangeexpected($expected1,$expected2,$expected3,$expected4,$expected5,$expected6,$expected7,$expected8,$expected9,$expected10,$expected11)==0)
+                     {
                         $data["alerterror"]="Expected Weightages Cannot Updated Successfully.";
                         $data["redirect"]="site/viewchangeexpected";
                         $this->load->view("redirect",$data);
@@ -4274,9 +4283,9 @@ $this->load->view("template",$data);
                      $data["redirect"]="site/viewchangeexpected";
                      $this->load->view("redirect",$data);
                     }
-                
+
             }
-       
+
 	 }
 //    public function getallpillarsbypackage(){
 //		$data['']=$this->pillar_model->getallpillarsbypackage();
@@ -4298,8 +4307,8 @@ $this->load->view("template",$data);
 		$this->surveyquestionanswer_model->exportsurveyresultcsv($surveyid);
         $data['redirect']="site/viewconclusion";
         $this->load->view("redirect",$data);
-	 }   
-   
-    
+	 }
+
+
 }
 ?>

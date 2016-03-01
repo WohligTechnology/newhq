@@ -8,15 +8,16 @@
 
     <div class="row selectproper">
         <div class="col s12 m3">
+          <label>Gender</label>
             <select id="1" name="gender" onchange="GlobalFunctions.checkfortwo(1);" style="display:none">
                 <?php  foreach($gender as $key => $value) {?>
                     <option value=<?php echo $key; ?>><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
-            <label>Gender</label>
         </div>
         <div class="col s12 m3">
+          <label>Annual Salary</label>
             <select id="2" name="salary" onchange="GlobalFunctions.checkfortwo(2);" style="display:none">
                 <option value="">Choose Salary</option>
                 <option value="Below 2">Below 2L</option>
@@ -28,46 +29,46 @@
                 <option value="17-19">17L-19L</option>
                 <option value="19+">19L+</option>
             </select>
-            <label>Annual Salary</label>
         </div>
         <div class="col s12 m3">
+          <label>Marital Status</label>
             <select id="3" name="maritalstatus" onchange="GlobalFunctions.checkfortwo(3);" style="display:none">
                 <?php  foreach($maritalstatus as $key => $value) {?>
                     <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
-            <label>Marital Status</label>
         </div>
         <div class="col s12 m3">
+          <label>Branch</label>
             <select id="4" name="branch" onchange="GlobalFunctions.checkfortwo(4);" style="display:none">
                 <?php  foreach($branch as $key => $value) {?>
                     <option value="<?php echo $key; ?>"><?php echo $value; ?>
                             <?php }?>
             </select>
-            <label>Branch</label>
         </div>
     </div>
     <div class="row selectproper">
         <div class="col s12 m3">
+          <label>Department</label>
             <select id="5" name="department" onchange="GlobalFunctions.checkfortwo(5);" style="display:none">
                 <?php  foreach($department as $key => $value) {?>
                     <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
-            <label>Department</label>
         </div>
         <div class="col s12 m3">
+          <label>Designation</label>
             <select id="6" name="designation" onchange="GlobalFunctions.checkfortwo(6);" style="display:none">
                 <?php  foreach($designation as $key => $value) {?>
                     <option value="<?php echo $key; ?>"><?php echo $value; ?>
                     </option>
                     <?php }?>
             </select>
-            <label>Designation</label>
         </div>
         <div class="col s12 m3">
+          <label>Span of Control</label>
             <select id="7" name="spanofcontrol" onchange="GlobalFunctions.checkfortwo(7);" style="display:none">
                 <option value="">Choose Span of control</option>
                 <option value="0-5">0-5</option>
@@ -77,9 +78,9 @@
                 <option value="20-25">20-25</option>
                 <option value="25+">25+</option>
             </select>
-            <label>Span of Control</label>
         </div>
         <div class="col s12 m3">
+          <label>Experience</label>
             <select id="8" name="experience" onchange="GlobalFunctions.checkfortwo(8);" style="display:none">
                 <option value="">Choose Experience</option>
                 <option value="0-2">0-2</option>
@@ -87,7 +88,6 @@
                 <option value="6-8">6-8</option>
                 <option value="8+">8+</option>
             </select>
-            <label>Experience</label>
         </div>
     </div>
 </form>
