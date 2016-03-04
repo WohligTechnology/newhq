@@ -15,6 +15,18 @@
          <label>Survey Title</label>
        </div>
      </div>
+
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input type="text" required>
+         <label>Welcome description</label>
+       </div>
+       <div class="input-field col s12 m6">
+         <input type="text" required>
+         <label>Thank you message</label>
+       </div>
+     </div>
+
      <div class="row mb0">
        <div class="col s12">
          <b class="brdr-bot">
