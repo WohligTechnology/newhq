@@ -975,6 +975,9 @@ button:focus {
 .bold {
   font-weight: bold;
 }
+.repeat-section {
+    margin-bottom: 30px
+}
 @media screen and (max-width: 600px) {
   .select-wrapper+label {
     position: static;
