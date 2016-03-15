@@ -4307,6 +4307,48 @@ $this->load->view("template",$data);
 		$this->surveyquestionanswer_model->exportsurveyresultcsv($surveyid);
         $data['redirect']="site/viewconclusion";
         $this->load->view("redirect",$data);
+	 } 
+    public function surveysubmit(){
+		$access = array("1");
+		$this->checkaccess($access);
+        $surveyname=$this->input->get_post("surveyname");    
+        $surveydescription=$this->input->get_post("surveydescription");    
+        $question1=$this->input->get_post("question1");    
+        $question2=$this->input->get_post("question2");    
+        $question3=$this->input->get_post("question3");    
+        $question4=$this->input->get_post("question4");    
+        $question5=$this->input->get_post("question5");    
+        $question6=$this->input->get_post("question6");    
+        $question7=$this->input->get_post("question7");    
+        $question8=$this->input->get_post("question8");    
+        $question9=$this->input->get_post("question9");    
+        $question10=$this->input->get_post("question10");    
+        $type1=$this->input->get_post("type1");    
+        $type2=$this->input->get_post("type2");    
+        $type3=$this->input->get_post("type3");    
+        $type4=$this->input->get_post("type4");    
+        $type5=$this->input->get_post("type5");    
+        $type6=$this->input->get_post("type6");    
+        $type7=$this->input->get_post("type7");    
+        $type8=$this->input->get_post("type8");    
+        $type9=$this->input->get_post("type9");    
+        $type10=$this->input->get_post("type10");    
+        $required1=$this->input->get_post("required1");    
+        $required2=$this->input->get_post("required2");    
+        $required3=$this->input->get_post("required3");    
+        $required4=$this->input->get_post("required4");    
+        $required5=$this->input->get_post("required5");    
+        $required6=$this->input->get_post("required6");    
+        $required7=$this->input->get_post("required7");    
+        $required8=$this->input->get_post("required8");    
+        $required9=$this->input->get_post("required9");    
+        $required10=$this->input->get_post("required10");    
+        if($this->surveyquestion_model->edit($surveyname,$surveydescription,$question1,$question2,$question3,$question4,$question5,$question6,$question7,$question8,$question9,$question10,$type1,$type2,$type3,$type4,$type5,$type6,$type7,$type8,$type9,$type10,$required1,$required2,$required3,$required4,$required5,$required6,$required7,$required8,$required9,$required10)==0)
+$data["alerterror"]="New survey could not be created.";
+else
+$data["alertsuccess"]="Survey Created Successfully.";
+$data["redirect"]="site/viewconclusionfinalsuggestion";
+$this->load->view("redirect",$data);
 	 }
 
 
