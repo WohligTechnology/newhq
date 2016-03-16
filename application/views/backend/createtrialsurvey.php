@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-   <form class="col s12" method="post" action="<?php echo site_url('site/surveysubmit');?>">
+   <form class="col s12" method="post" action="<?php echo site_url('site/newsurveysubmit');?>">
 
      <div class="row">
        <div class="input-field col s12 m6">
@@ -39,19 +39,12 @@
           <label>Question 1</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type1">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+        <?php echo form_dropdown("type1",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required1">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -64,19 +57,12 @@
           <label>Question 2</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type2">
-           <option value="" disabled>Choose question type</option>
-           <option value="text">Text</option>
-           <option value="paragraph" selected>Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+         <?php echo form_dropdown("type2",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required2">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -89,19 +75,12 @@
           <label>Question 3</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type3">
-           <option value="" disabled>Choose question type</option>
-           <option value="text">Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" selected>Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+       <?php echo form_dropdown("type3",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required3">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -139,19 +118,12 @@
           <label>Question 4</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type4">
-           <option value="" disabled>Choose question type</option>
-           <option value="text">Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple">Multiple</option>
-           <option value="dropdown" selected>Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+        <?php echo form_dropdown("type4",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required4">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -165,19 +137,12 @@
           <label>Question 5</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type5">
-           <option value="" disabled>Choose question type</option>
-           <option value="text">Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple">Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio" selected>Radio</option>
-         </select>
+        <?php echo form_dropdown("type5",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required5">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -190,19 +155,12 @@
           <label>Question 6</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type6">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+       <?php echo form_dropdown("type6",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required6">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -215,19 +173,12 @@
           <label>Question 7</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type7">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+         <?php echo form_dropdown("type7",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required7">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -239,19 +190,12 @@
           <label>Question 8</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type8">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+        <?php echo form_dropdown("type8",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required8">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -263,19 +207,12 @@
           <label>Question 9</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type9">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+       <?php echo form_dropdown("type9",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required9">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+           <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -287,19 +224,12 @@
           <label>Question 10</label>
         </div>
         <div class="input-field col s3 m3">
-         <select required name="type10">
-           <option value="" disabled>Choose question type</option>
-           <option value="text" selected>Text</option>
-           <option value="paragraph">Paragraph</option>
-           <option value="multiple" >Multiple</option>
-           <option value="dropdown">Dropdown</option>
-           <option value="radio">Radio</option>
-         </select>
+       <?php echo form_dropdown("type10",$type,set_value('type'));?>
        </div>
        <div class="input-field col s2 m2">
          <select required name="required10">
-           <option value="required">Required</option>
-           <option value="notrequired">Not Required</option>
+          <option value="1">Required</option>
+           <option value="2">Not Required</option>
          </select>
        </div>
       </div>
@@ -315,7 +245,7 @@
      </div>
      <div class="row">
        <div class="input-field col s12 m6">
-         <input type="text">
+         <input type="text" name="message">
          <label>Thank you message</label>
        </div>
      </div>

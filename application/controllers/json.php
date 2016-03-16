@@ -607,7 +607,8 @@ $this->load->view("json",$data);
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
-       $this->email->subject('Test');   
+       $this->email->subject('Test');  
+            $message = "Hiii this is the link ".$link;
        $this->email->message($message);
        $this->email->send();
             

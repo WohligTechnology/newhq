@@ -3946,15 +3946,7 @@ $data["base_url"]=site_url("site/viewconclusionfinalsuggestionjson");
 $data["title"]="View conclusionfinalsuggestion";
 $this->load->view("template",$data);
 }
-public function trialsurvey()
-{
-$access=array("1","5");
-$this->checkaccess($access);
-$data["page"]="trialsurvey";
-$data["base_url"]=site_url("site/trialsurvey");
-$data["title"]="Mini Survey";
-$this->load->view("template",$data);
-}
+
 function viewconclusionfinalsuggestionjson()
 {
 $elements=array();
@@ -4012,7 +4004,8 @@ else
 $id=$this->input->get_post("id");
 $conclusion=$this->input->get_post("conclusion");
 $conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
-if($this->conclusionfinalsuggestion_model->create($conclusion,$conclusionsuggestion)==0)
+$message=$this->input->get_post("message");
+if($this->conclusionfinalsuggestion_model->create($conclusion,$conclusionsuggestion,$message)==0)
 $data["alerterror"]="New survey could not be created.";
 else
 $data["alertsuccess"]="Survey created Successfully.";
@@ -4051,7 +4044,8 @@ else
 $id=$this->input->get_post("id");
 $conclusion=$this->input->get_post("conclusion");
 $conclusionsuggestion=$this->input->get_post("conclusionsuggestion");
-if($this->conclusionfinalsuggestion_model->edit($id,$conclusion,$conclusionsuggestion)==0)
+    $message=$this->input->get_post("message");
+if($this->conclusionfinalsuggestion_model->edit($id,$conclusion,$conclusionsuggestion,$message)==0)
 $data["alerterror"]="New survey could not be Updated.";
 else
 $data["alertsuccess"]="Survey Updated Successfully.";
@@ -4308,7 +4302,19 @@ $this->load->view("template",$data);
         $data['redirect']="site/viewconclusion";
         $this->load->view("redirect",$data);
 	 } 
-    public function surveysubmit(){
+    
+    public function trialsurvey()
+    {
+        $access=array("1","5");
+        $this->checkaccess($access);
+        $data["page"]="createtrialsurvey";
+        $data["type"]=$this->surveyquestion_model->gettypedropdown();
+        $data["base_url"]=site_url("site/trialsurvey");
+        $data["title"]="Mini Survey";
+        $this->load->view("template",$data);
+    }
+    public function newsurveysubmit()
+    {
 		$access = array("1");
 		$this->checkaccess($access);
         $surveyname=$this->input->get_post("surveyname");    
@@ -4343,10 +4349,80 @@ $this->load->view("template",$data);
         $required8=$this->input->get_post("required8");    
         $required9=$this->input->get_post("required9");    
         $required10=$this->input->get_post("required10");    
-        if($this->surveyquestion_model->edit($surveyname,$surveydescription,$question1,$question2,$question3,$question4,$question5,$question6,$question7,$question8,$question9,$question10,$type1,$type2,$type3,$type4,$type5,$type6,$type7,$type8,$type9,$type10,$required1,$required2,$required3,$required4,$required5,$required6,$required7,$required8,$required9,$required10)==0)
+        $message=$this->input->get_post("message");    
+//        print_r($_POST);
+        if($this->surveyquestion_model->newsurveysubmit($surveyname,$surveydescription,$question1,$question2,$question3,$question4,$question5,$question6,$question7,$question8,$question9,$question10,$type1,$type2,$type3,$type4,$type5,$type6,$type7,$type8,$type9,$type10,$required1,$required2,$required3,$required4,$required5,$required6,$required7,$required8,$required9,$required10,$message)==0)
 $data["alerterror"]="New survey could not be created.";
 else
 $data["alertsuccess"]="Survey Created Successfully.";
+$data["redirect"]="site/viewconclusionfinalsuggestion";
+$this->load->view("redirect",$data);
+	 }
+    public function edittrialsurvey()
+    {
+        $access=array("1","5");
+        $this->checkaccess($access);
+        $data["page"]="edittrialsurvey";
+        $data["before"]=$this->surveyquestion_model->surveybeforeedit($this->input->get('id'));
+        $data["type"]=$this->surveyquestion_model->gettypedropdown();
+        $data["isrequired"]=$this->surveyquestion_model->getisrequireddropdown();
+        $data["title"]="Edit Mini Survey";
+        $this->load->view("template",$data);
+    }
+    public function editsurveysubmit()
+    {
+		$access = array("1");
+		$this->checkaccess($access);
+        $surveyid=$this->input->get_post("surveyid");   
+        $surveyname=$this->input->get_post("surveyname");    
+        $surveydescription=$this->input->get_post("surveydescription");    
+        $question1=$this->input->get_post("question1");    
+        $question2=$this->input->get_post("question2");    
+        $question3=$this->input->get_post("question3");    
+        $question4=$this->input->get_post("question4");    
+        $question5=$this->input->get_post("question5");    
+        $question6=$this->input->get_post("question6");    
+        $question7=$this->input->get_post("question7");    
+        $question8=$this->input->get_post("question8");    
+        $question9=$this->input->get_post("question9");    
+        $question10=$this->input->get_post("question10");    
+        $type1=$this->input->get_post("type1");    
+        $type2=$this->input->get_post("type2");    
+        $type3=$this->input->get_post("type3");    
+        $type4=$this->input->get_post("type4");    
+        $type5=$this->input->get_post("type5");    
+        $type6=$this->input->get_post("type6");    
+        $type7=$this->input->get_post("type7");    
+        $type8=$this->input->get_post("type8");    
+        $type9=$this->input->get_post("type9");    
+        $type10=$this->input->get_post("type10");    
+        $required1=$this->input->get_post("required1");    
+        $required2=$this->input->get_post("required2");    
+        $required3=$this->input->get_post("required3");    
+        $required4=$this->input->get_post("required4");    
+        $required5=$this->input->get_post("required5");    
+        $required6=$this->input->get_post("required6");    
+        $required7=$this->input->get_post("required7");    
+        $required8=$this->input->get_post("required8");    
+        $required9=$this->input->get_post("required9");    
+        $required10=$this->input->get_post("required10");    
+        $message=$this->input->get_post("message");   
+        $question1id=$this->input->get_post("question1id");
+        $question2id=$this->input->get_post("question2id");    
+        $question3id=$this->input->get_post("question3id");    
+        $question4id=$this->input->get_post("question4id");    
+        $question5id=$this->input->get_post("question5id");    
+        $question6id=$this->input->get_post("question6id");    
+        $question7id=$this->input->get_post("question7id");    
+        $question8id=$this->input->get_post("question8id");    
+        $question9id=$this->input->get_post("question9id");    
+        $question10id=$this->input->get_post("question10id");    
+        echo $surveyid;
+//        print_r($_POST);
+        if($this->surveyquestion_model->editsurveysubmit($surveyname,$surveydescription,$question1,$question2,$question3,$question4,$question5,$question6,$question7,$question8,$question9,$question10,$type1,$type2,$type3,$type4,$type5,$type6,$type7,$type8,$type9,$type10,$required1,$required2,$required3,$required4,$required5,$required6,$required7,$required8,$required9,$required10,$message,$surveyid,$question1id,$question2id,$question3id,$question4id,$question5id,$question6id,$question7id,$question8id,$question9id,$question10id)==0)
+$data["alerterror"]="Survey Could Not Be Updated.";
+else
+$data["alertsuccess"]="Survey Updated Successfully.";
 $data["redirect"]="site/viewconclusionfinalsuggestion";
 $this->load->view("redirect",$data);
 	 }
