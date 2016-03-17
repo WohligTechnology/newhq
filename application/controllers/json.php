@@ -689,6 +689,12 @@ $this->load->view("json",$data);
          $data['message']=$this->restapi_model->storeSurveyAnswer($answer);
          $this->load->view('json',$data);
      }
+ public function sendlogo(){
+     $query=$this->db->query("SELECT * FROM `logo` WHERE 1")->row();
+     $image=$query->image;
+     $data['message']=$query;
+    $this->load->view('json',$data);
+ }
  public function checkweight(){
          $range=$this->input->get_post('range');
          $range1=$this->input->get_post('rangeone');

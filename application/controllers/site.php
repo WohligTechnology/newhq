@@ -4178,9 +4178,7 @@ $this->load->view("template",$data);
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
-       $this->email->subject('Test');
-
-//       $message = "Hiii      ".$link;
+       $this->email->subject('Happiness Quotient');
        $message = "<html>
         <p>Hello!</p><br>
       <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
@@ -4309,6 +4307,7 @@ $this->load->view("template",$data);
         $this->checkaccess($access);
         $data["page"]="createtrialsurvey";
         $data["type"]=$this->surveyquestion_model->gettypedropdown();
+        $data["isrequired"]=$this->surveyquestion_model->getisrequireddropdown();
         $data["base_url"]=site_url("site/trialsurvey");
         $data["title"]="Mini Survey";
         $this->load->view("template",$data);
@@ -4417,7 +4416,6 @@ $this->load->view("redirect",$data);
         $question8id=$this->input->get_post("question8id");    
         $question9id=$this->input->get_post("question9id");    
         $question10id=$this->input->get_post("question10id");    
-        echo $surveyid;
 //        print_r($_POST);
         if($this->surveyquestion_model->editsurveysubmit($surveyname,$surveydescription,$question1,$question2,$question3,$question4,$question5,$question6,$question7,$question8,$question9,$question10,$type1,$type2,$type3,$type4,$type5,$type6,$type7,$type8,$type9,$type10,$required1,$required2,$required3,$required4,$required5,$required6,$required7,$required8,$required9,$required10,$message,$surveyid,$question1id,$question2id,$question3id,$question4id,$question5id,$question6id,$question7id,$question8id,$question9id,$question10id)==0)
 $data["alerterror"]="Survey Could Not Be Updated.";

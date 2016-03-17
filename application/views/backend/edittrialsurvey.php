@@ -47,6 +47,7 @@
        </div>
       </div>
       
+<!--
       <div class="options">
         <div class="row">
           <div class="input-field col s8 m8">
@@ -55,6 +56,7 @@
           </div>
          <div class="input-field col s2 m2">
            <button class="btn btn-xs less-pad"><i class="material-icons propericon">delete</i></button>
+             <button class="btn btn-xs less-pad"><i class="material-icons propericon">add</i></button>
          </div>
         </div>
         <div class="row">
@@ -64,10 +66,12 @@
           </div>
          <div class="input-field col s2 m2">
            <button class="btn btn-xs less-pad"><i class="material-icons propericon">delete</i></button>
-           <button class="btn btn-xs less-pad"><i class="material-icons propericon">add</i></button>
+           
+             <button class="btn btn-xs less-pad"><i class="material-icons propericon">add</i></button>
          </div>
         </div>
       </div>
+-->
 
     </div>
 
