@@ -183,17 +183,14 @@
             <div class="question-repeater">
                 <div class="row bold">
                     <div class="input-field col s5 m5">
-                        <input type="text" name="question2" id="">
+                        <input type="text" name="question2" id="question2" onkeypress="checkforquestion('question2','type2','required2','option2')">
                         <label>Question 2</label>
                     </div>
-                    <div class="input-field col s3 m3">
-                        <?php echo form_dropdown("type2",$type,set_value('type'));?>
+                    <div class="input-field col s3 m3" onchange="checkforquestion('question2','type2','required2','option2')">
+                        <?php echo form_dropdown("type2",$type,set_value('type')," id='type2'");?>
                     </div>
-                    <div class="input-field col s2 m2">
-                        <select name="required2">
-                            <option value="1">Required</option>
-                            <option value="2">Not Required</option>
-                        </select>
+                    <div class="input-field col s2 m2" onchange="checkforquestion('question2','type2','required2','option2')">
+                     <?php echo form_dropdown("required2",$isrequired,set_value('required2'),"id='required2'")?>
                     </div>
                 </div>
             </div>
@@ -201,17 +198,14 @@
             <div class="question-repeater">
                 <div class="row bold">
                     <div class="input-field col s5 m5">
-                        <input type="text" name="question3">
+                        <input type="text" name="question3" id="question3" onkeypress="checkforquestion('question3','type3','required3','option3')">
                         <label>Question 3</label>
                     </div>
                     <div class="input-field col s3 m3">
-                        <?php echo form_dropdown("type3",$type,set_value('type'));?>
+                        <?php echo form_dropdown("type3",$type,set_value('type')," id='type3'");?>
                     </div>
-                    <div class="input-field col s2 m2">
-                        <select name="required3">
-                            <option value="1">Required</option>
-                            <option value="2">Not Required</option>
-                        </select>
+                    <div class="input-field col s2 m2" onchange="checkforquestion('question3','type3','required3','option3')">
+                      <?php echo form_dropdown("required3",$isrequired,set_value('required3'),"id='required3'")?>
                     </div>
                 </div>
             </div>
