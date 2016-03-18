@@ -752,4 +752,48 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
  print_r($arr);
 
  }
+ public function test(){
+     for($i=1;$i<=10;$i++){
+       
+         
+         
+         
+         $j = $i+1;
+        print '<div class="option'.$i.'">
+        <div class="row">
+         <div class="input-field col s8 m8">
+         <input type="text" name="option'.$i.'" id="option'.$i.'">
+         <label>Option</label>
+         </div>
+         <div class="input-field col s2 m2">
+         <div onclick="hidedelete(\'option'.$i.'\')" class="btn btn-xs less-pad"><i class="material-icons propericon">delete</i></div>
+          <div onclick="showoption(\'option'.$i.'\',\'option'.$j.'\')" class="btn btn-xs less-pad"><i class="material-icons propericon">add</i></div></div></div></div>';
+     }
+ }
+ public function test1(){
+      for($i=91;$i<=100;$i++){
+          $j=10;
+          echo "// create option".$i;
+          echo "\n";
+          echo "\n";
+          echo 'if($question'.$j.' !="" && $option'.$i.'!="")';
+          echo "\n";
+          
+          echo "{";
+          echo "\n";
+     echo '$data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
+          
+          echo "\n";
+      echo   '$query=$this->db->insert( "hq_surveyoption", $data );';
+          echo "\n";
+       echo '$option'.$i.'id=$this->db->insert_id();';
+          echo "\n";
+          echo "}";
+          echo "\n";
+          echo "\n";
+          
+      }
+ }
+ 
+
  } ?>
