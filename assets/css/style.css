@@ -992,5 +992,5 @@ button:focus {
   text-align: center;
 }
 .min-h {
-  min-height: 350px;
+  /*min-height: 350px;*/
 }
