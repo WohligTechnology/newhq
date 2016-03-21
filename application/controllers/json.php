@@ -754,10 +754,6 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
  }
  public function test(){
      for($i=1;$i<=10;$i++){
-       
-         
-         
-         
          $j = $i+1;
         print '<div class="option'.$i.'">
         <div class="row">
@@ -769,6 +765,8 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
          <div onclick="hidedelete(\'option'.$i.'\')" class="btn btn-xs less-pad"><i class="material-icons propericon">delete</i></div>
           <div onclick="showoption(\'option'.$i.'\',\'option'.$j.'\')" class="btn btn-xs less-pad"><i class="material-icons propericon">add</i></div></div></div></div>';
      }
+     
+     
  }
  public function test1(){
       for($i=91;$i<=100;$i++){

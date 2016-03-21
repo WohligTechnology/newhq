@@ -54,6 +54,7 @@
                     <div class="row">
                         <div class="input-field col s8 m8">
                             <input type="text" name="option1" id="option1" value=" <?php echo $option[0]->options[0]->title;?>">
+                            <input type="hidden" name="option1id" id="option1id" value=" <?php echo $option[0]->options[0]->id;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -69,7 +70,7 @@
                 <div class="option2">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option2" id="option2">
+                            <input type="text" name="option2" id="option2" value=" <?php echo $option[0]->options[1]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -85,7 +86,7 @@
                 <div class="option3">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option3" id="option3">
+                            <input type="text" name="option3" id="option3" value=" <?php echo $option[0]->options[2]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -101,7 +102,7 @@
                 <div class="option4">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option4" id="option4">
+                            <input type="text" name="option4" id="option4" value=" <?php echo $option[0]->options[3]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -117,7 +118,7 @@
                 <div class="option5">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option5" id="option5">
+                            <input type="text" name="option5" id="option5" value=" <?php echo $option[0]->options[4]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -133,7 +134,7 @@
                 <div class="option6">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option6" id="option6">
+                            <input type="text" name="option6" id="option6" value=" <?php echo $option[0]->options[5]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -149,7 +150,7 @@
                 <div class="option7">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option7" id="option7">
+                            <input type="text" name="option7" id="option7" value=" <?php echo $option[0]->options[6]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -165,7 +166,7 @@
                 <div class="option8">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option8" id="option8">
+                            <input type="text" name="option8" id="option8" value=" <?php echo $option[0]->options[7]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -181,7 +182,7 @@
                 <div class="option9">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option9" id="option9">
+                            <input type="text" name="option9" id="option9" value=" <?php echo $option[0]->options[8]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -197,7 +198,7 @@
                 <div class="option10">
                     <div class="row">
                         <div class="input-field col s8 m8">
-                            <input type="text" name="option10" id="option10">
+                            <input type="text" name="option10" id="option10" value=" <?php echo $option[0]->options[9]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
@@ -390,9 +391,51 @@
         var id = /id=(\d+)/.exec(url)[1];
         console.log(id);
         $.get("<?php echo base_url(); ?>index.php/site/getsinglesurveydata?id=" + id, function(data, status) {
-            console.log($.parseJSON(data));
+            var data = $.parseJSON(data);
+            console.log(data.length);
+            // show question 1 option
+             for (var j = 1; j < data[0].options.length; j++) {
+                 $(".option"+j).show();
+                } 
+            // show question 2 option
+             for (var j = 11; j < data[1].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 3 option
+             for (var j = 21; j < data[2].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 4 option
+             for (var j = 31; j < data[3].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 5 option
+             for (var j = 41; j < data[4].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 6 option
+             for (var j = 51; j < data[5].options.length; j++) {
+                 $(".option"+j).show();
+                } 
+            // show question 7 option
+             for (var j = 61; j < data[6].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 8 option
+             for (var j = 71; j < data[7].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 9 option
+             for (var j = 81; j < data[8].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            // show question 10 option
+             for (var j = 91; j < data[9].options.length; j++) {
+                 $(".option"+j).show();
+                }
+            
         });
-        
+
     });
 
     // if question is present show option 1
