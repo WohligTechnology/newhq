@@ -983,3 +983,14 @@ button:focus {
     position: static;
  }
 }
+.logo-holder img {
+    height: 40px;
+    width: auto;
+}
+.logo-holder {
+  padding: 20px 10px 10px;
+  text-align: center;
+}
+.min-h {
+  min-height: 350px;
+}

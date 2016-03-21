@@ -186,7 +186,7 @@ document.oncontextmenu=new Function("return false")
 
 	</header>
 	<main>
-		<div class="lightcolor">
+		<div class="lightcolor min-h">
       <?php echo $alerterror; ?>
 		<?php if(isset($alertsuccess)) {
 $alertsuccess = trim(preg_replace('/\s+/', ' ', $alertsuccess));
