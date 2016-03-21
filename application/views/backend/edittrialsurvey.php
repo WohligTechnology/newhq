@@ -71,6 +71,7 @@
                     <div class="row">
                         <div class="input-field col s8 m8">
                             <input type="text" name="option2" id="option2" value=" <?php echo $option[0]->options[1]->title;?>">
+                            <input type="text" name="option2" id="option2" value=" <?php echo $option[0]->options[1]->title;?>">
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
