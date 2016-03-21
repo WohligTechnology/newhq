@@ -774,13 +774,11 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
                 */
  
  public function test(){
-     for($i=1;$i<=10;$i++){
+     for($i=91;$i<=100;$i++){
          $j = $i+1;
         print '<div class="option'.$i.'">
         <div class="row">
-         <div class="input-field col s8 m8">
-         <input type="text" name="option'.$i.'" value=" <?php echo $option[0]->options['.$i.']->title;?>" id="option'.$i.'">
-         <input type="hidden" name="option'.$i.'id" value=" <?php echo $option[0]->options['.$i.']->id;?>" id="option'.$i.'id">
+         <div class="input-field col s8 m8"><input type="text" name="option'.$i.'" value="<?php echo $option[0]->options['.$i.']->title;?>" id="option'.$i.'"><input type="hidden" name="option'.$i.'id" value="<?php echo $option[0]->options['.$i.']->id;?>" id="option'.$i.'id">
          <label>Option</label>
          </div>
          <div class="input-field col s2 m2">
@@ -791,26 +789,37 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
      
  }
  public function test1(){
-      for($i=91;$i<=100;$i++){
+      for($i=1;$i<=100;$i++){
           $j=10;
-          echo "// create option".$i;
-          echo "\n";
-          echo "\n";
-          echo 'if($question'.$j.' !="" && $option'.$i.'!="")';
-          echo "\n";
+          echo '$option'.$i.'id,';
+//          echo "// create option".$i;
+//          echo "\n";
+//          echo "\n";
+//          echo 'if($question'.$j.' !="" && $option'.$i.'!="")';
+//          echo "\n";
+//          
+//          echo "{";
+//          echo "\n";
+//     echo '$data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
+//          
+//          echo "\n";
+//      echo   '$query=$this->db->insert( "hq_surveyoption", $data );';
+//          echo "\n";
+//       echo '$option'.$i.'id=$this->db->insert_id();';
+//          echo "\n";
+//          echo "}";
+//          echo "\n";
+//          echo "\n";
           
-          echo "{";
-          echo "\n";
-     echo '$data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
-          
-          echo "\n";
-      echo   '$query=$this->db->insert( "hq_surveyoption", $data );';
-          echo "\n";
-       echo '$option'.$i.'id=$this->db->insert_id();';
-          echo "\n";
-          echo "}";
-          echo "\n";
-          echo "\n";
+      }
+     public function test2(){
+      for($i=1;$i<=10;$i++){
+          $j=1;
+    echo '//question 1'; echo "\n";
+       echo '//option1'; echo "\n";
+        echo '$data=array("question" => $question'.$j.'id,"title" => $option1);'; echo "\n";
+       echo '$this->db->where( "id", $option1id );'; echo "\n";
+          echo '$query=$this->db->update( "hq_surveyoption", $data );'; echo "\n";
           
       }
  }
