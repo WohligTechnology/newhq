@@ -13,10 +13,10 @@
             <!--           // questions1   -> $option[0]-->
 
             <div class="input-field col s12 m6">
-              
-                    <input type="text" name="surveyname" value="<?php echo $before['survey']->conclusion;?>" required>
-                    <input type="hidden" name="surveyid" value="<?php echo $before['survey']->id;?>">
-                    <label>Name Your Survey</label>
+
+                <input type="text" name="surveyname" value="<?php echo $before['survey']->conclusion;?>" required>
+                <input type="hidden" name="surveyid" value="<?php echo $before['survey']->id;?>">
+                <label>Name Your Survey</label>
             </div>
         </div>
 
@@ -50,7 +50,6 @@
                     </div>
                 </div>
                 <!--                question 1 option start-->
-                  <?php if($option[0]->options[0]) {?>
                 <div class="option1">
                     <div class="row">
                         <div class="input-field col s8 m8">
@@ -67,7 +66,6 @@
                         </div>
                     </div>
                 </div>
-                <?php }?>
                 <div class="option2">
                     <div class="row">
                         <div class="input-field col s8 m8">
@@ -388,6 +386,13 @@
             $(".option" + i).hide();
         }
         $(".add1").hide();
+        var url = window.location.href;
+        var id = /id=(\d+)/.exec(url)[1];
+        console.log(id);
+        $.get("<?php echo base_url(); ?>index.php/site/getsinglesurveydata?id=" + id, function(data, status) {
+            console.log($.parseJSON(data));
+        });
+        
     });
 
     // if question is present show option 1

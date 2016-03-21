@@ -4469,6 +4469,14 @@ $this->load->view("redirect",$data);
         $data["title"]="Edit Mini Survey";
         $this->load->view("template",$data);
     }
+    public function getsinglesurveydata()
+    {
+        
+        $id=$this->input->get_post('id');
+        $option=$this->surveyquestion_model->getoptionforedit($id);
+        $data['message']=$option;
+        $this->load->view("json",$data);
+    }
     public function editsurveysubmit()
     {
 		$access = array("1");
