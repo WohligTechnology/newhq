@@ -812,14 +812,16 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
 //          echo "\n";
           
       }
+ }
      public function test2(){
+         echo '//question '.$j.''; echo "\n";
       for($i=1;$i<=10;$i++){
           $j=1;
-    echo '//question 1'; echo "\n";
-       echo '//option1'; echo "\n";
-        echo '$data=array("question" => $question'.$j.'id,"title" => $option1);'; echo "\n";
-       echo '$this->db->where( "id", $option1id );'; echo "\n";
-          echo '$query=$this->db->update( "hq_surveyoption", $data );'; echo "\n";
+    
+       echo '//option'.$i.''; echo "\n";
+        echo '$data=array("question" => $question'.$j.'id,"title" => $option'.$i.');'; echo "\n";
+       echo '$this->db->where( "id", $option'.$i.'id );'; echo "\n";
+          echo '$query=$this->db->update( "hq_surveyoption", $data );'; echo "\n";echo "\n";
           
       }
  }

@@ -1094,6 +1094,59 @@ public function gettypedropdown()
         $this->db->where( "id", $question1id );
           $query=$this->db->update( "hq_surveyquestion", $data );
         
+                        //question 
+                //option1
+                $data=array("question" => $question1id,"title" => $option1);
+                $this->db->where( "id", $option1id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option2
+                $data=array("question" => $question1id,"title" => $option2);
+                $this->db->where( "id", $option2id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option3
+                $data=array("question" => $question1id,"title" => $option3);
+                $this->db->where( "id", $option3id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option4
+                $data=array("question" => $question1id,"title" => $option4);
+                $this->db->where( "id", $option4id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option5
+                $data=array("question" => $question1id,"title" => $option5);
+                $this->db->where( "id", $option5id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option6
+                $data=array("question" => $question1id,"title" => $option6);
+                $this->db->where( "id", $option6id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option7
+                $data=array("question" => $question1id,"title" => $option7);
+                $this->db->where( "id", $option7id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option8
+                $data=array("question" => $question1id,"title" => $option8);
+                $this->db->where( "id", $option8id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option9
+                $data=array("question" => $question1id,"title" => $option9);
+                $this->db->where( "id", $option9id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+                //option10
+                $data=array("question" => $question1id,"title" => $option10);
+                $this->db->where( "id", $option10id );
+                $query=$this->db->update( "hq_surveyoption", $data );
+
+
+        
         //question2
         $data=array("type" => $type2,"survey" => $surveyid,"content" => $question2,"isrequired" => $required2);
         $this->db->where( "id", $question2id );
@@ -1139,11 +1192,7 @@ public function gettypedropdown()
        $this->db->where( "id", $question10id );
           $query=$this->db->update( "hq_surveyquestion", $data );
         
-        //question 1
-         //option1
-        $data=array("question" => $question1id,"title" => $option1);
-       $this->db->where( "id", $option1id );
-          $query=$this->db->update( "hq_surveyoption", $data );
+
         
          return 1;
         
