@@ -1949,28 +1949,38 @@
             
             
             for(var i=0 ; i< =9 ; i++){
+                var j='';
                 switch (i)
                     {
                     case 0:
-                        day = "Sunday";
+                        j = "1";
                         break;
                     case 1:
-                        day = "Monday";
+                        j = "11";
                         break;
                     case 2:
-                        day = "Tuesday";
+                        j = "21";
                         break;
                     case 3:
-                        day = "Wednesday";
+                        j = "31";
                         break;
                     case 4:
-                        day = "Thursday";
+                        j = "41";
                         break;
                     case 5:
-                        day = "Friday";
+                        j = "51";
                         break;
                     case  6:
-                        day = "Saturday";
+                        j = "61";
+                        break;
+                    case  7:
+                        j = "71";
+                        break;
+                    case  8:
+                        j = "81";
+                        break;
+                    case  9:
+                        j = "91";
                         break;
                     }
                     
