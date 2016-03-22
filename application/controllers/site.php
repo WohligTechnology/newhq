@@ -331,7 +331,7 @@ class Site extends CI_Controller
 		$access = array("1","3","5");
 		$this->checkaccess($access);
 
-		$this->form_validation->set_rules('name','Name','trim|required|max_length[30]');
+		$this->form_validation->set_rules('name','Name','trim|max_length[30]');
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','Password','trim|min_length[6]|max_length[30]');
 		$this->form_validation->set_rules('confirmpassword','Confirm Password','trim|matches[password]');
@@ -1264,7 +1264,7 @@ if($orderby=="")
 $orderby="id";
 $orderorder="ASC";
 }
-$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_question` LEFT OUTER JOIN `hq_pillar` ON `hq_pillar`.`id`=`hq_question`.`pillar`","WHERE `hq_question`.`id` < 41");
+$data["message"]=$this->chintantable->query($pageno,$maxrow,$orderby,$orderorder,$search,$elements,"FROM `hq_question` LEFT OUTER JOIN `hq_pillar` ON `hq_pillar`.`id`=`hq_question`.`pillar`","WHERE `hq_question`.`id` NOT IN(41,42,43,44)");
 $this->load->view("json",$data);
 }
 
