@@ -794,29 +794,60 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
      
  }
  public function test1(){
-      for($i=1;$i<=100;$i++){
+      for($i=91;$i<=100;$i++){
           $j=10;
-          echo '$option'.$i.'id,';
-//          echo "// create option".$i;
-//          echo "\n";
-//          echo "\n";
-//          echo 'if($question'.$j.' !="" && $option'.$i.'!="")';
-//          echo "\n";
-//          
-//          echo "{";
-//          echo "\n";
-//     echo '$data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
-//          
-//          echo "\n";
-//      echo   '$query=$this->db->insert( "hq_surveyoption", $data );';
-//          echo "\n";
-//       echo '$option'.$i.'id=$this->db->insert_id();';
-//          echo "\n";
-//          echo "}";
-//          echo "\n";
-//          echo "\n";
-          
-      }
+          echo "//  option".$i;
+          echo "\n";
+          echo "\n";
+          echo 'if($option'.$i.'id =="")';
+          echo "\n";
+          echo "{";
+          echo "\n";
+           echo '       if($option'.$i.' !="")';
+          echo "\n";
+          echo "        {";
+          echo "\n";
+          echo '            $data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
+          echo "\n";
+          echo   '            $query=$this->db->insert( "hq_surveyoption", $data );';
+          echo "\n";
+          echo '            $option'.$i.'id=$this->db->insert_id();';
+           echo "\n";
+          echo "        }";
+           echo "\n";
+          echo "}";
+           echo "\n";
+          echo "else";
+           echo "\n";
+          echo "        {";
+           echo "\n";
+          echo '            $data=array("question" => $question'.$j.'id,"title" => $option'.$i.');';
+          echo "\n";
+        echo '              $this->db->where( "id", $option'.$i.'id );';
+          echo "\n";
+          echo   '          $query=$this->db->update( "hq_surveyoption", $data );';
+          echo "\n";
+          echo "        }";
+           echo "\n";
+           echo "\n";
+           //  option7
+
+//                    if($option7id =="")
+//                    {
+//                        if($option7 !=''){
+//                    $data=array("question" => $question1id,"title" => $option7);
+//                    $query=$this->db->insert( "hq_surveyoption", $data );
+//                    $option7id=$this->db->insert_id();
+//                    }
+//                    }
+//                    else
+//                    {
+//                    $data=array("question" => $question1id,"title" => $option7);
+//                    $this->db->where( "id", $option7id );
+//                    $query=$this->db->update( "hq_surveyoption", $data );
+//                    }
+      
+ }
  }
      public function test2(){
          echo '//question '.$j.''; echo "\n";
