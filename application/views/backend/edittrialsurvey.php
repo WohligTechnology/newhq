@@ -1935,19 +1935,14 @@
             var data = $.parseJSON(data);
             console.log(data[1].options.length);
             // show question 1 option
-            for (var j = 1; j <= data[0].options.length; j++) {
-                $(".option" + j).show();
-                
-            }
-            // show question 2 option
-            for (var i = 11; i <= data[1].options.length; i++) {
-                console.log("second ques");
-                $(".option" + i).show();
-                console.log($(".option" + i).show());
-            }
-            
-            
-            
+//            for (var j = 1; j <= data[0].options.length; j++) {
+//                $(".option" + j).show();
+//                
+//            }
+//            for (var j = 11; j <= data[1].options.length; j++) {
+//                $(".option" + j).show();
+//                
+//            }
             for(var i=0 ; i< =9 ; i++){
                 var j='';
                 switch (i)
@@ -1987,48 +1982,11 @@
                     
                 var optionlength=data[i].options.length;
                 
-                for (var j = 11; i <= data[1].options.length; i++) {
-                console.log("second ques");
-                $(".option" + i).show();
-                console.log($(".option" + i).show());
+                for (var k = j; k <= optionlength; k++) {
+                $(".option" + k).show();
+                console.log($(".option" + k).show());
             }
             }
-            
-            
-            
-            
-//            // show question 3 option
-//            for (var j = 21; j < data[2].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 4 option
-//            for (var j = 31; j < data[3].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 5 option
-//            for (var j = 41; j < data[4].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 6 option
-//            for (var j = 51; j < data[5].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 7 option
-//            for (var j = 61; j < data[6].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 8 option
-//            for (var j = 71; j < data[7].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 9 option
-//            for (var j = 81; j < data[8].options.length; j++) {
-//                $(".option" + j).show();
-//            }
-//            // show question 10 option
-//            for (var j = 91; j < data[9].options.length; j++) {
-//                $(".option" + j).show();
-//            }
 
         });
 
