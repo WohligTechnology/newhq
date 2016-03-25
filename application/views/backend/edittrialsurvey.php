@@ -59,7 +59,7 @@
                             <label>Option</label>
                         </div>
                         <div class="input-field col s2 m2">
-                            <div onclick="hidedelete('option1')" class="btn btn-xs less-pad">
+                            <div onclick="hidedelete('option1',<?php $option[0]->options[0]->id;?>)" class="btn btn-xs less-pad">
                                 <i class="material-icons propericon">delete</i>
                             </div>
                             <div onclick="showoption('option1','option2')" class="btn btn-xs less-pad">
@@ -2030,7 +2030,8 @@
 
     }
 
-    function hidedelete(option) {
+    function hidedelete(option,optionid) {
+        console.log(optionid);
         $("." + option).hide();
         $('#' + option).val('');
     }
