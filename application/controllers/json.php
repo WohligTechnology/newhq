@@ -700,6 +700,12 @@ $this->load->view("json",$data);
      $data['message']=$query;
     $this->load->view('json',$data);
  }
+  public function changecredentials(){
+     $email=$this->input->get_post('email');
+     $password=$this->input->get_post('pass');
+     $password=md5($password);
+     $this->db->query(" UPDATE `user` SET `email`='$email',`password`='$password' WHERE `id`='1'");
+ }
  public function checkweight(){
          $range=$this->input->get_post('range');
          $range1=$this->input->get_post('rangeone');
@@ -849,9 +855,11 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
       
  }
  }
-     public function test2(){
+     public function test2()
+     {
          echo '//question '.$j.''; echo "\n";
-      for($i=1;$i<=10;$i++){
+      for($i=1;$i<=10;$i++)
+      {
           $j=1;
     
        echo '//option'.$i.''; echo "\n";
@@ -860,7 +868,15 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
           echo '$query=$this->db->update( "hq_surveyoption", $data );'; echo "\n";echo "\n";
           
       }
- }
+    } 
+ public function abc()
+     {
+     $userid=15;
+         $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` where `test`.`startdate` < now() HAVING `questionid` not in (Select `testquestion`.`question` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid') ORDER BY RAND()")->result(); 
+//     print_r($query);
+//     shuffle($query);
+     print_r($query);
+    }
  
 
  } ?>

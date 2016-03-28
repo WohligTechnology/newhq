@@ -27,7 +27,7 @@
                         </div>
                         <div class="col s2">
                             <div class="progress-bar out-top">
-                                <output for="range" class="output">80</output>
+                                <output  class="output">80</output>
                             </div>
                         </div>
                     </div>

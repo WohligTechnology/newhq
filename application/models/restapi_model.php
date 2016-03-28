@@ -68,6 +68,19 @@ class restapi_model extends CI_Model
             return true;
     }
     
+    function shuffle_assoc($list) 
+    { 
+          if (!is_array($list)) return $list; 
+
+          $keys = array_keys($list); 
+          shuffle($keys); 
+          $random = array(); 
+          foreach ($keys as $key) { 
+            $random[$key] = $list[$key]; 
+          }
+          return $random; 
+    } 
+    
     public function pingHq($user)
     {
         if($user==''){
@@ -80,20 +93,21 @@ class restapi_model extends CI_Model
         $userid         = $returnvalue[0];
         $todaysdate     = date("Y-m-d");
 	    
-        // query by jags
-        
-//	   $query = $this->db->query("SELECT `testquestion`.`id` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`
-//from `testquestion`
-//inner join `test` ON `testquestion`.`test` = `test`.`id`
-//inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id`
-//where `test`.`startdate` < now()
-//HAVING `questionid` not in (Select `testquestion`.`id` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid')")->result(); 
         
         //query by pooja
         
         
-        $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` where `test`.`startdate` < now() HAVING `questionid` not in (Select `testquestion`.`question` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid') LIMIT 0,1")->result(); 
-	   
+        $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` where `test`.`startdate` < now() HAVING `questionid` not in (Select `testquestion`.`question` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid') ORDER BY RAND() LIMIT 0,1")->result(); 
+	   // assign date to questions
+        
+        $testdetail=$this->db->query("SELECT `id`, `name`, `units`, `schedule`, `startdate`, `department`, `branch`, `designation`, `check`, `team`, `timestamp`, `enddate` FROM `test` WHERE 1")->row();
+        $units=$testdetail->units;
+        $schedule=$testdetail->schedule;
+        $startdate=$testdetail->startdate;
+        
+        
+  
+        
         if(empty($query))
         {
 	       
