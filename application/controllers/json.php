@@ -597,34 +597,31 @@ $this->load->view("json",$data);
  }
    public function sendMailToEachUser()
    {
-       $getUserid=$this->restapi_model->getUsers();
+//       $getUserid=$this->restapi_model->getUsers();
 //       print_r($getUserid);
-        foreach($getUserid as $getUserid){
-            $email=$getUserid->email;
-             $hashvalue=base64_encode ($getUserid->id."&hq");
+//        foreach($getUserid as $getUserid){
+//            $email=$getUserid->email;
+//             $hashvalue=base64_encode ($getUserid->id."&hq");
+             $hashvalue=base64_encode ("16&hq");
        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
             echo $link;
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
-       $this->email->to($email);
+       $this->email->to('jagruti@wohlig.com');
        $this->email->subject('Test');  
             $message = "Hiii this is the link ".$link;
        $this->email->message($message);
        $this->email->send();
             
-        }
+//        }
     
        return 1;
    }
 
  public function assignpackage(){
      $package=$this->input->get_post('package');
-     $this->menu_model->enablemenu($package);
- }
- public function changecredentials(){
-     $email=$this->input->get_post('email');
-     $pass=$this->input->get_post('pass');
-     $this->usermodel->changecredentials($email,$pass);
+     $expiredate=$this->input->get_post('expiredate');
+     $this->menu_model->enablemenu($package,$expiredate);
  }
   public function sendsurveyquestion()
   {

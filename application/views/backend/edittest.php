@@ -10,7 +10,7 @@
                 <input type="text" id="name" name="name" value="<?php echo set_value('name',$before->name);?>">
             </div>
         </div>
-           <div class="row">
+           <div class="row" style="display:none;">
             <div class="input-field col s12 m6">
                 <label for="units">No of Question to send</label>
                 <input type="text" id="units" name="units" value="<?php echo set_value('units',$before->units);?>">
@@ -65,7 +65,7 @@
         <div class="row">
             <div class="input-field col s12 m6">
                 <label for="timestamp">Timestamp</label>
-                <input type="text" id="timestamp" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
+                <input type="text" id="timestamp" readonly="true" name="timestamp" value="<?php echo set_value('timestamp',$before->timestamp);?>">
             </div>
         </div>
         <div class="row">

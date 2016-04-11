@@ -73,6 +73,7 @@ class Site extends CI_Controller
 		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
 		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
 		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+		$data[ 'totalusertestgiven' ] =$this->user_model->gettotalusergiventest();
 		$data[ 'page' ] = 'dashboard';
 		$data[ 'title' ] = 'Welcome';
         $data["checkpackage"]=$this->menu_model->checkpackage();
@@ -2348,9 +2349,9 @@ $this->load->view("redirect",$data);
 			else
 			$data['alertsuccess']="Test edited Successfully.";
 
-			$data['redirect']="site/viewtest";
+			$data['redirect']="site/edittest?id=1";
 			//$data['other']="template=$template";
-			$this->load->view("redirect",$data);
+			$this->load->view("redirect2",$data);
 
 
 	}
@@ -2776,7 +2777,43 @@ $this->load->view("redirect",$data);
         $this->load->view("redirect",$data);
     }
 
+ function uploadsurveyusercsv()
+	{
+		$access = array("1");
+		$this->checkaccess($access);
+		$data[ 'page' ] = 'uploadsurveyusercsv';
+		$data[ 'title' ] = 'Upload Survey Users';
+		$this->load->view( 'template', $data );
+	}
+     function uploadsurveyusercsvsubmit()
+	{
+        $access = array("1");
+		$this->checkaccess($access);
+        $id=$this->input->get_post('id');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
+        $filename="file";
+        $file="";
+        if (  $this->upload->do_upload($filename))
+        {
+            $uploaddata = $this->upload->data();
+            $file=$uploaddata['file_name'];
+            $filepath=$uploaddata['file_path'];
+        }
+        $fullfilepath=$filepath."".$file;
+        $file = $this->csvreader->parse_file($fullfilepath);
+        $id1=$this->surveyquestionuser_model->createbycsv($file,$id);
+//        echo $id1;
 
+        if($id1==0)
+        $data['alerterror']="New survey user could not be Uploaded.";
+		else
+		$data['alertsuccess']="Survey user Uploaded Successfully.";
+
+        $data['redirect']="site/viewconclusionfinalsuggestion?id=".$id1;
+        $this->load->view("redirect2",$data);
+    }
 
     function uploadbranchcsv()
 	{
@@ -2785,7 +2822,8 @@ $this->load->view("redirect",$data);
 		$data[ 'page' ] = 'uploadbranchcsv';
 		$data[ 'title' ] = 'Upload branch';
 		$this->load->view( 'template', $data );
-	}
+	} 
+   
 
     function uploadbranchcsvsubmit()
 	{

@@ -55,6 +55,27 @@ class Test_model extends CI_Model
 		);
         $this->db->where( "id", $id );
         $query=$this->db->update( "test", $data );
+        
+        
+        //CURL COMMAND FOR STARTDATE
+        
+        $this->load->helper('url');
+        $mainurl=$this->config->base_url();
+        $exactpathforcredential=$mainurl.'/index.php/json/StartPackage?date='.$startdate;
+    
+      // GET CURL
+        $ch = curl_init();  
+        $url=$exactpathforcredential;
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+      curl_setopt($ch,CURLOPT_HEADER, false); 
+        $output=curl_exec($ch);
+        curl_close($ch);
+        
+        // CURL ENDS HERE
+        
         return 1;
 	
 	}
