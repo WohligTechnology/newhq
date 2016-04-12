@@ -868,20 +868,10 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
     } 
  public function abc()
      {
-       
      $query = $this->db->query("SELECT * FROM `hq_question`")->result(); 
-//     print_r($query);
-//     shuffle($query);
-//     print_r($query);
-     
      $testdetail=$this->db->query("SELECT * FROM `test`")->row();
      $startdate=$testdetail->startdate;
-  
      $schedule=$testdetail->schedule;
-     //if 1 all 42 per week
-     //if 2 all 42 per 2 week
-     //if 3 all 42 per 3 week
-     //if 4 all 42 per 4 week
      $checkpackage=$this->db->query("SELECT * FROM `user`")->row();
      $package=$checkpackage->package;
      if($package==4){
@@ -915,8 +905,6 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
                for($i=1;$i<=$noofquestions;$i++)
                {
                         $day=ceil($i/$units);
-                       echo " DAy ";
-                       echo $day;
                         $exactdateday=$day-1;
                         $newdate = date('Y-m-d', strtotime($startdate . ' +'.$exactdateday.' day'));
                         $this->db->query("UPDATE `hq_question` SET `date`='$newdate' WHERE `date` IS null AND `id`='$i'");   
@@ -931,8 +919,6 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
                for($i=1;$i<=$noofquestions;$i++)
                {
                         $day=ceil($i/$units);
-                       echo " DAy ";
-                       echo $day;
                         $exactdateday=$day-1;
                         $newdate = date('Y-m-d', strtotime($startdate . ' +'.$exactdateday.' day'));
                         $this->db->query("UPDATE `hq_question` SET `date`='$newdate' WHERE `date` IS null AND `id`='$i'");   
@@ -947,8 +933,6 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
                for($i=1;$i<=$noofquestions;$i++)
                {
                         $day=ceil($i/$units);
-                       echo " DAy ";
-                       echo $day;
                         $exactdateday=$day-1;
                         $newdate = date('Y-m-d', strtotime($startdate . ' +'.$exactdateday.' day'));
                         $this->db->query("UPDATE `hq_question` SET `date`='$newdate' WHERE `date` IS null AND `id`='$i'");   
@@ -957,6 +941,35 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
          } 
    
     }
+ public function setCron()
+ {
+       $query = $this->db->query("SELECT * FROM `hq_question` WHERE `date`<=NOW()")->result(); 
+     if(!empty($query))
+     {
+        $getUserid=$this->restapi_model->getUsers();
+        foreach($getUserid as $getUserid)
+        {
+        $email=$getUserid->email;
+        $hashvalue=base64_encode ($getUserid->id."&hq");
+        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+        $this->load->library('email');
+        $this->email->from('master@willnevergrowup.in', 'HQ');
+        $this->email->to($email);
+        $this->email->subject('Happiness Quotient');
+        message = "<html>
+        <p>Hello!</p><br>
+      <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
+<p>For any queries/support, contact the HR Team on ___________________</p><br>
+      </html>";
+       $this->email->message($message);
+       $this->email->send();
+        }
+     }
+      
+    
+ }
+ 
+ 
  
 
  } ?>

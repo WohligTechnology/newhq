@@ -99,14 +99,30 @@ class restapi_model extends CI_Model
         
         if($package==4)
         {
-//            send 42 questions
-                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` where `test`.`startdate` < now() HAVING `questionid` not in (Select `testquestion`.`question` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid' AND `hq_question`.`id` BETWEEN 1 AND 46 ORDER BY RAND() LIMIT 0,1")->result(); 
+//            send 46 questions
+                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` FROM `testquestion` 
+INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
+INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
+WHERE `test`.`startdate` < now() AND `hq_question`.`date` <=NOW()
+HAVING `questionid` NOT IN (SELECT `testquestion`.`question` as `questionid` FROM `testquestion` 
+                            INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
+                            INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
+                            INNER JOIN `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` 
+                            WHERE `hq_useranswer`.`user` = '$userid' AND `hq_question`.`id` BETWEEN 1 AND 46) ORDER BY RAND()")->result(); 
 
         }
         else
         {
-//            send 46 questions
-                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` where `test`.`startdate` < now() HAVING `questionid` not in (Select `testquestion`.`question` as `questionid` from `testquestion` inner join `test` ON `testquestion`.`test` = `test`.`id` inner join `hq_question` ON `testquestion`.`question` = `hq_question`.`id` inner join `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` where `hq_useranswer`.`user` = '$userid' AND `hq_question`.`id` BETWEEN 1 AND 42) ORDER BY RAND() LIMIT 0,1")->result(); 
+//            send 42 questions
+                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` FROM `testquestion` 
+INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
+INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
+WHERE `test`.`startdate` < now() AND `hq_question`.`date` <=NOW()
+HAVING `questionid` NOT IN (SELECT `testquestion`.`question` as `questionid` FROM `testquestion` 
+                            INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
+                            INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
+                            INNER JOIN `hq_useranswer` ON `testquestion`.`question` = `hq_useranswer`.`question` AND `testquestion`.`test` = `hq_useranswer`.`test` 
+                            WHERE `hq_useranswer`.`user` = '$userid' AND `hq_question`.`id` BETWEEN 1 AND 42) ORDER BY RAND()")->result(); 
 
         }
         
