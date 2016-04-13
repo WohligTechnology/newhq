@@ -988,8 +988,14 @@ public function viewpillar()
 {
 $access=array("1","2","3");
 $this->checkaccess($access);
-$data["page"]="pillarsecond";
-$data["checkpackage"]=$this->menu_model->checkpackage();
+    $data["checkpackage"]=$this->menu_model->checkpackage();
+    $checkpackage=$this->menu_model->checkpackage();
+    if($checkpackage==1 || $checkpackage==2){
+        $data["page"]="showmessage";
+    }
+    else{$data["page"]="pillarsecond";}
+
+
 $data['before']=$this->pillar_model->getpillarweightforedit();
 $data['showavg']=$this->pillar_model->showavg();
 $data['lastpillardetail']=$this->pillar_model->lastpillardetail();
@@ -4228,6 +4234,7 @@ $this->load->view("template",$data);
 
    }
 	 public function getWelcomePage(){
+         $data['package']=$this->menu_model->checkpackage();
 		 $data["page"]="welcome";
 		 $data["title"]="Welcome to HQ";
 		 $this->load->view("template",$data);
