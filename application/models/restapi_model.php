@@ -26,20 +26,54 @@ class restapi_model extends CI_Model
         $normalfromhash = base64_decode($user);
         $returnvalue    = explode("&", $normalfromhash);
         $userid         = $returnvalue[0];
-        // get pillar id
         
-        $query1   = $this->db->query("SELECT `pillar` FROM `hq_question` WHERE `id`='$question'")->row();
-        $pillarid = $query1->pillar;
+        // check if answer array
         
-        $data  = array(
-            "user" => $userid,
-            "question" => $question,
-            "option" => $option,
-            "test" => $test,
-            "pillar" => $pillarid
-        );
-        $query = $this->db->insert("hq_useranswer", $data);
-        $id    = $this->db->insert_id();
+        if (strpos($option, ',') !== FALSE)
+        {
+//         explode it
+        $optionarray=explode(",",$option);
+            foreach($optionarray as $singleoption)
+            {
+                $option=$singleoption;
+              // get pillar id
+
+            $query1   = $this->db->query("SELECT `pillar` FROM `hq_question` WHERE `id`='$question'")->row();
+            $pillarid = $query1->pillar;
+
+            $data  = array(
+                "user" => $userid,
+                "question" => $question,
+                "option" => $option,
+                "test" => $test,
+                "pillar" => $pillarid
+            );
+            $query = $this->db->insert("hq_useranswer", $data);
+            $id    = $this->db->insert_id();    
+            }
+        }
+        else
+        {
+            $option=$option;
+              // get pillar id
+
+            $query1   = $this->db->query("SELECT `pillar` FROM `hq_question` WHERE `id`='$question'")->row();
+            $pillarid = $query1->pillar;
+
+            $data  = array(
+                "user" => $userid,
+                "question" => $question,
+                "option" => $option,
+                "test" => $test,
+                "pillar" => $pillarid
+            );
+            $query = $this->db->insert("hq_useranswer", $data);
+            $id    = $this->db->insert_id();    
+        
+        }
+        
+        
+      
         if (!$query)
             return false;
         else
@@ -100,7 +134,7 @@ class restapi_model extends CI_Model
         if($package==4)
         {
 //            send 46 questions
-                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` FROM `testquestion` 
+                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`,`hq_question`.`optionselect` FROM `testquestion` 
 INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
 INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
 WHERE `test`.`startdate` < now() AND `hq_question`.`date` <=NOW()
@@ -114,7 +148,7 @@ HAVING `questionid` NOT IN (SELECT `testquestion`.`question` as `questionid` FRO
         else
         {
 //            send 42 questions
-                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type` FROM `testquestion` 
+                    $query = $this->db->query("SELECT `testquestion`.`question` as `questionid`, `testquestion`.`test`, `testquestion`.`question`, `testquestion`.`dateandtime`, `hq_question`.`text`, `hq_question`.`type`,`hq_question`.`optionselect` FROM `testquestion` 
 INNER JOIN `test` ON `testquestion`.`test` = `test`.`id` 
 INNER JOIN `hq_question` ON `testquestion`.`question` = `hq_question`.`id` 
 WHERE `test`.`startdate` < now() AND `hq_question`.`date` <=NOW()

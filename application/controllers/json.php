@@ -956,7 +956,7 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
         $this->email->from('master@willnevergrowup.in', 'HQ');
         $this->email->to($email);
         $this->email->subject('Happiness Quotient');
-        message = "<html>
+        $message = "<html>
         <p>Hello!</p><br>
       <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
 <p>For any queries/support, contact the HR Team on ___________________</p><br>

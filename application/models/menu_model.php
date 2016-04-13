@@ -1134,19 +1134,19 @@ public function uploadImage(){
         $this->db->query("UPDATE `user` SET `package`='$package',`expiredate`='$expiredate' WHERE 1");
         if($package==1){
              $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14)");
-             $query=$this->db->query("UPDATE `menuaccess` SET `access`=0 WHERE `menu` IN (17,18)");
+             $query=$this->db->query("UPDATE `menuaccess` SET `access`=0 WHERE `menu` IN (15)");
              $query1=$this->db->query("UPDATE `user` SET `isfirst`=1 WHERE `accesslevel` = 1");
         }
         else if($package==2){
-             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,17,18)");
+             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,15)");
              $query1=$this->db->query("UPDATE `user` SET `isfirst`=1 WHERE `accesslevel` = 1");
         }
         else if($package==3){
-             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,17,18)");
+             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,15)");
              $query1=$this->db->query("UPDATE `user` SET `isfirst`=0 WHERE `accesslevel` = 1");
         }
         else if($package==4){
-             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,17,18)");
+             $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14,15)");
              $query1=$this->db->query("UPDATE `user` SET `isfirst`=0 WHERE `accesslevel` = 1");
         }
     } 
