@@ -1131,7 +1131,7 @@ public function uploadImage(){
     }
     public function enablemenu($package,$expiredate)
     {
-        $this->db->query("UPDATE `user` SET `package`='$package',`expiredate`='$expiredate' WHERE 1");
+        $this->db->query("UPDATE `user` SET `package`='$package',`expirydate`='$expiredate' WHERE 1");
         if($package==1){
              $query=$this->db->query("UPDATE `menuaccess` SET `access`=1 WHERE `menu` IN (1,2,3,4,5,6,7,8,9,12,14)");
              $query=$this->db->query("UPDATE `menuaccess` SET `access`=0 WHERE `menu` IN (15)");
