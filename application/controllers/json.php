@@ -943,30 +943,38 @@ ORDER BY `hq_surveyquestionanswer`.`question` ASC")->result();
     }
  public function setCron()
  {
-       $query = $this->db->query("SELECT * FROM `hq_question` WHERE `date`<=NOW()")->result(); 
-     if(!empty($query))
+     $query1=$this->db->query("SELECT * FROM `user` WHERE `expirydate` <=NOW()")->row();
+//    don't send que
+     if(empty($query1))
      {
-        $getUserid=$this->restapi_model->getUsers();
-        foreach($getUserid as $getUserid)
-        {
-        $email=$getUserid->email;
-        $hashvalue=base64_encode ($getUserid->id."&hq");
-        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
-        $this->load->library('email');
-        $this->email->from('master@willnevergrowup.in', 'HQ');
-        $this->email->to($email);
-        $this->email->subject('Happiness Quotient');
-        $message = "<html>
-        <p>Hello!</p><br>
-      <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
-<p>For any queries/support, contact the HR Team on ___________________</p><br>
-      </html>";
-       $this->email->message($message);
-       $this->email->send();
-        }
+         $query = $this->db->query("SELECT * FROM `hq_question` WHERE `date`<=NOW()")->result(); 
+         if(!empty($query))
+         {
+            $getUserid=$this->restapi_model->getUsers();
+            foreach($getUserid as $getUserid)
+            {
+            $email=$getUserid->email;
+            $hashvalue=base64_encode ($getUserid->id."&hq");
+            $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+            $this->load->library('email');
+            $this->email->from('master@willnevergrowup.in', 'HQ');
+            $this->email->to($email);
+            $this->email->subject('Happiness Quotient');
+            $message = "<html>
+            <p>Hello!</p><br>
+          <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
+    <p>For any queries/support, contact the HR Team on ___________________</p><br>
+          </html>";
+           $this->email->message($message);
+           $this->email->send();
+            }
+         }
      }
-      
-    
+     else{
+//         do nothing
+         echo "in else";
+     }
+   
  }
  
  
