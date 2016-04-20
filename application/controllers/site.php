@@ -4220,11 +4220,13 @@ $this->load->view("template",$data);
                $this->load->library('email');
        $this->email->from('master@willnevergrowup.in', 'HQ');
        $this->email->to($email);
-       $this->email->subject('Happiness Quotient');
+       $this->email->subject('Your Happiness at Work matters!');
        $message = "<html>
-        <p>Hello!</p><br>
-      <p>Feel like taking a break from work? Click on this link to have some fun! </p><span>$link</span><br>
-<p>For any queries/support, contact the HR Team on ___________________</p><br>
+        <p>Dear Colleagues,</p><br>
+      <p>We've always believed that you are the driving force of this organization and that your happiness at work is what matters to ensure that we meet our goals. As a part of this belief and efforts in this area, here's a fun and simple survey we'd like you to take part in </p><span>$link</span><br>
+<p>Quick tip: Pick the answer you believe in. All responses are kept confidential. </p><br>
+<p>Please feel free to reach out to the HR Team in case of any queries. We are happy to help. </p><br>
+<p>Team HR </p><br>
       </html>";
        $this->email->message($message);
        $this->email->send();

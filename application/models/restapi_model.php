@@ -207,7 +207,7 @@ HAVING `questionid` NOT IN (SELECT `testquestion`.`question` as `questionid` FRO
             
             foreach ($query as $questions) 
             {
-                $questions->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$questions->question'")->result();
+                $questions->option = $this->db->query("SELECT `id`, `question`, `representation`, `actualorder`, `image`, `order`, `weight`, `optiontext`, `text` FROM `hq_options` WHERE `question`='$questions->question' ORDER BY RAND()")->result();
                 
             }
              if($query)
