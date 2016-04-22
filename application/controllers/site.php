@@ -4779,7 +4779,10 @@ $data["alertsuccess"]="Survey Updated Successfully.";
 $data["redirect"]="site/viewconclusionfinalsuggestion";
 $this->load->view("redirect",$data);
 	 }
-
+public function deleteoption(){
+    $id=$this->input->get_post("id");
+    $this->surveyoption_model->deleteoption($id);
+}
 
 }
 ?>
