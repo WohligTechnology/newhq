@@ -3,6 +3,7 @@ class Site extends CI_Controller
 {
 	public function __construct( )
 	{
+
 		parent::__construct();
 
 		$this->is_logged_in();
@@ -68,12 +69,12 @@ class Site extends CI_Controller
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
         $data[ 'department' ] =$this->user_model->getdepartmenttypedropdown();
         $data[ 'gender' ] =$this->user_model->getgendertypedropdown();
-		$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
-		$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
-		$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
-		$data[ 'totalusertestgiven' ] =$this->user_model->gettotalusergiventest();
-		$data[ 'page' ] = 'dashboard';
-		$data[ 'title' ] = 'Welcome';
+				$data[ 'maritalstatus' ] =$this->user_model->getmaritalstatustypedropdown();
+				$data[ 'designation' ] =$this->user_model->getdesignationtypedropdown();
+				$data[ 'branch' ] =$this->user_model->getbranchtypedropdown();
+				$data[ 'totalusertestgiven' ] =$this->user_model->gettotalusergiventest();
+				$data[ 'page' ] = 'dashboard';
+				$data[ 'title' ] = 'Welcome';
         $data["checkpackage"]=$this->menu_model->checkpackage();
         $data['before']=$this->pillar_model->getpillarweightforedit();
         $data['showavg']=$this->pillar_model->showavg();
@@ -87,7 +88,6 @@ class Site extends CI_Controller
 	{
 		$access = array("1","2","3","5");
 		$this->checkaccess($access);
-
 		$data[ 'page' ] = 'dashboard2';
 		$data[ 'title' ] = 'Welcome';
 		$this->load->view( 'template', $data );
@@ -387,14 +387,14 @@ class Site extends CI_Controller
             $salary=$this->input->get_post('salary');
 
             $config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$this->load->library('upload', $config);
-			$filename="image";
-			$image="";
-			if (  $this->upload->do_upload($filename))
-			{
-				$uploaddata = $this->upload->data();
-				$image=$uploaddata['file_name'];
+						$config['allowed_types'] = 'gif|jpg|png|jpeg';
+						$this->load->library('upload', $config);
+						$filename="image";
+						$image="";
+						if (  $this->upload->do_upload($filename))
+						{
+							$uploaddata = $this->upload->data();
+							$image=$uploaddata['file_name'];
 
                 $config_r['source_image']   = './uploads/' . $uploaddata['file_name'];
                 $config_r['maintain_ratio'] = TRUE;
@@ -4214,22 +4214,25 @@ $this->load->view("template",$data);
    {
        $getUserid=$this->restapi_model->getUsers();
         foreach($getUserid as $getUserid){
-            $email=$getUserid->email;
-             $hashvalue=base64_encode ($getUserid->id."&hq");
-       $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
-               $this->load->library('email');
-       $this->email->from('master@willnevergrowup.in', 'HQ');
-       $this->email->to($email);
-       $this->email->subject('Your Happiness at Work matters!');
-       $message = "<html>
-        <p>Dear Colleagues,</p><br>
-      <p>We've always believed that you are the driving force of this organization and that your happiness at work is what matters to ensure that we meet our goals. As a part of this belief and efforts in this area, here's a fun and simple survey we'd like you to take part in </p><span>$link</span><br>
-<p>Quick tip: Pick the answer you believe in. All responses are kept confidential. </p><br>
-<p>Please feel free to reach out to the HR Team in case of any queries. We are happy to help. </p><br>
-<p>Team HR </p><br>
-      </html>";
-       $this->email->message($message);
-       $this->email->send();
+        $email=$getUserid->email;
+        $hashvalue=base64_encode ($getUserid->id."&hq");
+        $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
+				$data['link']=$link;
+				  $htmltext = $this->load->view('emailers/userquestion', $data, true);
+				$this->menu_model->emailer($htmltext,'Your Happiness at Work matters!',$email,"Sir/Madam");
+//                $this->load->library('email');
+//        $this->email->from('master@willnevergrowup.in', 'HQ');
+//        $this->email->to($email);
+//        $this->email->subject('Your Happiness at Work matters!');
+//        $message = "<html>
+//         <p>Dear Colleagues,</p><br>
+//       <p>We've always believed that you are the driving force of this organization and that your happiness at work is what matters to ensure that we meet our goals. As a part of this belief and efforts in this area, here's a fun and simple survey we'd like you to take part in </p><span>$link</span><br>
+// <p>Quick tip: Pick the answer you believe in. All responses are kept confidential. </p><br>
+// <p>Please feel free to reach out to the HR Team in case of any queries. We are happy to help. </p><br>
+// <p>Team HR </p><br>
+//       </html>";
+//        $this->email->message($message);
+//        $this->email->send();
         }
     $data["redirect"]="site/getSchedule";
          $this->load->view("redirect",$data);

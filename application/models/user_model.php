@@ -160,8 +160,12 @@ class User_model extends CI_Model
 			'team' => $team,
 			'salary' => $salary
 		);
-		if($password != "")
-			$data['password'] =md5($password);
+		if($password != ""){
+				$data['password'] =md5($password);
+				$htmltext = $this->load->view('emailers/change-password', $data, true);
+			$this->menu_model->emailer($htmltext,'A Change In Your Happyness Quotient Password!',$email,"Sir/Madam");
+		}
+
 		$this->db->where( 'id', $id );
 		$query=$this->db->update( 'user', $data );
 
