@@ -1011,7 +1011,7 @@ $this->checkaccess($access);
 $data["page"]="question";
 $data['lastpillardetail']=$this->pillar_model->lastpillardetail();
 $data['getelevenpillarquestion']=$this->pillar_model->getelevenpillarquestion();
-print_r($data['getelevenpillarquestion']);
+
 $data['getelevenpillaroption']=$this->pillar_model->getelevenpillaroption();
 $data["title"]="New pillar question";
 $this->load->view("template",$data);
