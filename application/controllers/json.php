@@ -692,6 +692,13 @@ $this->load->view("json",$data);
      $data['message']=$query;
     $this->load->view('json',$data);
  }
+ public function checkKey(){
+   $data = json_decode(file_get_contents('php://input'), true);
+     $key=$data["key"];
+     $data['message']=$this->restapi_model->checkKey($key);
+     $this->load->view('json',$data);
+
+ }
   public function changecredentials(){
      $email=$this->input->get_post('email');
      $password=$this->input->get_post('pass');

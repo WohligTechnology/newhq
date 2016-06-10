@@ -16,6 +16,9 @@
           </p>
 
           <p style="margin:0 0 15px 0;">
+            Here is your key to enter <?php echo $hashuser; ?>
+          </p>
+          <p style="margin:0 0 15px 0;">
             Quick tip: Pick the answer you believe in. All responses are kept confidential.
           </p>
           <p style="margin:0 0 15px 0;">

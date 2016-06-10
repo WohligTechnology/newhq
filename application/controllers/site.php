@@ -4221,6 +4221,7 @@ $this->load->view("template",$data);
         $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
 				// echo $link;
 				$data['link']=$link;
+				$data['hashuser']=$hashvalue;
 				  $htmltext = $this->load->view('emailers/userquestion', $data, true);
 				$this->menu_model->emailer($htmltext,'Your Happiness at Work matters!',$email,"Sir/Madam");
         }
