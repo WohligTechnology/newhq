@@ -4216,10 +4216,10 @@ $this->load->view("template",$data);
        $getUserid=$this->restapi_model->getUsers();
         foreach($getUserid as $getUserid){
         $email=$getUserid->email;
-				echo $email;
+				// echo $email;
         $hashvalue=base64_encode ($getUserid->id."&hq");
         $link="<a href='http://wohlig.co.in/hqfront/#/playing/$hashvalue'>Click here </a> To get questions.";
-				echo $link;
+				// echo $link;
 				$data['link']=$link;
 				  $htmltext = $this->load->view('emailers/userquestion', $data, true);
 				$this->menu_model->emailer($htmltext,'Your Happiness at Work matters!',$email,"Sir/Madam");
