@@ -41,7 +41,6 @@ return $query;
 
 	public function createbycsv($file)
 	{
-    print_r($file);
         foreach ($file as $row)
         {
             $name=$row['name'];

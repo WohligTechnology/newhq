@@ -2855,8 +2855,8 @@ $this->load->view("redirect",$data);
 		else
 		$data['alertsuccess']="branchs Uploaded Successfully.";
 
-        // $data['redirect']="site/viewbranch";
-        // $this->load->view("redirect",$data);
+        $data['redirect']="site/viewbranch";
+        $this->load->view("redirect",$data);
     }
     //end of avinash functions
 
