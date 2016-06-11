@@ -36,32 +36,33 @@ public function delete($id)
 $query=$this->db->query("DELETE FROM `hq_branch` WHERE `id`='$id'");
 return $query;
 }
-     
+
     //functions by avinash
-    
+
 	public function createbycsv($file)
 	{
+    print_r($file);
         foreach ($file as $row)
         {
             $name=$row['name'];
             $branchid=$row['branchid'];
             $address=$row['address'];
-            
-		$data  = array(
-			'name' => $name,
-			'branchid' => $branchid,
-			'address' => $address
-		);
-		$query=$this->db->insert( 'hq_branch', $data );
-		$id=$this->db->insert_id();
-         
-            
+
+		// $data  = array(
+		// 	'name' => $name,
+		// 	'branchid' => $branchid,
+		// 	'address' => $address
+		// );
+		// $query=$this->db->insert( 'hq_branch', $data );
+		// $id=$this->db->insert_id();
+
+
         }
 			return  1;
 	}
-    
-    
-    
+
+
+
     //avinash functions end
 }
 ?>
