@@ -22,17 +22,28 @@ class restapi_model extends CI_Model
     }
     public function checkKey($key)
     {
-      $query   = $this->db->query("SELECT * FROM `user` WHERE `hashuser`='$key'");
-      if($query->num_rows() > 0){
-            $object = new stdClass();
-            $object->value = true;
-            return $object;
+      if($key !=='' || $key !==null || $key !==undefined)
+      {
+            $query   = $this->db->query("SELECT * FROM `user` WHERE `hashuser`='$key'");
+            if($query->num_rows() > 0)
+            {
+                  $object = new stdClass();
+                  $object->value = true;
+                  return $object;
+            }
+            else{
+                  $object = new stdClass();
+                  $object->value = false;
+                  return $object;
+                }
       }
-      else{
-            $object = new stdClass();
-            $object->value = false;
-            return $object;
+      else
+      {
+                $object = new stdClass();
+                $object->value = false;
+                return $object;
       }
+
 
     }
 
