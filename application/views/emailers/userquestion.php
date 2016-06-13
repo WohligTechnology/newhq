@@ -16,7 +16,7 @@
           </p>
 
           <p style="margin:0 0 15px 0;">
-            Here is your key to enter <?php echo $hashuser; ?>
+            Here is your key to enter <b><?php echo $hashuser; ?></b>
           </p>
           <p style="margin:0 0 15px 0;">
             Quick tip: Pick the answer you believe in. All responses are kept confidential.
