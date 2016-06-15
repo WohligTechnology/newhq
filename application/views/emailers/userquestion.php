@@ -16,8 +16,15 @@
           </p>
 
           <p style="margin:0 0 15px 0;">
-            Here is your key to enter <b><?php echo $hashuser; ?></b>
+            If you are about to take this test on your Android phone, download the app here [______].
           </p>
+          <p style="margin:0 0 15px 0;">
+            IOS phone users can download the app here [_______].
+          </p>
+          <p style="margin:0 0 15px 0;">
+               Please enter the following key when prompted <p><?php echo $hashuser;?></p>
+          </p>
+
           <p style="margin:0 0 15px 0;">
             Quick tip: Pick the answer you believe in. All responses are kept confidential.
           </p>

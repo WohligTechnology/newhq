@@ -459,7 +459,7 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
         $row1  = $testquery;
             $testid=$row1->id;
 
-        $checkpack=$this->db->query("SELECT * FROM `user`")->row();
+        $checkpack=$this->db->query("SELECT * FROM `user` WHERE `id`=1")->row();
         $checkpackage=$checkpack->package;
         if($checkpackage==4){
             $query=$this->db->query("SELECT * FROM `hq_pillar` ORDER BY `id` ASC")->result();
@@ -478,6 +478,9 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
                 $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
     FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
                 WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
+								echo "SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
+    FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
+                WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where";
                 $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
                 $row->testname=$testname;
                 $row->testexpectedweight=$testexpectedweight;
