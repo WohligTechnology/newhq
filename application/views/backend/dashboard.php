@@ -425,7 +425,7 @@
                         }
                     }
                 },
-                colors: ['#ffd61e', '#fff'],
+                colors: ['#f55069', '#0084C5'],
                 legend: {
                     layout: 'vertical',
                     align: 'right',
