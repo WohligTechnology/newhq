@@ -105,6 +105,7 @@
 <div class="lightcolor"></div>
 <script>
     var pillars = [];
+    var globalData = [];
     var arr = [];
     var totalsum = [];
     var totalexpected = [];
@@ -114,18 +115,12 @@
     var pillaraveragevalues = [];
     var weight = [];
     $(document).ready(function() {
+      function makefiller(data) {
+        console.log(data);
+        $(".sec1").text("122");
 
-        //        var new_base_url = "<?php echo site_url(); ?>";
-        //        $.getJSON(new_base_url + '/site/getpillarforpie', {}, function(data) {
-        //            _.each(data, function(n) {
-        //                var hold = {};
-        //                hold.name = n.name;
-        //                hold.y = parseInt(n.pillaraveragevalues);
-        //                pillaraveragevalues.push(hold);
-        //                $('select').material_select();
-        //                createPie();
-        //            });
-        //        });
+      }
+
 
         GlobalFunctions.checkfortwo = function(val) {
             var count = 0;
@@ -183,8 +178,14 @@
                 spanofcontrol: $spanofcontrol,
                 experience: $experience
             }, function(data) {
+
                 console.log(data);
+                var globalData=data;
+                makefiller(data);
+
+
                 //                var arr=[];
+                arr = [];
                 _.each(data, function(n) {
                     var obj = {};
                     obj.name = n.name;
@@ -200,8 +201,8 @@
                 var totalsum = 0;
                 var totalexpected = 0;
                 for (var i = 0; i < data.length; i++) {
-                    totalsum = totalsum + (data[i].pillaraveragevalues * data[i].expectedweight) / 100;
-                    totalexpected = totalexpected + (data[i].pillaraveragevalues * data[i].weight) / 100;
+                    totalexpected = totalsum + (data[i].pillaraveragevalues * data[i].expectedweight) / 100;
+                    totalsum = totalexpected + (data[i].pillaraveragevalues * data[i].weight) / 100;
                 }
 
                 totalsum = Math.floor(totalsum);
@@ -334,7 +335,7 @@
         }
 
         function createPie() {
-            //        console.log(arr);
+                   console.log(arr);
             $('#container').highcharts({
                 credits: {
                     enabled: false
@@ -441,10 +442,10 @@
                     enabled: false
                 },
                 series: [{
-                    name: 'Average',
+                    name: 'NGU Weightage',
                     data: [totalexpected]
                 }, {
-                    name: 'HQ Expected',
+                    name: 'Client Weightage',
                     data: [totalsum]
                 }]
             });
@@ -456,9 +457,50 @@
 
 </script>
 <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
 <div id="container" style="min-width: 310px; margin: 0 auto"></div>
+Generic Questions<br>
+<!-- <?php print_r($fillerquestion);?> -->
+<?php echo $fillerquestion[0]->text;?><br>
+
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[0]->image;?>">
+</div><br>
+
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[1]->image;?>">
+<h1 class="sec1"></h1>
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[2]->image;?>">
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[3]->image;?>">
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[4]->image;?>">
+</div>
+<br>
+<?php echo $fillerquestion[1]->text;?><br><br><br><br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[0]->image;?>">
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[1]->image;?>">
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[2]->image;?>">
+</div>
+<br>
+<div>
+<img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[3]->image;?>">
+</div>
+<br>
+
 
 <script>
     $('#button').click(function() {

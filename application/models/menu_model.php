@@ -473,17 +473,20 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
             {
                 $pillarid = $row->id;
                 $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
+
+								$fillerques=$this->db->query("SELECT COUNT(`hq_useranswer`.`user`) as `count`,`hq_useranswer`.`option` FROM `hq_useranswer` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id` WHERE `hq_useranswer`.`question` IN (41,42) $where GROUP BY `option`")->result();
+
+
                 $testexpectedweight=$testexpectedweights->weight;
                 $testname=$testexpectedweights->testname;
+								$row->filler=array();
                 $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
     FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
                 WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
-								echo "SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
-    FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
-                WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where";
                 $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
                 $row->testname=$testname;
                 $row->testexpectedweight=$testexpectedweight;
+                $row->filler=$fillerques;
             }
             $arr = $query;
 

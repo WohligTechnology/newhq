@@ -40,7 +40,6 @@ class Site extends CI_Controller
         $branch=$this->input->get('branch');
 
         $pillarsdata=$this->menu_model->drawpillarjsononhrdashboaard1($gender,$maritalstatus,$designation,$department,$spanofcontrol,$experience,$salary,$branch);
-
         $data["message"] = $pillarsdata;
 
 		$this->load->view( 'json', $data );
@@ -64,6 +63,7 @@ class Site extends CI_Controller
             }
         }
 
+        $data['fillerquestion']=$this->question_model->getFillerQuestion();
         $data['totalsum']=floor($totalsum);
         $data['totalexpected']=floor($totalexpected);
         $data[ 'branch' ] =$this->user_model->getbranchtypedropdown();

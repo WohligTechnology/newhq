@@ -14,15 +14,8 @@
             We've always believed that you are the driving force of this organization and that your happiness at work is what matters to ensure that we meet our goals. As a part of this belief and efforts in this area, here's a fun and simple survey we'd like you to take part in <!-- insert Link --><a href="#" target="_blank" style="color:#000;text-decoration:none;"><?php echo $link; ?>.</a>
             <!--End Link -->
           </p>
-
           <p style="margin:0 0 15px 0;">
-            If you are about to take this test on your Android phone, download the app here [______].
-          </p>
-          <p style="margin:0 0 15px 0;">
-            IOS phone users can download the app here [_______].
-          </p>
-          <p style="margin:0 0 15px 0;">
-               Please enter the following key when prompted <p><?php echo $hashuser;?></p>
+            In case you are using the survey on your Android or iOS phone, do enter the following code when prompted:<p><?php echo $hashuser;?></p>
           </p>
 
           <p style="margin:0 0 15px 0;">
