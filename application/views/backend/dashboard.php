@@ -323,25 +323,25 @@
 
                 <?php if($checkpackage==3 || $checkpackage==4) {?>
                 series: [{
-                    name: 'Expected',
+                    name: 'NGU Weightage',
                     data: expectedWeight
 
                 }, {
-                    name: 'Average',
+                    name: 'Average Score',
                     data: pillAraverage
 
                 }, {
-                    name: 'Weight',
+                    name: 'Client Weightage',
                     data: weight
 
                 }]
                 <?php } else {?>
                 series: [{
-                    name: 'Average',
+                    name: 'Average Score',
                     data: pillAraverage
 
                 }, {
-                    name: 'Expected',
+                    name: 'NGU Weightageß',
                     data: expectedWeight
 
                 }]
@@ -442,7 +442,7 @@
                         }
                     }
                 },
-                colors: ['#f55069', '#0084C5'],
+                colors: [ '#0084C5','#f55069'],
                 legend: {
                     layout: 'vertical',
                     align: 'right',
