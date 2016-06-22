@@ -1,6 +1,9 @@
 <div class="text-center padding-bottom">
     <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 </div>
+<div class="text-center padding-bottom">
+    <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport">Export All Result</button>
+</div>
 <span>Total Employee Count: <?php echo $empcount;?></span><br>
 <span>Employees Appeared For Test: <?php echo $totalusertestgiven;?></span>
 <form method="post" action="<?php echo site_url('site/getdatabyfiltering');?>">
@@ -114,12 +117,25 @@
     var GlobalFunctions = {};
     var pillaraveragevalues = [];
     var weight = [];
+    var groupedData = [];
     $(document).ready(function() {
+         new_base_url1 = "<?php echo site_url(); ?>";
       function makefiller(data) {
-        console.log(data);
+        console.log(data[0]['filler']);
+         groupedData = _.groupBy(data[0]['filler'], function(d){return "group"+d.question;});
         $(".sec1").text("122");
-
-      }
+        options();
+        options1();
+        $(".excelexport").click(function(){
+        $.post(new_base_url1 + '/site/getDataForExcelExport',
+           {
+               data: data
+           },
+         function(data, status){
+          console.log(data);
+         });
+         });
+        }
 
 
         GlobalFunctions.checkfortwo = function(val) {
@@ -458,11 +474,29 @@
 </script>
 <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 310px; margin: 0 auto"></div>
-Generic Questions<br>
-<!-- <?php print_r($fillerquestion);?> -->
-<?php echo $fillerquestion[0]->text;?><br>
 
-<div>
+
+</div>
+Generic Questions<br>
+<?php echo $fillerquestion[0]->text;?><br>
+<div id="imgoptions"></div>
+<script>
+var basepath="<?php echo base_url('uploads').'/'?>";
+function options() {
+  // var image1=groupedData.group41[0].image;
+
+  for(var i=0;i<groupedData.group41.length;i++){
+    var imagediv=document.createElement("div");
+    var imagenode = document.createElement("img");
+    imagenode.src=basepath+groupedData.group41[i].image;
+    var textnode = document.createTextNode(groupedData.group41[i].count);
+    imagediv.appendChild(imagenode);
+    imagediv.appendChild(textnode);
+    document.getElementById("imgoptions").appendChild(imagediv);
+  }
+}
+</script>
+<!-- <div>
 <img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[0]->image;?>">
 </div><br>
 
@@ -482,9 +516,27 @@ Generic Questions<br>
 <div>
 <img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[4]->image;?>">
 </div>
-<br>
+<br> -->
 <?php echo $fillerquestion[1]->text;?><br><br><br><br>
-<div>
+<div id="imgoptions1"></div>
+<script>
+var basepath="<?php echo base_url('uploads').'/'?>";
+
+function options1() {
+  // var image1=groupedData.group41[0].image;
+
+  for(var i=0;i<groupedData.group42.length;i++){
+    var imagediv=document.createElement("div");
+    var imagenode = document.createElement("img");
+    imagenode.src=basepath+groupedData.group42[i].image;
+    var textnode = document.createTextNode(groupedData.group42[i].count);
+    imagediv.appendChild(imagenode);
+    imagediv.appendChild(textnode);
+    document.getElementById("imgoptions1").appendChild(imagediv);
+  }
+}
+</script>
+<!-- <div>
 <img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[0]->image;?>">
 </div>
 <br>
@@ -499,7 +551,7 @@ Generic Questions<br>
 <div>
 <img src="<?php echo base_url('uploads').'/'.$fillerquestion[1]->options[3]->image;?>">
 </div>
-<br>
+<br> -->
 
 
 <script>

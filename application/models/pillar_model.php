@@ -401,5 +401,28 @@ return $query;
         $query=$this->db->query("SELECT * FROM `hq_pillar` WHERE `id` =11")->row();
         return $query;
 	}
+    public function getDataForExcelExport($data)
+	{
+    // print_r($data);
+        foreach($data as $row)
+        {
+          print_r($row['name']);
+          echo "<br><br>";
+            $querycart=$this->db->query("INSERT INTO `demo`(`pillarname`, `weight`, `expectedweight`, `average`) VALUES ('".$row['name']."','".$row['weight']."','".$row['expectedweight']."','".$row['pillaraveragevalues']."')");
+        }
+        $query=$this->db->query("SELECT * FROM `demo`");
+        $content= $this->dbutil->csv_from_result($query);
+ $timestamp=new DateTime();
+         $timestamp=$timestamp->format('Y-m-d_H.i.s');
+         if ( ! write_file("./uploads/result_$timestamp.csv", $content))
+         {
+              echo 'Unable to write the file';
+         }
+         else
+         {
+             redirect(base_url("uploads/result_$timestamp.csv"), 'refresh');
+              echo 'File written!';
+         }
+	}
 }
 ?>

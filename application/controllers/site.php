@@ -93,6 +93,24 @@ class Site extends CI_Controller
 		$this->load->view( 'template', $data );
 
 	}
+    public function getDataForExcelExport()
+	{
+		$bargraphdata=$this->input->get_post('data');
+	  $truncatedemo=$this->db->query('TRUNCATE TABLE `demo`');
+echo $truncatedemo;
+print_r($truncatedemo);
+
+		if($truncatedemo==1){
+				$this->pillar_model->getDataForExcelExport($bargraphdata);
+
+		}
+		// else{
+		// 	echo "err";
+		//
+		// }
+		// $data['redirect']="site/index";
+		// $this->load->view("redirect",$data);
+	}
 
 	public function createuser()
 	{

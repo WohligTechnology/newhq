@@ -474,8 +474,7 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
                 $pillarid = $row->id;
                 $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
 
-								$fillerques=$this->db->query("SELECT COUNT(`hq_useranswer`.`user`) as `count`,`hq_useranswer`.`option` FROM `hq_useranswer` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id` WHERE `hq_useranswer`.`question` IN (41,42) $where GROUP BY `option`")->result();
-
+								$fillerques=$this->db->query("SELECT COUNT(`hq_useranswer`.`user`) as `count`,`hq_useranswer`.`option`,`hq_options`.`id`,`hq_options`.`image`,`hq_useranswer`.`question` FROM `hq_useranswer` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id` LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` WHERE `hq_useranswer`.`question` IN (41,42) GROUP BY `option`")->result();
 
                 $testexpectedweight=$testexpectedweights->weight;
                 $testname=$testexpectedweights->testname;
