@@ -109,8 +109,8 @@ class Site extends CI_Controller
 		else{
 			echo "In err";
 		}
-		// $data['redirect']="site/index";
-		// $this->load->view("redirect",$data);
+		$data['redirect']="site/index";
+		$this->load->view("redirect",$data);
 	}
 
 	public function createuser()

@@ -2,7 +2,7 @@
     <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
 </div>
 <div class="text-center padding-bottom">
-    <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport">Export All Result</button>
+    <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport" onclick="exportData();">Export All Result</button>
 </div>
 <span>Total Employee Count: <?php echo $empcount;?></span><br>
 <span>Employees Appeared For Test: <?php echo $totalusertestgiven;?></span>
@@ -118,6 +118,17 @@
     var pillaraveragevalues = [];
     var weight = [];
     var groupedData = [];
+    var excelData = {};
+    function exportData() {
+      console.log("excel",excelData);
+      $.post(new_base_url1 + '/site/getDataForExcelExport',
+         {
+             data: excelData
+         },
+       function(data, status){
+        console.log(data);
+       });
+    }
     $(document).ready(function() {
          new_base_url1 = "<?php echo site_url(); ?>";
       function makefiller(data) {
@@ -126,15 +137,16 @@
         $(".sec1").text("122");
         options();
         options1();
-        $(".excelexport").click(function(){
-        $.post(new_base_url1 + '/site/getDataForExcelExport',
-           {
-               data: data
-           },
-         function(data, status){
-          console.log(data);
-         });
-         });
+        excelData=data;
+        // $(".excelexport").click(function(){
+        // $.post(new_base_url1 + '/site/getDataForExcelExport',
+        //    {
+        //        data: data
+        //    },
+        //  function(data, status){
+        //   console.log(data);
+        //  });
+        //  });
         }
 
 

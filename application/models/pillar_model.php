@@ -403,26 +403,21 @@ return $query;
 	}
     public function getDataForExcelExport($data)
 	{
-    // print_r($data);
         foreach($data as $row)
         {
-          print_r($row['name']);
           $q=$this->db->query("SELECT * FROM `demo` WHERE `pillarname` = '".$row['name']."'");
           if($q->num_rows >0){
-
           }
           else if ($q->num_rows==0){
                 $querycart=$this->db->query("INSERT INTO `demo`(`pillarname`, `weight`, `expectedweight`, `average`) VALUES ('".$row['name']."','".$row['weight']."','".$row['expectedweight']."','".$row['pillaraveragevalues']."')");
           }
           else{
-            echo "Again err";
           }
-          echo "<br><br>";
 
         }
         $query=$this->db->query("SELECT * FROM `demo`");
         $content= $this->dbutil->csv_from_result($query);
- $timestamp=new DateTime();
+        $timestamp=new DateTime();
          $timestamp=$timestamp->format('Y-m-d_H.i.s');
          if ( ! write_file("./uploads/result_$timestamp.csv", $content))
          {
