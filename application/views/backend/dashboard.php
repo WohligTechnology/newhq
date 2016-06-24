@@ -5,8 +5,15 @@
     <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport" onclick="exportData();">Export All Result</button>
 </div> -->
 <div class='mydiv'>
-    <textarea id="txt" class='txtarea'>[{"Vehicle":"BMW","Date":"30, Jul 2013 09:24 AM","Location":"Hauz Khas, Enclave, New Delhi, Delhi, India","Speed":42},{"Vehicle":"Honda CBR","Date":"30, Jul 2013 12:00 AM","Location":"Military Road,  West Bengal 734013,  India","Speed":0},{"Vehicle":"Supra","Date":"30, Jul 2013 07:53 AM","Location":"Sec-45, St. Angel's School, Gurgaon, Haryana, India","Speed":58},{"Vehicle":"Land Cruiser","Date":"30, Jul 2013 09:35 AM","Location":"DLF Phase I, Marble Market, Gurgaon, Haryana, India","Speed":83},{"Vehicle":"Suzuki Swift","Date":"30, Jul 2013 12:02 AM","Location":"Behind Central Bank RO, Ram Krishna Rd by-lane, Siliguri, West Bengal, India","Speed":0},{"Vehicle":"Honda Civic","Date":"30, Jul 2013 12:00 AM","Location":"Behind Central Bank RO, Ram Krishna Rd by-lane, Siliguri, West Bengal, India","Speed":0},{"Vehicle":"Honda Accord","Date":"30, Jul 2013 11:05 AM","Location":"DLF Phase IV, Super Mart 1, Gurgaon, Haryana, India","Speed":71}]</textarea>
-    <button class='gen_btn'>Generate File</button>
+    <!-- <textarea id="txt" style="display:none" class='txtarea'></textarea> -->
+    <button class='btn btn-primary waves-effect waves-light blue darken-4 barchartexport'>Generate CSV for Bar Chart</button>
+</div>
+<div class='mydiv'>
+    <!-- <textarea id="txt" style="display:none" class='txtarea'></textarea> -->
+    <button class='btn btn-primary waves-effect waves-light blue darken-4 piechartexport'>Generate CSV for Pie Chart</button>
+</div>
+<div class='mydiv'>
+    <button class='btn btn-primary waves-effect waves-light blue darken-4 overallexport'>Generate CSV for Overall</button>
 </div>
 <span>Total Employee Count: <?php echo $empcount;?></span><br>
 <span>Employees Appeared For Test: <?php echo $totalusertestgiven;?></span>
@@ -123,42 +130,47 @@
     var weight = [];
     var groupedData = [];
     var excelData = {};
-    function exportData() {
-      console.log("excel",excelData);
-      $.post(new_base_url1 + '/site/getDataForExcelExport',
-         {
-             data: excelData
-         },
-       function(data, status){
-        console.log(data);
-       });
-    }
+    var bigArr=[];
+    var bigJson={};
+    var arrforExport = [];
+    var overallArray = [];
     $(document).ready(function() {
          new_base_url1 = "<?php echo site_url(); ?>";
       function makefiller(data) {
-        console.log(data[0]['filler']);
          groupedData = _.groupBy(data[0]['filler'], function(d){return "group"+d.question;});
         $(".sec1").text("122");
         options();
         options1();
         excelData=data;
-        // $(".excelexport").click(function(){
-        // $.post(new_base_url1 + '/site/getDataForExcelExport',
-        //    {
-        //        data: data
-        //    },
-        //  function(data, status){
-        //   console.log(data);
-        //  });
-        //  });
+        for(var j=0;j<data.length;j++){
+          bigJson= {};
+            bigJson.Pillar_name=data[j].name;
+            bigJson.Ngu_weightage=data[j].expectedweight;
+            bigJson.Company_weightage=data[j].weight;
+            bigJson.Average_score=data[j].pillaraveragevalues;
+            bigArr.push(bigJson);
+        }
 
-
-        $('button').click(function(){
-        var data = $('#txt').val();
+        $('.barchartexport').click(function(){
+        var data = bigArr;
         if(data == '')
             return;
-
-        JSONToCSVConvertor(data, "Vehicle Report", true);
+            var currentDate=Date.now();
+        JSONToCSVConvertor(data, "Result"+currentDate, true);
+    });
+        $('.piechartexport').click(function(){
+        var data = arrforExport;
+        if(data == '')
+            return;
+            var currentDate=Date.now();
+        JSONToCSVConvertor(data, "Resultforpiechart"+currentDate, true);
+    });
+        $('.overallexport').click(function(){
+        var data = overallArray;
+        if(data == '')
+            return;
+            var currentDate=Date.now();
+        JSONToCSVConvertor(data, "Resultforoverall"+currentDate, true);
     });
         }
 
@@ -293,7 +305,6 @@
                 experience: $experience
             }, function(data) {
 
-                console.log(data);
                 var globalData=data;
                 makefiller(data);
 
@@ -306,12 +317,16 @@
                     obj.y = parseFloat(n.pillaraveragevalues);
                     arr.push(obj);
                 })
+
+
+                _.each(data, function(n) {
+                    var obj1 = {};
+                    obj1.Pillar_name = n.name;
+                    obj1.Average_score = parseFloat(n.pillaraveragevalues);
+                    arrforExport.push(obj1);
+                })
                 getname = _.mapValues(data, 'name');
                 getavgvalue = _.mapValues(data, 'pillaraveragevalues');
-                //                mappedvalue=_.mapValues(users, 'age');
-                console.log(arr);
-                //                console.log(getavgvalue);
-                //                console.log(mappedvalue);
                 var totalsum = 0;
                 var totalexpected = 0;
                 for (var i = 0; i < data.length; i++) {
@@ -321,8 +336,10 @@
 
                 totalsum = Math.floor(totalsum);
                 totalexpected = Math.floor(totalexpected);
-                //                  console.log(totalsum);
-                //                console.log(totalexpected);
+                var sum={};
+                sum.Company_Weightage=totalsum;
+                sum.NGU_Expected=totalexpected;
+                overallArray.push(sum);
                 pillars = _.pluck(data, "name");
                 pillars.push("Overall");
                 expectedWeight = _.pluck(data, "expectedweight");
@@ -355,6 +372,7 @@
                 createGraph();
                 createPie();
                 overAll(totalexpected, totalsum);
+
             });
 
 
@@ -496,7 +514,7 @@
                     shadow: true
                 },
                 series: [{
-                    name: 'Average',
+                    name: 'Average Score',
                     colorByPoint: true,
                     data: arr
                 }]
