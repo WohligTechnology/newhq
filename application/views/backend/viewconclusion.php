@@ -192,6 +192,7 @@
               }, function (data) {
                   clearTable();
                   console.log(data);
+                  globalArray=[];
                   for(var j=0;j< data.length;j++){
                     globalJson={};
                     globalJson.Interlinkage=data[j].name;

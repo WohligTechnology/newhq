@@ -1156,6 +1156,7 @@ INNER JOIN `hq_options` as `option1` ON `option1`.`id` = `option1id`
 INNER JOIN `hq_options` as `option2` ON `option2`.`id` = `option2id`
 WHERE `count` >= 2
 GROUP BY `option1id`,`option2id`) as `table2` ON `table1`.`id1`=`table2`.`id1` AND `table1`.`id2`=`table2`.`id2`")->result();
+
         return $query;
 
     }

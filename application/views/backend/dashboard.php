@@ -142,8 +142,9 @@
         options();
         options1();
         excelData=data;
+        bigArr = [];
         for(var j=0;j<data.length;j++){
-          bigJson= {};
+          bigJson = {};
             bigJson.Pillar_name=data[j].name;
             bigJson.Ngu_weightage=data[j].expectedweight;
             bigJson.Company_weightage=data[j].weight;
@@ -318,7 +319,7 @@
                     arr.push(obj);
                 })
 
-
+                arrforExport=[];
                 _.each(data, function(n) {
                     var obj1 = {};
                     obj1.Pillar_name = n.name;
@@ -333,7 +334,7 @@
                     totalexpected = totalsum + (data[i].pillaraveragevalues * data[i].expectedweight) / 100;
                     totalsum = totalexpected + (data[i].pillaraveragevalues * data[i].weight) / 100;
                 }
-
+                overallArray=[];
                 totalsum = Math.floor(totalsum);
                 totalexpected = Math.floor(totalexpected);
                 var sum={};
