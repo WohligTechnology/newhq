@@ -328,7 +328,9 @@
                 _.each(data, function(n) {
                     var obj1 = {};
                     obj1.Pillar_name = n.name;
-                    obj1.Average_score = parseFloat(n.pillaraveragevalues);
+                    n.percent = n.pillaraveragevalues/sum*100;
+                    n.percent = n.percent.toFixed(1);
+                    obj1.Average_score =  n.percent;
                     arrforExport.push(obj1);
                 })
                 getname = _.mapValues(data, 'name');
@@ -453,7 +455,7 @@
                     data: pillAraverage
 
                 }, {
-                    name: 'Client Weightage',
+                    name: 'Company Weightage',
                     data: weight
 
                 }]
@@ -583,7 +585,7 @@
                     name: 'NGU Weightage',
                     data: [totalexpected]
                 }, {
-                    name: 'Client Weightage',
+                    name: 'Company Weightage',
                     data: [totalsum]
                 }]
             });
