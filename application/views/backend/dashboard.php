@@ -4,15 +4,11 @@
 <!-- <div class="text-center padding-bottom">
     <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport" onclick="exportData();">Export All Result</button>
 </div> -->
-<div class='mydiv'>
+<div class='text-center mb15'>
     <!-- <textarea id="txt" style="display:none" class='txtarea'></textarea> -->
     <button class='btn btn-primary waves-effect waves-light blue darken-4 barchartexport'>Generate CSV for Bar Chart</button>
-</div>
-<div class='mydiv'>
     <!-- <textarea id="txt" style="display:none" class='txtarea'></textarea> -->
     <button class='btn btn-primary waves-effect waves-light blue darken-4 piechartexport'>Generate CSV for Pie Chart</button>
-</div>
-<div class='mydiv'>
     <button class='btn btn-primary waves-effect waves-light blue darken-4 overallexport'>Generate CSV for Overall</button>
 </div>
 <span>Total Employee Count: <?php echo $empcount;?></span><br>
@@ -592,11 +588,24 @@
 <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="container" style="min-width: 310px; margin: 0 auto"></div>
 
-
+<div class="well">
+  <span style="font-size: 20px;"><b>Generic Questions</b></span>
 </div>
-Generic Questions<br>
-<?php echo $fillerquestion[0]->text;?><br>
-<div id="imgoptions"></div>
+<div class="jquestion">
+  <?php echo $fillerquestion[0]->text;?>
+</div>
+<div id="imgoptions" class="row"></div>
+
+<div class="jquestion">
+  <?php echo $fillerquestion[1]->text;?>
+</div>
+<div id="imgoptions1" class="row"></div>
+
+<!-- End of light div -->
+</div>
+
+
+
 <script>
 var basepath="<?php echo base_url('uploads').'/'?>";
 function options() {
@@ -604,38 +613,18 @@ function options() {
 
   for(var i=0;i<groupedData.group41.length;i++){
     var imagediv=document.createElement("div");
+    imagediv.className = "small-images";
     var imagenode = document.createElement("img");
     imagenode.src=basepath+groupedData.group41[i].image;
-    var textnode = document.createTextNode(groupedData.group41[i].count);
+    textnode = document.createTextNode(groupedData.group41[i].count);
     imagediv.appendChild(imagenode);
     imagediv.appendChild(textnode);
     document.getElementById("imgoptions").appendChild(imagediv);
   }
 }
 </script>
-<!-- <div>
-<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[0]->image;?>">
-</div><br>
 
-<div>
-<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[1]->image;?>">
-<h1 class="sec1"></h1>
-</div>
-<br>
-<div>
-<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[2]->image;?>">
-</div>
-<br>
-<div>
-<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[3]->image;?>">
-</div>
-<br>
-<div>
-<img src="<?php echo base_url('uploads').'/'.$fillerquestion[0]->options[4]->image;?>">
-</div>
-<br> -->
-<?php echo $fillerquestion[1]->text;?><br><br><br><br>
-<div id="imgoptions1"></div>
+
 <script>
 var basepath="<?php echo base_url('uploads').'/'?>";
 
@@ -644,6 +633,7 @@ function options1() {
 
   for(var i=0;i<groupedData.group42.length;i++){
     var imagediv=document.createElement("div");
+    imagediv.className = "small-images";
     var imagenode = document.createElement("img");
     imagenode.src=basepath+groupedData.group42[i].image;
     var textnode = document.createTextNode(groupedData.group42[i].count);

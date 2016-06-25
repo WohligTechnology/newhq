@@ -9,8 +9,6 @@
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <div class="text-center">
     <button class="btn btn-primary waves-effect waves-light blue darken-4" onclick="GlobalFunctions.clearSelection()">Clear Selection</button>
-  </div>
-  <div class="text-center">
     <button class="btn btn-primary waves-effect waves-light blue darken-4 excelexport">Excel Export</button>
   </div>
   <span class="filprop">Filters</span>
