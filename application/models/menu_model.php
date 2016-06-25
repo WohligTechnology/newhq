@@ -474,7 +474,7 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
                 $pillarid = $row->id;
                 $testexpectedweights=$this->db->query("SELECT `testpillarexpected`.`pillar`,`testpillarexpected`.`test`,IFNULL(`testpillarexpected`.`expectedvalue`,0) as `weight`,`test`.`name` as `testname` FROM `testpillarexpected` LEFT OUTER JOIN `test` ON `test`.`id`=`testpillarexpected`.`test`  WHERE `test`='$testid' AND `pillar`='$pillarid'")->row();
 
-								$fillerques=$this->db->query("SELECT COUNT(`hq_useranswer`.`user`) as `count`,`hq_useranswer`.`option`,`hq_options`.`id`,`hq_options`.`image`,`hq_useranswer`.`question` FROM `hq_useranswer` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id` LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` WHERE `hq_useranswer`.`question` IN (41,42) GROUP BY `option`")->result();
+
 
                 $testexpectedweight=$testexpectedweights->weight;
                 $testname=$testexpectedweights->testname;
@@ -482,6 +482,9 @@ FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_user
                 $pillaraveragevalues=$this->db->query("SELECT IFNULL(AVG(`hq_options`.`weight`),0) AS `totalweight`
     FROM `hq_useranswer`  LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id`
                 WHERE `hq_useranswer`.`pillar`='$pillarid' AND `hq_useranswer`.`test`='$testid' $where")->row();
+
+								$fillerques=$this->db->query("SELECT COUNT(`hq_useranswer`.`user`) as `count`,`hq_useranswer`.`option`,`hq_options`.`id`,`hq_options`.`image`,`hq_useranswer`.`question` FROM `hq_useranswer` LEFT OUTER JOIN `user` ON `hq_useranswer`.`user`=`user`.`id` LEFT OUTER JOIN `hq_options` ON `hq_options`.`id`=`hq_useranswer`.`option` WHERE `hq_useranswer`.`question` IN (41,42) $where  GROUP BY `option` ")->result();
+
                 $row->pillaraveragevalues=$pillaraveragevalues->totalweight;
                 $row->testname=$testname;
                 $row->testexpectedweight=$testexpectedweight;
@@ -1130,7 +1133,7 @@ public function uploadImage(){
 FROM
 (
 
-    SELECT `option1`.`optiontext` as `option1`,`option1`.`id` as `id1`,`option2`.`optiontext` as `option2`,`option2`.`id` as `id2` FROM `hq_options` as `option1` , `hq_options` as `option2` WHERE `option1`.`question`='1' AND `option2`.`question`='9'
+    SELECT `option1`.`optiontext` as `option1`,`option1`.`id` as `id1`,`option2`.`optiontext` as `option2`,`option2`.`id` as `id2` FROM `hq_options` as `option1` , `hq_options` as `option2` WHERE `option1`.`question`='$question1' AND `option2`.`question`='$question2'
 
 ) as `table1`
 

@@ -133,6 +133,8 @@
     $(document).ready(function() {
          new_base_url1 = "<?php echo site_url(); ?>";
       function makefiller(data) {
+        console.log(data);
+
          groupedData = _.groupBy(data[0]['filler'], function(d){return "group"+d.question;});
         $(".sec1").text("122");
         options();
@@ -308,12 +310,19 @@
 
                 //                var arr=[];
                 arr = [];
+                var sum = 0;
                 _.each(data, function(n) {
                     var obj = {};
                     obj.name = n.name;
                     obj.y = parseFloat(n.pillaraveragevalues);
+                    sum+=obj.y;
                     arr.push(obj);
                 })
+
+                _.each(arr,function(n) {
+                  n.percent = n.y/sum*100;
+                  n.percent = n.percent.toFixed(1);
+                });
 
                 arrforExport=[];
                 _.each(data, function(n) {
@@ -610,7 +619,9 @@
 var basepath="<?php echo base_url('uploads').'/'?>";
 function options() {
   // var image1=groupedData.group41[0].image;
-
+  $("#imgoptions").html("");
+console.log(groupedData);
+if(groupedData){
   for(var i=0;i<groupedData.group41.length;i++){
     var imagediv=document.createElement("div");
     imagediv.className = "small-images";
@@ -622,6 +633,8 @@ function options() {
     document.getElementById("imgoptions").appendChild(imagediv);
   }
 }
+
+}
 </script>
 
 
@@ -630,7 +643,9 @@ var basepath="<?php echo base_url('uploads').'/'?>";
 
 function options1() {
   // var image1=groupedData.group41[0].image;
-
+    $("#imgoptions1").html("");
+    console.log(groupedData);
+if(groupedData.group42.length !=0){
   for(var i=0;i<groupedData.group42.length;i++){
     var imagediv=document.createElement("div");
     imagediv.className = "small-images";
@@ -641,6 +656,10 @@ function options1() {
     imagediv.appendChild(textnode);
     document.getElementById("imgoptions1").appendChild(imagediv);
   }
+}
+
+
+
 }
 </script>
 <!-- <div>
