@@ -404,7 +404,7 @@
             $('.container1').highcharts({
 
                 chart: {
-                    type: 'bar',
+                    type: 'column',
                     backgroundColor: "transparent",
                     borderColor: "transparent",
                     borderRadius: 0,
