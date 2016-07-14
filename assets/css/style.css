@@ -533,7 +533,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 }
 .progress-bar p {
     margin: 0px;
-    color: #000;
+    color: #FFFBEC;
     margin-bottom: 4px;
 }
 .input-border {
@@ -547,7 +547,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     padding: 5px 0px;
     text-align: center;
     border-radius: 4px;
-    color: #000;
+    color: #FFFBEC;
 }
 .padtop {
     margin-top: 90px;
