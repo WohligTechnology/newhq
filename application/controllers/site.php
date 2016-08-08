@@ -4354,10 +4354,10 @@ $this->load->view("template",$data);
     public function exportsurveyresultcsv(){
 		$access = array("1");
 		$this->checkaccess($access);
-        $surveyid=$this->input->get('id');
+    $surveyid=$this->input->get('id');
 		$this->surveyquestionanswer_model->exportsurveyresultcsv($surveyid);
-        $data['redirect']="site/viewconclusion";
-        $this->load->view("redirect",$data);
+    $data['redirect']="site/viewconclusionfinalsuggestion";
+    $this->load->view("redirect",$data);
 	 }
 
     public function trialsurvey()

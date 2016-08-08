@@ -55,16 +55,14 @@ return $return;
 }
     public function exportsurveyresultcsv($surveyid)
     {
-        $getsurveyname=$this->db->query("SELECT * FROM `hq_conclusionfinalsuggestion` WHERE `id`=1")->row();
+        $getsurveyname=$this->db->query("SELECT * FROM `hq_conclusionfinalsuggestion` WHERE `id`='$surveyid'")->row();
         $surveyname=$getsurveyname->conclusion;
         $this->load->dbutil();
-            $query=$this->db->query("");
-       $content= $this->dbutil->csv_from_result($query);
-        //$data = 'Some file data';
-$timestamp=new DateTime();
-        $timestamp=$timestamp->format('Y-m-d_H.i.s');
-//        file_put_contents("gs://magicmirroruploads/products_$timestamp.csv", $content);
-//		redirect("http://magicmirror.in/servepublic?name=products_$timestamp.csv", 'refresh');
+        $query=$this->db->query("SELECT `hq_surveyquestionanswer`.`question` as `Question Id`,`hq_surveyquestion`.`content` as `Question`,GROUP_CONCAT(`hq_surveyquestionanswer`.`option`) as `Answers` FROM `hq_surveyquestionanswer`
+        INNER JOIN `hq_surveyquestion` ON `hq_surveyquestion`.`id`=`hq_surveyquestionanswer`.`question`
+        WHERE `hq_surveyquestion`.`survey`='$surveyid'
+        GROUP BY `hq_surveyquestionanswer`.`question`");
+        $content= $this->dbutil->csv_from_result($query);
         if ( ! write_file("./uploads/$surveyname.csv", $content))
         {
              echo 'Unable to write the file';
