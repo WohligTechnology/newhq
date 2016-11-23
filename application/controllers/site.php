@@ -4195,8 +4195,8 @@ $this->checkaccess($access);
 $data["alerterror"]="New logo could not be Updated.";
 else
 $data["alertsuccess"]="logo Updated Successfully.";
-$data["redirect"]="site/createlogo";
-$this->load->view("redirect",$data);
+// $data["redirect"]="site/createlogo";
+// $this->load->view("redirect",$data);
 }
        public function disableCompany()
 	{
